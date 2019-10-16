@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YY2-Vn-o0v">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Jvx-uQ-ILE">
+            <objects>
+                <viewController id="YY2-Vn-o0v" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z13-pb-YAI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wY8-x5-pQh">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_no_internet" translatesAutoresizingMaskIntoConstraints="NO" id="r6W-cw-hvK">
+                                        <rect key="frame" x="88.5" y="224.5" width="200" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="5kc-9i-fbj"/>
+                                            <constraint firstAttribute="width" constant="200" id="EDa-X1-nMH"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="r6W-cw-hvK" firstAttribute="centerY" secondItem="wY8-x5-pQh" secondAttribute="centerY" constant="1" id="oUN-iB-7JZ"/>
+                                    <constraint firstItem="r6W-cw-hvK" firstAttribute="centerX" secondItem="wY8-x5-pQh" secondAttribute="centerX" constant="1" id="yQS-SL-Wlc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wY8-x5-pQh" firstAttribute="leading" secondItem="zq6-Gj-mN4" secondAttribute="leading" id="0ye-Qk-oFQ"/>
+                            <constraint firstItem="wY8-x5-pQh" firstAttribute="top" secondItem="zq6-Gj-mN4" secondAttribute="top" constant="50" id="RRS-PP-DHt"/>
+                            <constraint firstItem="zq6-Gj-mN4" firstAttribute="trailing" secondItem="wY8-x5-pQh" secondAttribute="trailing" id="imo-LA-9Nc"/>
+                            <constraint firstItem="zq6-Gj-mN4" firstAttribute="bottom" secondItem="wY8-x5-pQh" secondAttribute="bottom" id="t0v-cE-Igb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zq6-Gj-mN4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bEU-BP-alS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="79" y="153"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_no_internet" width="207" height="184"/>
+    </resources>
+</document>

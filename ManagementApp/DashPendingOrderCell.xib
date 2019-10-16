@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="roboto.regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DashPendingOrderCell" id="KGk-i7-Jjw" customClass="DashPendingOrderCell" customModule="DealorsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ER-Vn-YMR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Rsy-Hx-BWd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="41.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ilc-js-vUz">
+                                        <rect key="frame" x="0.0" y="0.0" width="121.5" height="41.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKE-Pm-ieC">
+                                                <rect key="frame" x="0.0" y="0.0" width="91.5" height="41.5"/>
+                                                <color key="backgroundColor" name="primaryLight"/>
+                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                                <color key="textColor" name="FontLightText"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHt-IC-hHM">
+                                                <rect key="frame" x="101.5" y="14.5" width="15" height="15"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="15" id="ELj-cl-4Jb"/>
+                                                    <constraint firstAttribute="height" constant="15" id="VVu-Uq-v6a"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" name="primaryLight"/>
+                                        <constraints>
+                                            <constraint firstItem="eKE-Pm-ieC" firstAttribute="top" secondItem="Ilc-js-vUz" secondAttribute="top" id="9y9-rv-tmN"/>
+                                            <constraint firstAttribute="trailing" secondItem="cHt-IC-hHM" secondAttribute="trailing" constant="5" id="AvG-TT-dKh"/>
+                                            <constraint firstItem="cHt-IC-hHM" firstAttribute="centerY" secondItem="Ilc-js-vUz" secondAttribute="centerY" constant="1" id="K44-Ax-PV1"/>
+                                            <constraint firstAttribute="bottom" secondItem="eKE-Pm-ieC" secondAttribute="bottom" id="Lih-kn-H02"/>
+                                            <constraint firstAttribute="trailing" secondItem="eKE-Pm-ieC" secondAttribute="trailing" constant="30" id="fj0-mX-ZSy"/>
+                                            <constraint firstItem="eKE-Pm-ieC" firstAttribute="leading" secondItem="Ilc-js-vUz" secondAttribute="leading" id="xr4-1V-HiQ"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEA-y0-8Kj">
+                                        <rect key="frame" x="123.5" y="0.0" width="97" height="41.5"/>
+                                        <color key="backgroundColor" name="primaryLight"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                        <color key="textColor" name="FontLightText"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meB-8f-L9L">
+                                        <rect key="frame" x="222.5" y="0.0" width="97.5" height="41.5"/>
+                                        <color key="backgroundColor" name="primaryLight"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                        <color key="textColor" name="FontLightText"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="meB-8f-L9L" firstAttribute="width" secondItem="Ilc-js-vUz" secondAttribute="width" multiplier="0.8" id="Baq-j0-kOq"/>
+                                    <constraint firstItem="rEA-y0-8Kj" firstAttribute="width" secondItem="Ilc-js-vUz" secondAttribute="width" multiplier="0.8" id="omi-N4-ukD"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rsy-Hx-BWd" firstAttribute="top" secondItem="4ER-Vn-YMR" secondAttribute="top" id="69X-AJ-RiH"/>
+                            <constraint firstItem="Rsy-Hx-BWd" firstAttribute="leading" secondItem="4ER-Vn-YMR" secondAttribute="leading" id="NWR-oQ-d9P"/>
+                            <constraint firstAttribute="trailing" secondItem="Rsy-Hx-BWd" secondAttribute="trailing" id="czC-9U-8cA"/>
+                            <constraint firstAttribute="bottom" secondItem="Rsy-Hx-BWd" secondAttribute="bottom" constant="2" id="pzy-bm-zuD"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4ER-Vn-YMR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2Cb-Vw-7Sd"/>
+                    <constraint firstAttribute="trailing" secondItem="4ER-Vn-YMR" secondAttribute="trailing" id="8hW-QE-a2l"/>
+                    <constraint firstItem="4ER-Vn-YMR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HDY-oJ-O4J"/>
+                    <constraint firstAttribute="bottom" secondItem="4ER-Vn-YMR" secondAttribute="bottom" id="JD4-fS-ZNd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblAmount" destination="rEA-y0-8Kj" id="EVN-iH-miT"/>
+                <outlet property="lblCategory" destination="eKE-Pm-ieC" id="gGc-X8-zTe"/>
+                <outlet property="lblPercentage" destination="meB-8f-L9L" id="5oQ-qE-jWe"/>
+                <outlet property="vwColor" destination="cHt-IC-hHM" id="9Qe-9s-qth"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="FontLightText">
+            <color red="0.3869999945" green="0.3869999945" blue="0.3869999945" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryLight">
+            <color red="0.91399997470000005" green="0.91799998279999995" blue="0.92100000380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:/Users/goldmedal/Documents/ios/G Parivaar ios 2/DealorsApp 2/ManagementApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ManagementApp.xcodeproj">
+   </FileRef>
+</Workspace>

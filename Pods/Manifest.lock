@@ -1,0 +1,166 @@
+PODS:
+  - AMPopTip (4.1.0)
+  - Charts (3.3.0):
+    - Charts/Core (= 3.3.0)
+  - Charts/Core (3.3.0)
+  - Crashlytics (3.13.4):
+    - Fabric (~> 1.10.2)
+  - DropDown (2.3.13)
+  - Fabric (1.10.2)
+  - Firebase (6.7.0):
+    - Firebase/Core (= 6.7.0)
+  - Firebase/Core (6.7.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 6.1.1)
+  - Firebase/CoreOnly (6.7.0):
+    - FirebaseCore (= 6.2.1)
+  - Firebase/Messaging (6.7.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 4.1.3)
+  - FirebaseAnalytics (6.1.1):
+    - FirebaseCore (~> 6.2)
+    - FirebaseInstanceID (~> 4.2)
+    - GoogleAppMeasurement (= 6.1.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 0.3)
+  - FirebaseAnalyticsInterop (1.4.0)
+  - FirebaseCore (6.2.1):
+    - FirebaseCoreDiagnostics (~> 1.0)
+    - FirebaseCoreDiagnosticsInterop (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.2)
+    - GoogleUtilities/Logger (~> 6.2)
+  - FirebaseCoreDiagnostics (1.0.1):
+    - FirebaseCoreDiagnosticsInterop (~> 1.0)
+    - GoogleDataTransportCCTSupport (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.2)
+    - GoogleUtilities/Logger (~> 6.2)
+  - FirebaseCoreDiagnosticsInterop (1.0.0)
+  - FirebaseInstanceID (4.2.3):
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/UserDefaults (~> 6.0)
+  - FirebaseMessaging (4.1.3):
+    - FirebaseAnalyticsInterop (~> 1.3)
+    - FirebaseCore (~> 6.2)
+    - FirebaseInstanceID (~> 4.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.2)
+    - GoogleUtilities/Environment (~> 6.2)
+    - GoogleUtilities/Reachability (~> 6.2)
+    - GoogleUtilities/UserDefaults (~> 6.2)
+    - Protobuf (~> 3.1)
+  - GoogleAppMeasurement (6.1.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 0.3)
+  - GoogleDataTransport (1.1.2)
+  - GoogleDataTransportCCTSupport (1.0.2):
+    - GoogleDataTransport (~> 1.1)
+    - nanopb
+  - GoogleUtilities/AppDelegateSwizzler (6.2.5):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.2.5)
+  - GoogleUtilities/Logger (6.2.5):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.2.5):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.2.5):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.2.5)"
+  - GoogleUtilities/Reachability (6.2.5):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.2.5):
+    - GoogleUtilities/Logger
+  - IQKeyboardManagerSwift (6.4.1)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
+  - Protobuf (3.9.0)
+  - SDWebImage (4.4.7):
+    - SDWebImage/Core (= 4.4.7)
+  - SDWebImage/Core (4.4.7)
+  - SVPinView (1.0.7)
+  - TTFortuneWheel (0.1.6)
+  - youtube-ios-player-helper (0.1.6)
+
+DEPENDENCIES:
+  - AMPopTip
+  - Charts
+  - Crashlytics
+  - DropDown
+  - Fabric
+  - Firebase
+  - Firebase/Core
+  - Firebase/Messaging
+  - IQKeyboardManagerSwift
+  - SDWebImage (~> 4.0)
+  - SVPinView (~> 1.0)
+  - TTFortuneWheel
+  - youtube-ios-player-helper (~> 0.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AMPopTip
+    - Charts
+    - Crashlytics
+    - DropDown
+    - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
+    - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCoreDiagnosticsInterop
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleDataTransportCCTSupport
+    - GoogleUtilities
+    - IQKeyboardManagerSwift
+    - nanopb
+    - Protobuf
+    - SDWebImage
+    - SVPinView
+    - TTFortuneWheel
+    - youtube-ios-player-helper
+
+SPEC CHECKSUMS:
+  AMPopTip: fc50f5cea7743d1a03076dbd6a1a270f2e6b6d55
+  Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
+  Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  Firebase: 291d7b0a7b393f252358083b5d224884126fa46d
+  FirebaseAnalytics: 843c7f64a8f9c79f0d03281197ebe7bb1d58d477
+  FirebaseAnalyticsInterop: d48b6ab67bcf016a05e55b71fc39c61c0cb6b7f3
+  FirebaseCore: 32b48f41c84a56fbde73b35ed01a830b3b6dc048
+  FirebaseCoreDiagnostics: 4c04ae09d0ab027c30179828c6bb47764df1bd13
+  FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
+  FirebaseInstanceID: 8b42755db950682e7de0d167bc6fb26a57b244af
+  FirebaseMessaging: 930e4cce01f8f1e634cfdd1881db471fb61be883
+  GoogleAppMeasurement: 86a82f0e1f20b8eedf8e20326530138fd71409de
+  GoogleDataTransport: 9c3d63ed82f882a9a74d4be67dd7ad01bf046102
+  GoogleDataTransportCCTSupport: 6b545f7149111180763dc18c6f372c963de4a310
+  GoogleUtilities: e7dc37039b19df7fe543479d3e4a02ac8d11bb69
+  IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
+  SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
+  SVPinView: 6c1da57e4a1273298802f460c60511ba10f7c831
+  TTFortuneWheel: d0a8a5fd7f9e1960bac81af76f3b62848de3c32e
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
+
+PODFILE CHECKSUM: a7974535733f79b5215897b349dd48323909d35f
+
+COCOAPODS: 1.6.1

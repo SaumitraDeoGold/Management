@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="roboto.medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AgingReportView" customModule="DealorsApp" customModuleProvider="target">
+            <connections>
+                <outlet property="btnDownloadPdf" destination="Yp1-lF-GYk" id="bMN-tE-x7O"/>
+                <outlet property="noDataView" destination="XqW-JH-pEq" id="bLJ-CJ-74g"/>
+                <outlet property="tblAgingReport" destination="dNp-z5-5SZ" id="0qD-GY-eOh"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXr-eQ-Fty">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aging Report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKD-6G-VHw">
+                            <rect key="frame" x="0.0" y="10" width="375" height="40"/>
+                            <color key="backgroundColor" name="DashboardHeader"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="PpD-fG-8OM"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="MLK-2V-jUa">
+                            <rect key="frame" x="0.0" y="52" width="375" height="615"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LHm-DL-17O" userLabel="vwAgingReportRow">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dj2-sl-Lef">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period (Days)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QZ-EE-gyi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="186.5" height="30"/>
+                                                    <color key="backgroundColor" name="primaryDark"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                                    <color key="textColor" name="FontDarkText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcE-Ej-2ww">
+                                                    <rect key="frame" x="188.5" y="0.0" width="186.5" height="30"/>
+                                                    <color key="backgroundColor" name="primaryDark"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                                    <color key="textColor" name="FontDarkText"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" name="primaryLight"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="3QZ-EE-gyi" secondAttribute="bottom" id="Vot-GI-JsX"/>
+                                                <constraint firstItem="dcE-Ej-2ww" firstAttribute="top" secondItem="dj2-sl-Lef" secondAttribute="top" id="cet-68-hhJ"/>
+                                                <constraint firstItem="3QZ-EE-gyi" firstAttribute="top" secondItem="dj2-sl-Lef" secondAttribute="top" id="jpG-aY-i9d"/>
+                                                <constraint firstItem="dcE-Ej-2ww" firstAttribute="width" secondItem="3QZ-EE-gyi" secondAttribute="width" id="whP-b5-5as"/>
+                                                <constraint firstAttribute="bottom" secondItem="dcE-Ej-2ww" secondAttribute="bottom" id="z5K-pu-xrh"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="dj2-sl-Lef" firstAttribute="leading" secondItem="LHm-DL-17O" secondAttribute="leading" id="7pv-Ab-4n4"/>
+                                        <constraint firstAttribute="height" constant="30" id="B2L-uQ-rgG"/>
+                                        <constraint firstAttribute="trailing" secondItem="dj2-sl-Lef" secondAttribute="trailing" id="FxF-QD-h0T"/>
+                                        <constraint firstAttribute="bottom" secondItem="dj2-sl-Lef" secondAttribute="bottom" id="Qz8-bz-gPs"/>
+                                        <constraint firstItem="dj2-sl-Lef" firstAttribute="top" secondItem="LHm-DL-17O" secondAttribute="top" id="uW7-pQ-NMh"/>
+                                    </constraints>
+                                </view>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dNp-z5-5SZ" customClass="IntrinsicTableView" customModule="DealorsApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="32" width="375" height="546"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="wiw-vD-179"/>
+                                        <outlet property="delegate" destination="-1" id="nAo-Wu-1WZ"/>
+                                    </connections>
+                                </tableView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yp1-lF-GYk">
+                                    <rect key="frame" x="0.0" y="580" width="375" height="35"/>
+                                    <color key="backgroundColor" name="ColorRed"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="O2P-ZK-KqG"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                    <state key="normal" title="Download Pdf">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="clicked_download_pdf:" destination="-1" eventType="touchUpInside" id="3ph-WL-2tG"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="Yp1-lF-GYk" firstAttribute="top" secondItem="dNp-z5-5SZ" secondAttribute="bottom" constant="2" id="Dhn-Ht-CDj"/>
+                                <constraint firstAttribute="trailing" secondItem="Yp1-lF-GYk" secondAttribute="trailing" id="p7U-Hv-0P5"/>
+                                <constraint firstItem="Yp1-lF-GYk" firstAttribute="leading" secondItem="MLK-2V-jUa" secondAttribute="leading" id="yku-Si-U9C"/>
+                            </constraints>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XqW-JH-pEq" customClass="NoDataView" customModule="DealorsApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="80" width="375" height="552"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="zKD-6G-VHw" firstAttribute="leading" secondItem="fXr-eQ-Fty" secondAttribute="leading" id="4eO-m2-7rA"/>
+                        <constraint firstItem="XqW-JH-pEq" firstAttribute="leading" secondItem="KsO-p2-EBY" secondAttribute="leading" id="6cz-vl-UpM"/>
+                        <constraint firstAttribute="trailing" secondItem="zKD-6G-VHw" secondAttribute="trailing" id="8eY-p6-ZFx"/>
+                        <constraint firstItem="KsO-p2-EBY" firstAttribute="bottom" secondItem="XqW-JH-pEq" secondAttribute="bottom" constant="35" id="DMe-4Y-dM2"/>
+                        <constraint firstAttribute="bottom" secondItem="MLK-2V-jUa" secondAttribute="bottom" id="E8b-e9-L2U"/>
+                        <constraint firstItem="XqW-JH-pEq" firstAttribute="top" secondItem="zKD-6G-VHw" secondAttribute="bottom" constant="30" id="Hlg-aD-AWy"/>
+                        <constraint firstItem="MLK-2V-jUa" firstAttribute="leading" secondItem="fXr-eQ-Fty" secondAttribute="leading" id="Y1N-Sf-Ky6"/>
+                        <constraint firstItem="MLK-2V-jUa" firstAttribute="top" secondItem="fXr-eQ-Fty" secondAttribute="top" constant="52" id="Z6b-1g-KDo"/>
+                        <constraint firstAttribute="trailing" secondItem="MLK-2V-jUa" secondAttribute="trailing" id="eum-gS-WhO"/>
+                        <constraint firstItem="XqW-JH-pEq" firstAttribute="trailing" secondItem="KsO-p2-EBY" secondAttribute="trailing" id="h9l-hh-uQp"/>
+                        <constraint firstItem="zKD-6G-VHw" firstAttribute="top" secondItem="fXr-eQ-Fty" secondAttribute="top" constant="10" id="kn0-Va-VlS"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="KsO-p2-EBY"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fXr-eQ-Fty" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1yy-ED-rib"/>
+                <constraint firstItem="fXr-eQ-Fty" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="CsJ-nJ-kpc"/>
+                <constraint firstItem="fXr-eQ-Fty" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Xze-xQ-dN3"/>
+                <constraint firstItem="fXr-eQ-Fty" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="kfD-FW-0dn"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="75.5"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="ColorRed">
+            <color red="0.90700000520000001" green="0.21799999480000001" blue="0.21899999680000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DashboardHeader">
+            <color red="0.3580000102519989" green="0.3580000102519989" blue="0.3580000102519989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="FontDarkText">
+            <color red="0.27700001000000002" green="0.27300000190000001" blue="0.27300000190000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryDark">
+            <color red="0.67699998617172241" green="0.6809999942779541" blue="0.68800002336502075" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryLight">
+            <color red="0.91399997470000005" green="0.91799998279999995" blue="0.92100000380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

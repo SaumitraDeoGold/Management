@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="roboto.medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="roboto.regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BrandLoyaltyView" customModule="ManagementApp" customModuleProvider="target">
+            <connections>
+                <outlet property="btnDiscoverWorld" destination="WfQ-Ok-IET" id="xPR-kx-nFk"/>
+                <outlet property="btnStarRewards" destination="hAN-qN-BeC" id="4nn-08-UZc"/>
+                <outlet property="imageSlider" destination="q0G-3r-Lui" id="6YM-gf-r0I"/>
+                <outlet property="imvBrandLoyalty" destination="MNG-Rv-gqx" id="dE4-zc-ftw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="465" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-jQ-OPy">
+                    <rect key="frame" x="0.0" y="30" width="465" height="637"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eab-C3-ePX">
+                            <rect key="frame" x="0.0" y="0.0" width="465" height="40"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BCU-63-ExX">
+                                    <rect key="frame" x="157.5" y="8.5" width="152" height="25"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brand_loyalty_club_icon" translatesAutoresizingMaskIntoConstraints="NO" id="MNG-Rv-gqx" customClass="CustomImageView" customModule="ManagementApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="ab7-7A-3o1"/>
+                                                <constraint firstAttribute="width" constant="25" id="sD5-hI-5KY"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Loyalty Club" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zo-7L-kNG">
+                                            <rect key="frame" x="35" y="0.0" width="117" height="25"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" name="DashboardHeader"/>
+                            <constraints>
+                                <constraint firstItem="BCU-63-ExX" firstAttribute="centerY" secondItem="Eab-C3-ePX" secondAttribute="centerY" constant="1" id="hOq-Lz-fp2"/>
+                                <constraint firstItem="BCU-63-ExX" firstAttribute="centerX" secondItem="Eab-C3-ePX" secondAttribute="centerX" constant="1" id="hi8-Qp-2gE"/>
+                                <constraint firstAttribute="height" constant="40" id="vtm-gJ-lWT"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIk-UO-GhF" userLabel="vwBrandLoyaltyContent">
+                            <rect key="frame" x="0.0" y="40" width="465" height="597"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSR-zD-M5S">
+                                    <rect key="frame" x="0.0" y="0.0" width="465" height="55"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAN-qN-BeC" customClass="RoundButton" customModule="ManagementApp" customModuleProvider="target">
+                                            <rect key="frame" x="5" y="10" width="225" height="35"/>
+                                            <color key="backgroundColor" name="ColorRed"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="5" maxX="10" maxY="5"/>
+                                            <state key="normal" title="Star Rewards" image="star_rewards_icon">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" name="LoginButton"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <real key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                    <size key="value" width="0.0" height="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="clicked_star_rewards:" destination="-1" eventType="touchUpInside" id="Dnc-cg-l90"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfQ-Ok-IET" customClass="RoundButton" customModule="ManagementApp" customModuleProvider="target">
+                                            <rect key="frame" x="235" y="10" width="225" height="35"/>
+                                            <color key="backgroundColor" name="ColorRed"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="5" maxX="10" maxY="5"/>
+                                            <state key="normal" title="Discover the world" image="discover_world_icon">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                    <size key="value" width="0.0" height="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <real key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" name="LoginButton"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="clicked_discover_world:" destination="-1" eventType="touchUpInside" id="kDk-0v-khD"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="55" id="ACl-B6-FcM"/>
+                                        <constraint firstItem="WfQ-Ok-IET" firstAttribute="height" secondItem="hAN-qN-BeC" secondAttribute="height" id="Jg1-ME-Z6d"/>
+                                        <constraint firstItem="hAN-qN-BeC" firstAttribute="leading" secondItem="LSR-zD-M5S" secondAttribute="leading" constant="5" id="Lsg-Ps-ZXA"/>
+                                        <constraint firstItem="WfQ-Ok-IET" firstAttribute="top" secondItem="LSR-zD-M5S" secondAttribute="top" constant="10" id="OUF-cM-e45"/>
+                                        <constraint firstAttribute="trailing" secondItem="WfQ-Ok-IET" secondAttribute="trailing" constant="5" id="T6I-WY-DDV"/>
+                                        <constraint firstItem="WfQ-Ok-IET" firstAttribute="width" secondItem="hAN-qN-BeC" secondAttribute="width" id="Vo6-EU-XGG"/>
+                                        <constraint firstItem="hAN-qN-BeC" firstAttribute="top" secondItem="LSR-zD-M5S" secondAttribute="top" constant="10" id="bxi-yv-UAE"/>
+                                        <constraint firstAttribute="bottom" secondItem="hAN-qN-BeC" secondAttribute="bottom" constant="10" id="lPi-qL-vZl"/>
+                                        <constraint firstItem="WfQ-Ok-IET" firstAttribute="leading" secondItem="hAN-qN-BeC" secondAttribute="trailing" constant="5" id="n0l-gC-gUM"/>
+                                        <constraint firstAttribute="bottom" secondItem="WfQ-Ok-IET" secondAttribute="bottom" constant="10" id="o8p-pw-T3F"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0G-3r-Lui" customClass="CPImageSlider" customModule="ManagementApp" customModuleProvider="target">
+                                    <rect key="frame" x="10" y="65" width="445" height="200"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="200" id="YXn-LR-r6i"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="q0G-3r-Lui" firstAttribute="leading" secondItem="LIk-UO-GhF" secondAttribute="leading" constant="10" id="5iW-jo-gEz"/>
+                                <constraint firstItem="LSR-zD-M5S" firstAttribute="top" secondItem="LIk-UO-GhF" secondAttribute="top" id="Ck0-kC-PTC"/>
+                                <constraint firstItem="q0G-3r-Lui" firstAttribute="top" secondItem="LSR-zD-M5S" secondAttribute="bottom" constant="10" id="YiE-4s-AT3"/>
+                                <constraint firstAttribute="trailing" secondItem="q0G-3r-Lui" secondAttribute="trailing" constant="10" id="hMM-hm-6fo"/>
+                                <constraint firstItem="LSR-zD-M5S" firstAttribute="leading" secondItem="LIk-UO-GhF" secondAttribute="leading" id="nUe-LD-mHt"/>
+                                <constraint firstAttribute="trailing" secondItem="LSR-zD-M5S" secondAttribute="trailing" id="plf-1Y-ych"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="LIk-UO-GhF" firstAttribute="top" secondItem="Eab-C3-ePX" secondAttribute="bottom" id="BQ6-jr-h68"/>
+                        <constraint firstItem="LIk-UO-GhF" firstAttribute="top" secondItem="Qhc-jQ-OPy" secondAttribute="top" constant="40" id="HCG-a4-uDF"/>
+                        <constraint firstItem="Eab-C3-ePX" firstAttribute="top" secondItem="Qhc-jQ-OPy" secondAttribute="top" id="RLw-ag-gdV"/>
+                        <constraint firstItem="Eab-C3-ePX" firstAttribute="leading" secondItem="Qhc-jQ-OPy" secondAttribute="leading" id="e6s-l6-7tJ"/>
+                        <constraint firstAttribute="trailing" secondItem="Eab-C3-ePX" secondAttribute="trailing" id="nsz-8R-3qK"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Qhc-jQ-OPy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QKy-LA-Y7t"/>
+                <constraint firstItem="Qhc-jQ-OPy" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="Yrm-up-M7A"/>
+                <constraint firstItem="Qhc-jQ-OPy" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="aND-pH-Lsy"/>
+                <constraint firstItem="Qhc-jQ-OPy" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="i9v-ks-cFq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="34.5" y="-753.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="brand_loyalty_club_icon" width="28" height="28"/>
+        <image name="discover_world_icon" width="27" height="27"/>
+        <image name="star_rewards_icon" width="28" height="28"/>
+        <namedColor name="ColorRed">
+            <color red="0.90700000524520874" green="0.21799999475479126" blue="0.21899999678134918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DashboardHeader">
+            <color red="0.3580000102519989" green="0.3580000102519989" blue="0.3580000102519989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LoginButton">
+            <color red="0.39899998903274536" green="0.40000000596046448" blue="0.39899998903274536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
