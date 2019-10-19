@@ -138,17 +138,26 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(otherespenses )!)
                 }
             case 2:
-                let percentage = ((Double(self.filteredItems[indexPath.section - 1].otherespenses!)! / (Double(filteredItems[indexPath.section - 1].sale!)!))*100)
-                if let otherespenses = filteredItems[indexPath.section - 1].otherespenses
-                {
-                    cell.contentLabel.text = "\(Utility.formatRupee(amount: Double(otherespenses )!)) (\(String(format: "%.2f", percentage))%)"
-                }
+                
+                let currentYear = Double(filteredItems[indexPath.section - 1].otherespenses!)
+                let prevYear = Double(filteredItems[indexPath.section - 1].sale!)
+                //let temp = ((currentYear - prevYear)/prevYear)*100
+                let temp = ((Double(self.filteredItems[indexPath.section - 1].otherespenses!)! / (Double(filteredItems[indexPath.section - 1].sale!)!))*100)
+                cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear!, prevYear: prevYear!, temp: temp)
+                
             case 3:
-                let percentage = ((Double(self.filteredItems[indexPath.section - 1].salary!)! / (Double(filteredItems[indexPath.section - 1].sale!)!))*100)
-                if let salary = self.filteredItems[indexPath.section - 1].salary
-                {
-                    cell.contentLabel.text = "\(Utility.formatRupee(amount: Double(salary )!)) (\(String(format: "%.2f", percentage))%)"
-                }
+                
+                let currentYear = Double(filteredItems[indexPath.section - 1].salary!)
+                let prevYear = Double(filteredItems[indexPath.section - 1].sale!)
+                //let temp = ((currentYear - prevYear)/prevYear)*100
+                let temp = ((Double(self.filteredItems[indexPath.section - 1].salary!)! / (Double(filteredItems[indexPath.section - 1].sale!)!))*100)
+                cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear!, prevYear: prevYear!, temp: temp)
+//
+//                let percentage = ((Double(self.filteredItems[indexPath.section - 1].salary!)! / (Double(filteredItems[indexPath.section - 1].sale!)!))*100)
+//                if let salary = self.filteredItems[indexPath.section - 1].salary
+//                {
+//                    cell.contentLabel.text = "\(Utility.formatRupee(amount: Double(salary )!)) (\(String(format: "%.2f", percentage))%)"
+//                }
             default:
                 break
             }
@@ -209,6 +218,27 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
             ViewControllerUtils.sharedInstance.removeLoader()
         }
         
+    }
+    
+    //Calculate percentage func...
+    func calculatePercentage(currentYear: Double, prevYear: Double, temp: Double) -> NSAttributedString{
+        let sale = Utility.formatRupee(amount: Double(currentYear ))
+        let tempVar = String(format: "%.2f", temp)
+        var formattedPerc = ""
+        if (Double(tempVar)!.isInfinite) || (Double(tempVar)!.isNaN){
+            formattedPerc = ""
+        }else{
+            formattedPerc = " (\(String(format: "%.2f", temp)))%"
+        }
+        let strNumber: NSString = sale + formattedPerc as NSString // you must set your
+        let range = (strNumber).range(of: String(tempVar))
+        let attribute = NSMutableAttributedString.init(string: strNumber as String)
+        if temp > 0{
+            attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(named: "ColorGreen") as Any , range: range)
+        }else{
+            attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red as Any , range: range)
+        }
+        return attribute
     }
     
 }

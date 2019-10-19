@@ -235,6 +235,11 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
 //            break
             
         case (6,-1):
+            print("Increase Limits\n", terminator: "")
+            self.openViewControllerBasedOnIdentifier("IncreasedLimitController") 
+            break
+            
+        case (7,-1):
             print("Logout\n", terminator: "")
             let loginData = UserDefaults.standard
             loginData.removeObject(forKey: "loginData")

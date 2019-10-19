@@ -41,10 +41,16 @@
 		69207565230BC2AF008982D3 /* ComplexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69207564230BC2AF008982D3 /* ComplexViewController.swift */; };
 		69207567230BC84E008982D3 /* ComplexLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69207566230BC84E008982D3 /* ComplexLayout.swift */; };
 		6920D1042149178F0003A928 /* InitialData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6920D1032149178F0003A928 /* InitialData.swift */; };
+		692264932358515A00698FF9 /* PartyStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 692264922358515A00698FF9 /* PartyStoryboard.storyboard */; };
+		69226495235876A400698FF9 /* PartySearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69226494235876A400698FF9 /* PartySearchController.swift */; };
+		6922649723589EAB00698FF9 /* LimitDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922649623589EAB00698FF9 /* LimitDetailsController.swift */; };
 		6925258C23040C7300CDFBE3 /* ExpenseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6925258B23040C7300CDFBE3 /* ExpenseLayout.swift */; };
 		6925258E2304372400CDFBE3 /* CategorywiseComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6925258D2304372400CDFBE3 /* CategorywiseComp.swift */; };
 		69252590230439FA00CDFBE3 /* CategoryCompLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6925258F230439FA00CDFBE3 /* CategoryCompLayout.swift */; };
 		692D720620A2BF8D00D2CB16 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692D720520A2BF8D00D2CB16 /* FloatRatingView.swift */; };
+		692DF402235AEFC900F972AD /* AgingReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692DF401235AEFC900F972AD /* AgingReport.swift */; };
+		692DF404235B00B300F972AD /* IncreasedLimitDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692DF403235B00B300F972AD /* IncreasedLimitDetails.swift */; };
+		692DF406235B32B600F972AD /* UpdateLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692DF405235B32B500F972AD /* UpdateLimit.swift */; };
 		6938921D223BD44700D69935 /* BranchWisePayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69389218223BD44700D69935 /* BranchWisePayment.swift */; };
 		6938921E223BD44700D69935 /* BranchWiseSales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69389219223BD44700D69935 /* BranchWiseSales.swift */; };
 		69389221223BD44700D69935 /* TotalSaleDivisionWise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938921C223BD44700D69935 /* TotalSaleDivisionWise.swift */; };
@@ -290,6 +296,8 @@
 		69A32EF822A2921F00CD3CF9 /* AdjustedAmnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A32EF722A2921F00CD3CF9 /* AdjustedAmnt.swift */; };
 		69A32EFA22A298A300CD3CF9 /* StarRewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A32EF922A298A300CD3CF9 /* StarRewards.swift */; };
 		69A32EFC22A298D700CD3CF9 /* StarRewardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A32EFB22A298D700CD3CF9 /* StarRewardsViewController.swift */; };
+		69A3EE462359D938007339D5 /* LimitDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A3EE452359D938007339D5 /* LimitDetailsCell.swift */; };
+		69A3EE482359EA5D007339D5 /* LimitDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A3EE472359EA5D007339D5 /* LimitDetails.swift */; };
 		69A41F692177355500EE2E20 /* SpinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A41F682177355500EE2E20 /* SpinData.swift */; };
 		69A41F6B21775DB900EE2E20 /* SpinTotalPopup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A41F6A21775DB900EE2E20 /* SpinTotalPopup.storyboard */; };
 		69A41F6F21775E9C00EE2E20 /* SpinTotalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A41F6E21775E9C00EE2E20 /* SpinTotalData.swift */; };
@@ -420,10 +428,16 @@
 		69207564230BC2AF008982D3 /* ComplexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexViewController.swift; sourceTree = "<group>"; };
 		69207566230BC84E008982D3 /* ComplexLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexLayout.swift; sourceTree = "<group>"; };
 		6920D1032149178F0003A928 /* InitialData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialData.swift; sourceTree = "<group>"; };
+		692264922358515A00698FF9 /* PartyStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PartyStoryboard.storyboard; sourceTree = "<group>"; };
+		69226494235876A400698FF9 /* PartySearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartySearchController.swift; sourceTree = "<group>"; };
+		6922649623589EAB00698FF9 /* LimitDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitDetailsController.swift; sourceTree = "<group>"; };
 		6925258B23040C7300CDFBE3 /* ExpenseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseLayout.swift; sourceTree = "<group>"; };
 		6925258D2304372400CDFBE3 /* CategorywiseComp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorywiseComp.swift; sourceTree = "<group>"; };
 		6925258F230439FA00CDFBE3 /* CategoryCompLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCompLayout.swift; sourceTree = "<group>"; };
 		692D720520A2BF8D00D2CB16 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
+		692DF401235AEFC900F972AD /* AgingReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgingReport.swift; sourceTree = "<group>"; };
+		692DF403235B00B300F972AD /* IncreasedLimitDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreasedLimitDetails.swift; sourceTree = "<group>"; };
+		692DF405235B32B500F972AD /* UpdateLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLimit.swift; sourceTree = "<group>"; };
 		69389218223BD44700D69935 /* BranchWisePayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchWisePayment.swift; sourceTree = "<group>"; };
 		69389219223BD44700D69935 /* BranchWiseSales.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchWiseSales.swift; sourceTree = "<group>"; };
 		6938921C223BD44700D69935 /* TotalSaleDivisionWise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalSaleDivisionWise.swift; sourceTree = "<group>"; };
@@ -676,6 +690,8 @@
 		69A32EF722A2921F00CD3CF9 /* AdjustedAmnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustedAmnt.swift; sourceTree = "<group>"; };
 		69A32EF922A298A300CD3CF9 /* StarRewards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRewards.swift; sourceTree = "<group>"; };
 		69A32EFB22A298D700CD3CF9 /* StarRewardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRewardsViewController.swift; sourceTree = "<group>"; };
+		69A3EE452359D938007339D5 /* LimitDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitDetailsCell.swift; sourceTree = "<group>"; };
+		69A3EE472359EA5D007339D5 /* LimitDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitDetails.swift; sourceTree = "<group>"; };
 		69A41F682177355500EE2E20 /* SpinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinData.swift; sourceTree = "<group>"; };
 		69A41F6A21775DB900EE2E20 /* SpinTotalPopup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SpinTotalPopup.storyboard; sourceTree = "<group>"; };
 		69A41F6E21775E9C00EE2E20 /* SpinTotalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinTotalData.swift; sourceTree = "<group>"; };
@@ -818,6 +834,12 @@
 			isa = PBXGroup;
 			children = (
 				69187F352356EB0300CD45AE /* IncreasedLimitController.swift */,
+				6922649623589EAB00698FF9 /* LimitDetailsController.swift */,
+				69A3EE452359D938007339D5 /* LimitDetailsCell.swift */,
+				69A3EE472359EA5D007339D5 /* LimitDetails.swift */,
+				692DF401235AEFC900F972AD /* AgingReport.swift */,
+				692DF403235B00B300F972AD /* IncreasedLimitDetails.swift */,
+				692DF405235B32B500F972AD /* UpdateLimit.swift */,
 			);
 			path = IncreasedLimit;
 			sourceTree = "<group>";
@@ -1091,6 +1113,7 @@
 				694B2FBD225643A200E7E7B6 /* BranchPickerController.swift */,
 				69A32EED22A2859300CD3CF9 /* SQLiteDB.swift */,
 				696BF47322F06D26002614E2 /* SortViewController.swift */,
+				69226494235876A400698FF9 /* PartySearchController.swift */,
 			);
 			name = CommonFiles;
 			sourceTree = "<group>";
@@ -1113,6 +1136,7 @@
 				698CE7F0231109DC0071DF8E /* RaiseDisputePopup.storyboard */,
 				694B2FBB225642E700E7E7B6 /* BranchPicker.storyboard */,
 				696BF47122F06B7E002614E2 /* Sorting.storyboard */,
+				692264922358515A00698FF9 /* PartyStoryboard.storyboard */,
 			);
 			name = CommonStoryBoard;
 			sourceTree = "<group>";
@@ -1633,6 +1657,7 @@
 				698CE7F52311187A0071DF8E /* OutsInvoiceWiseCDPopup.storyboard in Resources */,
 				691F2D05231017E9001D2C03 /* BankDetailPicker.storyboard in Resources */,
 				6986618C22CC8DBF00B75BA6 /* LeagueMatchViewCell.xib in Resources */,
+				692264932358515A00698FF9 /* PartyStoryboard.storyboard in Resources */,
 				6972FED021158460006EF0A2 /* SalesView.xib in Resources */,
 				6972F82B216C7E3A00E18E10 /* BEBAS___.ttf in Resources */,
 				695728642068F4FC006C0415 /* LaunchScreen.storyboard in Resources */,
@@ -1759,6 +1784,7 @@
 				6977B64422DEED6500E411A8 /* StatewiseCompareChild.swift in Sources */,
 				69FD593C2111C3D100EE0BEA /* CatalogueListController.swift in Sources */,
 				696C8A5522A92A3700AE04F2 /* SearchDealerViewController.swift in Sources */,
+				69226495235876A400698FF9 /* PartySearchController.swift in Sources */,
 				6972061F21C292F7006EB95C /* WebViewController.swift in Sources */,
 				6954357620734B430046B8C6 /* ActiveSchemeController.swift in Sources */,
 				698CE7ED231107CB0071DF8E /* OutsInvoiceWiseDetailsData.swift in Sources */,
@@ -1857,6 +1883,7 @@
 				69541E062137D7D400BBC4EB /* DashboardRegularScheme.swift in Sources */,
 				6902BE112114694900C16FAD /* RoundButton.swift in Sources */,
 				69B8C14E2114750C004D7491 /* RoundView.swift in Sources */,
+				69A3EE462359D938007339D5 /* LimitDetailsCell.swift in Sources */,
 				69D21762216896D100862320 /* CreditDebitNote.swift in Sources */,
 				6974341421A028F90064597B /* OrderViewCartController.swift in Sources */,
 				69969AF6224A5FDF005C0B70 /* NDADetailViewController.swift in Sources */,
@@ -1864,6 +1891,7 @@
 				69701EDF2126C8AD009EAA8F /* RoundSearchBar.swift in Sources */,
 				69735749206CF31D000D738D /* PriceListController.swift in Sources */,
 				691EE18621479EC400835311 /* DashOutstandingCell.swift in Sources */,
+				692DF406235B32B600F972AD /* UpdateLimit.swift in Sources */,
 				69DB793120A03009005023D4 /* DataManager.swift in Sources */,
 				691EE18E2147A3C200835311 /* DashLastPaymentCell.swift in Sources */,
 				69D21766216896FA00862320 /* VideoViewCell.swift in Sources */,
@@ -1915,6 +1943,7 @@
 				69389221223BD44700D69935 /* TotalSaleDivisionWise.swift in Sources */,
 				696B78E2229EBEE6003A5E1A /* AccountsLayout.swift in Sources */,
 				69F86574211C8795008A6B42 /* ValueSchemeView.swift in Sources */,
+				692DF402235AEFC900F972AD /* AgingReport.swift in Sources */,
 				69FBEA2A20B535AD00BDE34F /* ViewPagerTabView.swift in Sources */,
 				6979B43A21469ACF00BD99A1 /* YearlySalesCell.swift in Sources */,
 				69628B6E2268A1B700020699 /* OrderLayout.swift in Sources */,
@@ -1934,6 +1963,7 @@
 				69EFE8222119AEFD0034DCE0 /* TabSchemeViewController.swift in Sources */,
 				691F2D092310188C001D2C03 /* OutsPaymentSummaryListController.swift in Sources */,
 				69541E1C2137DA2D00BBC4EB /* Outstanding.swift in Sources */,
+				6922649723589EAB00698FF9 /* LimitDetailsController.swift in Sources */,
 				6954B1922074EF720052FF3E /* DispatchedMaterialCell.swift in Sources */,
 				69637F802078AC61009EBB43 /* PendingOrderCell.swift in Sources */,
 				6962BD6820820AB600ADE62E /* DatePickerController.swift in Sources */,
@@ -1964,6 +1994,7 @@
 				6986619E22CCCAE000B75BA6 /* PartywiseComparisonController.swift in Sources */,
 				69A41F692177355500EE2E20 /* SpinData.swift in Sources */,
 				699340C2227197B3008362B1 /* StockCell.swift in Sources */,
+				69A3EE482359EA5D007339D5 /* LimitDetails.swift in Sources */,
 				698661A022CCCFA000B75BA6 /* PartywiseComp.swift in Sources */,
 				69654657230FFC92008A896C /* OtpFreepayGetData.swift in Sources */,
 				69608D2421BBC5A000E6F7D0 /* CatalogueListHeaderCell.swift in Sources */,
@@ -1999,6 +2030,7 @@
 				6976F604228AEC5D00D1E3D8 /* AccountsOutstanding.swift in Sources */,
 				697E05B0224CA439005B79AA /* OutstandingAbvLayout.swift in Sources */,
 				69608D2221BBC57B00E6F7D0 /* CatalogueListItemCell.swift in Sources */,
+				692DF404235B00B300F972AD /* IncreasedLimitDetails.swift in Sources */,
 				696C543921C3C43E00E82F38 /* ShowRoomController.swift in Sources */,
 				69DB793420A0307E005023D4 /* Reachability.swift in Sources */,
 				69541E2E2137F9C200BBC4EB /* Feedback.swift in Sources */,

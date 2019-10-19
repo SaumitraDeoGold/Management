@@ -180,13 +180,13 @@ class LoginController: UIViewController , UITextFieldDelegate{
       
         let json: [String: Any] =  ["CIN":(edtCin.text ?? "")!,"Pushwooshid":strToken,"Category": UserDefaults.standard.value(forKey: "userCategory") as! String,"Password":(edtPassword.text ?? "")!,"ClientSecret":"sgupta","Deviceid":deviceId,"DeviceType":"Ios","AppVerion":appVersion,"OsVersion":osVersion,"Long": String(mLong),"Lat":String(mLat),"IP": ipAddress]
       
-        print("LOGIN - - - - -",json)
+        print("LOGIN apiname \(loginApi) and Params \(json)")
         
         let manager =  DataManager.shared
         
         manager.makeAPICall(url: loginApi, params: json, method: .POST, success: { (response) in
              let data = response as? Data
-     
+            print("LOGIN result",data)
             do {
             let responseData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
                 
@@ -200,7 +200,8 @@ class LoginController: UIViewController , UITextFieldDelegate{
                 UserDefaults.standard.set(loginData, forKey: "loginData")
                 print("LOGIN RESPONSE - - - - -",loginData)
                 self.currCin = (self.login[0].data?.userlogid) ?? ""
-                
+                UserDefaults.standard.set(self.login[0].data?.slno, forKey: "userID")
+                print("LOGIN USRID - - - - -",UserDefaults.standard.value(forKey: "userID") as! Int)
                 if let arrViewCartData = UserDefaults.standard.object(forKey: "addToCart") as? Data {
                     let decoder = JSONDecoder()
                     if var decodedData = try? decoder.decode([[OrderDetailData]].self, from: arrViewCartData) {
@@ -210,7 +211,6 @@ class LoginController: UIViewController , UITextFieldDelegate{
                             if((UserDefaults.standard.value(forKey: "CartCount")) as? String != nil){
                                 
                                 self.lastCin = UserDefaults.standard.value(forKey: "CartCount") as! String
-                                
                                 if(self.lastCin.isEqual(self.currCin)){
                                     
                                 }else{

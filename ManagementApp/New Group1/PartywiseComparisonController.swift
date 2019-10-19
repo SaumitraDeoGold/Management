@@ -91,7 +91,8 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
             case 1:
                 let currentYear = Double(partwiseCompObj[indexPath.section - 1].amount!)!
                 let prevYear = Double(total)
-                let temp = ((currentYear - prevYear)/prevYear)*100
+                //let temp = ((currentYear - prevYear)/prevYear)*100
+                let temp = (currentYear*100)/prevYear
                 cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
 //                if let amount = partwiseCompObj[indexPath.section - 1].amount
 //                {
