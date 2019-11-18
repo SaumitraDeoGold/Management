@@ -22,6 +22,8 @@ class LoginController: UIViewController , UITextFieldDelegate{
     var loginData = [LoginData]()
     var category = [Category]()
     var categoryObj = [CategoryObj]()
+    var MpinElementMain = [CheckMpinElement]()
+    var MpinDataMain = [CheckMpinData]()
     
     let appDeletegate = UIApplication.shared.delegate as! AppDelegate
     var strToken = ""
@@ -33,6 +35,7 @@ class LoginController: UIViewController , UITextFieldDelegate{
     var osVersion = ""
     var ipAddress = ""
     var deviceId = ""
+    var checkMpinApi = "https://api.goldmedalindia.in//api/mpinchecks"
     
     var loginApi=""
     var getCategoryApi = ""
@@ -149,9 +152,10 @@ class LoginController: UIViewController , UITextFieldDelegate{
         
         let json: [String: Any] = ["userid":(edtCin.text ?? "")!,"ClientSecret":"Internal User"]
         let manager =  DataManager.shared
-        
+        print("get category \(json)")
         manager.makeAPICall(url: getCategoryApi, params: json, method: .POST, success: { (response) in
             let data = response as? Data
+            print("get category result\(data)")
             do {
                 self.category = try JSONDecoder().decode([Category].self, from: data!)
                 self.categoryObj  = self.category[0].data
@@ -199,34 +203,36 @@ class LoginController: UIViewController , UITextFieldDelegate{
                 let loginData = ((responseData as? Array ?? [])[0] as? Dictionary ?? [:])["data"]
                 UserDefaults.standard.set(loginData, forKey: "loginData")
                 print("LOGIN RESPONSE - - - - -",loginData)
+                
                 self.currCin = (self.login[0].data?.userlogid) ?? ""
                 UserDefaults.standard.set(self.login[0].data?.slno, forKey: "userID")
-                print("LOGIN USRID - - - - -",UserDefaults.standard.value(forKey: "userID") as! Int)
-                if let arrViewCartData = UserDefaults.standard.object(forKey: "addToCart") as? Data {
-                    let decoder = JSONDecoder()
-                    if var decodedData = try? decoder.decode([[OrderDetailData]].self, from: arrViewCartData) {
-                        
-                        if(decodedData.count > 0){
-                           
-                            if((UserDefaults.standard.value(forKey: "CartCount")) as? String != nil){
-                                
-                                self.lastCin = UserDefaults.standard.value(forKey: "CartCount") as! String
-                                if(self.lastCin.isEqual(self.currCin)){
-                                    
-                                }else{
-                                     UserDefaults.standard.removeObject(forKey: "CartCount")
-                                     UserDefaults.standard.removeObject(forKey: "addToCart")
-                                }
-                            }
-                        }else{
-                            print("USER CLEAR")
-                            UserDefaults.standard.removeObject(forKey: "CartCount")
-                        }
-                    }
-                }
+                self.apiCheckMpin()
+                //print("LOGIN USRID - - - - -",UserDefaults.standard.value(forKey: "userID") as! Int)
+//                if let arrViewCartData = UserDefaults.standard.object(forKey: "addToCart") as? Data {
+//                    let decoder = JSONDecoder()
+//                    if var decodedData = try? decoder.decode([[OrderDetailData]].self, from: arrViewCartData) {
+//
+//                        if(decodedData.count > 0){
+//
+//                            if((UserDefaults.standard.value(forKey: "CartCount")) as? String != nil){
+//
+//                                self.lastCin = UserDefaults.standard.value(forKey: "CartCount") as! String
+//                                if(self.lastCin.isEqual(self.currCin)){
+//
+//                                }else{
+//                                     UserDefaults.standard.removeObject(forKey: "CartCount")
+//                                     UserDefaults.standard.removeObject(forKey: "addToCart")
+//                                }
+//                            }
+//                        }else{
+//                            print("USER CLEAR")
+//                            UserDefaults.standard.removeObject(forKey: "CartCount")
+//                        }
+//                    }
+//                }
       
-                let vcHome = self.storyboard?.instantiateViewController(withIdentifier: "Dashboard") as! DashboardController
-                self.navigationController!.pushViewController(vcHome, animated: true)
+                //let vcHome = self.storyboard?.instantiateViewController(withIdentifier: "Dashboard") as! DashboardController
+                //self.navigationController!.pushViewController(vcHome, animated: true)
             }else{
                 var alert = UIAlertView(title: "Error", message: self.login[0].message, delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
@@ -245,6 +251,83 @@ class LoginController: UIViewController , UITextFieldDelegate{
    
     }
     
+    
+    // - - - - - - - - Check mpin here - -  - - - - - - - - - -
+    func apiCheckMpin(){
+        
+        let json: [String: Any] =  ["CIN":(edtCin.text ?? "")!,
+                                    "ClientSecret":"ScreenId",
+                                    "category":UserDefaults.standard.value(forKey: "userCategory") as! String,
+                                    "newmpin":"",
+                                    "deviceId":deviceId,
+                                    "appid":3]
+        
+        print("CHECK MPIN AT LOGIN - - - - -",json)
+        
+        let manager =  DataManager.shared
+        
+        manager.makeAPICall(url: checkMpinApi, params: json, method: .POST, success: { (response) in
+            let data = response as? Data
+            
+            DispatchQueue.main.async {
+                do {
+                    self.MpinElementMain = try JSONDecoder().decode([CheckMpinElement].self, from: data!)
+                    self.MpinDataMain = (self.MpinElementMain[0].data ?? nil)!
+                    
+                    var isBlock = false
+                    
+                    if(self.MpinDataMain != nil){
+                        isBlock = (self.MpinDataMain[0].isBlock ?? false)!
+                    }
+                    
+                    
+                    if(isBlock){
+                        var alert = UIAlertView(title: "BLOCKED", message: "Your account is blocked temporarily!!", delegate: nil, cancelButtonTitle: "OK")
+                        alert.show()
+                    }else{
+                        if(self.MpinElementMain[0].result ?? false){
+                            // - - - -  Mpin is set already
+                            //UserDefaults.standard.set(self.loginData, forKey: "loginData")
+                            
+//                            if let arrViewCartData = UserDefaults.standard.object(forKey: "addToCart") as? Data {
+//                                let decoder = JSONDecoder()
+//                                if var decodedData = try? decoder.decode([[OrderDetailData]].self, from: arrViewCartData) {
+//
+//                                    if(decodedData.count > 0){
+//                                        if(self.lastCin.isEqual(self.currCin)){
+//
+//                                        }else{
+//                                            UserDefaults.standard.removeObject(forKey: "addToCart")
+//                                        }
+//                                    }
+//                                }
+//                            }
+                            
+                            let vcHome = self.storyboard?.instantiateViewController(withIdentifier: "Dashboard") as! DashboardController
+                            self.navigationController!.pushViewController(vcHome, animated: true)
+                            
+                        }else{
+                            // - - - -  Mpin is not set
+                            let vcSetMpin = self.storyboard?.instantiateViewController(withIdentifier: "SetMpin") as! SetMpinController
+                            UserDefaults.standard.removeObject(forKey: "addToCart")
+                            vcSetMpin.loginData = self.loginData
+                            vcSetMpin.strCin = (self.edtCin.text ?? "-")!
+                            self.navigationController?.pushViewController(vcSetMpin, animated: true)
+                        }
+                    }
+                    
+                }
+                catch let errorData {
+                    print(errorData.localizedDescription)
+                }
+                
+            }
+            
+        }) { (Error) in
+            print(Error?.localizedDescription)
+        }
+        
+    }
     
     func getIPAddress() -> String? {
         var address : String?

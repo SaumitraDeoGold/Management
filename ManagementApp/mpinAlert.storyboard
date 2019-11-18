@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ytZ-tO-W4v">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="roboto.medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+        <array key="roboto.regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Mpin Alert Controller-->
+        <scene sceneID="LPb-OU-0JD">
+            <objects>
+                <viewController storyboardIdentifier="MpinAlertController" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ytZ-tO-W4v" customClass="MpinAlertController" customModule="ManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="MJ0-kH-6eN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcv-Ws-Neh" customClass="RoundView" customModule="ManagementApp" customModuleProvider="target">
+                                <rect key="frame" x="20" y="279" width="374" height="180"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter M-Pin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ls-Uc-a23">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="LJh-su-5Mw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                        <color key="textColor" name="FontDarkText"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XMY-C6-Q51" userLabel="vwOtpMain" customClass="SVPinView" customModule="SVPinView">
+                                        <rect key="frame" x="20" y="60" width="334" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="k8z-AR-fWl"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mN-rF-M0e">
+                                        <rect key="frame" x="254" y="130" width="100" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="LMO-dX-23q"/>
+                                            <constraint firstAttribute="width" constant="100" id="ina-Ty-t4L"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                                        <state key="normal" title="Forgot M-Pin?">
+                                            <color key="titleColor" name="ColorRed"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clicked_forgotMpin:" destination="ytZ-tO-W4v" eventType="touchUpInside" id="cqK-zg-8Wp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="7Ls-Uc-a23" firstAttribute="top" secondItem="zcv-Ws-Neh" secondAttribute="top" id="8ig-j5-6Up"/>
+                                    <constraint firstAttribute="bottom" secondItem="0mN-rF-M0e" secondAttribute="bottom" constant="10" id="Dle-Xc-1hd"/>
+                                    <constraint firstAttribute="trailing" secondItem="0mN-rF-M0e" secondAttribute="trailing" constant="20" id="PQF-Uh-QOd"/>
+                                    <constraint firstItem="XMY-C6-Q51" firstAttribute="top" secondItem="7Ls-Uc-a23" secondAttribute="bottom" constant="10" id="RvO-rT-4th"/>
+                                    <constraint firstAttribute="trailing" secondItem="7Ls-Uc-a23" secondAttribute="trailing" id="V15-x3-njk"/>
+                                    <constraint firstAttribute="trailing" secondItem="XMY-C6-Q51" secondAttribute="trailing" constant="20" id="bOJ-kN-F8E"/>
+                                    <constraint firstItem="7Ls-Uc-a23" firstAttribute="leading" secondItem="zcv-Ws-Neh" secondAttribute="leading" id="giP-1H-778"/>
+                                    <constraint firstAttribute="height" constant="180" id="j6g-FM-Rzb"/>
+                                    <constraint firstItem="XMY-C6-Q51" firstAttribute="leading" secondItem="zcv-Ws-Neh" secondAttribute="leading" constant="20" id="s47-nV-IXs"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.60142872436301353" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zcv-Ws-Neh" firstAttribute="leading" secondItem="Rkr-dR-WlZ" secondAttribute="leading" constant="20" id="7vb-oT-zuT"/>
+                            <constraint firstItem="Rkr-dR-WlZ" firstAttribute="trailing" secondItem="zcv-Ws-Neh" secondAttribute="trailing" constant="20" id="MZ8-qS-KEE"/>
+                            <constraint firstItem="zcv-Ws-Neh" firstAttribute="centerY" secondItem="MJ0-kH-6eN" secondAttribute="centerY" constant="1" id="feX-Oa-fzc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Rkr-dR-WlZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnForgot" destination="0mN-rF-M0e" id="WcP-OS-EOU"/>
+                        <outlet property="vwOtpMain" destination="XMY-C6-Q51" id="8z6-6a-Ggo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qwo-uB-YZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26.086956521739133" y="100.2717391304348"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="ColorRed">
+            <color red="0.90700000524520874" green="0.21799999475479126" blue="0.21899999678134918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="FontDarkText">
+            <color red="0.27700001001358032" green="0.27300000190734863" blue="0.27300000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

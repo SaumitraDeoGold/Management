@@ -39,6 +39,7 @@ class IncreasedLimitController: BaseViewController, UICollectionViewDataSource, 
         let popup = sb.instantiateInitialViewController()! as! PartySearchController
         popup.modalPresentationStyle = .overFullScreen
         popup.delegate = self
+        popup.fromPage = "Limits"
         self.present(popup, animated: true)
     }
     

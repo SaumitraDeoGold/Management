@@ -20,6 +20,7 @@ class StockDetailController: UIViewController, UICollectionViewDataSource, UICol
     var stockDetail = [StockDetails]()
     var stockObj = [StockDetailsObj]()
     var dataToRecieve = [StockObj]()
+    var type = Int()
     
     override func viewDidLoad() {
         
@@ -94,8 +95,8 @@ class StockDetailController: UIViewController, UICollectionViewDataSource, UICol
     //API CALLS...
     func apiGetStock(){
         
-        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ohdashfl","branchid":dataToRecieve[0].branchid as Any,"type":1]
-        
+        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ohdashfl","branchid":dataToRecieve[0].branchid as Any,"type":type]
+        print("Stok etails Params : \(json)")
         let manager = DataManager.shared
         
         manager.makeAPICall(url: stockApiUrl, params: json, method: .POST, success: { (response) in

@@ -12,7 +12,7 @@ import FirebaseAnalytics
 class AccountBaseViewController: UIViewController {
     
     var tabs = [
-        ViewPagerTab(title: "BRANCHWISE OUTSTANDING", image: UIImage(named: "dashboard_outstanding_icon")),
+        //ViewPagerTab(title: "BRANCHWISE OUTSTANDING", image: UIImage(named: "dashboard_outstanding_icon")),
         ViewPagerTab(title: "EXPENSE COMPARISON", image: UIImage(named: "dashboard_order_icon"))
         ]
     
@@ -74,12 +74,12 @@ extension AccountBaseViewController: ViewPagerControllerDataSource {
         var vc = UIViewController()
         if position == 0
         {
-            vc = self.storyboard?.instantiateViewController(withIdentifier: "AccountsViewController") as! AccountsViewController
-        }
-        else if position == 1 
-        {
             vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpenseComparison") as! ExpenseComparisonController
         }
+//        else if position == 1
+//        {
+//            vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpenseComparison") as! ExpenseComparisonController
+//        }
         return vc
     }
     
@@ -93,7 +93,6 @@ extension AccountBaseViewController: ViewPagerControllerDataSource {
 }
 
 extension AccountBaseViewController: ViewPagerControllerDelegate {
-    
     func willMoveToControllerAtIndex(index:Int) {
         print("Moving to page \(index)")
     }

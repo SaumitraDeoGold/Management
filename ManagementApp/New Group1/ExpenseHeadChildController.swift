@@ -37,7 +37,7 @@ class ExpenseHeadChildController: UIViewController, UICollectionViewDataSource, 
         return self.partwiseCompObj.count + 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 4 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -59,6 +59,8 @@ class ExpenseHeadChildController: UIViewController, UICollectionViewDataSource, 
                 cell.contentLabel.text = "Amount"
             case 2:
                 cell.contentLabel.text = "Date"
+            case 3:
+                cell.contentLabel.text = "Details"
                 
             default:
                 break
@@ -79,6 +81,8 @@ class ExpenseHeadChildController: UIViewController, UICollectionViewDataSource, 
                 cell.contentLabel.textColor = UIColor.black
             case 2:
                 cell.contentLabel.text = "DATE"
+            case 3:
+                cell.contentLabel.text = "DETAILS"
             default:
                 break
             }
@@ -99,6 +103,12 @@ class ExpenseHeadChildController: UIViewController, UICollectionViewDataSource, 
                 }
             case 2:
                 cell.contentLabel.text = partwiseCompObj[indexPath.section - 1].date
+            case 3:
+                let attributedString = NSAttributedString(string: NSLocalizedString("View Details", comment: ""), attributes:[
+                    NSAttributedString.Key.foregroundColor : UIColor(named: "ColorBlue"),
+                    NSAttributedString.Key.underlineStyle:1.0
+                    ])
+                cell.contentLabel.attributedText = attributedString
             default:
                 break
             }

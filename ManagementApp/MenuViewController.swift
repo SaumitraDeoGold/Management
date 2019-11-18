@@ -109,7 +109,7 @@ class MenuViewController: UIViewController {
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"DASHBOARD", "icon":"icon_dashboard","data":[""]])
        // self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"ORDER", "icon":"dashboard_order_icon","data":["PLACE ORDER","ORDER SUMMARY"]])
 //        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"BRAND LOYALTY", "icon":"brand_loyalty_club_icon","data":["STAR REWARD PROGRAM","DISCOVER THE WORLD","DOCUMENTS"]])
-        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"REPORTS", "icon":"icon_reports","data":["DIVISION WISE SALES","DEALER APPOINTMENT","OUTSTANDING ABOVE","SALES AND PURCHASES","DEALER SEARCH","CATEGORYWISE COMPARE"]])
+        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"REPORTS", "icon":"icon_reports","data":["DIVISION WISE SALES","DEALER APPOINTMENT","OUTSTANDING ABOVE","SALES AND PURCHASES","DEALER SEARCH","DIVISIONWISE COMPARE","CATEGORYWISE COMPARE","BRANCHWISE OUTSTANDING"]])
         
         self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"DOCUMENTS", "icon":"icon_documents","data":["PRICE LIST","CATALOGUE","ACTIVE SCHEME","POLICY","TECH SPECIFICATION"]])
 //        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"ENQUIRY", "icon":"icon_enquiry","data":["ENQUIRY","CALL SERVICE (EXECUTIVE)"]])

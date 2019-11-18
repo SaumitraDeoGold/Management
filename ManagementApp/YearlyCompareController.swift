@@ -302,7 +302,7 @@ class YearlyCompareController: BaseViewController, UICollectionViewDataSource, U
             }
             
         }else if indexPath.section == filteredItems.count + 1{
-            cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+            cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
             if #available(iOS 11.0, *) {
                 cell.backgroundColor = UIColor.init(named: "Primary")
             } else {
@@ -312,25 +312,41 @@ class YearlyCompareController: BaseViewController, UICollectionViewDataSource, U
             case 0:
                 cell.contentLabel.text = "SUM"
             case 1:
-                cell.contentLabel.text = Utility.formatRupee(amount: (total["currWd"]! ))
+                let currentYear = Double(total["currWd"]!)
+                let prevYear = Double(total["prevWd"]!)
+                let temp = ((currentYear - prevYear)/prevYear)*100
+                cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
+                //cell.contentLabel.text = Utility.formatRupee(amount: (total["currWd"]! ))
             case 2:
                 cell.contentLabel.text = Utility.formatRupee(amount: (total["prevWd"]! ))
             case 3:
-                cell.contentLabel.text = Utility.formatRupee(amount: (total["currLights"]! ))
+                let currentYear = Double(total["currLights"]!)
+                let prevYear = Double(total["prevLights"]!)
+                let temp = ((currentYear - prevYear)/prevYear)*100
+                cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
             case 4:
-                cell.contentLabel.text = Utility.formatRupee(amount: (total["prevWd"]! ))
+                cell.contentLabel.text = Utility.formatRupee(amount: (total["prevLights"]! ))
             case 5:
-                cell.contentLabel.text = Utility.formatRupee(amount: (total["currWc"]! ))
+                let currentYear = Double(total["currWc"]!)
+                let prevYear = Double(total["prevWc"]!)
+                let temp = ((currentYear - prevYear)/prevYear)*100
+                cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
             case 6:
-                cell.contentLabel.text = Utility.formatRupee(amount: (total["prevWd"]! ))
+                cell.contentLabel.text = Utility.formatRupee(amount: (total["prevWc"]! ))
             case 7:
-                cell.contentLabel.text = Utility.formatRupee(amount: (total["currPf"]! ))
+                let currentYear = Double(total["currPf"]!)
+                let prevYear = Double(total["prevPf"]!)
+                let temp = ((currentYear - prevYear)/prevYear)*100
+                cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
             case 8:
-                cell.contentLabel.text = Utility.formatRupee(amount: (total["prevWd"]! ))
+                cell.contentLabel.text = Utility.formatRupee(amount: (total["prevPf"]! ))
             case 9:
-                cell.contentLabel.text = Utility.formatRupee(amount: (total["currMcbDbs"]! ))
+                let currentYear = Double(total["currMcbDbs"]!)
+                let prevYear = Double(total["prevMcbDbs"]!)
+                let temp = ((currentYear - prevYear)/prevYear)*100
+                cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp) 
             case 10:
-                cell.contentLabel.text = Utility.formatRupee(amount: (total["prevWd"]! ))
+                cell.contentLabel.text = Utility.formatRupee(amount: (total["prevMcbDbs"]! ))
             case 11:
                 if let curtotalsale = filteredItems[0].curtotalsale
                 {

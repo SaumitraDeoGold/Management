@@ -36,6 +36,7 @@ class CustomYearPickerController: UIViewController ,UIPickerViewDataSource, UIPi
         if(strSelectedValue == ""){
             if showPicker == 3{
                 strSelectedValue = pickerDataSource[2]
+                rowPosition = 2
             }else{
                 strSelectedValue = pickerDataSource[0]
             }

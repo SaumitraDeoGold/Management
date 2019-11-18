@@ -18,7 +18,7 @@ class DashboardController: BaseViewController {
     var options:ViewPagerOptions!
     var searchData = [SearchDealers]()
     var searchDealers = [SearchDealersObj]()
-    
+    var isAppLaunched = Bool()
     
     override func viewDidLoad() {
         apiGetAllDealers()
@@ -28,6 +28,35 @@ class DashboardController: BaseViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         Analytics.setScreenName("DASHBOARD SCREEN", screenClass: "DashboardController")
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        
+        if(isAppLaunched){
+            
+            var prevDate = UserDefaults.standard.object(forKey: "mpinTime") as? Date ?? nil
+            
+            let currDate = Date()
+            let lastTime = currDate.addingTimeInterval(-1800)
+            
+            print("DATE  1 - - - ",prevDate) // 2016-12-19 21:52:04 +0000
+            print("DATE  2 - - - ",lastTime) // 2016-12-19 20:52:04 +0000
+            
+            if(prevDate != nil)
+            {
+                if(lastTime > (prevDate)!){
+                    print("SHOW MPIN")
+                    appDelegate.checkMpin()
+                }else{
+                    print("HIDE MPIN")
+                }
+                
+            }else{
+                print("SHOW MPIN")
+                appDelegate.checkMpin()
+            }
+            
+        }
         
         addSlideMenuButton()
         
@@ -117,7 +146,7 @@ extension DashboardController: ViewPagerControllerDataSource {
         }
         else if position == 3
         {
-            vc = self.storyboard?.instantiateViewController(withIdentifier: "AccountBaseViewController") as! AccountBaseViewController
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "ExpenseComparison") as! ExpenseComparisonController
         }
         return vc
     }

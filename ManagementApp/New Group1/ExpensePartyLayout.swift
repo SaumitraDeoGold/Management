@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 
-class ExpenseLayout: UICollectionViewLayout {
+class ExpensePartyLayout: UICollectionViewLayout {
     
     var numberOfColumns = 4
     var shouldPinFirstColumn = true
@@ -31,7 +31,7 @@ class ExpenseLayout: UICollectionViewLayout {
         if collectionView.numberOfSections == 0 {
             return
         }
-        numberOfColumns = collectionView.numberOfItems(inSection: 1)
+        
         itemAttributes = []
         if itemAttributes.count != collectionView.numberOfSections {
             generateItemAttributes(collectionView: collectionView)
@@ -93,7 +93,7 @@ class ExpenseLayout: UICollectionViewLayout {
 
 
 // MARK: - Helpers
-extension ExpenseLayout {
+extension ExpensePartyLayout {
     
     func generateItemAttributes(collectionView: UICollectionView) {
         if itemsSize.count != numberOfColumns {
@@ -170,30 +170,18 @@ extension ExpenseLayout {
     func sizeForItemWithColumnIndex(_ columnIndex: Int) -> CGSize {
         let screenWidth = UIScreen.main.bounds.width
         var width = 0
-        if numberOfColumns == 4{
-            switch columnIndex {
-            case 0:
-                width = Int((screenWidth/3)-1)
-            case 1:
-                width = Int((screenWidth/3)-1)
-            case 2:
-                width = Int((screenWidth/2)-1)
-            case 3:
-                width = Int((screenWidth/3)-1)
-                
-            default:
-                width = Int((screenWidth/3)-1)
-            }
-        }else{
-            switch columnIndex {
-            case 0:
-                width = Int((screenWidth/2)-1)
-            case 1:
-                width = Int((screenWidth/2)-1)
-                
-            default:
-                width = Int((screenWidth/2)-1)
-            }
+        switch columnIndex {
+        case 0:
+            width = Int((screenWidth/3)-1)
+        case 1:
+            width = Int((screenWidth/3)-1)
+        case 2:
+            width = Int((screenWidth/3)-1)
+        case 3:
+            width = Int((screenWidth/3)-1)
+            
+        default:
+            width = 130
         }
         
         //let size: CGSize = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)])

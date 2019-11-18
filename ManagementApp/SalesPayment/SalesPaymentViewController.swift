@@ -151,8 +151,8 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         let currYear = yearFormatter.string(from: now)
         _ = UIStoryboard(name: "Main", bundle: nil)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DivNBranch") as! DivNBranchwiseController
-        vc.fromdate = "07/01/\(currYear)"
-        vc.todate = "09/30/\(currYear)"
+        vc.fromdate = "10/01/\(currYear)"
+        vc.todate = "12/31/\(currYear)"
         vc.format = "quarterly"
         present(vc, animated: true, completion: nil)
     }
@@ -237,7 +237,7 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         counterToday += 999999
         counterMonthly += 9111111
         counterQrtrly += 19111111
-        counterYearly += 19111111
+        counterYearly += 199999991
         if counterToday > totalSale["todaySale"]! {
             self.lblSaleTdy.text = Utility.formatRupee(amount: Double(totalSale["todaySale"]!))
             self.lblPayment.text = Utility.formatRupee(amount: Double(totalPayment["todayPayment"]!))
@@ -410,7 +410,7 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
                     }
                 case 4:
                     let attributedString = NSAttributedString(string: NSLocalizedString("DistrictWise", comment: ""), attributes:[
-                        NSAttributedString.Key.foregroundColor : UIColor.blue,
+                        NSAttributedString.Key.foregroundColor : UIColor(named: "ColorBlue"),
                         NSAttributedString.Key.underlineStyle:1.0
                         ])
                     cell.contentLabel.attributedText = attributedString

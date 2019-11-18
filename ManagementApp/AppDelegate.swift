@@ -21,11 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     static var appDelegate:AppDelegate!
     
+    var strCin = ""
     var cin = ""
     var notificationId = "123"
     var sendCin = String()
     var userCategory = String()
     var userCIN = String()
+    
+    var mpin = ""
+    var CheckMpinApi = ""
+    var mPinAttempts = Int()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -110,6 +115,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         Fabric.sharedSDK().debug = true
         
+        if (Utility.isConnectedToNetwork()) {
+            
+                var prevDate = UserDefaults.standard.object(forKey: "mpinTime") as? Date ?? nil
+                let currDate = Date()
+                let lastTime = currDate.addingTimeInterval(-1800)
+                
+                print("DATE  1 - - - ",prevDate) // 2016-12-19 21:52:04 +0000
+                print("DATE  2 - - - ",lastTime) // 2016-12-19 20:52:04 +0000
+                
+                if(prevDate != nil)
+                {
+                    if(lastTime > (prevDate)!){
+                        print("SHOW MPIN")
+                        self.checkMpin()
+                    }else{
+                        print("HIDE MPIN")
+                    }
+                    
+                } 
+        }
+        
         return true
         
     }
@@ -187,6 +213,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             }
             UIApplication.shared.statusBarStyle = .lightContent
         }
+        
+        // - - - - - -  popup for mpin check  - -  - - --  - - - -
+        let loginData =  UserDefaults.standard.value(forKey: "loginData") as? Dictionary ?? [:]
+        
+        if(!loginData.isEmpty){
+            strCin = loginData["userlogid"] as? String ?? ""
+            if(!strCin.isEmpty)
+            {
+                
+                var prevDate = UserDefaults.standard.object(forKey: "mpinTime") as? Date ?? nil
+                let currDate = Date()
+                let lastTime = currDate.addingTimeInterval(-1800)
+                
+                print("DATE  1 - - - ",prevDate) // 2016-12-19 21:52:04 +0000
+                print("DATE  2 - - - ",lastTime) // 2016-12-19 20:52:04 +0000
+                
+                if(prevDate != nil)
+                {
+                    if(lastTime > (prevDate)!){
+                        print("SHOW MPIN")
+                        self.checkMpin()
+                    }else{
+                        print("HIDE MPIN")
+                    }
+                    
+                }
+            }
+        }
+        
     }
     
     
@@ -629,5 +684,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
     }
+    
+    // ************************** MPIN logic starts here ****************************
+    // - - - - - POP UP to enter or change mpin  - - - - -  - - - - -
+    func checkMpin() {
+        let rootViewController = self.window!.rootViewController as! UINavigationController
+        let sb = UIStoryboard(name: "mpinAlert", bundle: nil)
+        let popup = sb.instantiateInitialViewController()!
+        rootViewController.present(popup, animated: true)
+    }
+    
+    
     
 }

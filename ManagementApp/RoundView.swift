@@ -34,5 +34,40 @@ class RoundView : UIView
             self.layer.borderColor = borderColor.cgColor
         }
     }
+    
+    @IBInspectable   var shadowColor: UIColor = UIColor.clear
+        {
+        didSet {
+            self.layer.shadowColor = shadowColor.cgColor
+        }
+    }
+    
+    @IBInspectable  var shadowOffset: CGSize = CGSize(width: 0, height: 0)
+        {
+        didSet {
+            self.layer.shadowOffset = shadowOffset
+        }
+    }
+    
+    @IBInspectable   var shadowRadius: CGFloat = 0
+        {
+        didSet {
+            self.layer.shadowRadius = shadowRadius
+        }
+    }
+    
+    @IBInspectable  var masksToBounds: Bool = false
+        {
+        didSet {
+            self.layer.masksToBounds = masksToBounds
+        }
+    }
+    
+    @IBInspectable   var shadowOpacity: CGFloat = 0
+        {
+        didSet {
+            self.layer.shadowOpacity = Float(shadowOpacity)
+        }
+    }
 
 }

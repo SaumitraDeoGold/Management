@@ -195,7 +195,8 @@ class DashboardOrderViewController: UIViewController, UICollectionViewDataSource
                 if index.section == self.filteredItems.count + 1{
                     return false
                 }else{
-                    return true}
+                    return true
+                }
             }else{
                 return false
             }

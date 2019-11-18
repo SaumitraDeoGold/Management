@@ -241,8 +241,9 @@ class StockViewController: BaseViewController, UICollectionViewDataSource, UICol
         //If item other than BranchName clicked then open next page...
         if let destination = segue.destination as? StockDetailController,
             let index = CollectionView.indexPathsForSelectedItems?.first{
-            if index.section > 0{
+            if index.section > 1{
                 destination.dataToRecieve = [stockObj[index.section-1]]
+                destination.type = index.row - 1
             }
             else{
                 return

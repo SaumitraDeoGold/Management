@@ -91,7 +91,7 @@ class OtpController: UIViewController {
         let changeCin = UITapGestureRecognizer(target: self, action: #selector(self.tapChangeCin))
         lblChangeCin.addGestureRecognizer(changeCin)
         
-        if(self.callFrom == "CHANGE"){
+        if(self.callFrom == "CHANGE" || self.callFrom == "ForgotMpin"){
            lblChangeCin.isHidden = true
         }else{
           lblChangeCin.isHidden = false
@@ -204,15 +204,23 @@ class OtpController: UIViewController {
                 let isSuccess = (self.verifyOTP[0].result ?? false)!
                 if isSuccess
                 {
-                    let vcSetPassword = self.storyboard?.instantiateViewController(withIdentifier: "SetPassword") as! SetPasswordController
-                    vcSetPassword.strCin = self.strCin
-                    if(self.callFrom == "CHANGE"){
-                        vcSetPassword.callFrom = "CHANGE"
-                    }else{
-                        vcSetPassword.callFrom = "SET"
+                    if(self.callFrom.elementsEqual("ForgotMpin")){
+                        let vcForgotMpin = self.storyboard?.instantiateViewController(withIdentifier: "ForgotMpin") as! ForgotMpinViewController
+                        vcForgotMpin.strCin = self.strCin
+                        vcForgotMpin.callFrom = "ForgotMpin"
+                        self.navigationController?.pushViewController(vcForgotMpin, animated: true)
+                    } else {
+                        let vcSetPassword = self.storyboard?.instantiateViewController(withIdentifier: "SetPassword") as! SetPasswordController
+                        vcSetPassword.strCin = self.strCin
+                        if(self.callFrom == "CHANGE"){
+                            vcSetPassword.callFrom = "CHANGE"
+                        }else{
+                            vcSetPassword.callFrom = "SET"
+                        }
+                        
+                        self.navigationController?.pushViewController(vcSetPassword, animated: true)
+                        
                     }
-                    
-                    self.navigationController?.pushViewController(vcSetPassword, animated: true)
                 }
                 
             } catch let errorData {

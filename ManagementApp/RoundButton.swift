@@ -13,7 +13,7 @@ import UIKit
 class RoundButton : UIButton
 {
     
-  @IBInspectable   var cornerRadius: CGFloat = 0
+  @IBInspectable var cornerRadius: CGFloat = 0
     {
         didSet {
             self.layer.cornerRadius = cornerRadius
@@ -21,7 +21,7 @@ class RoundButton : UIButton
     }
 
 
-   @IBInspectable  var borderWidth: CGFloat = 0
+   @IBInspectable var borderWidth: CGFloat = 0
        {
         didSet {
             self.layer.borderWidth = borderWidth
@@ -35,35 +35,35 @@ class RoundButton : UIButton
         }
     }
     
-    @IBInspectable   var shadowColor: UIColor = UIColor.clear
+    @IBInspectable var shadowColor: UIColor = UIColor.clear
         {
         didSet {
             self.layer.shadowColor = shadowColor.cgColor
         }
     }
     
-    @IBInspectable  var shadowOffset: CGSize = CGSize(width: 0, height: 0)
+    @IBInspectable var shadowOffset: CGSize = CGSize(width: 0, height: 0)
         {
         didSet {
             self.layer.shadowOffset = shadowOffset
         }
     }
     
-    @IBInspectable   var shadowRadius: CGFloat = 0
+    @IBInspectable var shadowRadius: CGFloat = 0
         {
         didSet {
             self.layer.shadowRadius = shadowRadius
         }
     }
     
-    @IBInspectable  var masksToBounds: Bool = false
+    @IBInspectable var masksToBounds: Bool = false
         {
         didSet {
             self.layer.masksToBounds = masksToBounds
         }
     }
     
-    @IBInspectable   var shadowOpacity: CGFloat = 0
+    @IBInspectable var shadowOpacity: CGFloat = 0
         {
         didSet {
             self.layer.shadowOpacity = Float(shadowOpacity)

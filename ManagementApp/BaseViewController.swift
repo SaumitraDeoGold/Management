@@ -113,11 +113,25 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             break
             
         case (1,6):
-            print("Complex View\n", terminator: "")
+            print("Category Compare\n", terminator: "")
             
-            self.openViewControllerBasedOnIdentifier("ComplexViewController")
+            self.openViewControllerBasedOnIdentifier("CategoryWiseCompareController")
             
             break
+            
+        case (1,7):
+            print("Branchwise Outstanding\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("AccountsViewController")
+            
+            break
+            
+//        case (1,6):
+//            print("Complex View\n", terminator: "")
+//
+//            self.openViewControllerBasedOnIdentifier("ComplexViewController")
+//
+//            break
             
         case (2,0):
             print("Price list\n", terminator: "")

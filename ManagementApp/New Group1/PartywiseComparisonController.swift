@@ -20,8 +20,11 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
     var partwiseComp = [PartwiseComp]()
     var partwiseCompObj = [PartwiseCompObj]()
     var dataToRecieve = [ExpenseComparisonObj]()
+    var fromDate = ""
+    var toDate = ""
     var type = ""
     var total = 0.0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,10 +163,10 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
     //API CALLS...
     func apiGetPranchwiseComp(){
         
-        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret","BranchId":dataToRecieve[0].branchid!,"fromdate":"04/01/2018","todate":"03/31/2019" ]
+        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret","BranchId":dataToRecieve[0].branchid!,"fromdate":fromDate,"todate":toDate ]
         
         let manager =  DataManager.shared
-        
+        print("Expense Header Params : \(json)");
         manager.makeAPICall(url: partywiseApiUrl, params: json, method: .POST, success: { (response) in
             let data = response as? Data 
             do {
