@@ -81,6 +81,7 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         sort.isUserInteractionEnabled = true
         sort.addGestureRecognizer(tapGestureRecognizer)
+        //yearDate()
     }
     
     //Sort Related...
@@ -134,25 +135,37 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         dateFormatter.dateFormat = "MM/dd/yyyy"
         let todayDate = dateFormatter.string(from: now)
         _ = UIStoryboard(name: "Main", bundle: nil)
+        
+        //For whole month...
+        let dayFormatter = DateFormatter()
+        dayFormatter.dateFormat = "MM"
+        let yearlyFormatter = DateFormatter()
+        yearlyFormatter.dateFormat = "yyyy"
+        _ = dayFormatter.string(from: now)
+        let currMonth = dayFormatter.string(from: now)
+        let currYear = yearlyFormatter.string(from: now)
+        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DivNBranch") as! DivNBranchwiseController
         vc.fromdate = todayDate
         vc.todate = todayDate
+        vc.dailyfromdate = "\(currMonth)/01/\(currYear)"
+        vc.dailytodate = "\(currMonth)/\(monthEnds[Int(currMonth)!-1])\(currYear)"
         vc.format = "today"
         present(vc, animated: true, completion: nil)
     }
     
     @objc func clickedQrtrly(sender: UITapGestureRecognizer) {
-        let now = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM"
-        let yearFormatter = DateFormatter()
-        yearFormatter.dateFormat = "yyyy"
-        _ = dateFormatter.string(from: now)
-        let currYear = yearFormatter.string(from: now)
+//        let now = Date()
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "MM"
+//        let yearFormatter = DateFormatter()
+//        yearFormatter.dateFormat = "yyyy"
+//        _ = dateFormatter.string(from: now)
+        let (fromdate, todate) = quarterlyDate()
         _ = UIStoryboard(name: "Main", bundle: nil)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DivNBranch") as! DivNBranchwiseController
-        vc.fromdate = "10/01/\(currYear)"
-        vc.todate = "12/31/\(currYear)"
+        vc.fromdate = fromdate//"01/01/\(currYear)"
+        vc.todate = todate//"03/31/\(currYear)"
         vc.format = "quarterly"
         present(vc, animated: true, completion: nil)
     }
@@ -165,6 +178,7 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         yearFormatter.dateFormat = "yyyy"
         let currMonth = dateFormatter.string(from: now)
         let currYear = yearFormatter.string(from: now)
+        
         _ = UIStoryboard(name: "Main", bundle: nil)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DivNBranch") as! DivNBranchwiseController
         vc.fromdate = "\(currMonth)/01/\(currYear)"
@@ -174,17 +188,70 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     @objc func clickedYearly(sender: UITapGestureRecognizer) {
+        let (fromdate, todate) = yearDate()
+        print(".....................>Fromdate : \(fromdate) ToDate : \(todate)")
+        _ = UIStoryboard(name: "Main", bundle: nil)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "DivNBranch") as! DivNBranchwiseController
+        vc.fromdate = fromdate//"04/01/" + String(prevYear)
+        vc.todate = todate//"03/31/" + String(currYear)
+        vc.format = "yearly"
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func quarterlyDate() -> (String, String){
         let now = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy"
+        let yearFormatter = DateFormatter()
+        yearFormatter.dateFormat = "yyyy"
+        let dayFormatter = DateFormatter()
+        dayFormatter.dateFormat = "MM"
         let currYear = dateFormatter.string(from: now)
+        let currMonth = dayFormatter.string(from: now)
+        //let nextYear = Int(currYear)! + 1
+        //let prevYear = Int(currYear)! - 1
+        var fromdate = ""
+        var todate = ""
+        if currMonth == "01" || currMonth == "02" || currMonth == "03"{
+            fromdate = "01/01/" + String(currYear)
+            todate = "03/31/" + String(currYear)
+        }else if currMonth == "04" || currMonth == "05" || currMonth == "06"{
+            fromdate = "04/01/" + String(currYear)
+            todate = "06/30/" + String(currYear)
+        }else if currMonth == "07" || currMonth == "08" || currMonth == "09"{
+            fromdate = "07/01/" + String(currYear)
+            todate = "09/30/" + String(currYear)
+        }else if currMonth == "10" || currMonth == "11" || currMonth == "12"{
+            fromdate = "10/01/" + String(currYear)
+            todate = "12/31/" + String(currYear)
+        }
+        return (fromdate, todate)
+    }
+    
+    func yearDate() -> (String, String){
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let dayFormatter = DateFormatter()
+        dayFormatter.dateFormat = "MM"
+        let currYear = dateFormatter.string(from: now)
+        let currMonth = dayFormatter.string(from: now)
         let nextYear = Int(currYear)! + 1
-        _ = UIStoryboard(name: "Main", bundle: nil)
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "DivNBranch") as! DivNBranchwiseController
-        vc.fromdate = "04/01/" + currYear
-        vc.todate = "03/31/" + String(nextYear)
-        vc.format = "yearly"
-        present(vc, animated: true, completion: nil)
+        let prevYear = Int(currYear)! - 1
+        var fromdate = ""
+        var todate = ""
+        print("-------------->CurrYear : \(currYear) currMonth : \(currMonth) nextYear : \(nextYear)  prevYear : \(prevYear)")
+        if currMonth == "01" || currMonth == "02" || currMonth == "03"{
+             fromdate = "04/01/" + String(prevYear)
+             todate = "03/31/" + String(currYear)
+            print("-------------->Fromdate : \(fromdate) ToDate : \(todate)")
+        }else{
+             fromdate = "04/01/" + currYear
+             todate = "03/31/" + String(nextYear)
+            print("-------------->Fromdate : \(fromdate) ToDate : \(todate)")
+        }
+        
+        return (fromdate, todate)
     }
     
     @IBAction func clickedState(_ sender: Any) {
@@ -234,9 +301,9 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         self.lblPayQtrly.text = "\(counterQrtrly)"
         self.lblSaleYrly.text = "\(counterYearly)"
         self.lblPayYrly.text = "\(counterYearly)"
-        counterToday += 999999
-        counterMonthly += 9111111
-        counterQrtrly += 19111111
+        counterToday += 9111111
+        counterMonthly += 9999999
+        counterQrtrly += 19999111
         counterYearly += 199999991
         if counterToday > totalSale["todaySale"]! {
             self.lblSaleTdy.text = Utility.formatRupee(amount: Double(totalSale["todaySale"]!))
@@ -618,13 +685,14 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         let json: [String: Any] = ["ClientSecret":"ClientSecret"]
         
         let manager =  DataManager.shared
-        
+        print("Get Today Sale Params \(json)")
         manager.makeAPICall(url: apiUrlTodaySale, params: json, method: .POST, success: { (response) in
             let data = response as? Data
             
             do {
                 self.todaySalesData = try JSONDecoder().decode([TodaySales].self, from: data!)
                 self.todaySaleObj = self.todaySalesData[0].data
+                print("Get Today Sale Data \(self.todaySalesData[0].data)")
                 self.totalSale["todaySale"] = Int(self.todaySaleObj[0].today)!
                 self.totalSale["monthlySale"] = Int(self.todaySaleObj[0].monthly)!
                 self.totalSale["qtrlySale"] = Int(self.todaySaleObj[0].quarterly)!
@@ -649,13 +717,14 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         let json: [String: Any] = ["ClientSecret":"ClientSecret"]
         
         let manager =  DataManager.shared
-        
+        print("Get Today Payment Params \(json)")
         manager.makeAPICall(url: apiUrlTodayPayment, params: json, method: .POST, success: { (response) in
             let data = response as? Data
             
             do {
                 self.todayPayData = try JSONDecoder().decode([TodayPayment].self, from: data!)
                 self.todayPaymentObj = self.todayPayData[0].data
+                print("Get Today Pay Data \(self.todayPayData[0].data)")
                 self.totalPayment["todayPayment"] = Int(self.todayPaymentObj[0].today)!
                 self.totalPayment["monthlyPayment"] = Int(self.todayPaymentObj[0].monthly)!
                 self.totalPayment["qtrlyPayment"] = Int(self.todayPaymentObj[0].quarterly)!
@@ -711,7 +780,7 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         
     }
     
-    func apiGetStatewiseComp(){
+    func apiGetStatewiseComp(){ 
         
         let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret"]
         
@@ -720,8 +789,8 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         manager.makeAPICall(url: apiUrlStateProgress, params: json, method: .POST, success: { (response) in
             let data = response as? Data
             do {
-                print("Branchwise Dash Result \(data)")
                 self.statewise = try JSONDecoder().decode([Statewise].self, from: data!)
+                print("Branchwise Dash Result \(self.statewise[0].data)")
                 self.statewiseObj = self.statewise[0].data
                 self.filteredState = self.statewise[0].data
                 self.totalStatewiseSale["currSale"] = self.filteredState.reduce(0, { $0 + Double($1.currentyearsale)! })

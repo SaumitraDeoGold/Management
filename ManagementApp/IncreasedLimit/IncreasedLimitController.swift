@@ -24,13 +24,18 @@ class IncreasedLimitController: BaseViewController, UICollectionViewDataSource, 
     var agingData = [AgingData]()
     var agingDataObj = [AgingDetails]()
     var updateLimit = [UpdateLimit]()
+    var limitDetailsApiUrl = ""
+    var limitDetails = [LimitDetails]()
+    var limitDetailsObj = [LimitDetailsObj]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addSlideMenuButton()
         apiAgingUrl = "https://api.goldmedalindia.in/api/getAging"
         apiUpdateLimitUrl = "https://api.goldmedalindia.in/api/UpdateIncreaseLimitParty"
+        limitDetailsApiUrl = "https://test2.goldmedalindia.in/api/GetDealerListManagment"
         CollectionView.isHidden = true
+        apiLimitDetails()
     }
     
     //Button...
@@ -40,8 +45,9 @@ class IncreasedLimitController: BaseViewController, UICollectionViewDataSource, 
         popup.modalPresentationStyle = .overFullScreen
         popup.delegate = self
         popup.fromPage = "Limits"
+        popup.limitDetailsObj = limitDetailsObj
         self.present(popup, animated: true)
-    }
+    } 
     
     @IBAction func submit(_ sender: Any) {
         if txtAmount.text == "" || cinSelected == "" {
@@ -50,7 +56,6 @@ class IncreasedLimitController: BaseViewController, UICollectionViewDataSource, 
         }else{
             apiUpdateLimit()
         }
-        
     }
     
     //Popup Func...
@@ -177,6 +182,27 @@ class IncreasedLimitController: BaseViewController, UICollectionViewDataSource, 
         }) { (Error) in
             print(Error?.localizedDescription as Any)
             ViewControllerUtils.sharedInstance.removeLoader()
+        }
+        
+    }
+    
+    func apiLimitDetails(){
+        
+        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret"]
+        print("NDA DETAILS : \(json)")
+        let manager =  DataManager.shared
+        
+        manager.makeAPICall(url: limitDetailsApiUrl, params: json, method: .POST, success: { (response) in
+            let data = response as? Data
+            
+            do {
+                self.limitDetails = try JSONDecoder().decode([LimitDetails].self, from: data!)
+                self.limitDetailsObj = self.limitDetails[0].data
+            } catch let errorData {
+                print(errorData.localizedDescription)
+            }
+        }) { (Error) in
+            print(Error?.localizedDescription as Any)
         }
         
     }

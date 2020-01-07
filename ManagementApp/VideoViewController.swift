@@ -175,6 +175,8 @@ class VideoViewController: BaseViewController,UITableViewDelegate,UITableViewDat
             if VideoListArray[indexPath.row].images != ""
             {
                 cell.imvThumbnail.sd_setImage(with: URL(string: VideoListArray[indexPath.row].images ?? ""), placeholderImage: UIImage(named: "no_image_icon.png"))
+            }else{
+                cell.imvThumbnail.image = UIImage(named: "no_image_icon.png")
             }
             
             return cell

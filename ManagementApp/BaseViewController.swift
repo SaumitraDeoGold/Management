@@ -168,6 +168,20 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             
             break
             
+        case (2,5):
+            print("Dhanbarse docs\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("DhanbarseDocs")
+            
+            break
+            
+        case (2,6):
+            print("Qwikpay docs\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("QwikpayDocs")
+            
+            break
+            
 //        case (5,0):
 //            print("Enquiry\n", terminator: "")
 //
@@ -252,6 +266,10 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             print("Increase Limits\n", terminator: "")
             self.openViewControllerBasedOnIdentifier("IncreasedLimitController") 
             break
+//        case (7,-1):
+//            print("ExcelViewController\n", terminator: "")
+//            self.openViewControllerBasedOnIdentifier("ExcelViewController")
+//            break
             
         case (7,-1):
             print("Logout\n", terminator: "")
@@ -331,7 +349,6 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
     }
     
     
-
     func defaultMenuImage() -> UIImage {
         var defaultMenuImage = UIImage()
         
@@ -339,7 +356,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
         
         UIColor.black.setFill()
         UIBezierPath(rect: CGRect(x: 0, y: 3, width: 30, height: 1)).fill()
-         UIBezierPath(rect: CGRect(x: 0, y: 10, width: 30, height: 1)).fill()
+        UIBezierPath(rect: CGRect(x: 0, y: 10, width: 30, height: 1)).fill()
         UIBezierPath(rect: CGRect(x: 0, y: 17, width: 30, height: 1)).fill()
         
         UIColor.white.setFill()
@@ -388,10 +405,10 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
         menuVC.view.layoutIfNeeded()
         
         
-        menuVC.view.frame=CGRect(x: 0 - UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height);
+        menuVC.view.frame = CGRect(x: 0 - UIScreen.main.bounds.size.width, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height);
         
         UIView.animate(withDuration: 0.3, animations: { () -> Void in
-            menuVC.view.frame=CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height);
+            menuVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height);
             sender.isEnabled = true
             }, completion:nil)
     }

@@ -1,16 +1,16 @@
 //
-//  OrderLayout.swift
+//  InvoiceLayout.swift
 //  ManagementApp
 //
-//  Created by Goldmedal on 18/04/19.
-//  Copyright © 2019 Goldmedal. All rights reserved.
+//  Created by Goldmedal on 06/01/20.
+//  Copyright © 2020 Goldmedal. All rights reserved.
 //
 
 import Foundation
 
 import UIKit
 
-class ExpenseLayout: UICollectionViewLayout {
+class InvoiceLayout: UICollectionViewLayout {
     
     var numberOfColumns = 4
     var shouldPinFirstColumn = true
@@ -93,7 +93,7 @@ class ExpenseLayout: UICollectionViewLayout {
 
 
 // MARK: - Helpers
-extension ExpenseLayout {
+extension InvoiceLayout {
     
     func generateItemAttributes(collectionView: UICollectionView) {
         if itemsSize.count != numberOfColumns {
@@ -224,7 +224,7 @@ extension ExpenseLayout {
         
         //let size: CGSize = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)])
         //let width: CGFloat = 130
-        return CGSize(width: width, height: 45)
+        return CGSize(width: width, height: 55)
     }
     
 }

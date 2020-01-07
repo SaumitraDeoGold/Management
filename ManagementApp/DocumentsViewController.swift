@@ -127,7 +127,9 @@ class DocumentsViewController: BaseViewController,UITableViewDelegate,UITableVie
                 if DocumentArr[indexPath.row].appurl != ""
                 {
                     cell.imvDocument.sd_setImage(with: URL(string: DocumentArr[indexPath.row].appurl ?? ""), placeholderImage: UIImage(named: "no_image_icon.png"))
-                }
+                }else{
+                    cell.imvDocument.image = UIImage(named: "no_image_icon.png")
+        }
         
                 let tap = UITapGestureRecognizer(target: self, action: #selector(DocumentsViewController.clickPdf))
                 cell.imvDocument.addGestureRecognizer(tap)

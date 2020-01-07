@@ -125,6 +125,8 @@ class PolicyController: BaseViewController , UITableViewDelegate , UITableViewDa
         if PolicyArray[indexPath.row].imgurl != ""
         {
             cell.imvPolicy.sd_setImage(with: URL(string: PolicyArray[indexPath.row].imgurl ?? ""), placeholderImage: UIImage(named: "no_image_icon.png"))
+        }else{
+            cell.imvPolicy.image = UIImage(named: "no_image_icon.png")
         }
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.clickPdf))

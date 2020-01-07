@@ -138,6 +138,8 @@ class CatalogueListController: BaseViewController , UITableViewDelegate , UITabl
         if CatalogueArray[indexPath.row].imgurl != ""
         {
             cell.imvCatalogue.sd_setImage(with: URL(string: CatalogueArray[indexPath.row].imgurl ?? ""), placeholderImage: UIImage(named: "no_image_icon.png"))
+        }else{
+            cell.imvCatalogue.image = UIImage(named: "no_image_icon.png")
         }
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.clickPdf))

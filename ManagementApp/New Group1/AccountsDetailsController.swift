@@ -60,15 +60,15 @@ class AccountsDetailsController: UIViewController, UICollectionViewDataSource, U
             switch indexPath.row{
             case 0:
                 cell.contentLabel.text = "Party Name"
-            case 1:
-                cell.contentLabel.text = "Last Invoice Date"
-            case 2:
-                cell.contentLabel.text = "Last Payment Date"
-            case 3:
-                cell.contentLabel.text = "Last Payment Amt"
             case 4:
-                cell.contentLabel.text = "OS Amount"
+                cell.contentLabel.text = "Last Invoice Date"
             case 5:
+                cell.contentLabel.text = "Last Payment Date"
+            case 1:
+                cell.contentLabel.text = "Last Payment Amt"
+            case 2:
+                cell.contentLabel.text = "OS Amount"
+            case 3:
                 cell.contentLabel.text = "OS %"
             default:
                 break
@@ -83,18 +83,18 @@ class AccountsDetailsController: UIViewController, UICollectionViewDataSource, U
             switch indexPath.row{
             case 0:
                 cell.contentLabel.text = "SUM"
-            case 1:
+            case 4:
                 cell.contentLabel.text = "Date"
-            case 2:
+            case 5:
                 let now = Date()
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd/MM/YYYY"
                 cell.contentLabel.text = dateFormatter.string(from: now)
-            case 3:
+            case 1:
                 cell.contentLabel.text = Utility.formatRupee(amount: Double(totalAmtPaid ))
-            case 4:
+            case 2:
                 cell.contentLabel.text = Utility.formatRupee(amount: Double(total ))
-            case 5:
+            case 3:
                 cell.contentLabel.text = "100%"
             default:
                 break
@@ -114,25 +114,25 @@ class AccountsDetailsController: UIViewController, UICollectionViewDataSource, U
                 }else{
                     cell.contentLabel.textColor = UIColor.black
                 }
-            case 1:
+            case 4:
                 cell.contentLabel.textColor = UIColor.black
                 cell.contentLabel.text = filteredItems[indexPath.section - 1].lstinvoicedt
-            case 2:
+            case 5:
                 cell.contentLabel.textColor = UIColor.black
                     cell.contentLabel.text = filteredItems[indexPath.section - 1].lstpaymentdt
-            case 3:
+            case 1:
                 cell.contentLabel.textColor = UIColor.black
                 if let lstpaymentamt = filteredItems[indexPath.section - 1].lstpaymentamt
                 {
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(lstpaymentamt ) ?? 0)
                 }
-            case 4:
+            case 2:
                 cell.contentLabel.textColor = UIColor.black
                 if let salependingamt = filteredItems[indexPath.section - 1].outstandingamt
                 {
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(salependingamt )!)
                 }
-            case 5:
+            case 3:
                 let percentage = ((Double(self.filteredItems[indexPath.section - 1].outstandingamt!)! / total)*100)
                 cell.contentLabel.text = "\(String(format: "%.2f", percentage))%"
             default:
@@ -180,7 +180,7 @@ class AccountsDetailsController: UIViewController, UICollectionViewDataSource, U
                 self.filteredItems = self.accDetails[0].data
                 //Store Total of Outstanding amount...
                 self.total = self.filteredItems.reduce(0, { $0 + Double($1.outstandingamt!)! })
-                //self.totalAmtPaid = self.filteredItems.reduce(0, { $0 + Double($1.lstpaymentamt!)! })
+                self.totalAmtPaid = self.filteredItems.reduce(0, { $0 + Double($1.lstpaymentamt!)! })
                 self.CollectionView.reloadData()
                 self.CollectionView.collectionViewLayout.invalidateLayout()
                 ViewControllerUtils.sharedInstance.removeLoader()

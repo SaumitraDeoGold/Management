@@ -14,6 +14,9 @@ struct TechSpecsElement: Codable {
     let data: [TechSpecsData]
 }
 
+// MARK: - Datum
 struct TechSpecsData: Codable {
-    let code, name, url, imgurl: String?
+    let division, subCat: String?
+    let urlimg: String?
+    let urlpdf: String?
 }

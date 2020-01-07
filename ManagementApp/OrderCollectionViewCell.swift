@@ -10,5 +10,6 @@ import UIKit
 
 class OrderCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imvCategory: UIImageView!
+    @IBOutlet weak var vwCategory: UIView!
     @IBOutlet weak var lblCategory: UILabel!
 }

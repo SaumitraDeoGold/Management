@@ -134,6 +134,8 @@ class PriceListController: BaseViewController , UITableViewDelegate , UITableVie
         if PriceListArray[indexPath.row].imgurl != ""
         {
             cell.imvPriceList.sd_setImage(with: URL(string: PriceListArray[indexPath.row].imgurl ?? ""), placeholderImage: UIImage(named: "no_image_icon.png"))
+        }else{
+            cell.imvPriceList.image = UIImage(named: "no_image_icon.png")
         }
         
         

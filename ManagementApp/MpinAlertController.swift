@@ -253,7 +253,7 @@ class MpinAlertController: UIViewController {
                                     "appid":3]
         
         print("CHECK MPIN GLOBAL - - - - -",json)
-        
+        print("APIURL \(checkMpinApi)")
         let manager =  DataManager.shared
         
         manager.makeAPICall(url: checkMpinApi, params: json, method: .POST, success: { (response) in

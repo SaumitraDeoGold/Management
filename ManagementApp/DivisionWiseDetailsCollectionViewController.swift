@@ -13,17 +13,24 @@ private let reuseIdentifier = "DetailViewCell"
 class DivisionWiseDetailsCollectionViewController: UIViewController, PopupDateDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var dataToRecieve = [BranchSale]()
+    var dataFromPay = [BranchPay]()
     var totalSales = [TotalSale]()
     var salesData = [TotalSaleobj]()
     var saleDetail = [Saledetail]()
     var saleDetailTotal = SaledetailsTotal(wiringdevicetotal: "", lightetotal: "", wireandcabletotal: "", pipesandfittingtotal: "", mcbanddbtotal: "")
-    var TotalSalesApiUrl = "https://test2.goldmedalindia.in/api/getTotalSaleDivisionWiseManagement"
+    var totalPay = [TotalPay]()
+    var payData = [TotalPayObj]()
+    var payDetail = [Paymentdetail]()
+    var payDetailTotal = PaymentdetailsTotal(wiringdevicetotal: "", lightetotal: "", wireandcabletotal: "", pipesandfittingtotal: "", mcbanddbtotal: "")
+    var TotalSalesApiUrl = "https://api.goldmedalindia.in/api/getTotalSaleDivisionWiseManagement"
+    var TotalPayApiUrl = "https://api.goldmedalindia.in/api/getTotalPaymentDivisionWiseManagement"
     var index = 0
     var count = 20
     var isMore = true
     var dateTo = ""
     var dateFrom = ""
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var fromSales = ""
     
     @IBOutlet weak var detailView: UICollectionView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -31,14 +38,22 @@ class DivisionWiseDetailsCollectionViewController: UIViewController, PopupDateDe
     var cellContentIdentifier = "\(DetailViewCell.self)"
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(dataToRecieve[0].branchid!)
+        //print(dataToRecieve[0].branchid!)
         ViewControllerUtils.sharedInstance.showLoader()
+        if fromSales == "yes"{
         apiTotalSaleDivisionWise()
+        }else{
+            apiTotalPayDivisionWise()
+        }
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView == self.detailView{
-            return saleDetail.count + 1
+            if fromSales == "yes"{
+                return saleDetail.count + 1
+            }else{
+                return payDetail.count + 1
+            }
         }else{
             return 1
         }
@@ -86,41 +101,45 @@ class DivisionWiseDetailsCollectionViewController: UIViewController, PopupDateDe
         } else {
             switch indexPath.row{
             case 0:
-                cell.contentLabel.text = saleDetail[indexPath.section - 1].partynm
+                cell.contentLabel.text = (fromSales == "yes") ? saleDetail[indexPath.section - 1].partynm : payDetail[indexPath.section - 1].partynm
+                if fromSales == "yes"{
                 if saleDetail[indexPath.section - 1].partystatus != "Active"{
                     cell.contentLabel.textColor = UIColor(named: "ColorRed")
                 }else{
                     cell.contentLabel.textColor = UIColor.black
+                    }}else{
+                    
                 }
             case 1:
                 cell.contentLabel.textColor = UIColor.black
-                if let wiringdevices = saleDetail[indexPath.section - 1].wiringdevices
+                if let wiringdevices = (fromSales == "yes") ? saleDetail[indexPath.section - 1].wiringdevices : payDetail[indexPath.section - 1].wiringdevices
                 {
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(wiringdevices )!)
                 }
             case 2:
-                if let lights = saleDetail[indexPath.section - 1].lights
+                if let lights = (fromSales == "yes") ? saleDetail[indexPath.section - 1].lights : payDetail[indexPath.section - 1].lights
                 {
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(lights )!)
                 }
             case 3:
-                if let wireandcable = saleDetail[indexPath.section - 1].wireandcable
+                if let wireandcable = (fromSales == "yes") ? saleDetail[indexPath.section - 1].wireandcable : payDetail[indexPath.section - 1].wireandcable
                 {
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(wireandcable )!)
                 }
             case 4:
-                if let pipesandfittings = saleDetail[indexPath.section - 1].pipesandfittings
+                if let pipesandfittings = (fromSales == "yes") ? saleDetail[indexPath.section - 1].pipesandfittings : payDetail[indexPath.section - 1].pipesandfittings
                 {
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(pipesandfittings )!)
                 }
             case 5:
-                if let mcbanddbs = saleDetail[indexPath.section - 1].mcbanddbs
+                if let mcbanddbs = (fromSales == "yes") ? saleDetail[indexPath.section - 1].mcbanddbs : payDetail[indexPath.section - 1].mcbanddbs
                 {
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(mcbanddbs  )!)
                 }
             case 6:
-                let totalSum = Double(saleDetail[indexPath.section - 1].wiringdevices!)! + Double(saleDetail[indexPath.section - 1].lights!)! +
-                    Double(saleDetail[indexPath.section - 1].wireandcable!)! + Double(saleDetail[indexPath.section - 1].pipesandfittings!)! + Double(saleDetail[indexPath.section - 1].mcbanddbs!)!
+                let totalSum = (fromSales == "yes") ? Double(saleDetail[indexPath.section - 1].wiringdevices!)! + Double(saleDetail[indexPath.section - 1].lights!)! +
+                    Double(saleDetail[indexPath.section - 1].wireandcable!)! + Double(saleDetail[indexPath.section - 1].pipesandfittings!)! + Double(saleDetail[indexPath.section - 1].mcbanddbs!)! : Double(payDetail[indexPath.section - 1].wiringdevices!)! + Double(payDetail[indexPath.section - 1].lights!)! +
+                    Double(payDetail[indexPath.section - 1].wireandcable!)! + Double(payDetail[indexPath.section - 1].pipesandfittings!)! + Double(payDetail[indexPath.section - 1].mcbanddbs!)!
                 cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSum  ))
                 
             default:
@@ -147,15 +166,15 @@ class DivisionWiseDetailsCollectionViewController: UIViewController, PopupDateDe
 //                case 1:
 //                    cell.contentLabel.text = "Executive Names"
                 case 1:
-                    cell.contentLabel.text = "WD ₹" + saleDetailTotal.wiringdevicetotal!
+                    cell.contentLabel.text = (fromSales == "yes") ? "WD ₹" + saleDetailTotal.wiringdevicetotal! : "WD ₹" +  payDetailTotal.wiringdevicetotal!
                 case 2:
-                    cell.contentLabel.text = "Lights ₹" + saleDetailTotal.lightetotal!
+                    cell.contentLabel.text = (fromSales == "yes") ? "Lights ₹" + saleDetailTotal.lightetotal! : "WD ₹" +  payDetailTotal.lightetotal!
                 case 3:
-                    cell.contentLabel.text = "Wire & Cable ₹" + saleDetailTotal.wireandcabletotal!
+                    cell.contentLabel.text = (fromSales == "yes") ? "Wire & Cable ₹" + saleDetailTotal.wireandcabletotal! : "WD ₹" +  payDetailTotal.wireandcabletotal!
                 case 4:
-                    cell.contentLabel.text = "Pipes & Fittings ₹" + saleDetailTotal.pipesandfittingtotal!
+                    cell.contentLabel.text = (fromSales == "yes") ? "Pipes & Fittings ₹" + saleDetailTotal.pipesandfittingtotal! : "WD ₹" +  payDetailTotal.pipesandfittingtotal!
                 case 5:
-                    cell.contentLabel.text = "Mcb & Dbs ₹" + saleDetailTotal.mcbanddbtotal!
+                    cell.contentLabel.text = (fromSales == "yes") ? "Mcb & Dbs ₹" + saleDetailTotal.mcbanddbtotal! : "WD ₹" +  payDetailTotal.mcbanddbtotal!
                 case 6:
                     cell.contentLabel.text = "SUM"
                 default:
@@ -174,19 +193,30 @@ class DivisionWiseDetailsCollectionViewController: UIViewController, PopupDateDe
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if collectionView == self.detailView{
+            if fromSales == "yes"{
             if indexPath.section == (saleDetail.count-1){
-                print("Index \(indexPath.section) and isMore \((isMore)) count \(saleDetail.count)")
+                //print("Index \(indexPath.section) and isMore \((isMore)) count \(saleDetail.count)")
                 if isMore{
                     index = index + 20
                     apiTotalSaleDivisionWise()
+                }
+            }
+            }else{
+                if indexPath.section == (payDetail.count-1){
+                    //print("Index \(indexPath.section) and isMore \((isMore)) count \(saleDetail.count)")
+                    if isMore{
+                        index = index + 20
+                        apiTotalPayDivisionWise()
+                    }
                 }
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         if (indexPath.section) > 0{
-            appDelegate.sendCin = saleDetail[indexPath.section-1].cin!
+            appDelegate.sendCin = (fromSales == "yes") ? saleDetail[indexPath.section-1].cin! : payDetail[indexPath.section-1].cin!
         }
     }
  
@@ -237,7 +267,38 @@ class DivisionWiseDetailsCollectionViewController: UIViewController, PopupDateDe
         
     }
 
-    
+    func apiTotalPayDivisionWise(){
+        
+        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"BranchId":dataFromPay[0].branchid!,"FromDate":dateFrom,"ToDate":dateTo,"ClientSecret":"ClientSecret","index":index,"count":count]
+        print("DivisionWiseDetails \(json)")
+        let manager =  DataManager.shared
+        
+        manager.makeAPICall(url: TotalPayApiUrl, params: json, method: .POST, success: { (response) in
+            let data = response as? Data
+            
+            do {
+                self.totalPay = try JSONDecoder().decode([TotalPay].self, from: data!)
+                self.payData  = self.totalPay[0].data
+                self.payDetailTotal = PaymentdetailsTotal(wiringdevicetotal: self.payData[0].paymentdetailsTotal.wiringdevicetotal!, lightetotal: self.payData[0].paymentdetailsTotal.lightetotal!, wireandcabletotal: self.payData[0].paymentdetailsTotal.wireandcabletotal!, pipesandfittingtotal: self.payData[0].paymentdetailsTotal.pipesandfittingtotal!, mcbanddbtotal: self.payData[0].paymentdetailsTotal.mcbanddbtotal!)
+                for data in 0...(self.payData[0].paymentdetails.count-1) {
+                    self.payDetail.append(self.payData[0].paymentdetails[data])
+                }
+                self.detailView.reloadData()
+                self.detailView.collectionViewLayout.invalidateLayout()
+                self.collectionView.reloadData()
+                self.collectionView.collectionViewLayout.invalidateLayout()
+                ViewControllerUtils.sharedInstance.removeLoader()
+                self.isMore = self.payData[0].ismore!
+            } catch let errorData {
+                print(errorData.localizedDescription)
+                ViewControllerUtils.sharedInstance.removeLoader()
+            }
+        }) { (Error) in
+            print(Error?.localizedDescription as Any)
+            ViewControllerUtils.sharedInstance.removeLoader()
+        }
+        
+    }
 
 
 }

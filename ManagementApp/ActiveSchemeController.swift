@@ -143,6 +143,8 @@ class ActiveSchemeController: BaseViewController , UITableViewDelegate , UITable
         if ActiveSchemeArray[indexPath.row].imgurl != ""
         {
             cell.imvActiveScheme.sd_setImage(with: URL(string: ActiveSchemeArray[indexPath.row].imgurl ?? ""), placeholderImage: UIImage(named: "no_image_icon.png"))
+        }else{
+            cell.imvActiveScheme.image = UIImage(named: "no_image_icon.png")
         }
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.clickPdf))

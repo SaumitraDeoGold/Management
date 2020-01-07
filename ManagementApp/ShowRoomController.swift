@@ -138,6 +138,8 @@ class ShowRoomController:  BaseViewController,UITableViewDelegate,UITableViewDat
         if ShowRoomArray[indexPath.row].image != ""
         {
             cell.imvShowRoom.sd_setImage(with: URL(string: ShowRoomArray[indexPath.row].image ?? ""), placeholderImage: UIImage(named: "no_image_icon.png"))
+        }else{
+            cell.imvShowRoom.image = UIImage(named: "no_image_icon.png")
         }
         //cell.lblDateTime.text = NotificationArray[indexPath.row].date ?? "-"
         

@@ -15,7 +15,7 @@ struct PartwiseComp: Codable {
 
 // MARK: - Datum
 struct PartwiseCompObj: Codable {
-    let branchid, headnm, amount: String?
+    let ledgerid, name, amount: String?
 }
 //struct PartwiseComp: Codable {
 //    let result: Bool?

@@ -30,6 +30,8 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
     var format = ""
     var fromdate = ""
     var todate = ""
+    var dailyfromdate = ""
+    var dailytodate = ""
     var divApiUrl = ""
     var branchApiUrl = ""
     var divBreakdownTotalApi = ""
@@ -54,10 +56,12 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
     var catWiseValue = [String]()
     var noOfColumns = 2
     var customDivLayout = ExpenseLayout()
+    var type = ""
+    var maxAmt = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionViewMonthly.isHidden = true
+        //collectionViewMonthly.isHidden = true
         setDate()
         self.noDataView.showView(view: self.noDataView, from: "LOADER")
         addRefreshControl()
@@ -105,6 +109,7 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         btnBranch.setTitleColor(UIColor.black, for: .normal)
         self.noDataView.showView(view: self.noDataView, from: "LOADER")
         apiDivisionwiseSale()
+        collectionViewMonthly.isHidden = false
     }
     
     @IBAction func clickedBranch(_ sender: Any) {
@@ -116,6 +121,7 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         btnBranch.setTitleColor(UIColor.white, for: .normal)
         self.noDataView.showView(view: self.noDataView, from: "LOADER")
         apiBranchwiseSale()
+        collectionViewMonthly.isHidden = true
     }
     
     @IBAction func clicked(_ sender: Any) {
@@ -151,6 +157,8 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         strToDate = dateFormatter.string(from: currDate)
         switch format {
         case "today":
+            type = "D"
+            //collectionViewMonthly.isHidden = false
             fromDate = dateFormatter.date(from: strFromDate)
             toDate = dateFormatter.date(from: strToDate)
             btnFromDate.setTitle(strToDate, for: .normal)
@@ -160,7 +168,8 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
             strToDate = Utility.formattedDateFromString(dateString: strToDate, withFormat: "MM/dd/yyyy")!
             break
         case "monthly":
-            collectionViewMonthly.isHidden = false
+            type = "M"
+            (dailyfromdate, dailytodate) = yearDate()
             var todayDate = Calendar.current.component(.day, from: currDate)
             todayDate = Int(todayDate) - 1
             strFromDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: -todayDate, to: currDate)!)
@@ -173,16 +182,24 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
             strToDate = Utility.formattedDateFromString(dateString: strToDate, withFormat: "MM/dd/yyyy")!
             break
         case "quarterly":
-            strFromDate = Utility.formattedDateFromString(dateString: "10/01/2019", withFormat: "MM/dd/yyyy")!
+            type = "Q"
+            (dailyfromdate, dailytodate) = yearDate()
+            let (fromdate, _) = quarterlyDate()
+            strFromDate = Utility.formattedDateFromString(dateString: fromdate, withFormat: "MM/dd/yyyy")!
             strToDate = dateFormatter.string(from: currDate)
-            btnFromDate.setTitle("01/10/2019", for: .normal)
+            btnFromDate.setTitle(strFromDate, for: .normal)
             btnToDate.setTitle(strToDate, for: .normal)
             break
         case "yearly":
+            type = "Y"
+            //dailytodate = "03/31/2020"
+            //dailyfromdate = "04/01/2019"
+            (dailyfromdate, dailytodate) = yearDate()
             let dateformatter = DateFormatter()
             dateformatter.dateFormat = "yyyy"
-            let currYear = dateformatter.string(from: currDate) 
-            strFromDate = Utility.formattedDateFromString(dateString: "04/01/" + currYear, withFormat: "MM/dd/yyyy")!
+            //let currYear = dateformatter.string(from: currDate)
+            //let prevYear = Int(currYear)! - 1
+            strFromDate = Utility.formattedDateFromString(dateString: dailyfromdate, withFormat: "MM/dd/yyyy")!
             strToDate = Utility.formattedDateFromString(dateString: strToDate, withFormat: "dd/MM/yyyy")!
             fromDate = dateFormatter.date(from: strFromDate)
             toDate = dateFormatter.date(from: strToDate)
@@ -192,7 +209,65 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         default:
             break
         }
+        
     }
+    
+    func quarterlyDate() -> (String, String){
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let yearFormatter = DateFormatter()
+        yearFormatter.dateFormat = "yyyy"
+        let dayFormatter = DateFormatter()
+        dayFormatter.dateFormat = "MM"
+        let currYear = dateFormatter.string(from: now)
+        let currMonth = dayFormatter.string(from: now)
+        //let nextYear = Int(currYear)! + 1
+        //let prevYear = Int(currYear)! - 1
+        var fromdate = ""
+        var todate = ""
+        if currMonth == "01" || currMonth == "02" || currMonth == "03"{
+            fromdate = "01/01/" + String(currYear)
+            todate = "03/31/" + String(currYear)
+        }else if currMonth == "04" || currMonth == "05" || currMonth == "06"{
+            fromdate = "04/01/" + String(currYear)
+            todate = "06/30/" + String(currYear)
+        }else if currMonth == "07" || currMonth == "08" || currMonth == "09"{
+            fromdate = "07/01/" + String(currYear)
+            todate = "09/30/" + String(currYear)
+        }else if currMonth == "10" || currMonth == "11" || currMonth == "12"{
+            fromdate = "10/01/" + String(currYear)
+            todate = "12/31/" + String(currYear)
+        }
+        return (fromdate, todate)
+    }
+    
+    func yearDate() -> (String, String){
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let dayFormatter = DateFormatter()
+        dayFormatter.dateFormat = "MM"
+        let currYear = dateFormatter.string(from: now)
+        let currMonth = dayFormatter.string(from: now)
+        let nextYear = Int(currYear)! + 1
+        let prevYear = Int(currYear)! - 1
+        var fromdate = ""
+        var todate = ""
+        print("-------------->CurrYear : \(currYear) currMonth : \(currMonth) nextYear : \(nextYear)  prevYear : \(prevYear)")
+        if currMonth == "01" || currMonth == "02" || currMonth == "03"{
+            fromdate = "04/01/" + String(prevYear)
+            todate = "03/31/" + String(currYear)
+            print("-------------->Fromdate : \(fromdate) ToDate : \(todate)")
+        }else{
+            fromdate = "04/01/" + currYear
+            todate = "03/31/" + String(nextYear)
+            print("-------------->Fromdate : \(fromdate) ToDate : \(todate)")
+        }
+        
+        return (fromdate, todate)
+    }
+    
     
     func updateDate(value: String, date: Date) {
         if btnFromDate.isSelected {
@@ -460,13 +535,20 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
                 }
                 switch indexPath.row{
                 case 0:
-                    var splitDate = self.divBreakdownTotalObj[indexPath.section-1].date!.split{$0 == " "}.map(String.init)
-                    var indianFormatDate = splitDate[0].split{$0 == "/"}.map(String.init)
-                    cell.contentLabel.text = "\(indianFormatDate[1])/\(indianFormatDate[0])/\(indianFormatDate[2])"
+//                    if maxAmt == divBreakdownTotalObj[indexPath.section-1].amount{
+//                        cell.contentLabel.textColor = UIColor.init(named: "ColorGreen")
+//                        cell.contentLabel.font = UIFont(name: "Roboto-Bold", size: 15)
+//                    }
+                    cell.contentLabel.text = showSegragatedData(value: self.divBreakdownTotalObj[indexPath.section-1].date!)
                 case 1:
                     if let amount = self.divBreakdownTotalObj[indexPath.section-1].amount
                     {
                         cell.contentLabel.text = Utility.formatRupee(amount: Double(amount )!)
+                        if maxAmt == divBreakdownTotalObj[indexPath.section-1].amount && format != "yearly"{
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(amount )!) + "  ⛳️"
+                            cell.contentLabel.textColor = UIColor.init(named: "ColorGreen")
+                            cell.contentLabel.font = UIFont(name: "Roboto-Bold", size: 15)
+                        }
                     }
                 case 2:
                     let percentage = ((Double(self.dashDivObj[indexPath.section - 1].amount!)! / totalAmount)*100)
@@ -484,13 +566,19 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == self.collectionViewMonthly{
-            var date = self.divBreakdownTotalObj[indexPath.section-1].date!.split{$0 == " "}.map(String.init)
-            fromdate = date[0]
-            todate = date[0]
-            self.noDataView.showView(view: self.noDataView, from: "LOADER")
-            apiDivisionwiseSale()
-            scrollVw.setContentOffset(CGPoint.zero, animated: true)
+        if collectionView == self.collectionViewMonthly && format == "today"{
+            if indexPath.section > 0 && indexPath.section != self.divBreakdownTotalObj.count + 1{
+                var date = self.divBreakdownTotalObj[indexPath.section-1].date!.split{$0 == " "}.map(String.init)
+                //var splitDate = self.divBreakdownTotalObj[indexPath.section-1].date!.split{$0 == " "}.map(String.init)
+                var indianFormatDate = date[0].split{$0 == "/"}.map(String.init)
+                fromdate = date[0]
+                todate = date[0]
+                btnFromDate.setTitle("\(indianFormatDate[1])/\(indianFormatDate[0])/\(indianFormatDate[2])", for: .normal)
+                btnToDate.setTitle("\(indianFormatDate[1])/\(indianFormatDate[0])/\(indianFormatDate[2])", for: .normal)
+                self.noDataView.showView(view: self.noDataView, from: "LOADER")
+                apiDivisionwiseSale()
+                scrollVw.setContentOffset(CGPoint.zero, animated: true)
+            }
         }
     }
     
@@ -501,12 +589,13 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         print("Dashboard Sale Detail Params Div Wise \(json)")
         manager.makeAPICall(url: divApiUrl, params: json, method: .POST, success: { (response) in
             let data = response as? Data
-            print("Dashboard Sale Detail Result Div Wise \(data)")
+            
             do {
                 //self.dashBranchObj.removeAll()
                 self.dashDivSale = try JSONDecoder().decode([DashDivSale].self, from: data!)
+                print("Dashboard Sale Detail Result Div Wise \(self.dashDivSale[0].data )")
                 self.dashDivObj  = self.dashDivSale[0].data 
-                //                self.filteredItems = self.stockData[0].data
+                //self.filteredItems = self.stockData[0].data
                 //Total of All Items...
                 self.totalAmount = self.dashDivObj.reduce(0, { $0 + Double($1.amount!)! })
                 self.collectionView.reloadData()
@@ -541,6 +630,41 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    //display daily, monthly, qtrly and yearly data func...
+    func showSegragatedData(value: String) -> String{
+        switch format {
+        case "today":
+            var splitDate = value.split{$0 == " "}.map(String.init)
+            var indianFormatDate = splitDate[0].split{$0 == "/"}.map(String.init)
+            return "\(indianFormatDate[1])/\(indianFormatDate[0])/\(indianFormatDate[2])"
+            
+        case "monthly":
+            return value
+            
+        case "quarterly":
+            switch value{
+            case "Q1":
+                return "APR - JUN 2019"
+            case "Q2":
+                return "JUL - SEP 2019"
+            case "Q3":
+                return "OCT - DEC 2019"
+            case "Q4":
+                return "JAN - MAR 2020"
+            default:
+                return ""
+            }
+            
+        case "yearly":
+            return value
+            
+        default:
+            return ""
+            
+        }
+        
+    }
+    
     //API Functions...
     func apiBranchwiseSale(){
         let json: [String: Any] = ["ClientSecret":"jgsfhfdk", "fromdate":fromdate, "todate":todate,"CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String]
@@ -548,10 +672,11 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         print("Dashboard Sale Detail Result Branch Wise \(json)")
         manager.makeAPICall(url: branchApiUrl, params: json, method: .POST, success: { (response) in
             let data = response as? Data
-            print("Dashboard Sale Detail Result Branch Wise \(data)")
+            
             do {
                 //self.dashDivObj.removeAll()
                 self.dashBranchSale = try JSONDecoder().decode([DashBranch].self, from: data!)
+                print("Dashboard Sale Detail Result Branch Wise \(self.dashBranchSale[0].data)")
                 self.dashBranchObj  = self.dashBranchSale[0].data
                 //self.filteredItems = self.stockData[0].data
                 //Total of All Items...
@@ -574,19 +699,25 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func apiDivTotal(){
-        let json: [String: Any] = ["ClientSecret":"jgsfhfdk", "fromdate":fromdate, "todate":todate,"CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String]
+        let json: [String: Any] = ["ClientSecret":"jgsfhfdk", "fromdate":dailyfromdate, "todate":dailytodate,"CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String, "type":type]
         let manager =  DataManager.shared
         print("Dashboard Sale Detail Total DivWise \(json)")
         manager.makeAPICall(url: divBreakdownTotalApi, params: json, method: .POST, success: { (response) in
             let data = response as? Data
-            print("Dashboard Sale Detail Total DivWise \(data)")
+            
             do {
                 //self.dashDivObj.removeAll()
                 self.divBreakdownTotal = try JSONDecoder().decode([DivBreakdownTotal].self, from: data!)
+                print("Dashboard Sale Detail Total DivWise \(self.divBreakdownTotal[0].data)")
                 self.divBreakdownTotalObj  = self.divBreakdownTotal[0].data
+                let keyMaxElement = self.divBreakdownTotalObj.max(by: { (a, b) -> Bool in
+                    return Double(a.amount!)! < Double(b.amount!)!
+                })
+                self.maxAmt = (keyMaxElement?.amount)!
+                //let numMin = self.divBreakdownTotalObj.reduce(Int.min, { max(Double($0.amount!)!, Double($1.amount!)!) })
                 //self.filteredItems = self.stockData[0].data
                 //Total of All Items...
-                //self.totalAmount = self.dashBranchObj.reduce(0, { $0 + Double($1.amount!)! })
+                self.totalAmount = self.divBreakdownTotalObj.reduce(0, { $0 + Double($1.amount!)! })
                 self.customDivLayout.itemAttributes = []
                 self.customDivLayout.numberOfColumns = self.noOfColumns
                 self.collectionViewMonthly.reloadData()

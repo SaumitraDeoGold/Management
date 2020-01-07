@@ -1,14 +1,14 @@
 //
-//  CategoryWiseCompareController.swift
+//  CategoryCompChildViewController.swift
 //  ManagementApp
 //
-//  Created by Goldmedal on 12/11/19.
+//  Created by Goldmedal on 28/11/19.
 //  Copyright © 2019 Goldmedal. All rights reserved.
 //
 
 import UIKit
 
-class CategoryWiseCompareController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class CategoryCompChildViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, PopupDateDelegate {
     
     //Outlets...
     @IBOutlet weak var lblPartyName: UIButton!
@@ -17,16 +17,16 @@ class CategoryWiseCompareController: BaseViewController, UICollectionViewDataSou
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var btnFinancialYear: RoundButton!
     
-    //Declarations...
-    var categorywiseComp = [Categorywise]()
-    var categorywiseCompObj = [CategorywiseObj]()
-    var filteredItems = [CategorywiseObj]()
+    var categorywiseComp = [CategoryCompChild]()
+    var categorywiseCompObj = [CategoryCompChildObj]()
+    var filteredItems = [CategoryCompChildObj]()
+    var dataToRecieve = [CategorywiseObj]()
     var cellContentIdentifier = "\(CollectionViewCell.self)"
-    var categoryApiUrl = ""
+    var categoryChildApiUrl = ""
     var dateTo = ""
-    var dateFrom = "04/01/2019"
+    var dateFrom = ""
     var prevDateTo = ""
-    var prevDateFrom = "04/01/2018"
+    var prevDateFrom = ""
     var yearStart = "2019"
     var yearEnd = "2020"
     let qrtrlyArrayStart = Utility.quarterlyStartDate()
@@ -37,53 +37,30 @@ class CategoryWiseCompareController: BaseViewController, UICollectionViewDataSou
     let monthFormatter = DateFormatter()
     let yearFormatter = DateFormatter()
     let currDate = Date()
-    var divCode = "1"
+    var catCode = ""
+    var catName = ""
+    var divCode = ""
     
     var total = ["currYS":0.0,"prevYs":0.0]
     var allMonths = ["JANUARY", "FEBRUARY", "MARCH", "APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
     var quatMonths = ["Q1 (APR - JUN)", "Q2 (JUL - SEP)", "Q3 (OCT - DEC)", "Q4 (JAN - MAR)"];
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        addSlideMenuButton()
+        
         self.noDataView.hideView(view: self.noDataView)
+        lblPartyName.setTitle("  \(catName)", for: .normal)
         dateFormatter.dateFormat = "MM/dd/yyyy"
         monthFormatter.dateFormat = "MM"
         yearFormatter.dateFormat = "yyyy"
         setDate()
-        categoryApiUrl = "https://test2.goldmedalindia.in/api/GetCategoryWiseSalesCompare"
+        categoryChildApiUrl = "https://test2.goldmedalindia.in/api/GetCategoryWiseSalesCompareChild"
         ViewControllerUtils.sharedInstance.showLoader()
         apiCompare()
-        self.lblPartyName.setTitle("  WIRING DEVICES", for: .normal)
-    }
-    
-    //Button...
-    @IBAction func searchParty(_ sender: Any) {
-        let sb = UIStoryboard(name: "PartyStoryboard", bundle: nil)
-        let popup = sb.instantiateInitialViewController()! as! PartySearchController
-        popup.modalPresentationStyle = .overFullScreen
-        popup.delegate = self
-        popup.fromPage = "Division"
-        self.present(popup, animated: true)
-    }
-    
-    @IBAction func yearlyClicked(_ sender: Any) {
-        //Copied yearlyClicked Code for UI temporary
-        //lblFinYear.text = "Financial Year"
-        let sb = UIStoryboard(name: "CustomYearPicker", bundle: nil)
-        let popup = sb.instantiateInitialViewController()! as! CustomYearPickerController
-        popup.modalPresentationStyle = .overFullScreen
-        popup.delegate = self
-        popup.showPicker = 3
-        self.present(popup, animated: true)
-//        callFrom = 0
-//        opType = 3
-//        opValue = 0
     }
     
     //SetDate...
-    func setDate(){
-        //btnFinancialYear.setTitle("2018-2019", for: .normal)
+    func setDate() {
         let todayDate = Calendar.current.component(.day, from: currDate)
         let currMonth = monthFormatter.string(from: currDate)
         let currYear = yearFormatter.string(from: currDate)
@@ -103,11 +80,40 @@ class CategoryWiseCompareController: BaseViewController, UICollectionViewDataSou
         }
     }
     
+    //Button..
+    @IBAction func searchParty(_ sender: Any) {
+        let sb = UIStoryboard(name: "PartyStoryboard", bundle: nil)
+        let popup = sb.instantiateInitialViewController()! as! PartySearchController
+        popup.modalPresentationStyle = .overFullScreen
+        popup.delegate = self
+        popup.fromPage = "Catchild"
+        popup.divCode = divCode
+        popup.dateTo = dateTo
+        popup.dateFrom = dateFrom
+        popup.prevDateTo = prevDateTo
+        popup.prevDateFrom = prevDateFrom
+        popup.categorywiseCompObj = dataToRecieve
+        self.present(popup, animated: true)
+    }
+    
+    @IBAction func yearlyClicked(_ sender: Any) {
+        //Copied yearlyClicked Code for UI temporary
+        //lblFinYear.text = "Financial Year"
+        let sb = UIStoryboard(name: "CustomYearPicker", bundle: nil)
+        let popup = sb.instantiateInitialViewController()! as! CustomYearPickerController
+        popup.modalPresentationStyle = .overFullScreen
+        popup.delegate = self
+        popup.showPicker = 3
+        self.present(popup, animated: true)
+        //        callFrom = 0
+        //        opType = 3
+        //        opValue = 0
+    }
     
     //Popup Func...
     func showParty(value: String,cin: String) {
         lblPartyName.setTitle("  \(value)", for: .normal)
-        divCode = cin
+        catCode = cin
         ViewControllerUtils.sharedInstance.showLoader()
         apiCompare()
     }
@@ -136,39 +142,6 @@ class CategoryWiseCompareController: BaseViewController, UICollectionViewDataSou
             prevDateTo = "03/31/\(yearStart)"
         }
         apiCompare()
-    }
-    
-    //APIFUNC...
-    func apiCompare(){
-        let json: [String: Any] = ["CurFromDate":dateFrom,"CurToDate":dateTo,"ClientSecret":"ClientSecret","CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"LastFromDate":prevDateFrom,"LastToDate":prevDateTo,"divisionid":self.divCode]
-        let manager =  DataManager.shared
-        print("Params Sent : \(json)")
-        manager.makeAPICall(url: categoryApiUrl, params: json, method: .POST, success: { (response) in
-            let data = response as? Data
-            
-            do {
-                //self.dashDivObj.removeAll()
-                self.categorywiseComp = try JSONDecoder().decode([Categorywise].self, from: data!)
-                self.categorywiseCompObj  = self.categorywiseComp[0].data
-                self.filteredItems = self.categorywiseComp[0].data
-                //Total of All Items...
-                self.total["currYS"] = self.filteredItems.reduce(0, { $0 + Double($1.currentyearsaleamt!)! })
-                self.total["prevYs"] = self.filteredItems.reduce(0, { $0 + Double($1.lastyearssaleamt!)! })
-                //self.totalAmount = self.dashBranchObj.reduce(0, { $0 + Double($1.amount!)! })
-                self.collectionView.reloadData()
-                self.collectionView.collectionViewLayout.invalidateLayout()
-                self.noDataView.hideView(view: self.noDataView)
-                ViewControllerUtils.sharedInstance.removeLoader()
-            } catch let errorData {
-                print(errorData.localizedDescription)
-                self.noDataView.showView(view: self.noDataView, from: "NDA")
-                ViewControllerUtils.sharedInstance.removeLoader()
-            }
-        }) { (Error) in
-            print(Error?.localizedDescription as Any)
-            self.noDataView.showView(view: self.noDataView, from: "NDA")
-            ViewControllerUtils.sharedInstance.removeLoader()
-        }
     }
     
     //Calculate percentage func...
@@ -200,32 +173,7 @@ class CategoryWiseCompareController: BaseViewController, UICollectionViewDataSou
         return 3
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-//        let newViewController = storyboard!.instantiateViewController(withIdentifier: "CategoryWiseChild") as! CategoryCompChildViewController
-//        newViewController.catCode = String(filteredItems[indexPath.section-1].slno!)
-        //self.present(newViewController, animated: true, completion: nil)
-    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //If item other than BranchName clicked then open next page...
-        if let destination = segue.destination as? CategoryCompChildViewController,
-            let index = collectionView.indexPathsForSelectedItems?.first{
-            if index.section > 0{
-                destination.dataToRecieve = filteredItems
-                destination.catCode = String(filteredItems[index.section-1].slno!)
-                destination.dateTo = dateTo
-                destination.dateFrom = dateFrom
-                destination.prevDateTo = prevDateTo
-                destination.prevDateFrom = prevDateFrom
-                destination.catName = filteredItems[index.section-1].categorynm!
-                destination.divCode = divCode
-            }
-            else{
-                return
-            }
-        }
-    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -243,7 +191,7 @@ class CategoryWiseCompareController: BaseViewController, UICollectionViewDataSou
                 }
                 switch indexPath.row{
                 case 0:
-                    cell.contentLabel.text = "Category"
+                    cell.contentLabel.text = "Branch Name"
                 case 1:
                     cell.contentLabel.text = "Current Year Sale"
                 case 2:
@@ -283,7 +231,7 @@ class CategoryWiseCompareController: BaseViewController, UICollectionViewDataSou
                 }
                 switch indexPath.row{
                 case 0:
-                    cell.contentLabel.text = filteredItems[indexPath.section - 1].categorynm
+                    cell.contentLabel.text = filteredItems[indexPath.section - 1].branchnm
                 case 1:
                     let currentYear = Double(filteredItems[indexPath.section - 1].currentyearsaleamt!)!
                     let prevYear = Double(filteredItems[indexPath.section - 1].lastyearssaleamt!)!
@@ -304,4 +252,38 @@ class CategoryWiseCompareController: BaseViewController, UICollectionViewDataSou
         return cell
     }
     
+    //APIFUNC...
+    func apiCompare(){
+        let json: [String: Any] = ["CurFromDate":dateFrom,"CurToDate":dateTo,"ClientSecret":"ClientSecret","CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"LastFromDate":prevDateFrom,"LastToDate":prevDateTo,"categoryid":self.catCode]
+        let manager =  DataManager.shared
+        print("Params Sent : \(json)")
+        manager.makeAPICall(url: categoryChildApiUrl, params: json, method: .POST, success: { (response) in
+            let data = response as? Data
+            
+            do {
+                //self.dashDivObj.removeAll()
+                self.categorywiseComp = try JSONDecoder().decode([CategoryCompChild].self, from: data!)
+                self.categorywiseCompObj  = self.categorywiseComp[0].data
+                self.filteredItems = self.categorywiseComp[0].data
+                //Total of All Items...
+                self.total["currYS"] = self.filteredItems.reduce(0, { $0 + Double($1.currentyearsaleamt!)! })
+                self.total["prevYs"] = self.filteredItems.reduce(0, { $0 + Double($1.lastyearssaleamt!)! })
+                //self.totalAmount = self.dashBranchObj.reduce(0, { $0 + Double($1.amount!)! })
+                self.collectionView.reloadData()
+                self.collectionView.collectionViewLayout.invalidateLayout()
+                self.noDataView.hideView(view: self.noDataView)
+                ViewControllerUtils.sharedInstance.removeLoader()
+            } catch let errorData {
+                print(errorData.localizedDescription)
+                self.noDataView.showView(view: self.noDataView, from: "NDA")
+                ViewControllerUtils.sharedInstance.removeLoader()
+            }
+        }) { (Error) in
+            print(Error?.localizedDescription as Any)
+            self.noDataView.showView(view: self.noDataView, from: "NDA")
+            ViewControllerUtils.sharedInstance.removeLoader()
+        }
+    }
+ 
+
 }

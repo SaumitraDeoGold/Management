@@ -12,7 +12,7 @@ import UIKit
 
 class ExpensePartyLayout: UICollectionViewLayout {
     
-    var numberOfColumns = 4
+    var numberOfColumns = 3
     var shouldPinFirstColumn = true
     var shouldPinFirstRow = true
     fileprivate var cache = [UICollectionViewLayoutAttributes]()
@@ -172,9 +172,9 @@ extension ExpensePartyLayout {
         var width = 0
         switch columnIndex {
         case 0:
-            width = Int((screenWidth/3)-1)
+            width = Int((screenWidth/2)-1)
         case 1:
-            width = Int((screenWidth/3)-1)
+            width = 150
         case 2:
             width = Int((screenWidth/3)-1)
         case 3:

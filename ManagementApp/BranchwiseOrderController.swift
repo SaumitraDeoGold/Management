@@ -8,18 +8,21 @@
 
 import UIKit
 
-class BranchwiseOrderController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
+class BranchwiseOrderController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, PopupDateDelegate  {
     
     //Outlets...
     @IBOutlet weak var CollectionView: UICollectionView!
     @IBOutlet weak var total: UILabel!
     @IBOutlet weak var totalQuantity: UILabel!
+    @IBOutlet weak var backButton: UIImageView!
+    @IBOutlet weak var sort: UIImageView!
     
     //Declarations...
     var cellContentIdentifier = "\(CollectionViewCell.self)"
     var branchwiseApiUrl = ""
     var branchwiseOrder = [BranchwiseOrders]()
     var branchwiseOrdersObj = [BranchwiseOrdersObj]()
+    var filterOrdersObj = [BranchwiseOrdersObj]()
     var dataToRecieve = [PendingOrderObj]()
     var type = ""
     
@@ -33,11 +36,63 @@ class BranchwiseOrderController: UIViewController, UICollectionViewDataSource, U
         }else{
             self.title = "Sales Pending"
         }
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backClicked(tapGestureRecognizer:)))
+        backButton.isUserInteractionEnabled = true
+        backButton.addGestureRecognizer(tapGestureRecognizer)
+        //Sort
+        let tapSortRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapSortRecognizer:)))
+        sort.isUserInteractionEnabled = true
+        sort.addGestureRecognizer(tapSortRecognizer)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        //navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    @objc func backClicked(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func imageTapped(tapSortRecognizer: UITapGestureRecognizer)
+    {
+        let sb = UIStoryboard(name: "Sorting", bundle: nil)
+        let popup = sb.instantiateInitialViewController()! as! SortViewController
+        popup.modalPresentationStyle = .overFullScreen
+        popup.delegate = self
+        popup.showPicker = 1
+        popup.pickerDataSource = ["A-Z","Z-A","low to high Amount","high to low Amount"]
+        self.present(popup, animated: true)
+    }
+    
+    func sortBy(value: String, position: Int) {
+            switch position {
+            case 0:
+                self.filterOrdersObj = self.branchwiseOrdersObj.sorted{($0.itemnm)!.localizedCaseInsensitiveCompare($1.itemnm!) == .orderedAscending}
+            case 1:
+                self.filterOrdersObj = self.branchwiseOrdersObj.sorted{($0.itemnm)!.localizedCaseInsensitiveCompare($1.itemnm!) == .orderedDescending}
+            case 2:
+                self.filterOrdersObj = self.branchwiseOrdersObj.sorted(by: {Double($0.amount!)! < Double($1.amount!)!})
+            case 3:
+                self.filterOrdersObj = self.branchwiseOrdersObj.sorted(by: {Double($0.amount!)! > Double($1.amount!)!})
+            default:
+                break
+            }
+        
+        self.CollectionView.reloadData()
+        self.CollectionView.collectionViewLayout.invalidateLayout()
     }
     
     //Collection View......
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.branchwiseOrdersObj.count + 1
+        return self.filterOrdersObj.count + 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
@@ -76,14 +131,14 @@ class BranchwiseOrderController: UIViewController, UICollectionViewDataSource, U
             }
             switch indexPath.row{
             case 0:
-                cell.contentLabel.text = branchwiseOrdersObj[indexPath.section - 1].itemnm
+                cell.contentLabel.text = filterOrdersObj[indexPath.section - 1].itemnm
             case 1:
-                if let amount = branchwiseOrdersObj[indexPath.section - 1].amount
+                if let amount = filterOrdersObj[indexPath.section - 1].amount
                 {
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(amount )!)
                 }
             case 2:
-                cell.contentLabel.text = branchwiseOrdersObj[indexPath.section - 1].qty
+                cell.contentLabel.text = filterOrdersObj[indexPath.section - 1].qty
             default:
                 break
             }
@@ -105,6 +160,7 @@ class BranchwiseOrderController: UIViewController, UICollectionViewDataSource, U
             do {
                 self.branchwiseOrder = try JSONDecoder().decode([BranchwiseOrders].self, from: data!)
                 self.branchwiseOrdersObj  = self.branchwiseOrder[0].data
+                self.filterOrdersObj  = self.branchwiseOrder[0].data
                 let temp = self.branchwiseOrdersObj.reduce(0, { $0 + Double($1.amount!)! })
                 self.total.text = Utility.formatRupee(amount: Double(temp ))
                 let tempQuantity = self.branchwiseOrdersObj.reduce(0, { $0 + Double($1.qty!)! })

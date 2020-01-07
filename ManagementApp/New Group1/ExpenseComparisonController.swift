@@ -32,9 +32,10 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
     let qrtrlyArrayEnd = Utility.quarterlyEndDate()
     let monthEnds = Utility.getMonthEndDate()
     let months = Utility.getMonths()
-    var partywiseApiUrl = ""
-    var partwiseComp = [LedgerwiseExpense]()
-    var partwiseCompObj = [LedgerwiseExpenseObj]()
+    var ledgerApiUrl = ""
+    var partwiseComp = [Ledgerwise]()
+    var partwiseCompObj = [LedgerwiseObj]()
+    var filteredLedgers = [LedgerwiseObj]()
     var total = 0.0
     var showBranchwise = true
     var noOfColumns = Int()
@@ -44,7 +45,7 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
         super.viewDidLoad()
         self.noOfColumns = 4
         expenseComparisonUrl = "https://test2.goldmedalindia.in/api/getManagementBranchwiseExpense"
-        partywiseApiUrl = "https://test2.goldmedalindia.in/api/getExpenseChildAll"
+        ledgerApiUrl = "https://test2.goldmedalindia.in/api/getManagementLedgerwiseExpense"
         ViewControllerUtils.sharedInstance.showLoader()
         apiExpComparison()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
@@ -60,26 +61,51 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
         popup.modalPresentationStyle = .overFullScreen
         popup.delegate = self
         popup.showPicker = 1
-        popup.pickerDataSource = ["Ledgerwise Comparison","Branchwise Comparison","A-Z","Z-A"]
+        popup.pickerDataSource = (showBranchwise == true) ? ["Branchwise Comparison","Ledgerwise Comparison","low to high Expense","high to low Expense"] : ["Ledgerwise Comparison","Branchwise Comparison","low to high Expense","high to low Expense"]
         self.present(popup, animated: true)
     }
     
     func sortBy(value: String, position: Int) {
-        switch position {
-        case 2:
-            self.filteredItems = self.expCompareObj.sorted{($0.branchnm)!.localizedCaseInsensitiveCompare($1.branchnm!) == .orderedAscending}
-            self.CollectionView.reloadData()
-            self.CollectionView.collectionViewLayout.invalidateLayout()
-        case 3:
-            self.filteredItems = self.expCompareObj.sorted{($0.branchnm)!.localizedCaseInsensitiveCompare($1.branchnm!) == .orderedDescending}
-            self.CollectionView.reloadData()
-            self.CollectionView.collectionViewLayout.invalidateLayout()
-        case 0:
-            apiGetPranchwiseComp()
-        case 1:
-            apiExpComparison()
-        default:
-            break
+        if showBranchwise
+        {
+            switch position {
+            case 1:
+                ViewControllerUtils.sharedInstance.showLoader()
+                apiGetBranchwiseComp()
+            case 0:
+                ViewControllerUtils.sharedInstance.showLoader()
+                apiExpComparison()
+            case 2:
+                self.filteredItems = self.expCompareObj.sorted(by: {Double($0.otherespenses!)! < Double($1.otherespenses!)!})
+                CollectionView.reloadData()
+                self.CollectionView.collectionViewLayout.invalidateLayout()
+            case 3:
+                self.filteredItems = self.expCompareObj.sorted(by: {Double($0.otherespenses!)! > Double($1.otherespenses!)!})
+                CollectionView.reloadData()
+                self.CollectionView.collectionViewLayout.invalidateLayout()
+            default:
+                break
+            }
+            
+        }else{
+            switch position {
+            case 0:
+                ViewControllerUtils.sharedInstance.showLoader()
+                apiGetBranchwiseComp()
+            case 1:
+                ViewControllerUtils.sharedInstance.showLoader()
+                apiExpComparison()
+            case 2:
+                self.filteredLedgers = self.partwiseCompObj.sorted(by: {Double($0.amount!)! < Double($1.amount!)!})
+                CollectionView.reloadData()
+                self.CollectionView.collectionViewLayout.invalidateLayout()
+            case 3:
+                self.filteredLedgers = self.partwiseCompObj.sorted(by: {Double($0.amount!)! > Double($1.amount!)!})
+                CollectionView.reloadData()
+                self.CollectionView.collectionViewLayout.invalidateLayout()
+            default:
+                break
+            }
         }
     }
     
@@ -139,6 +165,7 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
                 } else {
                     cell.backgroundColor = UIColor.gray
                 }
+                
                 switch indexPath.row{
                 case 0:
                     cell.contentLabel.text = "Branch Name"
@@ -219,15 +246,17 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
                 }
                 switch indexPath.row{
                 case 0:
-                    cell.contentLabel.text = "Party Name"
+                    cell.contentLabel.text = "Ledger Name"
                 case 1:
-                    cell.contentLabel.text = "Amount"
+                    cell.contentLabel.text = "Expense Amt"
+                case 2:
+                    cell.contentLabel.text = "Sale"
                     
                 default:
                     break
                 }
                 //cell.backgroundColor = UIColor.lightGray
-            }else if indexPath.section == partwiseCompObj.count+1{
+            }else if indexPath.section == filteredLedgers.count+1{
                 cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
                 if #available(iOS 11.0, *) {
                     cell.backgroundColor = UIColor.init(named: "Primary")
@@ -240,11 +269,14 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
                 case 1:
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(total))
                     cell.contentLabel.textColor = UIColor.black
+                case 2:
+                    cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSale))
+                    cell.contentLabel.textColor = UIColor.black
                 default:
                     break
                 }
             } else {
-                cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+                cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14);
                 if #available(iOS 11.0, *) {
                     cell.backgroundColor = UIColor.init(named: "primaryLight")
                 } else {
@@ -252,17 +284,19 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
                 }
                 switch indexPath.row{
                 case 0:
-                    cell.contentLabel.text = partwiseCompObj[indexPath.section - 1].name
+                    cell.contentLabel.text = filteredLedgers[indexPath.section - 1].headnm
                 case 1:
-                    let currentYear = Double(partwiseCompObj[indexPath.section - 1].amount!)!
-                    let prevYear = Double(total)
+                    let currentYear = Double(filteredLedgers[indexPath.section - 1].amount!)!
+                    let prevYear = Double(filteredLedgers[indexPath.section - 1].sale!)!
                     //let temp = ((currentYear - prevYear)/prevYear)*100
                     let temp = (currentYear*100)/prevYear
                     cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
-                    //                if let amount = partwiseCompObj[indexPath.section - 1].amount
-                    //                {
-                    //                    cell.contentLabel.text = Utility.formatRupee(amount: Double(amount )!)
-                //                }
+                case 2:
+                    if let otherespenses = filteredLedgers[indexPath.section - 1].sale
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(otherespenses )!)
+                    }
+                    
                 default:
                     break
                 }
@@ -272,14 +306,38 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? PartywiseComparisonController,
-            let index = CollectionView.indexPathsForSelectedItems?.first{
-            destination.dataToRecieve = [filteredItems[index.section-1]]
-            destination.fromDate = dateFrom
-            destination.toDate = dateTo
-            //destination.type = index.row == 2 ? "2" : "1"
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section > 0 {
+            if showBranchwise{
+                if indexPath.section != filteredItems.count + 1{
+                    performSegue(withIdentifier: "byBranch", sender: self)
+                }
+            }else{
+                if indexPath.section != filteredLedgers.count + 1{
+                    performSegue(withIdentifier: "byLedger", sender: self)
+                }
+                
+            }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "byBranch") {
+            if let destination = segue.destination as? PartywiseComparisonController,
+                let index = CollectionView.indexPathsForSelectedItems?.first{
+                destination.dataToRecieve = [filteredItems[index.section-1]]
+                destination.fromDate = dateFrom
+                destination.toDate = dateTo 
+            }
+        }else{
+            if let destination = segue.destination as? LedgerwiseBranchController,
+                let index = CollectionView.indexPathsForSelectedItems?.first{
+                destination.dataToRecieve = [filteredLedgers[index.section-1]]
+                destination.dateFrom = dateFrom
+                destination.dateTo = dateTo
+            }
+        }
+        
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -298,17 +356,18 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
     }
     
     //API CALLS..............
-    func apiExpComparison(){
+    func apiExpComparison(){ 
         
-        let json: [String: Any] = ["ClientSecret":"jgsfhfdk", "fromdate":dateFrom, "todate":dateTo,"CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,]
+        let json: [String: Any] = ["ClientSecret":"jgsfhfdk", "fromdate":dateFrom, "todate":dateTo,"CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String]
         
         let manager =  DataManager.shared
-        print("Accounts exp comp params \(json)")
+        print("Accounts Ledgerwise params \(json)")
         manager.makeAPICall(url: expenseComparisonUrl, params: json, method: .POST, success: { (response) in
             let data = response as? Data
-            print("Accounts exp comp result \(data)")
+            
             do {
                 self.expCompare = try JSONDecoder().decode([ExpenseComparison].self, from: data!)
+                print("Accounts Ledgerwise result \(self.expCompare[0].data)")
                 self.expCompareObj = self.expCompare[0].data
                 self.filteredItems = self.expCompare[0].data
                 self.totalSal = self.expCompareObj.reduce(0, { $0 + Double($1.salary!)! })
@@ -320,6 +379,7 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
                 self.customDivLayout.numberOfColumns = self.noOfColumns
                 self.CollectionView.reloadData()
                 self.CollectionView.collectionViewLayout.invalidateLayout()
+                self.CollectionView.setContentOffset(CGPoint.zero, animated: true)
                 ViewControllerUtils.sharedInstance.removeLoader()
             } catch let errorData {
                 print(errorData.localizedDescription)
@@ -333,24 +393,27 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
     }
     
     //Temp API for Ledgerwise Comparison...
-    func apiGetPranchwiseComp(){
+    func apiGetBranchwiseComp(){
         
         let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret","BranchId":"13","fromdate":dateFrom,"todate":dateTo, "Type":"2" ]
         
         let manager =  DataManager.shared
         print("Expense Header Params : \(json)");
-        manager.makeAPICall(url: partywiseApiUrl, params: json, method: .POST, success: { (response) in
+        manager.makeAPICall(url: ledgerApiUrl, params: json, method: .POST, success: { (response) in
             let data = response as? Data
             do {
-                self.partwiseComp = try JSONDecoder().decode([LedgerwiseExpense].self, from: data!)
+                self.partwiseComp = try JSONDecoder().decode([Ledgerwise].self, from: data!)
                 self.partwiseCompObj  = self.partwiseComp[0].data
+                self.filteredLedgers = self.partwiseComp[0].data
                 self.total = self.partwiseCompObj.reduce(0, { $0 + Double($1.amount!)! })
+                self.totalSale = self.partwiseCompObj.reduce(0, { $0 + Double($1.sale!)! })
                 self.showBranchwise = false
                 self.noOfColumns = 2
                 self.customDivLayout.itemAttributes = []
                 self.customDivLayout.numberOfColumns = self.noOfColumns
                 self.CollectionView.reloadData()
                 self.CollectionView.collectionViewLayout.invalidateLayout()
+                self.CollectionView.setContentOffset(CGPoint.zero, animated: true)
                 //self.noDataView.hideView(view: self.noDataView)
                 ViewControllerUtils.sharedInstance.removeLoader()
             } catch let errorData {

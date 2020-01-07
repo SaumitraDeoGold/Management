@@ -1,20 +1,19 @@
 //
-//  ExpenseHeadChild.swift
+//  SupplierData.swift
 //  ManagementApp
 //
-//  Created by Goldmedal on 31/08/19.
+//  Created by Goldmedal on 06/12/19.
 //  Copyright © 2019 Goldmedal. All rights reserved.
 //
 
 import Foundation
-struct ExpenseHead: Codable {
+struct SupplierData: Codable {
     let result: Bool?
     let message, servertime: String?
-    let data: [ExpenseHeadObj]
+    let data: [SupplierDataObj]
 }
 
 // MARK: - Datum
-struct ExpenseHeadObj: Codable {
+struct SupplierDataObj: Codable {
     let name, amount, link: String?
-    
 }

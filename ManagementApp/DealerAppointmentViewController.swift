@@ -65,8 +65,9 @@ class DealerAppointmentViewController: BaseViewController, UICollectionViewDataS
     var opValue = 0
     var currPosition = 0
     var callFrom = 0
-    var dateTo = "08/30/2019"
-    var dateFrom = "04/01/2019"
+    var dateTo = ""
+    var dateFrom = ""
+    //let (fromdate, todate) = yearDate()
     var yearStart = "2019"
     var yearEnd = "2020"
     let qrtrlyArrayStart = Utility.quarterlyStartDate()
@@ -81,6 +82,7 @@ class DealerAppointmentViewController: BaseViewController, UICollectionViewDataS
         self.noDataView.hideView(view: self.noDataView)
         apiUrlGetNDAReport = "https://api.goldmedalindia.in/api/GetNDAReport"
         ViewControllerUtils.sharedInstance.showLoader()
+        (dateFrom, dateTo) = yearDate()
         self.apiGetNDAReport()
         super.viewDidLoad()
         //highlightedButton(callfrom: 4)
@@ -125,6 +127,32 @@ class DealerAppointmentViewController: BaseViewController, UICollectionViewDataS
         callFrom = 0
         opType = 3
         opValue = 0
+    }
+    
+    func yearDate() -> (String, String){
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let dayFormatter = DateFormatter()
+        dayFormatter.dateFormat = "MM"
+        let currYear = dateFormatter.string(from: now)
+        let currMonth = dayFormatter.string(from: now)
+        let nextYear = Int(currYear)! + 1
+        let prevYear = Int(currYear)! - 1
+        var fromdate = ""
+        var todate = ""
+        print("-------------->CurrYear : \(currYear) currMonth : \(currMonth) nextYear : \(nextYear)  prevYear : \(prevYear)")
+        if currMonth == "01" || currMonth == "02" || currMonth == "03"{
+            fromdate = "04/01/" + String(prevYear)
+            todate = "03/31/" + String(currYear)
+            print("-------------->Fromdate : \(fromdate) ToDate : \(todate)")
+        }else{
+            fromdate = "04/01/" + currYear
+            todate = "03/31/" + String(nextYear)
+            print("-------------->Fromdate : \(fromdate) ToDate : \(todate)")
+        }
+        
+        return (fromdate, todate)
     }
     
     func updatePositionValue(value: String, position: Int, from: String) {

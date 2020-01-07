@@ -1,14 +1,14 @@
 //
-//  PartywiseComparisonController.swift
+//  InvoiceViewController.swift
 //  ManagementApp
 //
-//  Created by Goldmedal on 03/07/19.
+//  Created by Goldmedal on 14/12/19.
 //  Copyright © 2019 Goldmedal. All rights reserved.
 //
 
 import UIKit
 
-class PartywiseComparisonController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, PopupDateDelegate  {
+class InvoiceViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, PopupDateDelegate {
 
     //Outlets...
     @IBOutlet weak var CollectionView: UICollectionView!
@@ -19,25 +19,33 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
     
     //Declarations...
     var cellContentIdentifier = "\(CollectionViewCell.self)"
-    var partywiseApiUrl = ""
-    var partwiseComp = [PartwiseComp]()
-    var partwiseCompObj = [PartwiseCompObj]()
-    var filterPartObj = [PartwiseCompObj]()
-    var dataToRecieve = [ExpenseComparisonObj]()
+    var invoiceApiUrl = ""
+    var invoiceData = [InvoiceData]()
+    var invoiceDataObj = [InvoiceDataObj]()
+    var filteredItems = [InvoiceDataObj]()
+    var dataToRecieve = [SupplierDataObj]()
+    var dataFromBranch = [ExpenseHeadObj]()
     var fromDate = ""
     var toDate = ""
-    var type = ""
+    var ledgerid = ""
+    var branchid = ""
+    var suppliername = ""
     var total = 0.0
-    
+    var from = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        partywiseApiUrl = "https://test2.goldmedalindia.in/api/getManagementHeadwiseExpense"
+        invoiceApiUrl = "https://api.goldmedalindia.in/api/getExpenseChildAllSubChild"
         self.noDataView.hideView(view: self.noDataView)
         ViewControllerUtils.sharedInstance.showLoader()
-        header.text = "Ledgerwise -> \(dataToRecieve[0].branchnm!)"
-        //self.title = "Ledgerwise"
-        apiGetPranchwiseComp()
+        if from == "supplier" {
+            suppliername = dataToRecieve[0].name!
+            header.text = "Invoice -> \(dataToRecieve[0].name!)"
+        }else{
+            suppliername = dataFromBranch[0].name!
+            header.text = "Invoice -> \(dataFromBranch[0].name!)"
+        }
+        apiGetInvoice()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backClicked(tapGestureRecognizer:)))
         backButton.isUserInteractionEnabled = true
         backButton.addGestureRecognizer(tapGestureRecognizer)
@@ -70,20 +78,16 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
         popup.modalPresentationStyle = .overFullScreen
         popup.delegate = self
         popup.showPicker = 1
-        popup.pickerDataSource = ["A-Z","Z-A","low to high Amount","high to low Amount"]
+        popup.pickerDataSource = ["low to high Amount","high to low Amount"]
         self.present(popup, animated: true)
     }
     
     func sortBy(value: String, position: Int) {
         switch position {
         case 0:
-            self.filterPartObj = self.partwiseCompObj.sorted{($0.name)!.localizedCaseInsensitiveCompare($1.name!) == .orderedAscending}
+            self.filteredItems = self.invoiceDataObj.sorted(by: {Double($0.amount!)! < Double($1.amount!)!})
         case 1:
-            self.filterPartObj = self.partwiseCompObj.sorted{($0.name)!.localizedCaseInsensitiveCompare($1.name!) == .orderedDescending}
-        case 2:
-            self.filterPartObj = self.partwiseCompObj.sorted(by: {Double($0.amount!)! < Double($1.amount!)!})
-        case 3:
-            self.filterPartObj = self.partwiseCompObj.sorted(by: {Double($0.amount!)! > Double($1.amount!)!})
+            self.filteredItems = self.invoiceDataObj.sorted(by: {Double($0.amount!)! > Double($1.amount!)!})
         default:
             break
         }
@@ -91,13 +95,14 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
         self.CollectionView.reloadData()
         self.CollectionView.collectionViewLayout.invalidateLayout()
     }
+    
  
     //Collection View......
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.filterPartObj.count + 2
+        return self.filteredItems.count + 2
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -105,6 +110,7 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
                                                       for: indexPath) as! CollectionViewCell
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.white.cgColor
+        
         if indexPath.section == 0 {
             cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
             if #available(iOS 11.0, *) {
@@ -114,15 +120,25 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
             }
             switch indexPath.row{
             case 0:
-                cell.contentLabel.text = "Exp Header"
+                cell.contentLabel.text = "Date"
             case 1:
                 cell.contentLabel.text = "Amount"
+            case 2:
+                cell.contentLabel.text = "Narration"
+            case 3:
+                cell.contentLabel.text = "Payment Mode"
+            case 4:
+                cell.contentLabel.text = "Type"
+            case 5:
+                cell.contentLabel.text = "Invoice No."
+            case 6:
+                cell.contentLabel.text = "Details"
                 
             default:
                 break
             }
             //cell.backgroundColor = UIColor.lightGray
-        }else if indexPath.section == filterPartObj.count + 1{
+        }else if indexPath.section == filteredItems.count+1{
             cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
             if #available(iOS 11.0, *) {
                 cell.backgroundColor = UIColor.init(named: "Primary")
@@ -135,6 +151,16 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
             case 1:
                 cell.contentLabel.text = Utility.formatRupee(amount: Double(total))
                 cell.contentLabel.textColor = UIColor.black
+            case 2:
+                cell.contentLabel.text = "Narration"
+            case 3:
+                cell.contentLabel.text = "Payment Mode"
+            case 4:
+                cell.contentLabel.text = "Type"
+            case 5:
+                cell.contentLabel.text = "Invoice No."
+            case 6:
+                cell.contentLabel.text = "DETAILS"
             default:
                 break
             }
@@ -146,18 +172,32 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
                 cell.backgroundColor = UIColor.lightGray
             }
             switch indexPath.row{
-            case 0:
-                cell.contentLabel.text = (filterPartObj[indexPath.section - 1].name)!.uppercased()
+             case 0:
+                var splitDate = self.filteredItems[indexPath.section-1].date!.split{$0 == " "}.map(String.init)
+                var indianFormatDate = splitDate[0].split{$0 == "/"}.map(String.init)
+                cell.contentLabel.text = "\(indianFormatDate[1])/\(indianFormatDate[0])/\(indianFormatDate[2])"
+                //cell.contentLabel.text = invoiceDataObj[indexPath.section - 1].date
             case 1:
-                let currentYear = Double(filterPartObj[indexPath.section - 1].amount!)!
+                let currentYear = Double(filteredItems[indexPath.section - 1].amount!)!
                 let prevYear = Double(total)
                 //let temp = ((currentYear - prevYear)/prevYear)*100
                 let temp = (currentYear*100)/prevYear
                 cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
-//                if let amount = partwiseCompObj[indexPath.section - 1].amount
-//                {
-//                    cell.contentLabel.text = Utility.formatRupee(amount: Double(amount )!)
-//                }
+            case 2:
+                cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 13)
+                cell.contentLabel.text = (filteredItems[indexPath.section-1].narration)//!.lowercased()
+            case 3:
+                cell.contentLabel.text = filteredItems[indexPath.section-1].paymentmode
+            case 4:
+                cell.contentLabel.text = filteredItems[indexPath.section-1].type
+            case 5:
+                cell.contentLabel.text = filteredItems[indexPath.section-1].vocherno
+            case 6:
+                let attributedString = NSAttributedString(string: NSLocalizedString("View Invoice", comment: ""), attributes:[
+                    NSAttributedString.Key.foregroundColor : UIColor(named: "ColorBlue") as Any,
+                    NSAttributedString.Key.underlineStyle:1.0
+                    ])
+                cell.contentLabel.attributedText = attributedString
             default:
                 break
             }
@@ -168,13 +208,11 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //If item other than BranchName clicked then open next page...
-        if let destination = segue.destination as? ExpenseHeadChildController,
+        if let destination = segue.destination as? viewPDFController,
             let index = CollectionView.indexPathsForSelectedItems?.first{
             if index.section > 0 {
-                destination.dataToRecieve = [filterPartObj[index.section-1]]
-                destination.branchid = dataToRecieve[0].branchid!
-                destination.fromDate = fromDate
-                destination.toDate = toDate
+                var urlArray = filteredItems[index.section-1].link!.split{$0 == ","}.map(String.init)
+                destination.webvwUrl = urlArray[urlArray.count - 1]
             }
             else{
                 return
@@ -186,7 +224,12 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
         //Block Segue if branchname is clicked...
         if let index = CollectionView.indexPathsForSelectedItems?.first{
             if((index.section) > 0){
-                if index.section == self.filterPartObj.count + 1{
+                
+                if filteredItems[index.section-1].link == ""{
+                    var alert = UIAlertView(title: "Alert", message: "No Data Found", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                    return false
+                }else if index.section == self.filteredItems.count + 1{
                     return false
                 }else{
                     return true}
@@ -199,6 +242,32 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
         
     }
     
+    //API CALL...
+    func apiGetInvoice(){
+        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret","ledgerid":ledgerid,"branchid":branchid,"fromdate":fromDate,"todate":toDate,"suppliername":suppliername]
+        let manager =  DataManager.shared
+        print("Params Sent : \(json)")
+        manager.makeAPICall(url: invoiceApiUrl, params: json, method: .POST, success: { (response) in
+            let data = response as? Data
+            
+            do {
+                self.invoiceData = try JSONDecoder().decode([InvoiceData].self, from: data!)
+                self.invoiceDataObj  = self.invoiceData[0].data
+                self.filteredItems  = self.invoiceData[0].data
+                self.total = self.invoiceDataObj.reduce(0, { $0 + Double($1.amount!)! })
+                self.CollectionView.reloadData()
+                self.CollectionView.collectionViewLayout.invalidateLayout()
+                self.noDataView.hideView(view: self.noDataView)
+                ViewControllerUtils.sharedInstance.removeLoader()
+            } catch let errorData {
+                print(errorData.localizedDescription)
+                ViewControllerUtils.sharedInstance.removeLoader()
+            }
+        }) { (Error) in
+            print(Error?.localizedDescription as Any)
+            ViewControllerUtils.sharedInstance.removeLoader()
+        }
+    }
     
     //Calculate percentage func...
     func calculatePercentage(currentYear: Double, prevYear: Double, temp: Double) -> NSAttributedString{
@@ -220,37 +289,5 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
         }
         return attribute
     }
-    
-    //API CALLS...
-    func apiGetPranchwiseComp(){
-        
-        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret","BranchId":dataToRecieve[0].branchid!,"fromdate":fromDate,"todate":toDate ]
-        
-        let manager =  DataManager.shared
-        print("Expense Header Params : \(json)");
-        manager.makeAPICall(url: partywiseApiUrl, params: json, method: .POST, success: { (response) in
-            let data = response as? Data 
-            do {
-                self.partwiseComp = try JSONDecoder().decode([PartwiseComp].self, from: data!)
-                self.partwiseCompObj  = self.partwiseComp[0].data
-                self.filterPartObj  = self.partwiseComp[0].data
-                self.total = self.partwiseCompObj.reduce(0, { $0 + Double($1.amount!)! })//Utility.formatRupee(amount: Double(temp ))
-                self.CollectionView.reloadData()
-                self.CollectionView.collectionViewLayout.invalidateLayout()
-                self.noDataView.hideView(view: self.noDataView)
-                ViewControllerUtils.sharedInstance.removeLoader()
-            } catch let errorData {
-                print(errorData.localizedDescription)
-                ViewControllerUtils.sharedInstance.removeLoader()
-                self.noDataView.showView(view: self.noDataView, from: "NDA")
-            }
-        }) { (Error) in
-            print(Error?.localizedDescription as Any)
-            ViewControllerUtils.sharedInstance.removeLoader()
-            self.noDataView.showView(view: self.noDataView, from: "NDA")
-        }
-        
-    }
-    
-    
+
 }

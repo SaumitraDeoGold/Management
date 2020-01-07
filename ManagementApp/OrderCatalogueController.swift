@@ -340,6 +340,8 @@ class OrderCatalogueController: UIViewController, UISearchBarDelegate,UITableVie
         if OrderCatalogueArrayMain[section][0].subcategoryurl != ""
         {
             imvcatalogueImage.sd_setImage(with: URL(string: OrderCatalogueArrayMain[section][0].subcategoryurl ?? ""), placeholderImage: UIImage(named: "no_image_icon.png"))
+        }else{
+            imvcatalogueImage.image = UIImage(named: "no_image_icon.png")
         }
     }
     

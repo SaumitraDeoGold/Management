@@ -44,6 +44,8 @@ extension OrderViewCell : UICollectionViewDataSource {
         if arrCatItemsMain[indexPath.item].catimage != ""
         {
             cell.imvCategory.sd_setImage(with: URL(string: arrCatItemsMain[indexPath.item].catimage ?? ""), placeholderImage: UIImage(named: "no_image_icon.png"))
+        }else{
+            cell.imvCategory.image = UIImage(named: "no_image_icon.png")
         }
         
         return cell

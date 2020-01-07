@@ -506,9 +506,17 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
         if let destination = segue.destination as? DivisionWiseDetailsCollectionViewController,
             let index = branchwiseCollectionView.indexPathsForSelectedItems?.first{
             if index.section > 0{
+                if showSales{
                 destination.dataToRecieve = [filteredItems[index.section-1]]
                 destination.dateTo = dateTo
                 destination.dateFrom = dateFrom
+                  destination.fromSales = "yes"
+                }else{
+                    destination.dataFromPay = [filteredPayment[index.section-1]]
+                    destination.dateTo = dateTo
+                    destination.dateFrom = dateFrom 
+                    destination.fromSales = "no"
+                }
             }
             else{
                 return
