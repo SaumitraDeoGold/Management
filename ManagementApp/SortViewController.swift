@@ -65,7 +65,6 @@ class SortViewController: UIViewController,UIPickerViewDataSource, UIPickerViewD
     }
     
     
-    
     @IBAction func ok_clicked(_ sender: UIButton) {
         if(strSelectedValue.isEmpty){
             strSelectedValue = pickerDataSource[0]

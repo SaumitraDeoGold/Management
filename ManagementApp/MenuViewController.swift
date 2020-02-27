@@ -54,12 +54,15 @@ class MenuViewController: UIViewController {
     
     var itemIndex = -1
     var sectionIndex = -1
+    var menuSection = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tblMenuOptions.tableFooterView = UIView()
         // Do any additional setup after loading the view.
-        
+        if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
+            menuSection = 10
+        }
         self.imvProfileImage.layer.borderWidth = 2
         self.imvProfileImage.layer.masksToBounds = false
         self.imvProfileImage.layer.borderColor = UIColor.black.cgColor
@@ -106,22 +109,30 @@ class MenuViewController: UIViewController {
         
         tblMenuOptions.sectionHeaderHeight = 50
         
+        
+        
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"DASHBOARD", "icon":"icon_dashboard","data":[""]])
        // self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"ORDER", "icon":"dashboard_order_icon","data":["PLACE ORDER","ORDER SUMMARY"]])
 //        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"BRAND LOYALTY", "icon":"brand_loyalty_club_icon","data":["STAR REWARD PROGRAM","DISCOVER THE WORLD","DOCUMENTS"]])
-        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"REPORTS", "icon":"icon_reports","data":["DIVISION WISE SALES","DEALER APPOINTMENT","OUTSTANDING ABOVE","SALES AND PURCHASES","DEALER SEARCH","DIVISIONWISE COMPARE","CATEGORYWISE COMPARE","BRANCHWISE OUTSTANDING"]])
+        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"REPORTS", "icon":"icon_reports","data":["DIVISION WISE SALES","DEALER APPOINTMENT","OUTSTANDING ABOVE","SALES AND PURCHASES","DEALER SEARCH","DIVISIONWISE COMPARE","CATEGORYWISE COMPARE","BRANCHWISE OUTSTANDING","INSURANCE REPORT"]])
         
         self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"DOCUMENTS", "icon":"icon_documents","data":["PRICE LIST","CATALOGUE","ACTIVE SCHEME","POLICY","TECH SPECIFICATION","DHANBARSE","QWIKPAY"]])
 //        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"ENQUIRY", "icon":"icon_enquiry","data":["ENQUIRY","CALL SERVICE (EXECUTIVE)"]])
 //        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SALES RETURN REQUEST", "icon":"icon_sales_return","data":[""]])
 //        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"COMBO SCHEME", "icon":"icon_combo","data":["COMBO SUMMARY REPORT","SPIN AND WIN","COMBO SCHEME"]])
-        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"VIDEOS", "icon":"icon_video","data":[""]])
+        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"VIDEOS", "icon":"icon_video","data":["VIDEO","DHANBARSE","QWIKPAY"]])
         //self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"FEEDBACK", "icon":"icon_feedback","data":[""]])
        // self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"CONTACT US", "icon":"icon_contact_us","data":[""]])
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"ABOUT US", "icon":"icon_about_us","data":[""]])
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"TERMS OF USE", "icon":"dashboard_order_icon","data":[""]])
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"INCREASE LIMITS", "icon":"dashboard_sales_icon","data":[""]])
-        //self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"EXCEL", "icon":"icon_combo","data":[""]])
+        if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
+            
+        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SEARCH SUPPLIER", "icon":"dash_search","data":[""]])
+        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SEARCH VENDOR", "icon":"dash_search","data":[""]])
+            
+        }
+        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"EMPLOYEE", "icon":"icon_about_us","data":["EMPLOYEE DETAILS","EMPLOYEE DATA","EMPLOYEE SEARCH"]])
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"LOGOUT", "icon":"icon_logout","data":[""]])
         
         
@@ -245,14 +256,14 @@ extension MenuViewController : UITableViewDelegate,UITableViewDataSource{
         
         let imgDropdownArrow = UIImageView(frame: CGRect(x: headerView.frame.size.width - 35, y: 17.5, width: 15, height: 15))
         
-        if (section == 1 || section == 2)
+        if (section == 1 || section == 2 || section == 3 || section == (menuSection-1))
         {
             let imageArrow = UIImage(named: "arrow_down");
             imgDropdownArrow.image = imageArrow;
             headerView.addSubview(imgDropdownArrow)
         }
         
-        if (section == 7)
+        if (section == menuSection)
         {
             let imageArrow = UIImage(named: "icon_lock");
             imgDropdownArrow.image = imageArrow;
@@ -295,7 +306,7 @@ extension MenuViewController : UITableViewDelegate,UITableViewDataSource{
             btn.tag = (sender.view?.tag)!
             sectionIndex = (sender.view?.tag)!
             
-            if (sectionIndex == 8){
+            if (sectionIndex == 100){
                 var alert = UIAlertView(title: "Coming Soon", message: "Coming Soon", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
             }else{

@@ -10,15 +10,39 @@ import UIKit
 
 class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate {
     
+    var supplierSelector = 100
+    var supplierSubSelector = 100
+    var vendorSelector = 100
+    var vendorSubSelector = 100
+    var logoutSelector = 8
+    var logoutSubSelector = -1
+    var empSelector = 7
+    var empSubSelector = 0
+    var empTwoSub = 1
+    var empThreeSub = 2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
+            supplierSelector = 7
+            supplierSubSelector = -1
+            vendorSelector = 8
+            vendorSubSelector = -1
+            empSelector = 9
+            empSubSelector = 0
+            logoutSelector = 10
+            logoutSubSelector = -1
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    
     
     func slideMenuItemSelectedAtIndex(_ sectionIndex: Int,_ itemIndex: Int) {
         let topViewController : UIViewController = self.navigationController!.topViewController!
@@ -36,40 +60,6 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             self.openViewControllerBasedOnIdentifier("Dashboard")
             
             break
-//        case (1,0):
-//            print("Order placed\n", terminator: "")
-//
-//            self.openViewControllerBasedOnIdentifier("Order")
-//
-//            break
-//
-//        case (1,1):
-//            print("Order summary\n", terminator: "")
-//
-//            self.openViewControllerBasedOnIdentifier("OrderSummary")
-//
-//            break
-//
-//        case (2,0):
-//            print("Star rewards program\n", terminator: "")
-//
-//            self.openViewControllerBasedOnIdentifier("StarReward")
-//
-//            break
-//
-//        case (2,1):
-//            print("Discover the world\n", terminator: "")
-//
-//          //  self.openViewControllerBasedOnIdentifier("DiscoverTheWorld")
-//
-//            break
-//
-//        case (2,2):
-//            print("Documents\n", terminator: "")
-//
-//            self.openViewControllerBasedOnIdentifier("Documents")
-//
-//            break
             
         case (1,0):
             print("Division wise sales\n", terminator: "")
@@ -126,12 +116,12 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             
             break
             
-//        case (1,6):
-//            print("Complex View\n", terminator: "")
-//
-//            self.openViewControllerBasedOnIdentifier("ComplexViewController")
-//
-//            break
+        case (1,8):
+            print("Insurance\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("Insurance")
+            
+            break
             
         case (2,0):
             print("Price list\n", terminator: "")
@@ -182,63 +172,24 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             
             break
             
-//        case (5,0):
-//            print("Enquiry\n", terminator: "")
-//
-//            self.openViewControllerBasedOnIdentifier("Enquiry")
-//
-//            break
-//
-//        case (6,-1):
-//            print("call service executive\n", terminator: "")
-//
-//           //self.openViewControllerBasedOnIdentifier("CallServiceExecutive")
-//
-//            break
-            
-            
-//        case (7,0):
-//            print("Combo Summary Report\n", terminator: "")
-//
-//            self.openViewControllerBasedOnIdentifier("ComboSummaryController")
-//
-//            break
-//
-//        case (7,1):
-//            print("Spin wheel\n", terminator: "")
-//
-//             self.openViewControllerBasedOnIdentifier("SpinWheel")
-//           // self.openViewControllerBasedOnIdentifier("ComboScheme")
-//
-//            break
-//
-//        case (7,2):
-//            print("Combo Scheme\n", terminator: "")
-//
-//            self.openViewControllerBasedOnIdentifier("ComboScheme")
-//
-//            break
-            
-        case (3,-1):
+        case (3,0):
             print("Video\n", terminator: "")
             self.openViewControllerBasedOnIdentifier("VideoController")
             
             break
             
-//        case (9,-1):
-//            print("Feedback\n", terminator: "")
-//
-//            self.openViewControllerBasedOnIdentifier("Feedback")
-//
-//            break
-          
             
-//        case (10,-1):
-//            print("Contact us\n", terminator: "")
-//
-//            self.openViewControllerBasedOnIdentifier("ContactUs")
-//
-//            break
+        case (3,1):
+            print("dhanbarse video\n", terminator: "")
+            self.openViewControllerBasedOnIdentifier("DhanbarseVideo")
+            
+            break
+            
+        case (3,2):
+            print("Qwikpay video\n", terminator: "")
+            self.openViewControllerBasedOnIdentifier("QwikpayVideo")
+            
+            break
             
         case (4,-1):
             print("About Us\n", terminator: "")
@@ -254,14 +205,6 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             
             break
             
-//        case (6,0):
-//            print("world cup screen\n", terminator: "")
-//            
-//            self.openViewControllerBasedOnIdentifier("WorldCupMainController")
-//            
-//            
-//            break
-            
         case (6,-1):
             print("Increase Limits\n", terminator: "")
             self.openViewControllerBasedOnIdentifier("IncreasedLimitController") 
@@ -270,8 +213,37 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
 //            print("ExcelViewController\n", terminator: "")
 //            self.openViewControllerBasedOnIdentifier("ExcelViewController")
 //            break
+        case (supplierSelector,supplierSubSelector):
+            print("SearchSupplier\n", terminator: "")
+            self.openViewControllerBasedOnIdentifier("SearchSupplier")
+            break
+        case (vendorSelector,vendorSubSelector):
+            print("SearchVendor\n", terminator: "")
+            self.openViewControllerBasedOnIdentifier("SearchVendor")
+            break
             
-        case (7,-1):
+        case (empSelector,empSubSelector):
+            print("Employee Details\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("EmployeeDetailsController")
+            
+            break
+            
+        case (empSelector,empTwoSub):
+            print("Employee Data\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("EmployeeDataController")
+            
+            break
+            
+        case (empSelector,empThreeSub):
+            print("Employee Data\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("SearchEmployee")
+            
+            break
+            
+        case (logoutSelector,logoutSubSelector):
             print("Logout\n", terminator: "")
             let loginData = UserDefaults.standard
             loginData.removeObject(forKey: "loginData")

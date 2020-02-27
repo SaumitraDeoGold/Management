@@ -26,8 +26,7 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
     var totalSal = 0.0
     var totalExp = 0.0
     var totalSale = 0.0
-    var dateTo = "03/31/2020"
-    var dateFrom = "04/01/2019"
+    var (dateFrom,dateTo) = Utility.yearDate()
     let qrtrlyArrayStart = Utility.quarterlyStartDate()
     let qrtrlyArrayEnd = Utility.quarterlyEndDate()
     let monthEnds = Utility.getMonthEndDate()
@@ -197,7 +196,12 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSal))
                     cell.contentLabel.textColor = UIColor.black
                 case 2:
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(totalExp))
+                    let currentYear = Double(totalExp)
+                    let prevYear = Double(totalSale)
+                    //let temp = ((currentYear - prevYear)/prevYear)*100
+                    let temp = ((Double(totalExp) / (Double(totalSale)))*100)
+                    cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
+                    //cell.contentLabel.text = Utility.formatRupee(amount: Double(totalExp))
                 default:
                     break
                 }

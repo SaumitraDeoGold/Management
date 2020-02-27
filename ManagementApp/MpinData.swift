@@ -15,4 +15,5 @@ struct CheckMpinElement: Codable {
 
 struct CheckMpinData: Codable {
     let isBlock: Bool?
+    let isForcedLogout: Bool?
 }

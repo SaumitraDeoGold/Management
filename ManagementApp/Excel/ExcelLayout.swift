@@ -12,7 +12,7 @@ import UIKit
 
 class ExcelLayout: UICollectionViewLayout {
     
-    var numberOfColumns = 26
+    var numberOfColumns = 7
     var shouldPinFirstColumn = true
     var shouldPinFirstRow = true
     fileprivate var cache = [UICollectionViewLayoutAttributes]()

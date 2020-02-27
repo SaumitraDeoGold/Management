@@ -70,6 +70,7 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         apiGetTodayPayment()
         self.noOfColumns = 4
         apiGetCompareProgress()
+        //apiCall()
         let todayClick = UITapGestureRecognizer(target: self, action: #selector(self.clickedToday))
         vwToday.addGestureRecognizer(todayClick)
         let yearClick = UITapGestureRecognizer(target: self, action: #selector(self.clickedYearly))
@@ -151,7 +152,8 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         vc.dailyfromdate = "\(currMonth)/01/\(currYear)"
         vc.dailytodate = "\(currMonth)/\(monthEnds[Int(currMonth)!-1])\(currYear)"
         vc.format = "today"
-        present(vc, animated: true, completion: nil)
+        parent?.navigationController!.pushViewController(vc, animated: true)
+        //present(vc, animated: true, completion: nil)
     }
     
     @objc func clickedQrtrly(sender: UITapGestureRecognizer) {
@@ -167,7 +169,8 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         vc.fromdate = fromdate//"01/01/\(currYear)"
         vc.todate = todate//"03/31/\(currYear)"
         vc.format = "quarterly"
-        present(vc, animated: true, completion: nil)
+        parent?.navigationController!.pushViewController(vc, animated: true)
+        //present(vc, animated: true, completion: nil)
     }
     
     @objc func clickedMonthly(sender: UITapGestureRecognizer) {
@@ -184,7 +187,8 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         vc.fromdate = "\(currMonth)/01/\(currYear)"
         vc.todate = "\(currMonth)/\(monthEnds[Int(currMonth)!-1])\(currYear)"
         vc.format = "monthly"
-        present(vc, animated: true, completion: nil)
+        parent?.navigationController!.pushViewController(vc, animated: true)
+        //present(vc, animated: true, completion: nil)
     }
     
     @objc func clickedYearly(sender: UITapGestureRecognizer) {
@@ -195,7 +199,8 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         vc.fromdate = fromdate//"04/01/" + String(prevYear)
         vc.todate = todate//"03/31/" + String(currYear)
         vc.format = "yearly"
-        present(vc, animated: true, completion: nil)
+        parent?.navigationController!.pushViewController(vc, animated: true)
+        //present(vc, animated: true, completion: nil)
     }
     
     func quarterlyDate() -> (String, String){
@@ -616,7 +621,7 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? ComparisonPartywiseController,
             let index = CollectionView.indexPathsForSelectedItems?.first{  
-            if index.section > 0{
+            if index.section > 0 {
                 destination.showState = showState
                 if showState{
                     if(index.row == 4){
@@ -682,7 +687,7 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
     //API CALLS..............
     func apiGetTodaySale(){
         
-        let json: [String: Any] = ["ClientSecret":"ClientSecret"]
+        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret"]
         
         let manager =  DataManager.shared
         print("Get Today Sale Params \(json)")
@@ -714,7 +719,7 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
     
     func apiGetTodayPayment(){
         
-        let json: [String: Any] = ["ClientSecret":"ClientSecret"]
+        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret"]
         
         let manager =  DataManager.shared
         print("Get Today Payment Params \(json)")
@@ -748,7 +753,7 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         manager.makeAPICall(url: apiUrlBranchProgress, params: json, method: .POST, success: { (response) in
             let data = response as? Data
             do {
-                print("Branchwise Dash R \(data)")
+                //print("Branchwise Dash R \(data)")
                 self.branchProgress = try JSONDecoder().decode([BranchProgress].self, from: data!)
                 self.branchProObj = self.branchProgress[0].data
                 self.filteredItems = self.branchProgress[0].data
@@ -821,6 +826,10 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         }
         
     }
+    
+    
+    
+
     
 }
 

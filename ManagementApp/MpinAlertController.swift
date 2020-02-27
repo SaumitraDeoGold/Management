@@ -273,6 +273,17 @@ class MpinAlertController: UIViewController {
                     if(isBlock){
                         var alert = UIAlertView(title: "BLOCKED", message: "Your account is blocked temporarily!!", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
+                    }else if                                      (self.MpinDataMain[0].isForcedLogout!){
+                        print("Logout\n", terminator: "")
+                        UserDefaults.standard.removeObject(forKey: "mpinAttempts")
+                        UserDefaults.standard.removeObject(forKey: "serverTime")
+                        
+                        let loginData = UserDefaults.standard
+                        loginData.removeObject(forKey: "loginData")
+                        
+                        let vcLogin = mainStoryboard.instantiateViewController(withIdentifier: "LoginScreen") as! LoginController
+                        rootViewController.pushViewController(vcLogin, animated: false)
+                        rootViewController.dismiss(animated: true, completion: nil)
                     }else{
                         if(self.MpinElementMain[0].result ?? false){
                             //                            var alert = UIAlertView(title: "Success", message: "Mpin verified successfully!!!", delegate: nil, cancelButtonTitle: "OK")

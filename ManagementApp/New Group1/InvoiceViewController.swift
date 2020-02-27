@@ -72,7 +72,7 @@ class InvoiceViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     @objc func imageTapped(tapSortRecognizer: UITapGestureRecognizer)
-    {
+    {  
         let sb = UIStoryboard(name: "Sorting", bundle: nil)
         let popup = sb.instantiateInitialViewController()! as! SortViewController
         popup.modalPresentationStyle = .overFullScreen
@@ -136,7 +136,7 @@ class InvoiceViewController: UIViewController, UICollectionViewDataSource, UICol
                 
             default:
                 break
-            }
+            }                                                                                                                                       
             //cell.backgroundColor = UIColor.lightGray
         }else if indexPath.section == filteredItems.count+1{
             cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
@@ -185,7 +185,7 @@ class InvoiceViewController: UIViewController, UICollectionViewDataSource, UICol
                 cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
             case 2:
                 cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 13)
-                cell.contentLabel.text = (filteredItems[indexPath.section-1].narration)//!.lowercased()
+                cell.contentLabel.text = filteredItems[indexPath.section-1].narration//!.lowercased()
             case 3:
                 cell.contentLabel.text = filteredItems[indexPath.section-1].paymentmode
             case 4:

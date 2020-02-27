@@ -98,7 +98,7 @@ class DashboardController: BaseViewController {
     
     //API Function...
     func apiGetAllDealers(){
-        let json: [String: Any] = ["CIN":"sa@sa.com","Category":"Management","ClientSecret":"ohdashfl"]
+        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret"]
         let manager =  DataManager.shared
         
         manager.makeAPICall(url: "https://api.goldmedalindia.in/api/getManagementDealerDetails", params: json, method: .POST, success: { (response) in

@@ -41,8 +41,10 @@ class DivisionWiseDetailsCollectionViewController: UIViewController, PopupDateDe
         //print(dataToRecieve[0].branchid!)
         ViewControllerUtils.sharedInstance.showLoader()
         if fromSales == "yes"{
-        apiTotalSaleDivisionWise()
+            self.title = "Total Sales"
+            apiTotalSaleDivisionWise()
         }else{
+            self.title = "Total Payment"
             apiTotalPayDivisionWise()
         }
     }

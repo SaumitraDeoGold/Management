@@ -307,6 +307,48 @@ public class Utility: UIViewController {
         downloadTask?.resume()
     }
     
+    //get current financial date....
+    class func yearDate() -> (String, String){
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let dayFormatter = DateFormatter()
+        dayFormatter.dateFormat = "MM"
+        let currYear = dateFormatter.string(from: now)
+        let currMonth = dayFormatter.string(from: now)
+        let nextYear = Int(currYear)! + 1
+        let prevYear = Int(currYear)! - 1
+        var fromdate = ""
+        var todate = ""
+        print("-------------->CurrYear : \(currYear) currMonth : \(currMonth) nextYear : \(nextYear)  prevYear : \(prevYear)")
+        if currMonth == "01" || currMonth == "02" || currMonth == "03"{
+            fromdate = "04/01/" + String(prevYear)
+            todate = "03/31/" + String(currYear)
+            print("-------------->Fromdate : \(fromdate) ToDate : \(todate)")
+        }else{
+            fromdate = "04/01/" + currYear
+            todate = "03/31/" + String(nextYear)
+            print("-------------->Fromdate : \(fromdate) ToDate : \(todate)")
+        }
+        
+        return (fromdate, todate)
+    }
+    
+    //get current month...
+    class func getMonthly() -> (String, String) {
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        let yearFormatter = DateFormatter()
+        yearFormatter.dateFormat = "yyyy"
+        let currMonth = dateFormatter.string(from: now)
+        let currYear = yearFormatter.string(from: now)
+        let monthEnds = Utility.getMonthEndDate()
+        let fromdate = "\(currMonth)/01/\(currYear)"
+        let todate = "\(currMonth)/\(monthEnds[Int(currMonth)!-1])\(currYear)"
+        return (fromdate, todate)
+    }
+    
     
     // - - - -  - - - GET Otp request - - -  - - - - -
     func apiFreePayRegistration(vc: UIViewController, dueSequence: Bool){

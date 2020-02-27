@@ -131,21 +131,17 @@ class OutstandingPaymentCalculationController: UIViewController,UITextFieldDeleg
         let tabBack = UITapGestureRecognizer(target: self, action: #selector(OutstandingReportController.tapFunction))
         imvBack.addGestureRecognizer(tabBack)
         
-        
         let tapInfo = UITapGestureRecognizer(target: self, action: #selector(self.tapFunctionInfo))
         imvInfo.addGestureRecognizer(tapInfo)
         imvInfo.isUserInteractionEnabled = true
-        
         
         Analytics.setScreenName("OUTSTANDING CALCULATE SCREEN", screenClass: "OutstandingReportController")
 //        SQLiteDB.instance.addAnalyticsData(ScreenName: "OUTSTANDING CALCULATE SCREEN", ScreenId: Int64(GlobalConstants.init().OUTSTANDING_CALCULATION))
         
     }
     
-    
-    
+  
     @objc func tapFunctionInfo(sender:UITapGestureRecognizer) {
-        
         popTip.bubbleColor = UIColor.black
         popTip.show(text: txtToolTip, direction: .none, maxWidth: 300, in: view, from: vwCalculateAmount
             .frame)

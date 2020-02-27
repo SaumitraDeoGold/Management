@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="roboto.medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SupplierInvoice" customModule="ManagementApp" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="FM2-3m-UTC" id="NUw-96-Hvq"/>
+                <outlet property="noDataView" destination="bE8-yD-MDn" id="a5B-Il-L8A"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Uo8-1P-mke">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ide-0R-dMq">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oi0-T2-cJ3">
+                            <rect key="frame" x="0.0" y="10" width="375" height="637"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Supplier Invoice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lib-V7-ccI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                    <color key="backgroundColor" name="DashboardHeader"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="lQH-fn-Ma5"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FM2-3m-UTC" customClass="SupplierInvCollectionView" customModule="ManagementApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="40" width="375" height="562"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <collectionViewLayout key="collectionViewLayout" id="sa7-Gh-ZdS" customClass="VendInvCollLayout" customModule="ManagementApp" customModuleProvider="target"/>
+                                    <cells>
+                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="" id="PVL-fh-r4F">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </view>
+                                        </collectionViewCell>
+                                    </cells>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="YcB-fO-YW8"/>
+                                        <outlet property="delegate" destination="-1" id="5PQ-ZG-taH"/>
+                                    </connections>
+                                </collectionView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0M-az-2H4">
+                                    <rect key="frame" x="0.0" y="602" width="375" height="35"/>
+                                    <color key="backgroundColor" name="ColorRed"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="jXQ-5O-ceE"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <state key="normal" title="All Invoices"/>
+                                    <connections>
+                                        <action selector="clicked_all_invoice:" destination="-1" eventType="touchUpInside" id="nyh-bK-rn8"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="lib-V7-ccI" firstAttribute="top" secondItem="oi0-T2-cJ3" secondAttribute="top" id="fIn-AA-Tid"/>
+                                <constraint firstItem="lib-V7-ccI" firstAttribute="leading" secondItem="oi0-T2-cJ3" secondAttribute="leading" id="uZ5-gy-lU8"/>
+                                <constraint firstAttribute="trailing" secondItem="lib-V7-ccI" secondAttribute="trailing" id="yeT-zq-jkY"/>
+                            </constraints>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bE8-yD-MDn" customClass="NoDataView" customModule="ManagementApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="50" width="375" height="562"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="oi0-T2-cJ3" firstAttribute="leading" secondItem="ide-0R-dMq" secondAttribute="leading" id="83H-hr-lOk"/>
+                        <constraint firstItem="oi0-T2-cJ3" firstAttribute="top" secondItem="ide-0R-dMq" secondAttribute="top" constant="10" id="NbJ-XT-57S"/>
+                        <constraint firstItem="bE8-yD-MDn" firstAttribute="top" secondItem="oi0-T2-cJ3" secondAttribute="top" constant="40" id="Ngl-Ve-1YI"/>
+                        <constraint firstAttribute="trailing" secondItem="bE8-yD-MDn" secondAttribute="trailing" id="Tud-57-6m4"/>
+                        <constraint firstAttribute="bottom" secondItem="oi0-T2-cJ3" secondAttribute="bottom" id="Y3t-Fx-0JP"/>
+                        <constraint firstItem="oi0-T2-cJ3" firstAttribute="bottom" secondItem="bE8-yD-MDn" secondAttribute="bottom" constant="35" id="YcT-EH-6i0"/>
+                        <constraint firstItem="bE8-yD-MDn" firstAttribute="leading" secondItem="ide-0R-dMq" secondAttribute="leading" id="ZLA-SF-OvN"/>
+                        <constraint firstAttribute="trailing" secondItem="oi0-T2-cJ3" secondAttribute="trailing" id="pWJ-hb-iTA"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="YBx-Sv-czg" firstAttribute="trailing" secondItem="ide-0R-dMq" secondAttribute="trailing" id="12w-mF-p1f"/>
+                <constraint firstItem="ide-0R-dMq" firstAttribute="leading" secondItem="YBx-Sv-czg" secondAttribute="leading" id="GdL-6d-UGu"/>
+                <constraint firstItem="ide-0R-dMq" firstAttribute="top" secondItem="YBx-Sv-czg" secondAttribute="top" id="g2A-wo-h5N"/>
+                <constraint firstItem="YBx-Sv-czg" firstAttribute="bottom" secondItem="ide-0R-dMq" secondAttribute="bottom" id="gZC-A4-N6y"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="YBx-Sv-czg"/>
+            <point key="canvasLocation" x="-594" y="-622"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="ColorRed">
+            <color red="0.90700000524520874" green="0.21799999475479126" blue="0.21899999678134918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DashboardHeader">
+            <color red="0.3580000102519989" green="0.3580000102519989" blue="0.3580000102519989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
