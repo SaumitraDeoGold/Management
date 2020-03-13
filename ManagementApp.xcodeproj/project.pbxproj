@@ -48,6 +48,7 @@
 		691A191723FE977F0024C820 /* DhanbarseQwikpayVideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691A191623FE977F0024C820 /* DhanbarseQwikpayVideoData.swift */; };
 		691AACB6237ABD44004B5C90 /* DivisionName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691AACB5237ABD43004B5C90 /* DivisionName.swift */; };
 		691AACB8237ACF11004B5C90 /* CategoryWiseCompareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691AACB7237ACF11004B5C90 /* CategoryWiseCompareController.swift */; };
+		691B5BCC2410F2F100FC6685 /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B5BCB2410F2F100FC6685 /* AttendanceViewController.swift */; };
 		691B92092379479E000EA2A8 /* DivBreakdownTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B92082379479D000EA2A8 /* DivBreakdownTotal.swift */; };
 		691B920B23797C1F000EA2A8 /* LedgerwiseExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B920A23797C1F000EA2A8 /* LedgerwiseExpense.swift */; };
 		691BB63623ED497500E2C4C8 /* VendorPayment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 691BB63523ED497500E2C4C8 /* VendorPayment.xib */; };
@@ -55,6 +56,8 @@
 		691BB63B23ED706D00E2C4C8 /* VendorOrder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 691BB63A23ED706D00E2C4C8 /* VendorOrder.xib */; };
 		691BB63D23ED708D00E2C4C8 /* VendorOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691BB63C23ED708D00E2C4C8 /* VendorOrder.swift */; };
 		691E83ED2298256000772EF5 /* OutstandingPartyWiseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E83EC2298256000772EF5 /* OutstandingPartyWiseLayout.swift */; };
+		691E9AFA240FA39C006A9646 /* DemoBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E9AF9240FA39C006A9646 /* DemoBaseViewController.swift */; };
+		691E9AFC240FD1AA006A9646 /* EmployeeBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E9AFB240FD1AA006A9646 /* EmployeeBaseController.swift */; };
 		691EA5E32405312F001A76B8 /* EmployeeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691EA5E22405312F001A76B8 /* EmployeeLayout.swift */; };
 		691EE18221478C4A00835311 /* DashPendingOrderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 691EE18121478C4A00835311 /* DashPendingOrderView.xib */; };
 		691EE18621479EC400835311 /* DashOutstandingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691EE18421479EC400835311 /* DashOutstandingCell.swift */; };
@@ -98,11 +101,15 @@
 		6925258C23040C7300CDFBE3 /* ExpenseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6925258B23040C7300CDFBE3 /* ExpenseLayout.swift */; };
 		6925258E2304372400CDFBE3 /* CategorywiseComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6925258D2304372400CDFBE3 /* CategorywiseComp.swift */; };
 		69252590230439FA00CDFBE3 /* CategoryCompLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6925258F230439FA00CDFBE3 /* CategoryCompLayout.swift */; };
+		6926DAB7241B8BAB00BFD8A2 /* ExpenseBillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6926DAB6241B8BAB00BFD8A2 /* ExpenseBillViewController.swift */; };
+		6926DAB9241BB30A00BFD8A2 /* ExpenseBillLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6926DAB8241BB30A00BFD8A2 /* ExpenseBillLayout.swift */; };
 		69276010239E5F170011BA6B /* TotalPayDivisionWise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6927600F239E5F170011BA6B /* TotalPayDivisionWise.swift */; };
 		692D720620A2BF8D00D2CB16 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692D720520A2BF8D00D2CB16 /* FloatRatingView.swift */; };
 		692DF402235AEFC900F972AD /* AgingReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692DF401235AEFC900F972AD /* AgingReport.swift */; };
 		692DF404235B00B300F972AD /* IncreasedLimitDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692DF403235B00B300F972AD /* IncreasedLimitDetails.swift */; };
 		692DF406235B32B600F972AD /* UpdateLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692DF405235B32B500F972AD /* UpdateLimit.swift */; };
+		69317384240CD8D100F770E5 /* DivisionwiseTabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69317383240CD8D000F770E5 /* DivisionwiseTabelCell.swift */; };
+		69317386240D16B100F770E5 /* SalePurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69317385240D16B100F770E5 /* SalePurchaseCell.swift */; };
 		6936CEB02397A97D00772AF0 /* Ledgerwise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6936CEAF2397A97D00772AF0 /* Ledgerwise.swift */; };
 		6938921D223BD44700D69935 /* BranchWisePayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69389218223BD44700D69935 /* BranchWisePayment.swift */; };
 		6938921E223BD44700D69935 /* BranchWiseSales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69389219223BD44700D69935 /* BranchWiseSales.swift */; };
@@ -525,6 +532,7 @@
 		691A191623FE977F0024C820 /* DhanbarseQwikpayVideoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DhanbarseQwikpayVideoData.swift; sourceTree = "<group>"; };
 		691AACB5237ABD43004B5C90 /* DivisionName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionName.swift; sourceTree = "<group>"; };
 		691AACB7237ACF11004B5C90 /* CategoryWiseCompareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryWiseCompareController.swift; sourceTree = "<group>"; };
+		691B5BCB2410F2F100FC6685 /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
 		691B92082379479D000EA2A8 /* DivBreakdownTotal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivBreakdownTotal.swift; sourceTree = "<group>"; };
 		691B920A23797C1F000EA2A8 /* LedgerwiseExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerwiseExpense.swift; sourceTree = "<group>"; };
 		691BB63523ED497500E2C4C8 /* VendorPayment.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VendorPayment.xib; sourceTree = "<group>"; };
@@ -532,6 +540,8 @@
 		691BB63A23ED706D00E2C4C8 /* VendorOrder.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VendorOrder.xib; sourceTree = "<group>"; };
 		691BB63C23ED708D00E2C4C8 /* VendorOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorOrder.swift; sourceTree = "<group>"; };
 		691E83EC2298256000772EF5 /* OutstandingPartyWiseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutstandingPartyWiseLayout.swift; sourceTree = "<group>"; };
+		691E9AF9240FA39C006A9646 /* DemoBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DemoBaseViewController.swift; path = "../../../../Projects/Charts-master/ChartsDemo-iOS/Swift/DemoBaseViewController.swift"; sourceTree = "<group>"; };
+		691E9AFB240FD1AA006A9646 /* EmployeeBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeBaseController.swift; sourceTree = "<group>"; };
 		691EA5E22405312F001A76B8 /* EmployeeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeLayout.swift; sourceTree = "<group>"; };
 		691EE18121478C4A00835311 /* DashPendingOrderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashPendingOrderView.xib; sourceTree = "<group>"; };
 		691EE18421479EC400835311 /* DashOutstandingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashOutstandingCell.swift; sourceTree = "<group>"; };
@@ -575,11 +585,15 @@
 		6925258B23040C7300CDFBE3 /* ExpenseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseLayout.swift; sourceTree = "<group>"; };
 		6925258D2304372400CDFBE3 /* CategorywiseComp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorywiseComp.swift; sourceTree = "<group>"; };
 		6925258F230439FA00CDFBE3 /* CategoryCompLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCompLayout.swift; sourceTree = "<group>"; };
+		6926DAB6241B8BAB00BFD8A2 /* ExpenseBillViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseBillViewController.swift; sourceTree = "<group>"; };
+		6926DAB8241BB30A00BFD8A2 /* ExpenseBillLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseBillLayout.swift; sourceTree = "<group>"; };
 		6927600F239E5F170011BA6B /* TotalPayDivisionWise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalPayDivisionWise.swift; sourceTree = "<group>"; };
 		692D720520A2BF8D00D2CB16 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
 		692DF401235AEFC900F972AD /* AgingReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgingReport.swift; sourceTree = "<group>"; };
 		692DF403235B00B300F972AD /* IncreasedLimitDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreasedLimitDetails.swift; sourceTree = "<group>"; };
 		692DF405235B32B500F972AD /* UpdateLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLimit.swift; sourceTree = "<group>"; };
+		69317383240CD8D000F770E5 /* DivisionwiseTabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionwiseTabelCell.swift; sourceTree = "<group>"; };
+		69317385240D16B100F770E5 /* SalePurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalePurchaseCell.swift; sourceTree = "<group>"; };
 		6936CEAF2397A97D00772AF0 /* Ledgerwise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ledgerwise.swift; sourceTree = "<group>"; };
 		69389218223BD44700D69935 /* BranchWisePayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchWisePayment.swift; sourceTree = "<group>"; };
 		69389219223BD44700D69935 /* BranchWiseSales.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchWiseSales.swift; sourceTree = "<group>"; };
@@ -1086,6 +1100,15 @@
 			name = VendorInsurance;
 			sourceTree = "<group>";
 		};
+		6926DAB5241B8B5400BFD8A2 /* ExpenseBill */ = {
+			isa = PBXGroup;
+			children = (
+				6926DAB6241B8BAB00BFD8A2 /* ExpenseBillViewController.swift */,
+				6926DAB8241BB30A00BFD8A2 /* ExpenseBillLayout.swift */,
+			);
+			path = ExpenseBill;
+			sourceTree = "<group>";
+		};
 		69389217223BD44700D69935 /* DivisionWiseSales */ = {
 			isa = PBXGroup;
 			children = (
@@ -1107,6 +1130,8 @@
 				69969AF3224A5FB6005C0B70 /* NDADetailCell.swift */,
 				697E05AD224CA102005B79AA /* OutstandingAbvCell.swift */,
 				69861E85230ACB4200C7C2BB /* ComplexCell.swift */,
+				69317383240CD8D000F770E5 /* DivisionwiseTabelCell.swift */,
+				69317385240D16B100F770E5 /* SalePurchaseCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1225,6 +1250,7 @@
 		695728722069024F006C0415 /* Report */ = {
 			isa = PBXGroup;
 			children = (
+				6926DAB5241B8B5400BFD8A2 /* ExpenseBill */,
 				69A1FAA823ED90BC006A07CD /* SupplierPayment */,
 				69A1FAA323ED8460006A07CD /* SupplierInvoice */,
 				691BB63923ED6E0D00E2C4C8 /* VendorOrder */,
@@ -1381,6 +1407,8 @@
 				6923623B2407AC7E008B0588 /* EmploeeSearchController.swift */,
 				6923623D2407D5E2008B0588 /* EmployeeInfo.swift */,
 				6923623F2407D780008B0588 /* EmployeeInfoController.swift */,
+				691E9AFB240FD1AA006A9646 /* EmployeeBaseController.swift */,
+				691B5BCB2410F2F100FC6685 /* AttendanceViewController.swift */,
 			);
 			path = Employee;
 			sourceTree = "<group>";
@@ -1404,6 +1432,7 @@
 		697582BC208F4D9400327FB1 /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
+				691E9AF9240FA39C006A9646 /* DemoBaseViewController.swift */,
 				690F76D9236054210054FDAC /* MpinAlertController.swift */,
 				6972061E21C292F7006EB95C /* WebViewController.swift */,
 				69595FEE2128105200DD32C3 /* CPImageSlider.swift */,
@@ -2149,6 +2178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69701B772244BCFD00A49565 /* DealerAppointmentViewController.swift in Sources */,
+				69317386240D16B100F770E5 /* SalePurchaseCell.swift in Sources */,
 				6977B64422DEED6500E411A8 /* StatewiseCompareChild.swift in Sources */,
 				69FD593C2111C3D100EE0BEA /* CatalogueListController.swift in Sources */,
 				696C8A5522A92A3700AE04F2 /* SearchDealerViewController.swift in Sources */,
@@ -2180,6 +2210,7 @@
 				699340C62271CA7C008362B1 /* PendingOrders.swift in Sources */,
 				696C544121C3C71500E82F38 /* NotificationCell.swift in Sources */,
 				691FEEC9239BB0560008FF1D /* viewPDFController.swift in Sources */,
+				691E9AFA240FA39C006A9646 /* DemoBaseViewController.swift in Sources */,
 				69541E222137DAA500BBC4EB /* SalesPaymentReceipt.swift in Sources */,
 				691FF8EA23A4F8E900C79C1A /* InvoiceData.swift in Sources */,
 				69BC7B872280178E00C422A6 /* StockSumLayout.swift in Sources */,
@@ -2249,6 +2280,7 @@
 				6986618222CC8CD700B75BA6 /* AddMatchesData.swift in Sources */,
 				696FA116225C7B7C001A85F2 /* PaymentLayout.swift in Sources */,
 				69861E86230ACB4300C7C2BB /* ComplexCell.swift in Sources */,
+				69317384240CD8D100F770E5 /* DivisionwiseTabelCell.swift in Sources */,
 				6943F2F123DC2256006D484A /* SearchVendorController.swift in Sources */,
 				696BF46E22F043DD002614E2 /* DistWiseChildController.swift in Sources */,
 				69207565230BC2AF008982D3 /* ComplexViewController.swift in Sources */,
@@ -2291,6 +2323,7 @@
 				69FCA72823FAA374006C1A1E /* EmpJoinData.swift in Sources */,
 				691EE18621479EC400835311 /* DashOutstandingCell.swift in Sources */,
 				692DF406235B32B600F972AD /* UpdateLimit.swift in Sources */,
+				691B5BCC2410F2F100FC6685 /* AttendanceViewController.swift in Sources */,
 				69DB793120A03009005023D4 /* DataManager.swift in Sources */,
 				691EE18E2147A3C200835311 /* DashLastPaymentCell.swift in Sources */,
 				69D21766216896FA00862320 /* VideoViewCell.swift in Sources */,
@@ -2306,6 +2339,7 @@
 				69F86572211C8788008A6B42 /* GroupSchemeView.swift in Sources */,
 				69654651230FE63C008A896C /* OutstandingPaymentCalculationController.swift in Sources */,
 				6957286C206901F5006C0415 /* LoginController.swift in Sources */,
+				6926DAB9241BB30A00BFD8A2 /* ExpenseBillLayout.swift in Sources */,
 				69541E142137D98D00BBC4EB /* PriceList.swift in Sources */,
 				699340C422719BBF008362B1 /* StockDetails.swift in Sources */,
 				69FC1057228C4E25003E02DF /* chartClicks.swift in Sources */,
@@ -2325,6 +2359,7 @@
 				698CE7E9231103890071DF8E /* OutsPaymentSummaryList.swift in Sources */,
 				69A32EEE22A2859300CD3CF9 /* SQLiteDB.swift in Sources */,
 				694CD2A420A6F17300CE313A /* OrderViewController.swift in Sources */,
+				691E9AFC240FD1AA006A9646 /* EmployeeBaseController.swift in Sources */,
 				69276010239E5F170011BA6B /* TotalPayDivisionWise.swift in Sources */,
 				69A7930A208E007A00364AA7 /* PopupDateDelegate.swift in Sources */,
 				69969AF4224A5FB6005C0B70 /* NDADetailCell.swift in Sources */,
@@ -2355,6 +2390,7 @@
 				69F86574211C8795008A6B42 /* ValueSchemeView.swift in Sources */,
 				692DF402235AEFC900F972AD /* AgingReport.swift in Sources */,
 				69FBEA2A20B535AD00BDE34F /* ViewPagerTabView.swift in Sources */,
+				6926DAB7241B8BAB00BFD8A2 /* ExpenseBillViewController.swift in Sources */,
 				6979B43A21469ACF00BD99A1 /* YearlySalesCell.swift in Sources */,
 				69628B6E2268A1B700020699 /* OrderLayout.swift in Sources */,
 				69588EA5224F833800CA5E16 /* NDADetail.swift in Sources */,
@@ -2679,7 +2715,7 @@
 				INFOPLIST_FILE = ManagementApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.goldmedal.management;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goldmedal.management.family;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2705,7 +2741,7 @@
 				INFOPLIST_FILE = ManagementApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.goldmedal.management;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goldmedal.management.family;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

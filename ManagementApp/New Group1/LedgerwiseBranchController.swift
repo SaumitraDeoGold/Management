@@ -34,7 +34,7 @@ class LedgerwiseBranchController: UIViewController, UICollectionViewDataSource, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        branchComparisonUrl = "https://test2.goldmedalindia.in/api/getManagementLedgerwiseBranchExpense"
+        branchComparisonUrl = "https://api.goldmedalindia.in/api/getManagementLedgerwiseBranchExpense"
         header.text = "Branchwise -> \(dataToRecieve[0].headnm!)"
         ViewControllerUtils.sharedInstance.showLoader()
         self.noDataView.hideView(view: self.noDataView)

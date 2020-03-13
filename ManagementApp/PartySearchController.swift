@@ -39,9 +39,9 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         blurBackground()
-        limitDetailsApiUrl = "https://test2.goldmedalindia.in/api/GetDealerListManagment"
-        divisionNameApiUrl = "https://test2.goldmedalindia.in/api/GetDivisionListManagement"
-        categoryApiUrl = "https://test2.goldmedalindia.in/api/GetCategoryWiseSalesCompare"
+        limitDetailsApiUrl = "https://api.goldmedalindia.in/api/GetDealerListManagment"
+        divisionNameApiUrl = "https://api.goldmedalindia.in/api/GetDivisionListManagement"
+        categoryApiUrl = "https://api.goldmedalindia.in/api/GetCategoryWiseSalesCompare"
         ViewControllerUtils.sharedInstance.showLoader()
         if fromPage == "Limits"{
             tempDealersArr = limitDetailsObj

@@ -62,7 +62,7 @@ import Charts
         strCin = loginData["userlogid"] as? String ?? ""
         
         //let initialData =  UserDefaults.standard.value(forKey: "initialData") as? Dictionary ?? [:]
-        catSalesViewApi = "https://test2.goldmedalindia.in/api/getcatwisepurchaseamt"
+        catSalesViewApi = "https://api.goldmedalindia.in/api/getcatwisepurchaseamt"
             //(initialData["baseApi"] as? String ?? "")+""+(initialData["divisionWiseYSA"] as? String ?? "")
         apiSalesCategoryWise()
         // Do any additional setup after loading the view.

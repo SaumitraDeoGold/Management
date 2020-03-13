@@ -32,7 +32,7 @@ class PartywiseComparisonController: UIViewController, UICollectionViewDataSourc
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        partywiseApiUrl = "https://test2.goldmedalindia.in/api/getManagementHeadwiseExpense"
+        partywiseApiUrl = "https://api.goldmedalindia.in/api/getManagementHeadwiseExpense"
         self.noDataView.hideView(view: self.noDataView)
         ViewControllerUtils.sharedInstance.showLoader()
         header.text = "Ledgerwise -> \(dataToRecieve[0].branchnm!)"

@@ -73,7 +73,7 @@ class SearchSupplierController: BaseViewController, UITableViewDataSource, UITab
         let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret"]
         let manager =  DataManager.shared
         print("supplierArray Params \(json)")
-        manager.makeAPICall(url: "https://test2.goldmedalindia.in/api/getManagementSupplier", params: json, method: .POST, success: { (response) in
+        manager.makeAPICall(url: "https://api.goldmedalindia.in/api/getManagementSupplier", params: json, method: .POST, success: { (response) in
             let data = response as? Data
             
             do {

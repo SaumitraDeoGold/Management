@@ -9,7 +9,7 @@
 import UIKit
 import Charts
 
-class AccountsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, PopupDateDelegate{
+class AccountsViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
     //OUTLETS...
     @IBOutlet weak var CollectionView: UICollectionView!
@@ -26,6 +26,7 @@ class AccountsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSlideMenuButton()
         self.noDataView.hideView(view: self.noDataView)
         outstandingAccApiUrl = "https://api.goldmedalindia.in/api/GetManagementBranchwiseOutstanding"
         ViewControllerUtils.sharedInstance.showLoader()

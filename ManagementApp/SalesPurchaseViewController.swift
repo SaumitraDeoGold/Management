@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SalesPurchaseViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SalesPurchaseViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDelegate , UITableViewDataSource {
     
     //Outlets...
     @IBOutlet weak var CollectionView: UICollectionView!
-    @IBOutlet weak var CollectionViewFooter: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     //Declarations
     var showSales = true
@@ -23,10 +23,16 @@ class SalesPurchaseViewController: BaseViewController, UICollectionViewDataSourc
     var apiSalesnPurchase = ""
     var totalSales = ["withTax":0.0,"withoutTax":0.0,"payment":0.0,"creditNote":0.0,"debitNote":0.0,"outAmount":0.0,"stockAmount":0.0,"purchaseAmount":0.0]
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var isagent = false
     
     override func viewDidLoad() {
         addSlideMenuButton()
-        //addSortButton()
+        if UserDefaults.standard.value(forKey: "userCategory") as! String == "Agent"{
+            isagent = true
+            CollectionView.isHidden = true
+        }else{
+            tableView.isHidden = true
+        }
         super.viewDidLoad()
         apiSalesnPurchase = "https://api.goldmedalindia.in/api/GetBranchwiseAllTransaction"
         apiGetSalesPurchase()
@@ -60,6 +66,52 @@ class SalesPurchaseViewController: BaseViewController, UICollectionViewDataSourc
         
         self.CollectionView.reloadData()
         self.CollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    //Tableview Functions...
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 370
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredItems.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SalePurchaseCell", for: indexPath) as! SalePurchaseCell
+        //_ = self.ndaDetailArray[indexPath.row].name!.characters.split{$0 == "-"}.map(String.init)
+        cell.lblBranchName.text = self.filteredItems[indexPath.row].branchnm
+        if let amount = self.filteredItems[indexPath.row].salewithtaxamt {
+            cell.lblWDName.text = Utility.formatRupee(amount: Double(amount)!)
+        }
+        if let lights = self.filteredItems[indexPath.row].salewithouttaxamt {
+            cell.lblLname.text = Utility.formatRupee(amount: Double(lights)!)
+        }
+        if let wc = self.filteredItems[indexPath.row].payment {
+            cell.lblWCName.text = Utility.formatRupee(amount: Double(wc)!)
+        }
+        if let pf = self.filteredItems[indexPath.row].creditnote {
+            cell.lblPFName.text = Utility.formatRupee(amount: Double(pf)!)
+        }
+        if let md = self.filteredItems[indexPath.row].debitnote {
+            cell.lblMDName.text = Utility.formatRupee(amount: Double(md)!)
+        }
+        if let brC = self.filteredItems[indexPath.row].outstandingamt {
+            cell.lblBRCName.text = Utility.formatRupee(amount: Double(brC)!)
+        }
+        if let contri = self.filteredItems[indexPath.row].stockamt {
+            cell.lblContriName.text = Utility.formatRupee(amount: Double(contri)!)
+        }
+        if let contri = self.filteredItems[indexPath.row].purchaseamt {
+            cell.lblPAName.text = Utility.formatRupee(amount: Double(contri)!)
+        }
+        //        if let amount = self.branchData[indexPath.row].wiringdevices {
+        //            cell.lblWD.text = Utility.formatRupee(amount: Double(amount)!)
+        //        }
+        
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        return cell
     }
     
     //CollectionView Functions...
@@ -261,8 +313,12 @@ class SalesPurchaseViewController: BaseViewController, UICollectionViewDataSourc
                 self.totalSales["outAmount"] = self.filteredItems.reduce(0, { $0 + Double($1.outstandingamt!)! })
                 self.totalSales["stockAmount"] = self.filteredItems.reduce(0, { $0 + Double($1.stockamt!)! })
                 self.totalSales["purchaseAmount"] = self.filteredItems.reduce(0, { $0 + Double($1.purchaseamt!)! })
-                self.CollectionView.reloadData()
-                self.CollectionView.collectionViewLayout.invalidateLayout()
+                if self.isagent{
+                    self.tableView.reloadData()
+                }else{
+                    self.CollectionView.reloadData()
+                    self.CollectionView.collectionViewLayout.invalidateLayout()
+                } 
                 ViewControllerUtils.sharedInstance.removeLoader()
             } catch let errorData {
                 print(errorData.localizedDescription)

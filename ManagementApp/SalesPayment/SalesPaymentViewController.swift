@@ -62,7 +62,7 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
     
     override func viewDidLoad() {
         apiUrlBranchProgress = "https://api.goldmedalindia.in/api/GetBranchwiseSalesCompare"
-        apiUrlStateProgress = "https://test2.goldmedalindia.in/api/GetStatewiseSalesCompare"
+        apiUrlStateProgress = "https://api.goldmedalindia.in/api/GetStatewiseSalesCompare"
         super.viewDidLoad()
         ViewControllerUtils.sharedInstance.showLoader()
         addRefreshControl()

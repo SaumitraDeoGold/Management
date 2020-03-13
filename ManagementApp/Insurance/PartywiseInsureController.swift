@@ -24,7 +24,7 @@ class PartywiseInsureController: UIViewController, UICollectionViewDataSource, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiInsureParty = "https://test2.goldmedalindia.in/api/getManagementpartywisesecuredamt"
+        apiInsureParty = "https://api.goldmedalindia.in/api/getManagementpartywisesecuredamt"
         ViewControllerUtils.sharedInstance.showLoader()
         apiInsuranceParty()
         

@@ -17,4 +17,5 @@ struct EmpJoinLeave: Codable {
 struct EmpJoinLeaveObj: Codable {
     let employeeName, employeeCode, mobileNumber, departmentName: String?
     let designationName, branchname, joinDate, workYear: String?
+    let slno: Int?
 }

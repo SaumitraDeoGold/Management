@@ -17,4 +17,5 @@ struct EmpLocChild: Codable {
 struct EmpLocChildObj: Codable {
     let employeeName, employeeCode, department, branchName: String?
     let mobileNumber, joinDate, workYear, sublocation: String?
+    let slno: Int?
 }

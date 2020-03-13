@@ -25,7 +25,7 @@ class AccountsDetailsController: UIViewController, UICollectionViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AccountDetailsApiUrl = "https://test2.goldmedalindia.in/api/GetManagementBranchwiseOutstandingChild"
+        AccountDetailsApiUrl = "https://api.goldmedalindia.in/api/GetManagementBranchwiseOutstandingChild"
         ViewControllerUtils.sharedInstance.showLoader()
         apiAccDetails()
     }

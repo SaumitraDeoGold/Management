@@ -31,7 +31,7 @@ class ExpenseHeadChildController: UIViewController, UICollectionViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        partywiseApiUrl = "https://test2.goldmedalindia.in/api/getExpenseChildAll"
+        partywiseApiUrl = "https://api.goldmedalindia.in/api/getExpenseChildAll"
         self.noDataView.hideView(view: self.noDataView)
         ViewControllerUtils.sharedInstance.showLoader()
         header.text = "Partywise -> \(dataToRecieve[0].name!)"

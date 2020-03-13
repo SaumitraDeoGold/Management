@@ -70,7 +70,7 @@ class SplashViewController: AVPlayerViewController {
         let alert = UIAlertController(title: "New Version Available", message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
         
         let okBtn = UIAlertAction(title: "Update", style: .default, handler: {(_ action: UIAlertAction) -> Void in
-            if let url = URL(string: "itms-apps://itunes.apple.com/us/app/id1437778450"),
+            if let url = URL(string: "itms-apps://itunes.apple.com/us/app/id1502521627"),
                 UIApplication.shared.canOpenURL(url){
                 if #available(iOS 10.0, *) {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)

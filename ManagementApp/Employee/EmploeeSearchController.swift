@@ -19,12 +19,14 @@ class EmploeeSearchController: BaseViewController, UITableViewDataSource, UITabl
     var empSearch = [EmpSearch]()
     var empSearchObj = [EmpSearchObj]()
     var filteredItems = [EmpSearchObj]()
+    var slno = 0
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addSlideMenuButton()
         ViewControllerUtils.sharedInstance.showLoader()
-        apiSearchEmp = "https://test2.goldmedalindia.in/api/getemployeeallList"
+        apiSearchEmp = "https://api.goldmedalindia.in/api/getemployeeallList"
         apiGetAllEmployees()
     }
     
@@ -59,15 +61,22 @@ class EmploeeSearchController: BaseViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //appDelegate.sendCin = supplierArray[indexPath.item].slno!
-        //        weak var pvc = self.presentingViewController
-        //        self.dismiss(animated: false, completion: {
-        //            let OldDashboard =  self.storyboard?.instantiateViewController(withIdentifier: "OldDashboard") as! OldDashboardController
-        //            let navVc = UINavigationController(rootViewController: OldDashboard)
-        //            pvc?.present(navVc, animated: true, completion: nil)
-        //        })
-        //self.navigationController?.popViewController(animated: true)
+        slno = (filteredItems[indexPath.row].slno!)
+        performSegue(withIdentifier: "byEmpSearch", sender: self) 
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "byEmpSearch") {
+            if let destination = segue.destination as? EmployeeInfoController{
+                destination.slno = slno
+            }
+        }else{
+            
+        }
+        
+    }
+    
+    
     
     //API Function...
     func apiGetAllEmployees(){

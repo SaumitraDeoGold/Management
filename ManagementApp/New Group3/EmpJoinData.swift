@@ -15,5 +15,5 @@ struct EmpJoinData: Codable {
 
 // MARK: - Datum
 struct EmpJoinDataObj: Codable {
-    let monthCount, yearCount, monthCountLeaving, yearCountLeaving: Int?
+    let monthCount, yearCount, monthCountLeaving, yearCountLeaving, totalCount: Int?
 }

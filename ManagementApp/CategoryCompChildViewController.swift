@@ -54,7 +54,7 @@ class CategoryCompChildViewController: UIViewController, UICollectionViewDataSou
         monthFormatter.dateFormat = "MM"
         yearFormatter.dateFormat = "yyyy"
         setDate()
-        categoryChildApiUrl = "https://test2.goldmedalindia.in/api/GetCategoryWiseSalesCompareChild"
+        categoryChildApiUrl = "https://api.goldmedalindia.in/api/GetCategoryWiseSalesCompareChild"
         ViewControllerUtils.sharedInstance.showLoader()
         apiCompare()
     }

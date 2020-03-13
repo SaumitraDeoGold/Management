@@ -39,7 +39,7 @@ import UIKit
         strCin = loginData["userlogid"] as? String ?? ""
         
         //let initialData =  UserDefaults.standard.value(forKey: "initialData") as? Dictionary ?? [:]
-        vendorListApi = "https://test2.goldmedalindia.in/api/getVendorPurchaseAndLedgerBalanceInvoiceNo"
+        vendorListApi = "https://api.goldmedalindia.in/api/getVendorPurchaseAndLedgerBalanceInvoiceNo"
             //(initialData["baseApi"] as? String ?? "")+""+(initialData["dispatchedMaterial"] as? String ?? "")
         
         let currDate = Date()

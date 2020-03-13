@@ -38,7 +38,7 @@ import AMPopTip
     override func xibSetup() {
         super.xibSetup()
         //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        apiVendor = "https://test2.goldmedalindia.in/api/getVendorPurchaseAndLedger"
+        apiVendor = "https://api.goldmedalindia.in/api/getVendorPurchaseAndLedger"
         ViewControllerUtils.sharedInstance.showLoader()
         apiVendorTotal()
         // Drawing code

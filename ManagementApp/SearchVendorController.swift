@@ -59,13 +59,6 @@ class SearchVendorController: BaseViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         appDelegate.sendCin = supplierArray[indexPath.item].slno!
-        //        weak var pvc = self.presentingViewController
-        //        self.dismiss(animated: false, completion: {
-        //            let OldDashboard =  self.storyboard?.instantiateViewController(withIdentifier: "OldDashboard") as! OldDashboardController
-        //            let navVc = UINavigationController(rootViewController: OldDashboard)
-        //            pvc?.present(navVc, animated: true, completion: nil)
-        //        })
-        //self.navigationController?.popViewController(animated: true)
     }
     
     //API Function...
@@ -73,13 +66,13 @@ class SearchVendorController: BaseViewController, UITableViewDataSource, UITable
         let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret"]
         let manager =  DataManager.shared
         print("vendorArray Params \(json)")
-        manager.makeAPICall(url: "https://test2.goldmedalindia.in/api/getManagementVendor", params: json, method: .POST, success: { (response) in
+        manager.makeAPICall(url: "https://api.goldmedalindia.in/api/getManagementVendor", params: json, method: .POST, success: { (response) in
             let data = response as? Data
             
             do {
                 self.searchData = try JSONDecoder().decode([SearchVendor].self, from: data!)
                 self.supplierArray  = self.searchData[0].data!
-                print("vendorArray Result \(self.searchData[0].data)")
+                print("vendorArray Result \(self.searchData[0].data!)")
                 for dealers in self.supplierArray{
                     self.tempSupplierArr.append(dealers)
                 }

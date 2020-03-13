@@ -26,7 +26,9 @@ class MyProfileController: BaseViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var lblExecMobNo: UILabel!
     var imageData: Data? = nil
     var newUserApi = ""
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var strCin = ""
+    var fromDealer = false
     
     var textExMobileNo = ""
     var textExHeadMobileNo = ""
@@ -51,7 +53,11 @@ class MyProfileController: BaseViewController, UIImagePickerControllerDelegate, 
         let loginData =  UserDefaults.standard.value(forKey: "loginData") as? Dictionary ?? [:]
         let initialData =  UserDefaults.standard.value(forKey: "initialData") as? Dictionary ?? [:]
         newUserApi = (initialData["baseApi"] as? String ?? "")+""+(initialData["validateCIN"] as? String ?? "")
-        strCin = loginData["userlogid"] as? String ?? ""
+        if fromDealer{
+           strCin = appDelegate.sendCin
+        }else{
+          strCin = loginData["userlogid"] as? String ?? ""
+        }
 
         self.lblProfileName.text = (loginData["usernm"] as? String)?.capitalized
         self.lblEmailId.text = (loginData["email"] as? String)?.capitalized
@@ -110,9 +116,7 @@ class MyProfileController: BaseViewController, UIImagePickerControllerDelegate, 
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {
         print("Edit Icon Clicked")
-        
         chooseImage()
-        
     }
     
   @objc  func tapFunctiontapExMobNo(sender:UITapGestureRecognizer) {

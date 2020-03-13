@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     //Outlets...
@@ -18,9 +19,12 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var monthHeader: UIView!
     @IBOutlet weak var secondList: UIView!
     @IBOutlet weak var scrollVw: UIScrollView!
+    @IBOutlet weak var vwHeaderBar: UIView!
+    @IBOutlet weak var vwBarChart: UIView!
+    @IBOutlet var barChart: BarChartDataSet!
     //@IBOutlet weak var noDataView: NoDataView!
     
-    //Declarations
+    //Declarations...
     var cellContentIdentifier = "\(CollectionViewCell.self)"
     var employeeChild = [EmployeeChild]()
     var employeeChildObj = [EmployeeChildObj]()
@@ -63,14 +67,20 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
     var toDate = ""
     var noOfColumns = Int()
     var type = 0
-    var monthEnds = ["30/","31/","30/","31/","31/","30/","31/","30/","31/","31/","28/","31/"]
+    var monthEnds = ["30/","31/","30/","31/","31/","30/","31/","30/","31/","31/","29/","31/"]
     var months = ["04/","05/","06/","07/","08/","09/","10/","11/","12/","01/","02/","03/"]
+    var slno = 0
+    var counter = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        vwHeaderBar.isHidden = true
+        vwBarChart.isHidden = true
         if !monthly {
             monthHeader.isHidden = true
             secondList.isHidden = true
+            vwHeaderBar.isHidden = true
+            vwBarChart.isHidden = true
         }
         noOfColumns = 7
         if joinleave {
@@ -102,15 +112,17 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiEmployeeDetails = "https://test2.goldmedalindia.in/api/getEmployeeListDetails"
-        apiDeptDetails = "https://test2.goldmedalindia.in/api/getdepartmentwiseempdetail"
-        apiDesigDetails = "https://test2.goldmedalindia.in/api/getdesignationwiseempdetail"
-        apiJoinLeave = "https://test2.goldmedalindia.in/api/getjoindatewiseempdata"
-        apiEmpLocn = "https://test2.goldmedalindia.in/api/getlocationEmployeeListDetails"
-        apiEmpMonthly = "https://test2.goldmedalindia.in/api/getmonthwiseempjoincount"
+        apiEmployeeDetails = "https://api.goldmedalindia.in/api/getEmployeeListDetails"
+        apiDeptDetails = "https://api.goldmedalindia.in/api/getdepartmentwiseempdetail"
+        apiDesigDetails = "https://api.goldmedalindia.in/api/getdesignationwiseempdetail"
+        apiJoinLeave = "https://api.goldmedalindia.in/api/getjoindatewiseempdata"
+        apiEmpLocn = "https://api.goldmedalindia.in/api/getlocationEmployeeListDetails"
+        apiEmpMonthly = "https://api.goldmedalindia.in/api/getmonthwiseempjoincount"
         //self.noDataView.hideView(view: self.noDataView)
         ViewControllerUtils.sharedInstance.showLoader()
     }
+    
+    
     
     //Auto-Complete Function...
     @objc func searchRecords(_ textfield: UITextField){
@@ -414,6 +426,8 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
         
     }
     
+    
+    
     func setText(value: String) -> NSAttributedString{
         let attributedString = NSAttributedString(string: NSLocalizedString(value, comment: ""), attributes:[
             NSAttributedString.Key.foregroundColor : UIColor.black
@@ -469,6 +483,49 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
         
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? EmployeeInfoController,
+            let index = CollectionView.indexPathsForSelectedItems?.first{
+            if index.section > 0 {
+                destination.slno = getSlno(value: index.section-1)//filteredItems[index.section-1].slno!
+            }
+            else{
+                return
+            }
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if let index = CollectionView.indexPathsForSelectedItems?.first{
+            if((index.section) > 0){
+                    if index.section == counter{
+                        return false
+                    }else{
+                        return true
+                    }
+            }else{
+                return false
+            }
+        }else{
+            return false
+        }
+    }
+    
+    func getSlno(value: Int) -> Int{
+        if joinleave {
+            return filteredJoin[value].slno!
+        }else if location {
+            return filteredLocn[value].slno!
+        }else if deptwise {
+            return filteredDept[value].slno!
+        }else if desigwise {
+            return filteredDesig[value].slno!
+        } else{
+            return filteredItems[value].slno!
+        }
+    }
+    
     func dialNumber(number : String) {
         
         if let url = URL(string: "tel://\(number)"),
@@ -502,6 +559,7 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
                 }
                 self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
                 self.heightConstraint.constant = CGFloat((((self.filteredItems.count+1) * 45) + 10))
+                self.counter = self.filteredItems.count + 1
                 print("Get EmpChild Details Data \(self.employeeChild[0].data)")
                 self.CollectionView.reloadData()
                 self.CollectionView.collectionViewLayout.invalidateLayout()
@@ -538,6 +596,7 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
                 self.textField.addTarget(self, action: #selector(self.searchDepts(_ :)), for: .editingChanged)
                 self.heightConstraint.constant = CGFloat((((self.filteredDept.count+1) * 45) + 10))
                 print("Get emp Dept Child Details Data \(self.empDeptChild[0].data)")
+                self.counter = self.filteredDept.count + 1
                 self.CollectionView.reloadData()
                 self.CollectionView.collectionViewLayout.invalidateLayout()
                 ViewControllerUtils.sharedInstance.removeLoader()
@@ -572,6 +631,7 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
                 }
                 self.textField.addTarget(self, action: #selector(self.searchDesig(_ :)), for: .editingChanged)
                 self.heightConstraint.constant = CGFloat((((self.filteredDesig.count+1) * 45) + 10))
+                self.counter = self.filteredDesig.count + 1
                 print("Get emp Desig Child Details Data \(self.empDesigChild[0].data)")
                 self.CollectionView.reloadData()
                 self.CollectionView.collectionViewLayout.invalidateLayout()
@@ -608,7 +668,7 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
                 self.textField.addTarget(self, action: #selector(self.searchJoins(_ :)), for: .editingChanged)
                 print("Get emp join Details Data \(self.filteredJoin.count)")
                 self.heightConstraint.constant = CGFloat((((self.filteredJoin.count+1) * 45) + 10))
-                //self.heightConstraint.constant = 800.0
+                self.counter = self.filteredJoin.count + 1
                 self.CollectionView.reloadData()
                 self.CollectionView.collectionViewLayout.invalidateLayout()
                 self.CollectionView.layoutIfNeeded()
@@ -646,7 +706,7 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
                     self.tempLocn.append(dealers)
                 }
                 self.textField.addTarget(self, action: #selector(self.searchLocn(_ :)), for: .editingChanged)
-                //print("Get emp loc Details Data \(self.empJoinLeave[0].data)")
+                self.counter = self.filteredLocn.count + 1
                 self.heightConstraint.constant = CGFloat((((self.filteredLocn.count+1) * 45) + 10))
                 self.CollectionView.reloadData()
                 self.CollectionView.collectionViewLayout.invalidateLayout()
@@ -682,6 +742,7 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
                 self.empMonthlyObj = self.empMonthly[0].data
                 //self.filteredLocn = self.empLocn[0].data
                 self.heightConstraintTwo.constant = CGFloat((((self.empMonthlyObj.count+1) * 45) + 10))
+                self.counter = self.empMonthlyObj.count + 1
                 self.CollectionViewTwo.reloadData()
                 self.CollectionViewTwo.collectionViewLayout.invalidateLayout()
                 ViewControllerUtils.sharedInstance.removeLoader()
@@ -700,6 +761,9 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         
     }
+    
+    //BAR CHART...
+    
     
  
 }

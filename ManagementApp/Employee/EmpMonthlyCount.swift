@@ -17,4 +17,5 @@ struct EmpMonthlyCount: Codable {
 struct EmpMonthlyCountObj: Codable {
     let empCount, leave: Int?
     let month: String?
+    let slno: Int?
 }

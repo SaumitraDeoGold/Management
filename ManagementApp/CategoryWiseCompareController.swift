@@ -51,7 +51,7 @@ class CategoryWiseCompareController: BaseViewController, UICollectionViewDataSou
         monthFormatter.dateFormat = "MM"
         yearFormatter.dateFormat = "yyyy"
         setDate()
-        categoryApiUrl = "https://test2.goldmedalindia.in/api/GetCategoryWiseSalesCompare"
+        categoryApiUrl = "https://api.goldmedalindia.in/api/GetCategoryWiseSalesCompare"
         ViewControllerUtils.sharedInstance.showLoader()
         apiCompare()
         self.lblPartyName.setTitle("  WIRING DEVICES", for: .normal)

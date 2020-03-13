@@ -24,7 +24,7 @@ class DistWiseChildController: UIViewController, UICollectionViewDataSource, UIC
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiDistWiseParty = "https://test2.goldmedalindia.in/api/getDistrictwiseSaleComparechild"
+        apiDistWiseParty = "https://api.goldmedalindia.in/api/getDistrictwiseSaleComparechild"
         apiGetDistChild()
     }
     

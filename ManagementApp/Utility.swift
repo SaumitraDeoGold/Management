@@ -64,7 +64,7 @@ public class Utility: UIViewController {
     }
     
     class func getMonthEndDate() -> Array<String>{
-        return ["31/","28/","31/","30/","31/","30/","31/","31/","30/","31/","30/","31/"]
+        return ["31/","29/","31/","30/","31/","30/","31/","31/","30/","31/","30/","31/"]
     }
     //.......
     

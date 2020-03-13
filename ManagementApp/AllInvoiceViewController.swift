@@ -44,11 +44,11 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         self.noDataView.hideView(view: self.noDataView)
         ViewControllerUtils.sharedInstance.showLoader()
-        vendorListApi = "https://test2.goldmedalindia.in/api/getVendorPurchaseAndLedgerBalanceOrderNo"
-        vendorInvApi = "https://test2.goldmedalindia.in/api/getVendorPurchaseAndLedgerBalanceInvoiceNo"
-        vendorPayApi = "https://test2.goldmedalindia.in/api/getVendorPurchaseAndLedgerBalancePayment"
-        supplierInvoiceApi = "https://test2.goldmedalindia.in/api/getSupplierPurchaseAndLedgerBalanceInvoiceNo"
-        supplierPayApi = "https://test2.goldmedalindia.in/api/getSupplierPurchaseAndLedgerBalancePayment"
+        vendorListApi = "https://api.goldmedalindia.in/api/getVendorPurchaseAndLedgerBalanceOrderNo"
+        vendorInvApi = "https://api.goldmedalindia.in/api/getVendorPurchaseAndLedgerBalanceInvoiceNo"
+        vendorPayApi = "https://api.goldmedalindia.in/api/getVendorPurchaseAndLedgerBalancePayment"
+        supplierInvoiceApi = "https://api.goldmedalindia.in/api/getSupplierPurchaseAndLedgerBalanceInvoiceNo"
+        supplierPayApi = "https://api.goldmedalindia.in/api/getSupplierPurchaseAndLedgerBalancePayment"
         if from == "vendorOrder"{
             apiLastDispatchedMaterial()
         }else if from == "vendorInvoice"{
@@ -91,12 +91,12 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
             cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
             if #available(iOS 11.0, *) {
                 cell.backgroundColor = UIColor.init(named: "Primary")
-            } else {
+            }else {
                 cell.backgroundColor = UIColor.gray
             }
             if indexPath.row == 0 {
                 cell.contentLabel.text = "Date/PDF"
-            } else if indexPath.row == 1 {
+            }else if indexPath.row == 1 {
                 cell.contentLabel.text = "Amount"
             }else if indexPath.row == 2 {
                 cell.contentLabel.text = "Invoice No"
@@ -104,7 +104,7 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
         let img = UIImage.init(named: "icon_dashboard_pdf")
-        var imageview:UIImageView=UIImageView(frame: CGRect(x: 100, y: 10, width: 20, height: 20));
+        var imageview:UIImageView = UIImageView(frame: CGRect(x: 100, y: 10, width: 20, height: 20));
         imageview.image = img
         
         //        let tap = UITapGestureRecognizer(target: self, action: #selector(self.clickPdf))
@@ -127,7 +127,6 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
                 } else if indexPath.row == 2 {
                     cell.contentLabel.text = printInv(indexPath: indexPath)
                 }
-            
         }
         
         return cell
@@ -262,7 +261,7 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
             self.noDataView.showView(view: self.noDataView, from: "ERR")
             //self.collectionView.showNoData = true
             ViewControllerUtils.sharedInstance.removeLoader()
-            print(Error?.localizedDescription)
+            print(Error?.localizedDescription as Any)
         }
     }
     

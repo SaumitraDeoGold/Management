@@ -75,6 +75,19 @@ import AMPopTip
         //self.present(vc, animated: true, completion: nil)
     }
     
+    @IBAction func btnProfile(_ sender: Any) {
+        let tod = parentViewController?.storyboard?.instantiateViewController(withIdentifier: "MyProfile") as! MyProfileController
+        tod.fromDealer = true
+        parentViewController?.navigationController?.pushViewController(tod, animated: true)
+        
+    }
+    
+//    let vc = self.storyboard?.instantiateViewController(withIdentifier: "DivNBranch") as! DivNBranchwiseController
+//    vc.fromdate = fromdate//"01/01/\(currYear)"
+//    vc.todate = todate//"03/31/\(currYear)"
+//    vc.format = "quarterly"
+//    parent?.navigationController!.pushViewController(vc, animated: true)
+    
     @IBAction func btnTOD(_ sender: Any) {
         let tod = parentViewController?.storyboard?.instantiateViewController(withIdentifier: "TOD") as! TODViewController
         parentViewController?.navigationController?.pushViewController(tod, animated: true)

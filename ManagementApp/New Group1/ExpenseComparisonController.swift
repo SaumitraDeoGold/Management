@@ -43,8 +43,8 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         self.noOfColumns = 4
-        expenseComparisonUrl = "https://test2.goldmedalindia.in/api/getManagementBranchwiseExpense"
-        ledgerApiUrl = "https://test2.goldmedalindia.in/api/getManagementLedgerwiseExpense"
+        expenseComparisonUrl = "https://api.goldmedalindia.in/api/getManagementBranchwiseExpense"
+        ledgerApiUrl = "https://api.goldmedalindia.in/api/getManagementLedgerwiseExpense"
         ViewControllerUtils.sharedInstance.showLoader()
         apiExpComparison()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))

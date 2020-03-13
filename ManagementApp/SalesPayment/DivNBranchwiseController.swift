@@ -49,7 +49,7 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
     var strFromDate = ""
     var strToDate = ""
     var dateFormatter = DateFormatter()
-    let tabNames = [ "Wiring Devices", "Lights", "Wire & Cables",  "Pipes & Fitting","Mcb & Dbs"]
+    let tabNames = ["Wiring Devices", "Lights", "Wire & Cables", "Pipes & Fitting", "Mcb & Dbs"]
     let colorArray = [UIColor.red, UIColor.green, UIColor.blue, UIColor.orange, UIColor.brown, UIColor.yellow, UIColor.purple, UIColor.yellow, UIColor.magenta,UIColor.darkGray,UIColor.red, UIColor.green, UIColor.blue, UIColor.orange, UIColor.brown, UIColor.cyan, UIColor.purple, UIColor.yellow, UIColor.magenta,UIColor.darkGray]
     let colorCellArray = [UIColor.init(named: "ColorRed"), UIColor.init(named: "ColorGreen"), UIColor.blue, UIColor.orange, UIColor.brown, UIColor.init(named: "ColorYellow"),UIColor.purple, UIColor.yellow, UIColor.magenta,UIColor.darkGray,UIColor.red, UIColor.green, UIColor.blue, UIColor.orange, UIColor.brown, UIColor.cyan, UIColor.purple, UIColor.yellow, UIColor.magenta,UIColor.darkGray]
     var colors: [UIColor] = []
@@ -65,9 +65,9 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         setDate()
         self.noDataView.showView(view: self.noDataView, from: "LOADER")
         addRefreshControl()
-        divApiUrl = "https://test2.goldmedalindia.in/api/GetTodaySaleDivisionwise"
-        branchApiUrl = "https://test2.goldmedalindia.in/api/GetTodaySaleBranchwise"
-        divBreakdownTotalApi = "https://test2.goldmedalindia.in/api/GetDateWiseSale"
+        divApiUrl = "https://api.goldmedalindia.in/api/GetTodaySaleDivisionwise"
+        branchApiUrl = "https://api.goldmedalindia.in/api/GetTodaySaleBranchwise"
+        divBreakdownTotalApi = "https://api.goldmedalindia.in/api/GetDateWiseSale"
         apiDivisionwiseSale()
         apiDivTotal()
         //scrollVw.contentSize = CGSize(width: 375, height: 2000)
@@ -82,8 +82,7 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
             collectionView.refreshControl = refreshControl
         }else{
             collectionView.addSubview(refreshControl)
-        }
-        //self.collectionView.alwaysBounceVertical = true
+        } //self.collectionView.alwaysBounceVertical = true
     }
     
     @objc func refreshContents(){
@@ -95,10 +94,10 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    //Button Functions...
-    @IBAction func backBtnClick(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
+//Button Functions...
+//    @IBAction func backBtnClick(_ sender: UIButton) {
+//        self.dismiss(animated: true, completion: nil)
+//    }
     
     @IBAction func clickedDiv(_ sender: Any) {
         self.pieHeightConstraint.constant = CGFloat(220)
@@ -124,9 +123,6 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         collectionViewMonthly.isHidden = true
     }
     
-    @IBAction func clicked(_ sender: Any) {
-    }
-    
     @IBAction func clicked_from_date_div(_ sender: UIButton) {
         sender.isSelected = true
         let sb = UIStoryboard(name: "DatePicker", bundle: nil)
@@ -137,7 +133,6 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         popup?.delegate = self
         self.present(popup!, animated: true)
     }
-    
     
     @IBAction func clicked_to_date_div(_ sender: UIButton) {
         sender.isSelected = true
@@ -333,7 +328,6 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         }else{
             return dashBranchObj.count + 2
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

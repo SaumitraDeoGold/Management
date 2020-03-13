@@ -24,7 +24,7 @@ class InsureViewController: BaseViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         addSlideMenuButton()
-        apiInsurance = "https://test2.goldmedalindia.in/api/getManagementbranchwisesecuredamt"
+        apiInsurance = "https://api.goldmedalindia.in/api/getManagementbranchwisesecuredamt"
         ViewControllerUtils.sharedInstance.showLoader()
         apiGetSecureData()
     }

@@ -10,7 +10,7 @@ import UIKit
 
 class EmployeeDataController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    //Outlets
+    //Outlets...
     @IBOutlet weak var vwToday: UIView!
     @IBOutlet weak var vwMonthly: UIView!
     @IBOutlet weak var vwQuarterly: UIView!
@@ -33,6 +33,7 @@ class EmployeeDataController: BaseViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var vwYearLeave: UIStackView!
     @IBOutlet weak var vwMonthJoin: UIStackView!
     @IBOutlet weak var vwMonthLeave: UIStackView!
+    @IBOutlet weak var lblEmpCount: UILabel!
     
      
     //Declarations...
@@ -51,13 +52,14 @@ class EmployeeDataController: BaseViewController, UICollectionViewDataSource, UI
     var showDesig = false
     var showMonthly = false
     var type = 0
+    var totalemp = 0
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiDeptwise = "https://test2.goldmedalindia.in/api/getdeptwiseemployeecount"
-        apiDesigwise = "https://test2.goldmedalindia.in/api/getdesignationemployeecount"
-        apiJoinDate = "https://test2.goldmedalindia.in/api/getjoindatewiseempcount"
+        apiDeptwise = "https://api.goldmedalindia.in/api/getdeptwiseemployeecount"
+        apiDesigwise = "https://api.goldmedalindia.in/api/getdesignationemployeecount"
+        apiJoinDate = "https://api.goldmedalindia.in/api/getjoindatewiseempcount"
         addSlideMenuButton()
         ViewControllerUtils.sharedInstance.showLoader()
         apiGetEmployeeDept()
@@ -71,6 +73,54 @@ class EmployeeDataController: BaseViewController, UICollectionViewDataSource, UI
         vwMonthLeave.addGestureRecognizer(monthlyLeaveClick)
         let yearlyLeaveClick = UITapGestureRecognizer(target: self, action: #selector(self.clickedYearlyL))
         vwYearLeave.addGestureRecognizer(yearlyLeaveClick)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        sort.isUserInteractionEnabled = true
+        sort.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    //Sort Related...
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let sb = UIStoryboard(name: "Sorting", bundle: nil)
+        let popup = sb.instantiateInitialViewController()! as! SortViewController
+        popup.modalPresentationStyle = .overFullScreen
+        popup.delegate = self
+        popup.showPicker = 1
+        popup.pickerDataSource = ["A-Z","Z-A","low to high Employee Count","high to low Employee Count"]
+        self.present(popup, animated: true)
+    }
+    
+    func sortBy(value: String, position: Int) {
+        if showDesig {
+            switch position {
+            case 0:
+                self.filteredDesig = self.empDesigwiseObj.sorted{($0.designationName)!.localizedCaseInsensitiveCompare($1.designationName!) == .orderedAscending}
+            case 1:
+                self.filteredDesig = self.empDesigwiseObj.sorted{($0.designationName)!.localizedCaseInsensitiveCompare($1.designationName!) == .orderedDescending}
+            case 2:
+                self.filteredDesig = self.empDesigwiseObj.sorted(by: {Double($0.empCount!) < Double($1.empCount!)})
+            case 3:
+                self.filteredDesig = self.empDesigwiseObj.sorted(by: {Double($0.empCount!) > Double($1.empCount!)})
+            default:
+                break
+            }
+        } else {
+            switch position {
+            case 0:
+                self.filteredDept = self.empDeptwiseObj.sorted{($0.departmentName)!.localizedCaseInsensitiveCompare($1.departmentName!) == .orderedAscending}
+            case 1:
+                self.filteredDept = self.empDeptwiseObj.sorted{($0.departmentName)!.localizedCaseInsensitiveCompare($1.departmentName!) == .orderedDescending}
+            case 2:
+                self.filteredDept = self.empDeptwiseObj.sorted(by: {Double($0.empCount!) < Double($1.empCount!)})
+            case 3:
+                self.filteredDept = self.empDeptwiseObj.sorted(by: {Double($0.empCount!) > Double($1.empCount!)})
+            default:
+                break
+            }
+        }
+        self.CollectionView.reloadData()
+        self.CollectionView.collectionViewLayout.invalidateLayout()
     }
     
     //Button Clicks...
@@ -118,9 +168,9 @@ class EmployeeDataController: BaseViewController, UICollectionViewDataSource, UI
     //CollectionView Functions...
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if showDesig {
-            return self.filteredDesig.count + 1
+            return self.filteredDesig.count + 2
         } else {
-           return self.filteredDept.count + 1
+           return self.filteredDept.count + 2
         }
         
     }
@@ -135,41 +185,109 @@ class EmployeeDataController: BaseViewController, UICollectionViewDataSource, UI
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.white.cgColor
         //Header of CollectionView...
-        if indexPath.section == 0 {
-            cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
-            if #available(iOS 11.0, *) {
-                cell.backgroundColor = UIColor.init(named: "Primary")
+        if showDesig{
+            if indexPath.section == 0 {
+                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "Primary")
+                } else {
+                    cell.backgroundColor = UIColor.gray
+                }
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = "Designation Name"
+                case 1:
+                    cell.contentLabel.text = "Employee Count"
+                default:
+                    break
+                }
+                
+            }else if indexPath.section == self.filteredDesig.count + 1 {
+                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "Primary")
+                } else {
+                    cell.backgroundColor = UIColor.gray
+                }
+                switch indexPath.row{
+                case 0:
+                cell.contentLabel.text = "TOTAL"
+                case 1:
+                cell.contentLabel.text = String(totalemp)
+                default:
+                    break
+                }
+            }
+            else {
+                cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "primaryLight")
+                } else {
+                    cell.backgroundColor = UIColor.lightGray
+                }
+                
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = filteredDesig[indexPath.section-1].designationName
+                case 1:
+                    cell.contentLabel.text = String(filteredDesig[indexPath.section-1].empCount!)
+                default:
+                    break
+                }
+                
+            }
+        }else{
+            if indexPath.section == 0 {
+                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "Primary")
+                } else {
+                    cell.backgroundColor = UIColor.gray
+                }
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = "Department Name"
+                case 1:
+                    cell.contentLabel.text = "Employee Count"
+                default:
+                    break
+                }
+                
+            }else if indexPath.section == self.filteredDept.count + 1 {
+                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "Primary")
+                } else {
+                    cell.backgroundColor = UIColor.gray
+                }
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = "TOTAL"
+                case 1:
+                    cell.contentLabel.text = String(totalemp)
+                default:
+                    break
+                }
             } else {
-                cell.backgroundColor = UIColor.gray
+                cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "primaryLight")
+                } else {
+                    cell.backgroundColor = UIColor.lightGray
+                }
+                
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = filteredDept[indexPath.section-1].departmentName
+                case 1:
+                    cell.contentLabel.text = String(filteredDept[indexPath.section-1].empCount!)
+                default:
+                    break
+                }
+                
             }
-            switch indexPath.row{
-            case 0:
-                cell.contentLabel.text = (showDesig) ?"Designation Name" : "Department Name"
-            case 1:
-                cell.contentLabel.text = "Employee Count"
-            default:
-                break
-            }
-            
         }
-        else {
-            cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
-            if #available(iOS 11.0, *) {
-                cell.backgroundColor = UIColor.init(named: "primaryLight")
-            } else {
-                cell.backgroundColor = UIColor.lightGray
-            }
-            
-            switch indexPath.row{
-            case 0:
-                cell.contentLabel.text = (showDesig) ? filteredDesig[indexPath.section-1].designationName : filteredDept[indexPath.section-1].departmentName
-            case 1:
-                cell.contentLabel.text = (showDesig) ? String(filteredDesig[indexPath.section-1].empCount!) : String(filteredDept[indexPath.section-1].empCount!)
-            default:
-                break
-            }
-            
-        }
+        
         
         return cell
         
@@ -244,6 +362,7 @@ class EmployeeDataController: BaseViewController, UICollectionViewDataSource, UI
                 self.empDeptwise = try JSONDecoder().decode([EmpDeptwise].self, from: data!)
                 self.empDeptwiseObj = self.empDeptwise[0].data
                 self.filteredDept = self.empDeptwise[0].data
+                self.totalemp = Int(self.filteredDept.reduce(0, { $0 + Double($1.empCount!) }))
                 print("Get Emp Dept Data \(self.empDeptwise[0].data)")
                 self.CollectionView.reloadData()
                 self.CollectionView.collectionViewLayout.invalidateLayout()
@@ -272,6 +391,7 @@ class EmployeeDataController: BaseViewController, UICollectionViewDataSource, UI
                 self.empDesigwisedata = try JSONDecoder().decode([EmpDesigwise].self, from: data!)
                 self.empDesigwiseObj = self.empDesigwisedata[0].data
                 self.filteredDesig = self.empDesigwisedata[0].data
+                self.totalemp = Int(self.filteredDesig.reduce(0, { $0 + Double($1.empCount!) }))
                 print("Get Emp Desig Data \(self.empDesigwisedata[0].data)")
                 self.CollectionView.reloadData()
                 self.CollectionView.collectionViewLayout.invalidateLayout()
@@ -303,6 +423,7 @@ class EmployeeDataController: BaseViewController, UICollectionViewDataSource, UI
                 self.lblJoinY.text = String(self.empDataObj[0].yearCount!)
                 self.lblLeaveM.text = String(self.empDataObj[0].monthCountLeaving!)
                 self.lblLeaveY.text = String(self.empDataObj[0].yearCountLeaving!)
+                self.lblEmpCount.text = "TOTAL EMPLOYEES : \(String(self.empDataObj[0].totalCount!))"
                 print("Get Join Data \(self.empData[0].data)")
                 self.CollectionView.reloadData()
                 self.CollectionView.collectionViewLayout.invalidateLayout()

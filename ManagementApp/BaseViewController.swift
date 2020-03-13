@@ -21,6 +21,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
     var empTwoSub = 1
     var empThreeSub = 2
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
@@ -120,6 +121,13 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             print("Insurance\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("Insurance")
+            
+            break
+            
+        case (1,9):
+            print("ExpenseBillViewController\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("ExpenseBillViewController")
             
             break
             
@@ -232,7 +240,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
         case (empSelector,empTwoSub):
             print("Employee Data\n", terminator: "")
             
-            self.openViewControllerBasedOnIdentifier("EmployeeDataController")
+            self.openViewControllerBasedOnIdentifier("EmployeeBase")
             
             break
             

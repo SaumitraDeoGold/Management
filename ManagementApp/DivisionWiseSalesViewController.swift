@@ -7,8 +7,10 @@
 
 import UIKit
 
-class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDelegate , UITableViewDataSource {
     
+    //Outlet...
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnFinancialYear: RoundButton!
     @IBOutlet weak var btnPayment: RoundButton!
     @IBOutlet weak var btnSales: RoundButton!
@@ -33,6 +35,7 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
     var cellContentIdentifier = "\(CollectionViewCell.self)"
     var showSales = true
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var cellContentIdentifierTable = "\(DivisionwiseTabelCell.self)"
     
     //Picker Related...
     var finYear = ""
@@ -52,17 +55,91 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
     let months = Utility.getMonths()
     var customDivLayout = BranchWiseCollectionLayout()
     var noOfColumns = Int()
+    var isagent = false
     
     override func viewDidLoad() {
         addSlideMenuButton()
-        //addSortButton()
         super.viewDidLoad()
+        if UserDefaults.standard.value(forKey: "userCategory") as! String == "Agent"{
+            isagent = true
+            branchwiseCollectionView.isHidden = true
+        }else{
+            tableView.isHidden = true
+        }
         self.noDataView.hideView(view: self.noDataView)
         ViewControllerUtils.sharedInstance.showLoader()
         noOfColumns = 8
         apiBranchWiseSales()
     }
     
+    //Tableview Functions...
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 340
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return branchData.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DivisionwiseTabelCell", for: indexPath) as! DivisionwiseTabelCell
+        
+        let currentYear = Double(self.branchData[indexPath.row].wiringdevices!)!
+        let prevYear = Double(self.branchData[indexPath.row].branchcontribution!)
+        let temp = (currentYear*100)/prevYear!
+        cell.lblWDName.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear!, temp: temp)
+        
+        let wd = Double(self.branchData[indexPath.row].lights!)!
+        let wdSum = Double(self.branchData[indexPath.row].branchcontribution!)
+        let wdTemp = (wd*100)/wdSum!
+        cell.lblLname.attributedText = calculatePercentage(currentYear: wd, prevYear: wdSum!, temp: wdTemp)
+        
+        let wc = Double(self.branchData[indexPath.row].wireandcable!)!
+        let wcSum = Double(self.branchData[indexPath.row].branchcontribution!)
+        let wcTemp = (wc*100)/wcSum!
+        cell.lblWCName.attributedText = calculatePercentage(currentYear: wc, prevYear: wcSum!, temp: wcTemp)
+        
+        let pf = Double(self.branchData[indexPath.row].pipesandfittings!)!
+        let pfSum = Double(self.branchData[indexPath.row].branchcontribution!)
+        let pfTemp = (pf*100)/pfSum!
+        cell.lblPFName.attributedText = calculatePercentage(currentYear: pf, prevYear: pfSum!, temp: pfTemp)
+        
+        let md = Double(self.branchData[indexPath.row].mcbanddbs!)!
+        let mdSum = Double(self.branchData[indexPath.row].branchcontribution!)
+        let mdTemp = (md*100)/mdSum!
+        cell.lblMDName.attributedText = calculatePercentage(currentYear: md, prevYear: mdSum!, temp: mdTemp)
+        if let brC = self.branchData[indexPath.row].branchcontribution {
+            cell.lblBRCName.text = Utility.formatRupee(amount: Double(brC)!)
+        }
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "byAgent", sender: self)
+    }
+    
+    //Calculate percentage func...
+    func calculatePercentage(currentYear: Double, prevYear: Double, temp: Double) -> NSAttributedString{
+        let sale = Utility.formatRupee(amount: Double(currentYear ))
+        let tempVar = String(format: "%.2f", temp)
+        var formattedPerc = ""
+        if (Double(tempVar)!.isInfinite) || (Double(tempVar)!.isNaN){
+            formattedPerc = ""
+        }else{
+            formattedPerc = " (\(String(format: "%.2f", temp)))%"
+        }
+        let strNumber: NSString = sale + formattedPerc as NSString // you must set your
+        let range = (strNumber).range(of: String(tempVar))
+        let attribute = NSMutableAttributedString.init(string: strNumber as String)
+        if temp > 0{
+            attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(named: "ColorGreen") as Any , range: range)
+        }else{
+            attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red as Any , range: range)
+        }
+        return attribute
+    }
     
     //Sort Related...
     @IBAction func clicked_sort(_ sender: Any) {
@@ -135,7 +212,10 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
                 ViewControllerUtils.sharedInstance.removeLoader()
                 return
             }
-           
+            if self.isagent{
+                self.tableView.reloadData()
+            }
+            
             self.noOfColumns = 8
             self.customDivLayout.itemAttributes = [];
             self.customDivLayout.numberOfColumns = self.noOfColumns
@@ -249,6 +329,7 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
         callFrom = 2
         opType = 2
     }
+    
     @IBAction func yearClicked(_ sender: Any) {
         //Copied yearlyClicked Code for UI temporary
         lblFinYear.text = "Financial Year"
@@ -264,6 +345,10 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
     }
     
     @IBAction func clickedSales(_ sender: Any) {
+        if isagent{
+            tableView.isHidden = false
+            branchwiseCollectionView.isHidden = true
+        }
         showSales = true
         btnSales.backgroundColor = UIColor.darkGray
         btnSales.setTitleColor(UIColor.white, for: .normal)
@@ -275,6 +360,10 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
     }
     
     @IBAction func clickedPayment(_ sender: Any) {
+        if isagent{
+            tableView.isHidden = true
+            branchwiseCollectionView.isHidden = false
+        }
         showSales = false
         btnSales.backgroundColor = UIColor.white
         btnSales.setTitleColor(UIColor.black, for: .normal)
@@ -308,8 +397,7 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
             dateTo = months[2]+monthEnds[3]+yearEnd
             if showSales{
             apiBranchWiseSales()
-            }
-            else{
+            }else{
             apiBranchWisePayment()
             }
         case 1:
@@ -381,7 +469,7 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
             case 2:
                 cell.contentLabel.text = showSales ? "Lights" : "Contri %"
             case 3:
-                cell.contentLabel.text = "W&C "
+                cell.contentLabel.text = "W&C"
             case 4:
                 cell.contentLabel.text = "P&F"
             case 5:
@@ -503,25 +591,35 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? DivisionWiseDetailsCollectionViewController,
-            let index = branchwiseCollectionView.indexPathsForSelectedItems?.first{
-            if index.section > 0{
-                if showSales{
-                destination.dataToRecieve = [filteredItems[index.section-1]]
+        if (segue.identifier == "byAgent") {
+            if let destination = segue.destination as? DivisionWiseDetailsCollectionViewController{
+                destination.dataToRecieve = [filteredItems[0]]
                 destination.dateTo = dateTo
                 destination.dateFrom = dateFrom
-                  destination.fromSales = "yes"
-                }else{
-                    destination.dataFromPay = [filteredPayment[index.section-1]]
-                    destination.dateTo = dateTo
-                    destination.dateFrom = dateFrom 
-                    destination.fromSales = "no"
+                destination.fromSales = "yes"
+            }
+        }else{
+            if let destination = segue.destination as? DivisionWiseDetailsCollectionViewController,
+                let index = branchwiseCollectionView.indexPathsForSelectedItems?.first{
+                if index.section > 0{
+                    if showSales{
+                        destination.dataToRecieve = [filteredItems[index.section-1]]
+                        destination.dateTo = dateTo
+                        destination.dateFrom = dateFrom
+                        destination.fromSales = "yes"
+                    }else{
+                        destination.dataFromPay = [filteredPayment[index.section-1]]
+                        destination.dateTo = dateTo
+                        destination.dateFrom = dateFrom
+                        destination.fromSales = "no"
+                    }
+                }
+                else{
+                    return
                 }
             }
-            else{
-                return
-            }
         }
+        
     }
     
     

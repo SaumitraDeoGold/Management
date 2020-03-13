@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManagementApp/DistWiseChildController.swift"
-            timestampString = "598273662.901913"
+            timestampString = "605710000.287095"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManagementApp/MpinAlertController.swift"
-            timestampString = "600786399.7315429"
+            timestampString = "605700925.064016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManagementApp/MpinAlertController.swift"
-            timestampString = "600786399.7316689"
+            timestampString = "605700925.064548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "187"
@@ -74,7 +74,7 @@
                   moduleName = "ManagementApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/goldmedal/Documents/ios/G%20Parivaar%20ios%202/DealorsApp%202/ManagementApp/MpinAlertController.swift"
-                  timestampString = "604394088.468708"
+                  timestampString = "605787222.9696341"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "188"
@@ -89,7 +89,7 @@
                   moduleName = "ManagementApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/goldmedal/Documents/ios/G%20Parivaar%20ios%202/DealorsApp%202/ManagementApp/MpinAlertController.swift"
-                  timestampString = "604394088.470627"
+                  timestampString = "605787222.971534"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "189"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManagementApp/MpinAlertController.swift"
-            timestampString = "600786399.7317441"
+            timestampString = "605700925.064858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "194"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManagementApp/MpinAlertController.swift"
-            timestampString = "600786399.731789"
+            timestampString = "605700925.065161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "211"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManagementApp/CategoryWiseCompareController.swift"
-            timestampString = "597412060.6721489"
+            timestampString = "605710000.2873909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "132"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManagementApp/CategoryWiseCompareController.swift"
-            timestampString = "597412060.672218"
+            timestampString = "605710000.287447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManagementApp/New Group1/ExpenseHeadChildController.swift"
-            timestampString = "600005456.0427721"
+            timestampString = "605710000.287495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "234"
@@ -186,12 +186,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ManagementApp/New Group1/ExpenseHeadChildController.swift"
-            timestampString = "600005456.042896"
+            timestampString = "605710000.287537"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "231"
             endingLineNumber = "231"
             landmarkName = "shouldPerformSegue(withIdentifier:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManagementApp/Employee/EmployeeInfoController.swift"
+            timestampString = "605710000.287581"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManagementApp/Employee/EmployeeInfoController.swift"
+            timestampString = "605710000.287621"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManagementApp/BaseViewController.swift"
+            timestampString = "605787203.952888"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "355"
+            endingLineNumber = "355"
+            landmarkName = "onSlideMenuButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

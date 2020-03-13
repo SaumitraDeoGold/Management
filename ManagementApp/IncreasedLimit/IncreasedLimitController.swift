@@ -33,7 +33,7 @@ class IncreasedLimitController: BaseViewController, UICollectionViewDataSource, 
         addSlideMenuButton()
         apiAgingUrl = "https://api.goldmedalindia.in/api/getAging"
         apiUpdateLimitUrl = "https://api.goldmedalindia.in/api/UpdateIncreaseLimitParty"
-        limitDetailsApiUrl = "https://test2.goldmedalindia.in/api/GetDealerListManagment"
+        limitDetailsApiUrl = "https://api.goldmedalindia.in/api/GetDealerListManagment"
         CollectionView.isHidden = true
         apiLimitDetails()
     }

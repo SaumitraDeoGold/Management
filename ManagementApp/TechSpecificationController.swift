@@ -39,7 +39,7 @@ class TechSpecificationController: BaseViewController,UISearchBarDelegate{
         
         let initialData =  UserDefaults.standard.value(forKey: "initialData") as? Dictionary ?? [:]
         techSpecsApi = (initialData["baseApi"] as? String ?? "")+""+(initialData["subcatimgdivwise"] as? String ?? "")
-        //techSpecsApi = "https://test2.goldmedalindia.in/api/getsubcatimgdivwise"
+        //techSpecsApi = "https://api.goldmedalindia.in/api/getsubcatimgdivwise"
         
         // Do any additional setup after loading the view.
         if (Utility.isConnectedToNetwork()) {
