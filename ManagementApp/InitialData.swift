@@ -28,6 +28,12 @@ struct InitialObj:Decodable {
     let forceUpdate: Bool?
     let comboPlaceOrder, comboCompare, ledgerAmount, comboClaim, youtubeVideo, comboDetails, comboSchemes, ledgerAmountDebit, comboTotalQuantit:String?
     let sendNotification, amountConfirmation, wheelSpins, wheelSpinsDetails,applyCN ,creditNoteDetails ,logToServer:String?
+    
+    let todaySale, todayPayment, totalPaymentBranchWise, totalSaleBranchWise: String?
+    let totalSaleDivisionWiseManagement, totalPaymentDivisionWiseManagement, ndaReport, ndaReportAll: String?
+    let outstandingbyDays, listsofAllBranch, branchNonMovementStockValuation, branchNonMovementStockValuationDetails: String?
+    let branchwiseSalesCompare, pendingBranchWise, pendingBranchWiseChild, branchwiseAllTransaction: String?
+    let managementBranchwiseOutstanding: String?
  
 }
 

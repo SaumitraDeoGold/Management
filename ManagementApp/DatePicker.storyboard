@@ -84,7 +84,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="7bc-WM-aoT" secondAttribute="trailing" id="66T-Bi-bMf"/>
+                                    <constraint firstItem="lZo-uP-goh" firstAttribute="trailing" secondItem="7bc-WM-aoT" secondAttribute="trailing" id="66T-Bi-bMf"/>
                                     <constraint firstAttribute="bottom" secondItem="lZo-uP-goh" secondAttribute="bottom" constant="50" id="8LP-HL-Zyv"/>
                                     <constraint firstAttribute="bottom" secondItem="zOc-hU-Hkf" secondAttribute="bottom" id="9Hq-w0-xCC"/>
                                     <constraint firstItem="7bc-WM-aoT" firstAttribute="leading" secondItem="tMM-gL-PQx" secondAttribute="leading" id="DgQ-VT-yfM"/>
@@ -94,7 +94,7 @@
                                     <constraint firstItem="7bc-WM-aoT" firstAttribute="top" secondItem="tMM-gL-PQx" secondAttribute="top" id="gfL-3S-NJt"/>
                                     <constraint firstAttribute="trailing" secondItem="zOc-hU-Hkf" secondAttribute="trailing" id="gqq-uK-re8"/>
                                     <constraint firstItem="7bc-WM-aoT" firstAttribute="leading" secondItem="tMM-gL-PQx" secondAttribute="leading" id="m9J-Ep-cFa"/>
-                                    <constraint firstAttribute="trailing" secondItem="7bc-WM-aoT" secondAttribute="trailing" id="mMh-Sv-VMC"/>
+                                    <constraint firstItem="lZo-uP-goh" firstAttribute="trailing" secondItem="7bc-WM-aoT" secondAttribute="trailing" id="mMh-Sv-VMC"/>
                                     <constraint firstItem="zOc-hU-Hkf" firstAttribute="leading" secondItem="tMM-gL-PQx" secondAttribute="leading" id="sBL-cu-YRr"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

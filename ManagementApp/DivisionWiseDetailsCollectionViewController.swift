@@ -197,7 +197,7 @@ class DivisionWiseDetailsCollectionViewController: UIViewController, PopupDateDe
         if collectionView == self.detailView{
             if fromSales == "yes"{
             if indexPath.section == (saleDetail.count-1){
-                //print("Index \(indexPath.section) and isMore \((isMore)) count \(saleDetail.count)")
+                print("Index \(indexPath.section) and isMore \((isMore)) count \(saleDetail.count)")
                 if isMore{
                     index = index + 20
                     apiTotalSaleDivisionWise()

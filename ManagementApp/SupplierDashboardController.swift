@@ -114,7 +114,7 @@ extension SupplierDashboardController: ViewPagerControllerDataSource {
         var vc = UIViewController()
         if position == 0
         {
-            vc = self.storyboard?.instantiateViewController(withIdentifier: "VendorTab") as! VendorTabController
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "SupplierTabPurchase") as! SupplierTabController
         }
         else if position == 1
         {

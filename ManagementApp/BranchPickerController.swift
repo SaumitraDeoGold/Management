@@ -31,6 +31,13 @@ class BranchPickerController: UIViewController ,UIPickerViewDataSource, UIPicker
     var rowPosition = 0
     var delegate: PopupDateDelegate?
     var apiGetBranchUrl = ""
+    var apiSuppliernLedgerUrl = ""
+    var supplierLedger = [SupplierLedger]()
+    var supplierLedgerObj = [SupplierLedgerObj]()
+    var supplier = [Supplier]()
+    var ledger = [Ledger]()
+    var (dateFrom,dateTo) = Utility.yearDate()
+    var from = ""
     
     var pickerDataSource = ["All"]
     var showPicker = Int()
@@ -56,7 +63,12 @@ class BranchPickerController: UIViewController ,UIPickerViewDataSource, UIPicker
         self.picker.delegate = self;
         specialEffects()
         apiGetBranchUrl = "https://api.goldmedalindia.in/api/getListsofAllBranch"
-        apiGetBranch()
+        apiSuppliernLedgerUrl = "https://test2.goldmedalindia.in/api/getallExpenseChildAllSubChildList"
+        if showPicker == 1{
+            apiGetBranch()
+        }else{
+            apiSupplierLedger()
+        }
     }
     
     //Corner Radius and Blurr Effect...
@@ -105,7 +117,7 @@ class BranchPickerController: UIViewController ,UIPickerViewDataSource, UIPicker
     
     func apiGetBranch(){
         
-        let json: [String: Any] = ["ClientSecret":"clientsecret","CIN":"sa@sa.com","Category":"Management"]
+        let json: [String: Any] = ["ClientSecret":"clientsecret","CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String]
         
         let manager =  DataManager.shared
         
@@ -118,6 +130,41 @@ class BranchPickerController: UIViewController ,UIPickerViewDataSource, UIPicker
                 if self.showPicker == 1 {
                     for qty in self.branchObj{
                         self.pickerDataSource.append(qty.branchnm!)
+                    }
+                }
+                self.picker.reloadAllComponents()
+                
+            } catch let errorData {
+                print(errorData.localizedDescription)
+            }
+        }) { (Error) in
+            print(Error?.localizedDescription as Any)
+        }
+        
+    }
+    
+    func apiSupplierLedger(){
+        
+        let json: [String: Any] = ["ClientSecret":"clientsecret","CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"Fromdate":dateFrom,"Todate":dateTo]
+        
+        let manager =  DataManager.shared
+        
+        manager.makeAPICall(url: apiSuppliernLedgerUrl, params: json, method: .POST, success: { (response) in
+            let data = response as? Data
+            
+            do {
+                self.supplierLedger = try JSONDecoder().decode([SupplierLedger].self, from: data!)
+                self.supplierLedgerObj  = self.supplierLedger[0].data
+                self.supplier  = self.supplierLedgerObj[0].supplier
+                self.ledger  = self.supplierLedgerObj[0].ledger
+                if self.showPicker == 2 {
+                    for qty in self.supplier{
+                        self.pickerDataSource.append(qty.name!)
+                    }
+                }
+                if self.showPicker == 3 {
+                    for qty in self.ledger{
+                        self.pickerDataSource.append(qty.name!)
                     }
                 }
                 self.picker.reloadAllComponents()

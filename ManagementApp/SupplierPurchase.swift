@@ -27,7 +27,7 @@ import AMPopTip
     var overallGrowth: Double = 0
     
     var strCin = String()
-    var txtToolTip = "Vendor Purchase Amnt of the current financial year"
+    var txtToolTip = "Supplier Purchase Amnt of the current financial year"
     var apiVendor = ""
     let popTip = PopTip()
     var lastYearSalesApi = ""

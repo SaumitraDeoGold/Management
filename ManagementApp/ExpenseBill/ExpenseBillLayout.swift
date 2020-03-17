@@ -169,56 +169,22 @@ extension ExpenseBillLayout {
     func sizeForItemWithColumnIndex(_ columnIndex: Int) -> CGSize {
         let screenWidth = UIScreen.main.bounds.width
         var width = 0
-        if numberOfColumns == 4{
-            switch columnIndex {
-            case 0:
-                width = Int((screenWidth/3)-1)
-            case 1:
-                width = Int((screenWidth/2)-1)
-            case 2:
-                width = Int((screenWidth/2)-1)
-            case 3:
-                width = Int((screenWidth/3)-1)
-                
-            default:
-                width = Int((screenWidth/3)-1)
-            }
-        }else if numberOfColumns == 2{
-            switch columnIndex {
-            case 0:
-                width = Int((screenWidth/2)-1)
-            case 1:
-                width = Int((screenWidth/2)-1)
-                
-            default:
-                width = Int((screenWidth/3)-1)
-            }
-        }else if numberOfColumns == 7{
-            switch columnIndex {
-            case 0:
-                width = Int((screenWidth/3)-1)
-            case 1:
-                width = Int((screenWidth/2)-1)
-            case 2:
-                width = Int((screenWidth/2)-1)
-            case 3:
-                width = Int((screenWidth/3)-1)
-                
-            default:
-                width = Int((screenWidth/3)-1)
-            }
-        }else{
-            switch columnIndex {
-            case 0:
-                width = 130
-            case 1:
-                width = Int((screenWidth/2)-1)
-            case 2:
-                width = Int((screenWidth/2)-1)
-                
-            default:
-                width = Int((screenWidth/2)-1)
-            }
+        switch columnIndex {
+        case 0:
+            width = 65
+        case 1:
+            width = 70
+        case 2:
+            width = Int((screenWidth/3)-1)
+        case 3:
+            width = Int((screenWidth/2)-1)
+        case 4:
+            width = Int((screenWidth/2)-1)
+        case 7:
+            width = Int((screenWidth/2)-1)
+            
+        default:
+            width = Int((screenWidth/3)-1)
         }
         
         //let size: CGSize = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)])

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rqa-AZ-sIE">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,17 +16,17 @@
             <objects>
                 <viewController storyboardIdentifier="SortView" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Rqa-AZ-sIE" customClass="SortViewController" customModule="ManagementApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lxi-oF-2Uh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cx4-7m-qJ5" customClass="ShadowCardVw" customModule="ManagementApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="185.5" width="335" height="316"/>
+                                <rect key="frame" x="20" y="295" width="374" height="316"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bjk-yh-rmU">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SORT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLS-hv-Cb1">
-                                                <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -42,20 +42,20 @@
                                         </constraints>
                                     </view>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ga-Oo-GRP">
-                                        <rect key="frame" x="0.0" y="50" width="335" height="216"/>
+                                        <rect key="frame" x="0.0" y="50" width="374" height="216"/>
                                     </pickerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMi-lu-4x3">
-                                        <rect key="frame" x="0.0" y="266" width="335" height="50"/>
+                                        <rect key="frame" x="0.0" y="266" width="374" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ka-eM-zSG">
-                                                <rect key="frame" x="0.0" y="0.0" width="167.5" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
                                                 <state key="normal" title="CANCEL"/>
                                                 <connections>
                                                     <action selector="cancel_clicked:" destination="Rqa-AZ-sIE" eventType="touchUpInside" id="e2o-nC-HRw"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlB-bR-KTv">
-                                                <rect key="frame" x="167.5" y="0.0" width="167.5" height="50"/>
+                                                <rect key="frame" x="187" y="0.0" width="187" height="50"/>
                                                 <state key="normal" title="OK"/>
                                                 <connections>
                                                     <action selector="ok_clicked:" destination="Rqa-AZ-sIE" eventType="touchUpInside" id="ccN-k0-0uw"/>
@@ -81,7 +81,7 @@
                                     <constraint firstItem="Bjk-yh-rmU" firstAttribute="top" secondItem="cx4-7m-qJ5" secondAttribute="top" id="3Yv-VO-rcO"/>
                                     <constraint firstAttribute="bottom" secondItem="1ga-Oo-GRP" secondAttribute="bottom" constant="50" id="8qN-5o-Soj"/>
                                     <constraint firstItem="1ga-Oo-GRP" firstAttribute="leading" secondItem="cx4-7m-qJ5" secondAttribute="leading" id="E95-qb-I7x"/>
-                                    <constraint firstAttribute="trailing" secondItem="Bjk-yh-rmU" secondAttribute="trailing" id="GrP-tq-BJ0"/>
+                                    <constraint firstItem="1ga-Oo-GRP" firstAttribute="trailing" secondItem="Bjk-yh-rmU" secondAttribute="trailing" id="GrP-tq-BJ0"/>
                                     <constraint firstAttribute="trailing" secondItem="1ga-Oo-GRP" secondAttribute="trailing" id="IP6-ay-19o"/>
                                     <constraint firstAttribute="bottom" secondItem="CMi-lu-4x3" secondAttribute="bottom" id="XOj-Ka-rcL"/>
                                     <constraint firstItem="1ga-Oo-GRP" firstAttribute="top" secondItem="Bjk-yh-rmU" secondAttribute="bottom" id="fJ1-De-IdM"/>

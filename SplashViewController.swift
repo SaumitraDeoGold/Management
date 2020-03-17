@@ -92,7 +92,7 @@ class SplashViewController: AVPlayerViewController {
 
         let json: [String: Any] = ["Date": "02/17/2018"]
 
-        DataManager.shared.makeAPICall(url: "https://api.goldmedalindia.in/api/getInitialValue", params: json, method: .POST, success: { (response) in
+        DataManager.shared.makeAPICall(url: "https://api.goldmedalindia.in/api/getInitialValueManagement", params: json, method: .POST, success: { (response) in
             
             if let response = response {
                 print("SPLASH",response)
@@ -114,8 +114,8 @@ class SplashViewController: AVPlayerViewController {
                         let mainData = ((responseData as? Array ?? [])[0] as? Dictionary ?? [:])["data"]
                         let initialData = ((mainData as? Array ?? [])[0] as? Dictionary ?? [:])
                         UserDefaults.standard.set(initialData, forKey: "initialData")
-                      //  self.appStrorVersionNumber = (initialData["iosVersion"] as? String) ?? ""
-                        self.appStrorVersionNumber = "1"
+                        self.appStrorVersionNumber = (initialData["iosVersion"] as? String) ?? ""
+                        //self.appStrorVersionNumber = "1"
                         self.forceUpdate(update: self.isUpdateAvailable(appstoreVersion: self.appStrorVersionNumber))
                     }
 

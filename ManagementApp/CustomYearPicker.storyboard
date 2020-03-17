@@ -77,9 +77,9 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="4L8-W9-Q5z" secondAttribute="trailing" id="0WH-Q8-w9s"/>
+                                    <constraint firstItem="pZj-A3-nwl" firstAttribute="trailing" secondItem="4L8-W9-Q5z" secondAttribute="trailing" id="0WH-Q8-w9s"/>
                                     <constraint firstItem="pZj-A3-nwl" firstAttribute="leading" secondItem="Rmb-v0-jp3" secondAttribute="leading" id="4Q6-JR-f9M"/>
-                                    <constraint firstAttribute="trailing" secondItem="4L8-W9-Q5z" secondAttribute="trailing" id="5Ux-mw-OLw"/>
+                                    <constraint firstItem="pZj-A3-nwl" firstAttribute="trailing" secondItem="4L8-W9-Q5z" secondAttribute="trailing" id="5Ux-mw-OLw"/>
                                     <constraint firstItem="4L8-W9-Q5z" firstAttribute="top" secondItem="Rmb-v0-jp3" secondAttribute="top" id="8OK-31-laH"/>
                                     <constraint firstItem="n3w-Qb-byo" firstAttribute="leading" secondItem="Rmb-v0-jp3" secondAttribute="leading" id="GIp-ot-hEk"/>
                                     <constraint firstItem="pZj-A3-nwl" firstAttribute="top" secondItem="4L8-W9-Q5z" secondAttribute="bottom" id="Gia-8G-K9i"/>

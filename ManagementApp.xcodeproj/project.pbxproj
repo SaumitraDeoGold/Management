@@ -55,6 +55,7 @@
 		691BB63823ED49B500E2C4C8 /* VendorPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691BB63723ED49B500E2C4C8 /* VendorPayment.swift */; };
 		691BB63B23ED706D00E2C4C8 /* VendorOrder.xib in Resources */ = {isa = PBXBuildFile; fileRef = 691BB63A23ED706D00E2C4C8 /* VendorOrder.xib */; };
 		691BB63D23ED708D00E2C4C8 /* VendorOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691BB63C23ED708D00E2C4C8 /* VendorOrder.swift */; };
+		691D1B89241FA54A0037A74E /* SupplierLedger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691D1B88241FA54A0037A74E /* SupplierLedger.swift */; };
 		691E83ED2298256000772EF5 /* OutstandingPartyWiseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E83EC2298256000772EF5 /* OutstandingPartyWiseLayout.swift */; };
 		691E9AFA240FA39C006A9646 /* DemoBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E9AF9240FA39C006A9646 /* DemoBaseViewController.swift */; };
 		691E9AFC240FD1AA006A9646 /* EmployeeBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691E9AFB240FD1AA006A9646 /* EmployeeBaseController.swift */; };
@@ -98,6 +99,7 @@
 		6923623E2407D5E2008B0588 /* EmployeeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6923623D2407D5E2008B0588 /* EmployeeInfo.swift */; };
 		692362402407D780008B0588 /* EmployeeInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6923623F2407D780008B0588 /* EmployeeInfoController.swift */; };
 		6923DA1823FBE9FA00DA7FEC /* EmpJoinLeave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6923DA1723FBE9FA00DA7FEC /* EmpJoinLeave.swift */; };
+		6923DA4B241CDD3D00412E9C /* ExpenseBill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6923DA4A241CDD3D00412E9C /* ExpenseBill.swift */; };
 		6925258C23040C7300CDFBE3 /* ExpenseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6925258B23040C7300CDFBE3 /* ExpenseLayout.swift */; };
 		6925258E2304372400CDFBE3 /* CategorywiseComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6925258D2304372400CDFBE3 /* CategorywiseComp.swift */; };
 		69252590230439FA00CDFBE3 /* CategoryCompLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6925258F230439FA00CDFBE3 /* CategoryCompLayout.swift */; };
@@ -539,6 +541,7 @@
 		691BB63723ED49B500E2C4C8 /* VendorPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorPayment.swift; sourceTree = "<group>"; };
 		691BB63A23ED706D00E2C4C8 /* VendorOrder.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VendorOrder.xib; sourceTree = "<group>"; };
 		691BB63C23ED708D00E2C4C8 /* VendorOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorOrder.swift; sourceTree = "<group>"; };
+		691D1B88241FA54A0037A74E /* SupplierLedger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierLedger.swift; sourceTree = "<group>"; };
 		691E83EC2298256000772EF5 /* OutstandingPartyWiseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutstandingPartyWiseLayout.swift; sourceTree = "<group>"; };
 		691E9AF9240FA39C006A9646 /* DemoBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DemoBaseViewController.swift; path = "../../../../Projects/Charts-master/ChartsDemo-iOS/Swift/DemoBaseViewController.swift"; sourceTree = "<group>"; };
 		691E9AFB240FD1AA006A9646 /* EmployeeBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeBaseController.swift; sourceTree = "<group>"; };
@@ -582,6 +585,7 @@
 		6923623D2407D5E2008B0588 /* EmployeeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeInfo.swift; sourceTree = "<group>"; };
 		6923623F2407D780008B0588 /* EmployeeInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeInfoController.swift; sourceTree = "<group>"; };
 		6923DA1723FBE9FA00DA7FEC /* EmpJoinLeave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpJoinLeave.swift; sourceTree = "<group>"; };
+		6923DA4A241CDD3D00412E9C /* ExpenseBill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseBill.swift; sourceTree = "<group>"; };
 		6925258B23040C7300CDFBE3 /* ExpenseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseLayout.swift; sourceTree = "<group>"; };
 		6925258D2304372400CDFBE3 /* CategorywiseComp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorywiseComp.swift; sourceTree = "<group>"; };
 		6925258F230439FA00CDFBE3 /* CategoryCompLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCompLayout.swift; sourceTree = "<group>"; };
@@ -1077,6 +1081,14 @@
 			name = VendorOrder;
 			sourceTree = "<group>";
 		};
+		691D1B87241FA4FD0037A74E /* CommonFiles */ = {
+			isa = PBXGroup;
+			children = (
+				691D1B88241FA54A0037A74E /* SupplierLedger.swift */,
+			);
+			path = CommonFiles;
+			sourceTree = "<group>";
+		};
 		691EE18321479E9700835311 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1105,6 +1117,7 @@
 			children = (
 				6926DAB6241B8BAB00BFD8A2 /* ExpenseBillViewController.swift */,
 				6926DAB8241BB30A00BFD8A2 /* ExpenseBillLayout.swift */,
+				6923DA4A241CDD3D00412E9C /* ExpenseBill.swift */,
 			);
 			path = ExpenseBill;
 			sourceTree = "<group>";
@@ -1929,6 +1942,7 @@
 		ABBC46F721294F000038A7E3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				691D1B87241FA4FD0037A74E /* CommonFiles */,
 				6969CAC423F2B49300BBE5A5 /* Employment */,
 				6986617B22CC8C6000B75BA6 /* WorldCup */,
 				6976F602228AEBF700D1E3D8 /* Accounts */,
@@ -2466,6 +2480,7 @@
 				69D8F4432405431C00530E94 /* EmpLocation.swift in Sources */,
 				692087D823EC139100209142 /* VendorInvoiceController.swift in Sources */,
 				69EFE7F6211979AD0034DCE0 /* RegularSchemeView.swift in Sources */,
+				691D1B89241FA54A0037A74E /* SupplierLedger.swift in Sources */,
 				691FF8EC23A5174400C79C1A /* InvoiceViewController.swift in Sources */,
 				691A191523FE971E0024C820 /* DhanbarseVideoController.swift in Sources */,
 				69628B6C22689DD300020699 /* DashboardOrderViewController.swift in Sources */,
@@ -2538,6 +2553,7 @@
 				694E548C230EC77F009618E5 /* TodDetailCell.swift in Sources */,
 				69628B6A22685A7500020699 /* BranchProgressLayout.swift in Sources */,
 				69ACF35A2121C9BE007FFA3B /* DocumentRowCell.swift in Sources */,
+				6923DA4B241CDD3D00412E9C /* ExpenseBill.swift in Sources */,
 				69EFE7FC211980AF0034DCE0 /* AgingReportView.swift in Sources */,
 				6977E5DD21303D1700A2424E /* NewUser.swift in Sources */,
 				69B1313423E06A58005D877B /* SupplierTabController.swift in Sources */,
