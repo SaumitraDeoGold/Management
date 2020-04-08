@@ -329,8 +329,8 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
     }
     
     //Show Branches Func...
-    func updateBranch(value: String, position: Int) {
-        if position == 0 {
+    func showSearchValue(value: String) {
+        if value == "ALL" {
             filteredItems = self.branchProObj
             self.CollectionView.reloadData()
             self.CollectionView.collectionViewLayout.invalidateLayout()
@@ -340,6 +340,17 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
         self.CollectionView.reloadData()
         self.CollectionView.collectionViewLayout.invalidateLayout()
     }
+//    func updateBranch(value: String, position: Int) {
+//        if position == 0 {
+//            filteredItems = self.branchProObj
+//            self.CollectionView.reloadData()
+//            self.CollectionView.collectionViewLayout.invalidateLayout()
+//            return
+//        }
+//        filteredItems = self.branchProObj.filter { $0.branchnm == value }
+//        self.CollectionView.reloadData()
+//        self.CollectionView.collectionViewLayout.invalidateLayout()
+//    }
     
     //CollectionView Functions......
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -609,11 +620,11 @@ class SalesPaymentViewController: UIViewController, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(indexPath.section == 0){
-            let sb = UIStoryboard(name: "BranchPicker", bundle: nil)
-            let popup = sb.instantiateInitialViewController()! as! BranchPickerController
+            let sb = UIStoryboard(name: "Search", bundle: nil)
+            let popup = sb.instantiateInitialViewController()! as! SearchViewController
             popup.modalPresentationStyle = .overFullScreen
             popup.delegate = self
-            popup.showPicker = 1
+            popup.from = "branch"
             self.present(popup, animated: true)
         }
     }

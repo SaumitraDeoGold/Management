@@ -437,9 +437,9 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if(showSales){
-           return branchData.count + 2
+           return filteredItems.count + 2
         }else{
-           return branchPayData.count + 2
+           return filteredPayment.count + 2
         }
     }
     
@@ -453,141 +453,207 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
                                                                 for: indexPath) as! CollectionViewCell
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.white.cgColor
-        
-        if indexPath.section == 0 {
-            cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
-            if #available(iOS 11.0, *) {
-                cell.backgroundColor = UIColor.init(named: "Primary")
-            } else {
-                cell.backgroundColor = UIColor.gray
-            }
-            switch indexPath.row{
-            case 0:
-                cell.contentLabel.text = "Branch Name"
-            case 1:
-                cell.contentLabel.text = showSales ? "W D" : "Payment"
-            case 2:
-                cell.contentLabel.text = showSales ? "Lights" : "Contri %"
-            case 3:
-                cell.contentLabel.text = "W&C"
-            case 4:
-                cell.contentLabel.text = "P&F"
-            case 5:
-                cell.contentLabel.text = "Mcb&Dbs"
-            case 6:
-                cell.contentLabel.text = "Branch Contri"
-            case 7:
-                cell.contentLabel.text = "Contri %"
-            default:
-                break
-            }
-            
-        }else if indexPath.section == branchPayData.count + 1 && !showSales{
-            cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
-            if #available(iOS 11.0, *) {
+        if showSales{
+            if indexPath.section == 0 {
+                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "Primary")
+                } else {
+                    cell.backgroundColor = UIColor.gray
+                }
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = "Branch Name"
+                case 1:
+                    cell.contentLabel.text = "W D"
+                case 2:
+                    cell.contentLabel.text = "Lights"
+                case 3:
+                    cell.contentLabel.text = "W&C"
+                case 4:
+                    cell.contentLabel.text = "P&F"
+                case 5:
+                    cell.contentLabel.text = "Mcb&Dbs"
+                case 6:
+                    cell.contentLabel.text = "Branch Contri"
+                case 7:
+                    cell.contentLabel.text = "Contri %"
+                default:
+                    break
+                }
                 
-                cell.backgroundColor = UIColor.init(named: "Primary")
+            } else if indexPath.section == filteredItems.count + 1 {
+                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "Primary")
+                } else {
+                    cell.backgroundColor = UIColor.gray
+                }
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = "SUM"
+                case 1:
+                    cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["wiringdevices"]! ))
+                case 2:
+                    cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["lights"]! ))
+                case 3:
+                    cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["wireandcable"]! ))
+                case 4:
+                    cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["pipesandfittings"]! ))
+                case 5:
+                    cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["mcbanddbs"]! ))
+                case 6:
+                    cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["branchcontribution"]! ))
+                case 7:
+                    cell.contentLabel.text = "\(Int(totalSales["branchcontributionpercentage"]!))%"
+                default:
+                    break
+                }
             } else {
-                cell.backgroundColor = UIColor.gray
-            }
-            switch indexPath.row{
-            case 0:
-                cell.contentLabel.text = "SUM"
-            case 1:
-                cell.contentLabel.text = Utility.formatRupee(amount: (totalPayment["payment"]! ))
-            case 2:
-                cell.contentLabel.text = "\(Int(totalPayment["contri"]!))%"
-            default:
-                break
-            }
-        }else if indexPath.section == branchData.count + 1 && showSales{
-            cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
-            if #available(iOS 11.0, *) {
-                cell.backgroundColor = UIColor.init(named: "Primary")
-            } else {
-                cell.backgroundColor = UIColor.gray
-            }
-            switch indexPath.row{
-            case 0:
-                cell.contentLabel.text = "SUM"
-            case 1:
-                cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["wiringdevices"]! ))
-            case 2:
-                cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["lights"]! ))
-            case 3:
-                cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["wireandcable"]! ))
-            case 4:
-                cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["pipesandfittings"]! ))
-            case 5:
-                cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["mcbanddbs"]! ))
-            case 6:
-                cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["branchcontribution"]! ))
-            case 7:
-                cell.contentLabel.text = "\(Int(totalSales["branchcontributionpercentage"]!))%"
-            default:
-                break
-            }
-        } else {
-            cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
-            if #available(iOS 11.0, *) {
-                cell.backgroundColor = UIColor.init(named: "primaryLight")
-            } else {
-                cell.backgroundColor = UIColor.lightGray
-            }
-            switch indexPath.row{
-            case 0:
-                cell.contentLabel.text = showSales ? filteredItems[indexPath.section - 1].branchnm : filteredPayment[indexPath.section - 1].branchnm
-            case 1:
-                if let Sales = showSales ? filteredItems[indexPath.section - 1].wiringdevices : filteredPayment[indexPath.section - 1].payment
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(Sales )!)
+                cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "primaryLight")
+                } else {
+                    cell.backgroundColor = UIColor.lightGray
                 }
-            case 2:
-                if let totalSales = showSales ? filteredItems[indexPath.section - 1].lights : filteredPayment[indexPath.section - 1].contribution! + "%"
-                {
-                    cell.contentLabel.text = showSales ? Utility.formatRupee(amount: Double(totalSales )!) : filteredPayment[indexPath.section - 1].contribution! + "%"
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = filteredItems[indexPath.section - 1].branchnm
+                case 1:
+                    if let Sales = filteredItems[indexPath.section - 1].wiringdevices
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(Sales )!)
+                    }
+                case 2:
+                    if let totalSales = filteredItems[indexPath.section - 1].lights
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales )!)
+                    }
+                case 3:
+                    if let wireandcable = filteredItems[indexPath.section - 1].wireandcable
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(wireandcable )!)
+                    }
+                case 4:
+                    if let pipes = filteredItems[indexPath.section - 1].pipesandfittings
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(pipes )!)
+                    }
+                case 5:
+                    if let mcbanddbs = filteredItems[indexPath.section - 1].mcbanddbs
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(mcbanddbs )!)
+                    }
+                case 6:
+                    if let branchcontribution = filteredItems[indexPath.section - 1].branchcontribution
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(branchcontribution )!)
+                    }
+                case 7:
+                    cell.contentLabel.text = filteredItems[indexPath.section - 1].branchcontributionpercentage! + "%"
+                    
+                default:
+                    break
                 }
-            case 3:
-                if let wireandcable = filteredItems[indexPath.section - 1].wireandcable
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(wireandcable )!)
-                }
-            case 4:
-                if let pipes = filteredItems[indexPath.section - 1].pipesandfittings
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(pipes )!)
-                }
-            case 5:
-                if let mcbanddbs = filteredItems[indexPath.section - 1].mcbanddbs
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(mcbanddbs )!)
-                }
-            case 6:
-                if let branchcontribution = filteredItems[indexPath.section - 1].branchcontribution
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(branchcontribution )!)
-                }
-            case 7:
-                cell.contentLabel.text = filteredItems[indexPath.section - 1].branchcontributionpercentage! + "%"
                 
-            default:
-                break
             }
-            
+            return cell
+        }else{
+            if indexPath.section == 0 {
+                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "Primary")
+                } else {
+                    cell.backgroundColor = UIColor.gray
+                }
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = "Branch Name"
+                case 1:
+                    cell.contentLabel.text = "Payment"
+                case 2:
+                    cell.contentLabel.text = "Contri %"
+                default:
+                    break
+                }
+                
+            }else if indexPath.section == filteredPayment.count + 1 {
+                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                if #available(iOS 11.0, *) {
+                    
+                    cell.backgroundColor = UIColor.init(named: "Primary")
+                } else {
+                    cell.backgroundColor = UIColor.gray
+                }
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = "SUM"
+                case 1:
+                    cell.contentLabel.text = Utility.formatRupee(amount: (totalPayment["payment"]! ))
+                case 2:
+                    cell.contentLabel.text = "\(Int(totalPayment["contri"]!))%"
+                default:
+                    break
+                }
+            } else {
+                cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "primaryLight")
+                } else {
+                    cell.backgroundColor = UIColor.lightGray
+                }
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = filteredPayment[indexPath.section - 1].branchnm
+                case 1:
+                    if let Sales = filteredPayment[indexPath.section - 1].payment
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(Sales )!)
+                    }
+                case 2:
+                        cell.contentLabel.text = filteredPayment[indexPath.section - 1].contribution! + "%"
+                default:
+                    break
+                }
+                
+            }
+            return cell
         }
-        return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            if(indexPath.section == 0){
-                //Open all branches popup
-//                let sb = UIStoryboard(name: "BranchPicker", bundle: nil)
-//                let popup = sb.instantiateInitialViewController()! as! BranchPickerController
-//                popup.modalPresentationStyle = .overFullScreen
-//                popup.delegate = self
-//                popup.showPicker = 1
-//                self.present(popup, animated: true)
+        if(indexPath.section == 0){
+            let sb = UIStoryboard(name: "Search", bundle: nil)
+            let popup = sb.instantiateInitialViewController()! as! SearchViewController
+            popup.modalPresentationStyle = .overFullScreen
+            popup.delegate = self
+            popup.from = "branch"
+            self.present(popup, animated: true)
+        }
+    }
+    
+    //Show Branches Func...
+    func showSearchValue(value: String) {
+        if showSales{
+            if value == "ALL" {
+                filteredItems = self.branchData
+                self.branchwiseCollectionView.reloadData()
+                self.branchwiseCollectionView.collectionViewLayout.invalidateLayout()
+                return
             }
+            filteredItems = self.branchData.filter { $0.branchnm == value }
+        }else{
+            if value == "ALL" {
+                filteredPayment = self.branchPayData
+                self.branchwiseCollectionView.reloadData()
+                self.branchwiseCollectionView.collectionViewLayout.invalidateLayout()
+                return
+            }
+            filteredPayment = self.branchPayData.filter { $0.branchnm == value }
+        }
+        self.branchwiseCollectionView.reloadData()
+        self.branchwiseCollectionView.collectionViewLayout.invalidateLayout()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

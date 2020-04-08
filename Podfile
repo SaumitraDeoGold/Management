@@ -20,5 +20,7 @@ pod 'Firebase/Core'
 pod 'Firebase/Messaging'
 pod 'DropDown'
 pod 'SVPinView', '~> 1.0'
+pod 'SQLite.swift', '~> 0.11.5'
+pod 'FSCalendar'
 
 end

@@ -30,7 +30,7 @@ class ExpenseBillLayout: UICollectionViewLayout {
         if collectionView.numberOfSections == 0 {
             return
         }
-        numberOfColumns = collectionView.numberOfItems(inSection: 1)
+        //numberOfColumns = collectionView.numberOfItems(inSection: 0)
         itemAttributes = []
         if itemAttributes.count != collectionView.numberOfSections {
             generateItemAttributes(collectionView: collectionView)
@@ -171,17 +171,27 @@ extension ExpenseBillLayout {
         var width = 0
         switch columnIndex {
         case 0:
-            width = 65
+            width = 55
         case 1:
-            width = 70
+            width = 58
+        case 6:
+            width = Int((screenWidth/2)-1)
+        case 9:
+            width = 65
         case 2:
             width = Int((screenWidth/3)-1)
-        case 3:
-            width = Int((screenWidth/2)-1)
-        case 4:
-            width = Int((screenWidth/2)-1)
+        case 5:
+            width = 96//
+        case 10:
+            width = 70
         case 7:
             width = Int((screenWidth/2)-1)
+        case 8:
+            width = 100
+        case 3:
+            width = 100
+        case 4:
+            width = Int((screenWidth/3)-1)
             
         default:
             width = Int((screenWidth/3)-1)

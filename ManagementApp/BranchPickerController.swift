@@ -64,9 +64,11 @@ class BranchPickerController: UIViewController ,UIPickerViewDataSource, UIPicker
         specialEffects()
         apiGetBranchUrl = "https://api.goldmedalindia.in/api/getListsofAllBranch"
         apiSuppliernLedgerUrl = "https://test2.goldmedalindia.in/api/getallExpenseChildAllSubChildList"
+        ViewControllerUtils.sharedInstance.showLoader()
         if showPicker == 1{
             apiGetBranch()
         }else{
+            lblPickerHeader.text = showPicker == 2 ? "Supplier" : "Ledger"
             apiSupplierLedger()
         }
     }
@@ -132,20 +134,26 @@ class BranchPickerController: UIViewController ,UIPickerViewDataSource, UIPicker
                         self.pickerDataSource.append(qty.branchnm!)
                     }
                 }
+                
                 self.picker.reloadAllComponents()
+                ViewControllerUtils.sharedInstance.removeLoader()
                 
             } catch let errorData {
                 print(errorData.localizedDescription)
+                ViewControllerUtils.sharedInstance.removeLoader()
             }
         }) { (Error) in
             print(Error?.localizedDescription as Any)
+            ViewControllerUtils.sharedInstance.removeLoader()
         }
         
     }
     
+    
+    
     func apiSupplierLedger(){
         
-        let json: [String: Any] = ["ClientSecret":"clientsecret","CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"Fromdate":dateFrom,"Todate":dateTo]
+        let json: [String: Any] = ["ClientSecret":"clientsecret","CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Cat":UserDefaults.standard.value(forKey: "userCategory") as! String,"Fromdate":dateFrom,"Todate":dateTo]
         
         let manager =  DataManager.shared
         
@@ -168,12 +176,14 @@ class BranchPickerController: UIViewController ,UIPickerViewDataSource, UIPicker
                     }
                 }
                 self.picker.reloadAllComponents()
-                
+                ViewControllerUtils.sharedInstance.removeLoader()
             } catch let errorData {
                 print(errorData.localizedDescription)
+                ViewControllerUtils.sharedInstance.removeLoader()
             }
         }) { (Error) in
             print(Error?.localizedDescription as Any)
+            ViewControllerUtils.sharedInstance.removeLoader()
         }
         
     }

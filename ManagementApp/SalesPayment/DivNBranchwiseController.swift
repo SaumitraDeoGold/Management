@@ -271,6 +271,7 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
             fromDate = date
             strFromDate = Utility.formattedDateFromString(dateString: value, withFormat: "MM/dd/yyyy")!
             fromdate = strFromDate
+            dailyfromdate = fromdate
         }
         else
         {
@@ -279,10 +280,12 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
             toDate = date
             strToDate = Utility.formattedDateFromString(dateString: value, withFormat: "MM/dd/yyyy")!
             todate = strToDate
+            dailytodate = todate
         }
         
         if showDiv{
             apiDivisionwiseSale()
+            apiDivTotal()
         }else{
             apiBranchwiseSale()
         }

@@ -16,23 +16,32 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
     var vendorSubSelector = 100
     var logoutSelector = 8
     var logoutSubSelector = -1
-    var empSelector = 7
+    var empSelector = 6
     var empSubSelector = 0
     var empTwoSub = 1
     var empThreeSub = 2
+    var aboutus = 7
+    var termofuse = 8
+    var dhanSelector = 5
+    var dhanSubSelector = 0
+    //var empTwoSub = 1
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
-            supplierSelector = 7
+            supplierSelector = 5
             supplierSubSelector = -1
-            vendorSelector = 8
+            vendorSelector = 6
             vendorSubSelector = -1
-            empSelector = 9
+            dhanSelector = 7
+            dhanSubSelector = 0
+            empSelector = 8
             empSubSelector = 0
-            logoutSelector = 10
+            logoutSelector = 11
             logoutSubSelector = -1
+            aboutus = 9
+            termofuse = 10
         }
     }
     
@@ -200,20 +209,6 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             break
             
         case (4,-1):
-            print("About Us\n", terminator: "")
-            
-            self.openViewControllerBasedOnIdentifier("AboutUs")
-            
-            break
-            
-        case (5,-1):
-            print("Term of use\n", terminator: "")
-            
-            self.openViewControllerBasedOnIdentifier("TermOfUse")
-            
-            break
-            
-        case (6,-1):
             print("Increase Limits\n", terminator: "")
             self.openViewControllerBasedOnIdentifier("IncreasedLimitController") 
             break
@@ -228,6 +223,19 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
         case (vendorSelector,vendorSubSelector):
             print("SearchVendor\n", terminator: "")
             self.openViewControllerBasedOnIdentifier("SearchVendor")
+            break
+            
+        case (dhanSelector,dhanSubSelector):
+            print("Dhanbarse Details\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("Dhanbarse")
+            
+            break
+        case (dhanSelector,1):
+            print("Dhanbarse Profile\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("DhanbarseProfile")
+            
             break
             
         case (empSelector,empSubSelector):
@@ -248,6 +256,20 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             print("Employee Data\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("SearchEmployee")
+            
+            break
+            
+        case (aboutus,-1):
+            print("About Us\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("AboutUs")
+            
+            break
+            
+        case (termofuse,-1):
+            print("Term of use\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("TermOfUse")
             
             break
             

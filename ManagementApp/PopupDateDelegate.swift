@@ -22,5 +22,6 @@ import Foundation
     @objc optional func showSemiFinal(value: Bool)
     @objc optional func showFinal(value: Bool)
     @objc optional func showParty(value: String,cin: String)
+    @objc optional func showSearchValue(value: String)
     @objc optional func refreshApi()
 }

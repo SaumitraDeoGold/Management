@@ -19,6 +19,7 @@ class DatePickerController: UIViewController {
     @IBOutlet weak var mainView: UIView!
 
     var isFromDate = false
+    var truce = false
     var fromDate: Date?
     var toDate: Date?
 
@@ -33,12 +34,14 @@ class DatePickerController: UIViewController {
 
         specialEffects()
 
-        if isFromDate {
+        if isFromDate && !truce{
             if let toDate = toDate {
                 datePicker.maximumDate = toDate
             } else {
                 datePicker.maximumDate = Date()
             }
+        }else if truce{
+            
         } else {
             if let fromDate = fromDate {
                 datePicker.minimumDate = fromDate

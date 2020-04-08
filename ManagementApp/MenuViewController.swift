@@ -54,14 +54,14 @@ class MenuViewController: UIViewController {
     
     var itemIndex = -1
     var sectionIndex = -1
-    var menuSection = 8
+    var menuSection = 9
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tblMenuOptions.tableFooterView = UIView()
         // Do any additional setup after loading the view.
         if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
-            menuSection = 10
+            menuSection = 11
         }
         self.imvProfileImage.layer.borderWidth = 2
         self.imvProfileImage.layer.masksToBounds = false
@@ -123,8 +123,7 @@ class MenuViewController: UIViewController {
         self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"VIDEOS", "icon":"icon_video","data":["VIDEO","DHANBARSE","QWIKPAY"]])
         //self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"FEEDBACK", "icon":"icon_feedback","data":[""]])
        // self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"CONTACT US", "icon":"icon_contact_us","data":[""]])
-        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"ABOUT US", "icon":"icon_about_us","data":[""]])
-        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"TERMS OF USE", "icon":"dashboard_order_icon","data":[""]])
+        
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"INCREASE LIMITS", "icon":"dashboard_sales_icon","data":[""]])
         if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
             
@@ -132,7 +131,10 @@ class MenuViewController: UIViewController {
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SEARCH VENDOR", "icon":"dash_search","data":[""]])
             
         }
+        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"DHANBARSE", "icon":"icon_about_us","data":["DHANBARSE DATA","SEARCH PROFILE"]])
         self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"EMPLOYEE", "icon":"icon_about_us","data":["EMPLOYEE DETAILS","EMPLOYEE DATA","EMPLOYEE SEARCH"]])
+        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"ABOUT US", "icon":"icon_about_us","data":[""]])
+        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"TERMS OF USE", "icon":"dashboard_order_icon","data":[""]])
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"LOGOUT", "icon":"icon_logout","data":[""]])
         
         
@@ -256,7 +258,7 @@ extension MenuViewController : UITableViewDelegate,UITableViewDataSource{
         
         let imgDropdownArrow = UIImageView(frame: CGRect(x: headerView.frame.size.width - 35, y: 17.5, width: 15, height: 15))
         
-        if (section == 1 || section == 2 || section == 3 || section == (menuSection-1))
+        if (section == 1 || section == 2 || section == 3 || section == (menuSection-3) || section == (menuSection-4))
         {
             let imageArrow = UIImage(named: "arrow_down");
             imgDropdownArrow.image = imageArrow;

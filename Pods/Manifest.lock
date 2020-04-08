@@ -51,6 +51,7 @@ PODS:
     - GoogleUtilities/Reachability (~> 6.2)
     - GoogleUtilities/UserDefaults (~> 6.2)
     - Protobuf (~> 3.1)
+  - FSCalendar (2.8.0)
   - GoogleAppMeasurement (6.1.1):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -89,6 +90,9 @@ PODS:
   - SDWebImage (4.4.7):
     - SDWebImage/Core (= 4.4.7)
   - SDWebImage/Core (4.4.7)
+  - SQLite.swift (0.11.6):
+    - SQLite.swift/standard (= 0.11.6)
+  - SQLite.swift/standard (0.11.6)
   - SVPinView (1.0.7)
   - TTFortuneWheel (0.1.6)
   - youtube-ios-player-helper (0.1.6)
@@ -102,8 +106,10 @@ DEPENDENCIES:
   - Firebase
   - Firebase/Core
   - Firebase/Messaging
+  - FSCalendar
   - IQKeyboardManagerSwift
   - SDWebImage (~> 4.0)
+  - SQLite.swift (~> 0.11.5)
   - SVPinView (~> 1.0)
   - TTFortuneWheel
   - youtube-ios-player-helper (~> 0.1)
@@ -123,6 +129,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnosticsInterop
     - FirebaseInstanceID
     - FirebaseMessaging
+    - FSCalendar
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -131,6 +138,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SDWebImage
+    - SQLite.swift
     - SVPinView
     - TTFortuneWheel
     - youtube-ios-player-helper
@@ -149,6 +157,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
   FirebaseInstanceID: 8b42755db950682e7de0d167bc6fb26a57b244af
   FirebaseMessaging: 930e4cce01f8f1e634cfdd1881db471fb61be883
+  FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   GoogleAppMeasurement: 86a82f0e1f20b8eedf8e20326530138fd71409de
   GoogleDataTransport: 9c3d63ed82f882a9a74d4be67dd7ad01bf046102
   GoogleDataTransportCCTSupport: 6b545f7149111180763dc18c6f372c963de4a310
@@ -157,10 +166,11 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
   SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
+  SQLite.swift: 46d890be8601964454bd3392527f863d1b802d45
   SVPinView: 6c1da57e4a1273298802f460c60511ba10f7c831
   TTFortuneWheel: d0a8a5fd7f9e1960bac81af76f3b62848de3c32e
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: a7974535733f79b5215897b349dd48323909d35f
+PODFILE CHECKSUM: b82817e44be5ce286cb8659d9b1f201bcdddfc15
 
 COCOAPODS: 1.6.1

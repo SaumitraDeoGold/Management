@@ -134,12 +134,12 @@ class InsureViewController: BaseViewController, UICollectionViewDataSource, UICo
                 cell.contentLabel.text = filteredItems[indexPath.section-1].branch
             case 1:
                 let currentYear = Double(filteredItems[indexPath.section - 1].secured!)
-                let prevYear = Double(totalSales["secure"]!)
+                let prevYear = Double(filteredItems[indexPath.section - 1].outstanding!)
                 let temp = (currentYear*100)/prevYear
                 cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
             case 2:
                 let currentYear = Double(filteredItems[indexPath.section - 1].unSecured!)
-                let prevYear = Double(totalSales["unsecure"]!)
+                let prevYear = Double(filteredItems[indexPath.section - 1].outstanding!)
                 let temp = (currentYear*100)/prevYear
                 cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
             case 3:
@@ -155,6 +155,29 @@ class InsureViewController: BaseViewController, UICollectionViewDataSource, UICo
         
         return cell
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if(indexPath.section == 0 && indexPath.row == 0){
+            let sb = UIStoryboard(name: "Search", bundle: nil)
+            let popup = sb.instantiateInitialViewController()! as! SearchViewController
+            popup.modalPresentationStyle = .overFullScreen
+            popup.delegate = self
+            popup.from = "branch"
+            self.present(popup, animated: true)
+        }
+    }
+    
+    func showSearchValue(value: String) {
+        if value == "ALL" {
+            filteredItems = self.insuranceObj
+            self.CollectionView.reloadData()
+            self.CollectionView.collectionViewLayout.invalidateLayout()
+            return
+        }
+        filteredItems = self.insuranceObj.filter { $0.branch == value }
+        self.CollectionView.reloadData()
+        self.CollectionView.collectionViewLayout.invalidateLayout()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

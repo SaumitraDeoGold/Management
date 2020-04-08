@@ -156,18 +156,24 @@ class AccountsViewController: BaseViewController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.CollectionView {
             if(indexPath.row == 0 && indexPath.section == 0){
-                let sb = UIStoryboard(name: "BranchPicker", bundle: nil)
-                let popup = sb.instantiateInitialViewController()! as! BranchPickerController
+                let sb = UIStoryboard(name: "Search", bundle: nil)
+                let popup = sb.instantiateInitialViewController()! as! SearchViewController
                 popup.modalPresentationStyle = .overFullScreen
                 popup.delegate = self
-                popup.showPicker = 1
+                popup.from = "branch"
                 self.present(popup, animated: true)
+//                let sb = UIStoryboard(name: "BranchPicker", bundle: nil)
+//                let popup = sb.instantiateInitialViewController()! as! BranchPickerController
+//                popup.modalPresentationStyle = .overFullScreen
+//                popup.delegate = self
+//                popup.showPicker = 1
+//                self.present(popup, animated: true)
             }
         }
     }
     
-    func updateBranch(value: String, position: Int) {
-        if position == 0 {
+    func showSearchValue(value: String) {
+        if value == "ALL" {
             filteredItems = self.outstandingAccObj
             self.CollectionView.reloadData()
             self.CollectionView.collectionViewLayout.invalidateLayout()
@@ -177,6 +183,18 @@ class AccountsViewController: BaseViewController, UICollectionViewDataSource, UI
         self.CollectionView.reloadData()
         self.CollectionView.collectionViewLayout.invalidateLayout()
     }
+    
+//    func updateBranch(value: String, position: Int) {
+//        if position == 0 {
+//            filteredItems = self.outstandingAccObj
+//            self.CollectionView.reloadData()
+//            self.CollectionView.collectionViewLayout.invalidateLayout()
+//            return
+//        }
+//        filteredItems = self.outstandingAccObj.filter { $0.branchnm == value }
+//        self.CollectionView.reloadData()
+//        self.CollectionView.collectionViewLayout.invalidateLayout()
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? AccountsDetailsController,

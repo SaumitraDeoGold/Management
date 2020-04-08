@@ -8,11 +8,11 @@
 
 import UIKit
 
-class EmployeeBaseController: UIViewController {
+class EmployeeBaseController: BaseViewController {
 
     var tabs = [
-        ViewPagerTab(title: "EMPLOYEE", image: UIImage(named: ""))
-        //ViewPagerTab(title: "ATTENDANCE", image: UIImage(named: ""))
+        ViewPagerTab(title: "EMPLOYEE", image: UIImage(named: "")),
+        ViewPagerTab(title: "ATTENDANCE", image: UIImage(named: ""))
     ]
     
     var viewPager:ViewPagerController!
@@ -20,12 +20,13 @@ class EmployeeBaseController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let imageView = UIImageView(image:UIImage(named: "dashboard_logo.png"))
         self.navigationItem.titleView = imageView
         self.navigationController?.setNavigationBarHidden(false, animated: true)
          
         
-        //addSlideMenuButton()
+        addSlideMenuButton()
         
         // Do any additional setup after loading the view.
         self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)

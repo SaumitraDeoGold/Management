@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ViewImgController.swift">
+   </FileRef>
+   <FileRef
       location = "group:/Users/goldmedal/Documents/ios/G Parivaar ios 2/DealorsApp 2/ManagementApp.xcodeproj">
    </FileRef>
    <FileRef

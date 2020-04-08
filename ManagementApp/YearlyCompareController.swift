@@ -438,6 +438,31 @@ class YearlyCompareController: BaseViewController, UICollectionViewDataSource, U
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.collectionView {
+            if(indexPath.row == 0 && indexPath.section == 0){
+                let sb = UIStoryboard(name: "Search", bundle: nil)
+                let popup = sb.instantiateInitialViewController()! as! SearchViewController
+                popup.modalPresentationStyle = .overFullScreen
+                popup.delegate = self
+                popup.from = "branch"
+                self.present(popup, animated: true)
+            }
+        }
+    }
+    
+    func showSearchValue(value: String) {
+        if value == "ALL" {
+            filteredItems = self.categorywiseCompObj
+            self.collectionView.reloadData()
+            self.collectionView.collectionViewLayout.invalidateLayout()
+            return
+        }
+        filteredItems = self.categorywiseCompObj.filter { $0.branchnm == value }
+        self.collectionView.reloadData()
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     //Calculate percentage func...
     func calculatePercentage(currentYear: Double, prevYear: Double, temp: Double) -> NSAttributedString{
         let sale = Utility.formatRupee(amount: Double(currentYear ))

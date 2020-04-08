@@ -93,8 +93,8 @@ import AMPopTip
             do {
                 self.vendorPurchase = try JSONDecoder().decode([SupplierObject].self, from: data!)
                 self.vendorPurchaseObject  = self.vendorPurchase[0].data
-                self.lblLYS.text = Utility.formatRupee(amount: Double(self.vendorPurchaseObject[0].ledgerbalanceamt!)!)
-                self.lblSales.text = Utility.formatRupee(amount: Double(self.vendorPurchaseObject[0].purchaseamt!)!)
+                self.lblLYS.text = Utility.formatRupee(amount: Double(self.vendorPurchaseObject[0].ledgerbalanceamt!) ?? 0.0)
+                self.lblSales.text = Utility.formatRupee(amount: Double(self.vendorPurchaseObject[0].purchaseamt!) ?? 0.0)
                 ViewControllerUtils.sharedInstance.removeLoader()
             } catch let errorData {
                 print(errorData.localizedDescription)
