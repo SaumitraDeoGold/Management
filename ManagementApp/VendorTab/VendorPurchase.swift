@@ -16,7 +16,8 @@ import AMPopTip
     @IBOutlet var lblSales: UILabel!
     @IBOutlet var lblOverallGrowth: UILabel!
     @IBOutlet var lblLYS: UILabel!
-    @IBOutlet weak var imvInfo: UIImageView! 
+    @IBOutlet weak var imvInfo: UIImageView!
+    @IBOutlet var lblHeader: UILabel!
     
     var vendorPurchase = [VendorPurchaseObject]()
     var vendorPurchaseObject = [VendorPurchaseObj]()
@@ -37,7 +38,7 @@ import AMPopTip
     
     override func xibSetup() {
         super.xibSetup()
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        lblHeader.text = appDelegate.partyName
         apiVendor = "https://api.goldmedalindia.in/api/getVendorPurchaseAndLedger"
         ViewControllerUtils.sharedInstance.showLoader()
         apiVendorTotal()

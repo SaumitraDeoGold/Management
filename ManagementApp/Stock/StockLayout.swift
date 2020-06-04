@@ -10,7 +10,7 @@ import UIKit
 
 class StockLayout: UICollectionViewLayout {
     
-    var numberOfColumns = 9
+    var numberOfColumns = Int()
     var shouldPinFirstColumn = true
     var shouldPinFirstRow = true
     fileprivate var cache = [UICollectionViewLayoutAttributes]()
@@ -31,6 +31,8 @@ class StockLayout: UICollectionViewLayout {
         }
         
         itemAttributes = []
+        numberOfColumns = collectionView.numberOfItems(inSection: 0)
+        
         if itemAttributes.count != collectionView.numberOfSections {
             generateItemAttributes(collectionView: collectionView)
             return
@@ -166,16 +168,25 @@ extension StockLayout {
     }
     
     func sizeForItemWithColumnIndex(_ columnIndex: Int) -> CGSize {
-        //var text: NSString
+        let screenWidth = UIScreen.main.bounds.width
         var width = 0
-        switch columnIndex { 
-            
-        default:
-            width = 120
+        if numberOfColumns == 2{
+            switch columnIndex {
+            case 0:
+                width = Int((screenWidth/2)-1)
+            case 1:
+                width = Int((screenWidth/2)-1)
+                
+            default:
+                width = Int((screenWidth/2)-1)
+            }
+        }else{
+            switch columnIndex {
+            default:
+                width = 120
+            }
         }
-        
-        //let size: CGSize = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)])
-        //let width: CGFloat = 130
+         
         return CGSize(width: width, height: 35)
     }
     

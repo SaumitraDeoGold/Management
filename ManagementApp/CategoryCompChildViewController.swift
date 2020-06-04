@@ -27,8 +27,8 @@ class CategoryCompChildViewController: UIViewController, UICollectionViewDataSou
     var dateFrom = ""
     var prevDateTo = ""
     var prevDateFrom = ""
-    var yearStart = "2019"
-    var yearEnd = "2020"
+    var yearStart = "2020"
+    var yearEnd = "2021"
     let qrtrlyArrayStart = Utility.quarterlyStartDate()
     let qrtrlyArrayEnd = Utility.quarterlyEndDate()
     let monthEnds = Utility.getMonthEndDate()

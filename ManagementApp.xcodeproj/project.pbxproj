@@ -128,6 +128,8 @@
 		6926DAB9241BB30A00BFD8A2 /* ExpenseBillLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6926DAB8241BB30A00BFD8A2 /* ExpenseBillLayout.swift */; };
 		69276010239E5F170011BA6B /* TotalPayDivisionWise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6927600F239E5F170011BA6B /* TotalPayDivisionWise.swift */; };
 		6929C41C242B717700AF870B /* AttendanceChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6929C41B242B717700AF870B /* AttendanceChild.swift */; };
+		6929E76424773A1900814A39 /* MonthwiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6929E76324773A1900814A39 /* MonthwiseViewController.swift */; };
+		692B278424571E5400320A06 /* PendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692B278324571E5300320A06 /* PendingViewController.swift */; };
 		692D720620A2BF8D00D2CB16 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692D720520A2BF8D00D2CB16 /* FloatRatingView.swift */; };
 		692DF402235AEFC900F972AD /* AgingReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692DF401235AEFC900F972AD /* AgingReport.swift */; };
 		692DF404235B00B300F972AD /* IncreasedLimitDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692DF403235B00B300F972AD /* IncreasedLimitDetails.swift */; };
@@ -147,6 +149,8 @@
 		6938923C223BD8B900D69935 /* DetailViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938922E223BD8B800D69935 /* DetailViewLayout.swift */; };
 		6938923D223BD8B900D69935 /* DivisionWiseDetailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938922F223BD8B800D69935 /* DivisionWiseDetailsCollectionViewController.swift */; };
 		6938923E223BD8BA00D69935 /* DivisionWiseSalesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69389230223BD8B900D69935 /* DivisionWiseSalesViewController.swift */; };
+		693FF35C24508D3A00026104 /* MPRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693FF35B24508D3A00026104 /* MPRViewController.swift */; };
+		693FF35E2450DC2D00026104 /* MRPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693FF35D2450DC2D00026104 /* MRPData.swift */; };
 		69406E522302844E00731139 /* YearlyCompareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69406E512302844E00731139 /* YearlyCompareController.swift */; };
 		6943F2EB23DC08EF006D484A /* SearchSupplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6943F2EA23DC08EF006D484A /* SearchSupplier.swift */; };
 		6943F2ED23DC095E006D484A /* SearchSupplierController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6943F2EC23DC095E006D484A /* SearchSupplierController.swift */; };
@@ -160,6 +164,10 @@
 		6943F2FE23DC5B32006D484A /* CatPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6943F2FD23DC5B32006D484A /* CatPurchase.swift */; };
 		6943F30123DC62BC006D484A /* SupplierDashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6943F30023DC62BC006D484A /* SupplierDashboardController.swift */; };
 		6944AFF221467EE500A276C1 /* YearlySalesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6944AFF121467EE500A276C1 /* YearlySalesView.xib */; };
+		69498E7D244F0F55005358A1 /* DRPRRPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69498E7C244F0F55005358A1 /* DRPRRPController.swift */; };
+		69498E7F244F1220005358A1 /* DRPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69498E7E244F1220005358A1 /* DRPData.swift */; };
+		69498E81244F2960005358A1 /* RRPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69498E80244F2960005358A1 /* RRPData.swift */; };
+		69498E83244F29D6005358A1 /* DRPChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69498E82244F29D6005358A1 /* DRPChildController.swift */; };
 		6949C0022260D7CE005EC4B3 /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6949C0012260D7CE005EC4B3 /* StockViewController.swift */; };
 		694B2FBC225642E800E7E7B6 /* BranchPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 694B2FBB225642E700E7E7B6 /* BranchPicker.storyboard */; };
 		694B2FBE225643A200E7E7B6 /* BranchPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694B2FBD225643A200E7E7B6 /* BranchPickerController.swift */; };
@@ -177,6 +185,10 @@
 		694E548C230EC77F009618E5 /* TodDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E548B230EC77E009618E5 /* TodDetailCell.swift */; };
 		694F2555229411FF00F1E5B9 /* AccountsDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694F2554229411FF00F1E5B9 /* AccountsDetailsController.swift */; };
 		694F25572294123400F1E5B9 /* AccountsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694F25562294123400F1E5B9 /* AccountsDetails.swift */; };
+		69519440247C51A6005C74CC /* ThirdPartyAging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951943F247C51A6005C74CC /* ThirdPartyAging.swift */; };
+		69519442247C5264005C74CC /* AgingReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69519441247C5264005C74CC /* AgingReportController.swift */; };
+		69519444247C5A8E005C74CC /* ThirdPartyLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69519443247C5A8E005C74CC /* ThirdPartyLayout.swift */; };
+		69519446247C5F94005C74CC /* MonthSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69519445247C5F94005C74CC /* MonthSummary.swift */; };
 		69519EA02292E35200BDAC48 /* OldDashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69519E9F2292E35100BDAC48 /* OldDashboardController.swift */; };
 		6951E0442274367800B68EC2 /* BranchwiseOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6951E0432274367800B68EC2 /* BranchwiseOrderController.swift */; };
 		695254BD21132ECB00C88554 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 695254BC21132ECB00C88554 /* Color.xcassets */; };
@@ -266,6 +278,7 @@
 		6965465B2310020E008A896C /* OutstandingSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965465A2310020D008A896C /* OutstandingSummaryViewController.swift */; };
 		6965949B238D53540036C2CE /* Categorywise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965949A238D53540036C2CE /* Categorywise.swift */; };
 		6965DA642189B4790071D6B2 /* SpinConfirmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965DA632189B4790071D6B2 /* SpinConfirmData.swift */; };
+		69664F972451ADD5003D5173 /* CounterBoyApprovalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69664F962451ADD5003D5173 /* CounterBoyApprovalCell.swift */; };
 		69689EFE231A8AF50053E50B /* ExpenseHeadChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69689EFD231A8AF40053E50B /* ExpenseHeadChildController.swift */; };
 		69689F00231A9F9C0053E50B /* ExpenseHeadChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69689EFF231A9F9C0053E50B /* ExpenseHeadChild.swift */; };
 		6968DC5021366FB600C400BF /* IntroScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6968DC4F21366FB600C400BF /* IntroScreenViewController.swift */; };
@@ -291,6 +304,7 @@
 		696C8A5522A92A3700AE04F2 /* SearchDealerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696C8A5422A92A3700AE04F2 /* SearchDealerViewController.swift */; };
 		696DE94422C6248900BE4F27 /* ExpenseComparisonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696DE94322C6248900BE4F27 /* ExpenseComparisonController.swift */; };
 		696E4E6622D37B550041492C /* Statewise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696E4E6522D37B550041492C /* Statewise.swift */; };
+		696E6B54247ACD35001D2286 /* SubCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696E6B53247ACD35001D2286 /* SubCategory.swift */; };
 		696FA116225C7B7C001A85F2 /* PaymentLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696FA115225C7B7C001A85F2 /* PaymentLayout.swift */; };
 		69701B772244BCFD00A49565 /* DealerAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69701B762244BCFD00A49565 /* DealerAppointmentViewController.swift */; };
 		69701B792244C5EA00A49565 /* DealerAppointmentLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69701B782244C5EA00A49565 /* DealerAppointmentLayout.swift */; };
@@ -332,6 +346,11 @@
 		6977B64422DEED6500E411A8 /* StatewiseCompareChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977B64322DEED6500E411A8 /* StatewiseCompareChild.swift */; };
 		6977E5DD21303D1700A2424E /* NewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977E5DC21303D1700A2424E /* NewUser.swift */; };
 		6977E5DF21303D5300A2424E /* Otp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977E5DE21303D5300A2424E /* Otp.swift */; };
+		6978E10B244DCFDD00A2A20D /* AgentLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6978E10A244DCFDD00A2A20D /* AgentLimit.swift */; };
+		6978E10E244DD03D00A2A20D /* AgentLimitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6978E10D244DD03D00A2A20D /* AgentLimitController.swift */; };
+		6978E110244DD29700A2A20D /* AgentLimitLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6978E10F244DD29700A2A20D /* AgentLimitLayout.swift */; };
+		6978E112244DDF8900A2A20D /* PartyAgentLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6978E111244DDF8900A2A20D /* PartyAgentLimit.swift */; };
+		6978E114244DE0A600A2A20D /* PartyAgentLimitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6978E113244DE0A600A2A20D /* PartyAgentLimitController.swift */; };
 		6979B43A21469ACF00BD99A1 /* YearlySalesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6979B43821469ACF00BD99A1 /* YearlySalesCell.swift */; };
 		6979B43B21469ACF00BD99A1 /* YearlySalesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6979B43921469ACF00BD99A1 /* YearlySalesCell.xib */; };
 		6979B43F2146A5FC00BD99A1 /* DashPendingOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6979B43D2146A5FC00BD99A1 /* DashPendingOrderCell.swift */; };
@@ -373,6 +392,13 @@
 		6986619C22CC95C400B75BA6 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6986619B22CC95C300B75BA6 /* iCarousel.m */; };
 		6986619E22CCCAE000B75BA6 /* PartywiseComparisonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986619D22CCCAE000B75BA6 /* PartywiseComparisonController.swift */; };
 		698661A022CCCFA000B75BA6 /* PartywiseComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986619F22CCCFA000B75BA6 /* PartywiseComp.swift */; };
+		69878CD5247D9CF3003A0C3A /* RateComparisonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69878CD4247D9CF3003A0C3A /* RateComparisonController.swift */; };
+		69878CD7247D9E37003A0C3A /* RateComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69878CD6247D9E37003A0C3A /* RateComparison.swift */; };
+		69878CD9247DA093003A0C3A /* SubCatItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69878CD8247DA093003A0C3A /* SubCatItemList.swift */; };
+		6988EB3424747A9900079935 /* ProductPlanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988EB3324747A9800079935 /* ProductPlanning.swift */; };
+		6988EB3624747EC500079935 /* ProductPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988EB3524747EC500079935 /* ProductPlanViewController.swift */; };
+		6988EB3824747F0900079935 /* ThirdPartyStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988EB3724747F0900079935 /* ThirdPartyStatus.swift */; };
+		6988EB3A24747F4A00079935 /* ThirdPartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6988EB3924747F4A00079935 /* ThirdPartyViewController.swift */; };
 		698C572E20A47E9100E36900 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698C572A20A47E9100E36900 /* BaseViewController.swift */; };
 		698C794622BA6AEE006FD7A7 /* CreditDebitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698C794522BA6AEE006FD7A7 /* CreditDebitViewController.swift */; };
 		698CE7E9231103890071DF8E /* OutsPaymentSummaryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698CE7E8231103890071DF8E /* OutsPaymentSummaryList.swift */; };
@@ -398,6 +424,12 @@
 		699E2C6022B3713000DFA5F4 /* SearchDealerDashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699E2C5F22B3713000DFA5F4 /* SearchDealerDashController.swift */; };
 		699E2C6222B3CC2B00DFA5F4 /* DashDivSale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699E2C6122B3CC2B00DFA5F4 /* DashDivSale.swift */; };
 		699E2C6422B3D99F00DFA5F4 /* DashBranchSale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699E2C6322B3D99F00DFA5F4 /* DashBranchSale.swift */; };
+		69A158B32472DCC7004F5AE7 /* VendorPurchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A158B22472DCC7004F5AE7 /* VendorPurchase.storyboard */; };
+		69A158B82472E643004F5AE7 /* VendorPurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A158B72472E643004F5AE7 /* VendorPurchaseController.swift */; };
+		69A158BD247300C5004F5AE7 /* VendorPurchaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A158BC247300C5004F5AE7 /* VendorPurchaseLayout.swift */; };
+		69A158C1247331F0004F5AE7 /* VendorPurchaseOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A158C0247331F0004F5AE7 /* VendorPurchaseOrder.swift */; };
+		69A158C324733912004F5AE7 /* PurSalesLedgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A158C224733912004F5AE7 /* PurSalesLedgerViewController.swift */; };
+		69A158C524733930004F5AE7 /* PurSalesLedger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A158C424733930004F5AE7 /* PurSalesLedger.swift */; };
 		69A1FAA223ED8434006A07CD /* SupplierInvoicesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A1FAA123ED8434006A07CD /* SupplierInvoicesController.swift */; };
 		69A1FAA523ED847D006A07CD /* SupplierInvoice.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A1FAA423ED847D006A07CD /* SupplierInvoice.xib */; };
 		69A1FAA723ED84A1006A07CD /* SupplierInvoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A1FAA623ED84A1006A07CD /* SupplierInvoice.swift */; };
@@ -429,6 +461,7 @@
 		69ACF3582121C996007FFA3B /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ACF3572121C996007FFA3B /* DocumentsViewController.swift */; };
 		69ACF35A2121C9BE007FFA3B /* DocumentRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ACF3592121C9BE007FFA3B /* DocumentRowCell.swift */; };
 		69AF637F22EF0387009396C2 /* DistWiseCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AF637E22EF0386009396C2 /* DistWiseCompare.swift */; };
+		69B084B92462CD0A001E1EB7 /* HRBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69B084B82462CD0A001E1EB7 /* HRBoard.storyboard */; };
 		69B1312623E03125005D877B /* Insurance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B1312523E03125005D877B /* Insurance.swift */; };
 		69B1312823E04344005D877B /* PartywiseInsureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B1312723E04344005D877B /* PartywiseInsureController.swift */; };
 		69B1312A23E043C5005D877B /* InsureParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B1312923E043C5005D877B /* InsureParty.swift */; };
@@ -449,6 +482,7 @@
 		69D21762216896D100862320 /* CreditDebitNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D21761216896D100862320 /* CreditDebitNote.swift */; };
 		69D21766216896FA00862320 /* VideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D21765216896FA00862320 /* VideoViewCell.swift */; };
 		69D217682168970400862320 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D217672168970400862320 /* VideoViewController.swift */; };
+		69D3BB5B24759A960050AC0A /* ProdPlanLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D3BB5A24759A960050AC0A /* ProdPlanLayout.swift */; };
 		69D7A33A2265E31300A99A5E /* DashboardStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D7A3392265E31300A99A5E /* DashboardStock.swift */; };
 		69D8F4432405431C00530E94 /* EmpLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D8F4422405431C00530E94 /* EmpLocation.swift */; };
 		69D8F4452405480500530E94 /* EmpLocChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D8F4442405480500530E94 /* EmpLocChild.swift */; };
@@ -644,6 +678,8 @@
 		6926DAB8241BB30A00BFD8A2 /* ExpenseBillLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseBillLayout.swift; sourceTree = "<group>"; };
 		6927600F239E5F170011BA6B /* TotalPayDivisionWise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalPayDivisionWise.swift; sourceTree = "<group>"; };
 		6929C41B242B717700AF870B /* AttendanceChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceChild.swift; sourceTree = "<group>"; };
+		6929E76324773A1900814A39 /* MonthwiseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthwiseViewController.swift; sourceTree = "<group>"; };
+		692B278324571E5300320A06 /* PendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingViewController.swift; sourceTree = "<group>"; };
 		692D720520A2BF8D00D2CB16 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
 		692DF401235AEFC900F972AD /* AgingReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgingReport.swift; sourceTree = "<group>"; };
 		692DF403235B00B300F972AD /* IncreasedLimitDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreasedLimitDetails.swift; sourceTree = "<group>"; };
@@ -663,6 +699,8 @@
 		6938922E223BD8B800D69935 /* DetailViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewLayout.swift; sourceTree = "<group>"; };
 		6938922F223BD8B800D69935 /* DivisionWiseDetailsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivisionWiseDetailsCollectionViewController.swift; sourceTree = "<group>"; };
 		69389230223BD8B900D69935 /* DivisionWiseSalesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivisionWiseSalesViewController.swift; sourceTree = "<group>"; };
+		693FF35B24508D3A00026104 /* MPRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRViewController.swift; sourceTree = "<group>"; };
+		693FF35D2450DC2D00026104 /* MRPData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRPData.swift; sourceTree = "<group>"; };
 		69406E512302844E00731139 /* YearlyCompareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyCompareController.swift; sourceTree = "<group>"; };
 		6943F2EA23DC08EF006D484A /* SearchSupplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSupplier.swift; sourceTree = "<group>"; };
 		6943F2EC23DC095E006D484A /* SearchSupplierController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSupplierController.swift; sourceTree = "<group>"; };
@@ -676,6 +714,10 @@
 		6943F2FD23DC5B32006D484A /* CatPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPurchase.swift; sourceTree = "<group>"; };
 		6943F30023DC62BC006D484A /* SupplierDashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierDashboardController.swift; sourceTree = "<group>"; };
 		6944AFF121467EE500A276C1 /* YearlySalesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YearlySalesView.xib; sourceTree = "<group>"; };
+		69498E7C244F0F55005358A1 /* DRPRRPController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRPRRPController.swift; sourceTree = "<group>"; };
+		69498E7E244F1220005358A1 /* DRPData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRPData.swift; sourceTree = "<group>"; };
+		69498E80244F2960005358A1 /* RRPData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RRPData.swift; sourceTree = "<group>"; };
+		69498E82244F29D6005358A1 /* DRPChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRPChildController.swift; sourceTree = "<group>"; };
 		6949C0012260D7CE005EC4B3 /* StockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
 		694B2FBB225642E700E7E7B6 /* BranchPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BranchPicker.storyboard; sourceTree = "<group>"; };
 		694B2FBD225643A200E7E7B6 /* BranchPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchPickerController.swift; sourceTree = "<group>"; };
@@ -693,6 +735,10 @@
 		694E548B230EC77E009618E5 /* TodDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodDetailCell.swift; sourceTree = "<group>"; };
 		694F2554229411FF00F1E5B9 /* AccountsDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsDetailsController.swift; sourceTree = "<group>"; };
 		694F25562294123400F1E5B9 /* AccountsDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsDetails.swift; sourceTree = "<group>"; };
+		6951943F247C51A6005C74CC /* ThirdPartyAging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyAging.swift; sourceTree = "<group>"; };
+		69519441247C5264005C74CC /* AgingReportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgingReportController.swift; sourceTree = "<group>"; };
+		69519443247C5A8E005C74CC /* ThirdPartyLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyLayout.swift; sourceTree = "<group>"; };
+		69519445247C5F94005C74CC /* MonthSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSummary.swift; sourceTree = "<group>"; };
 		69519E9F2292E35100BDAC48 /* OldDashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldDashboardController.swift; sourceTree = "<group>"; };
 		6951E0432274367800B68EC2 /* BranchwiseOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchwiseOrderController.swift; sourceTree = "<group>"; };
 		695254BC21132ECB00C88554 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
@@ -785,6 +831,7 @@
 		6965465A2310020D008A896C /* OutstandingSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutstandingSummaryViewController.swift; sourceTree = "<group>"; };
 		6965949A238D53540036C2CE /* Categorywise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categorywise.swift; sourceTree = "<group>"; };
 		6965DA632189B4790071D6B2 /* SpinConfirmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinConfirmData.swift; sourceTree = "<group>"; };
+		69664F962451ADD5003D5173 /* CounterBoyApprovalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterBoyApprovalCell.swift; sourceTree = "<group>"; };
 		69689EFD231A8AF40053E50B /* ExpenseHeadChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseHeadChildController.swift; sourceTree = "<group>"; };
 		69689EFF231A9F9C0053E50B /* ExpenseHeadChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseHeadChild.swift; sourceTree = "<group>"; };
 		6968DC4F21366FB600C400BF /* IntroScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenViewController.swift; sourceTree = "<group>"; };
@@ -810,6 +857,7 @@
 		696C8A5422A92A3700AE04F2 /* SearchDealerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDealerViewController.swift; sourceTree = "<group>"; };
 		696DE94322C6248900BE4F27 /* ExpenseComparisonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseComparisonController.swift; sourceTree = "<group>"; };
 		696E4E6522D37B550041492C /* Statewise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statewise.swift; sourceTree = "<group>"; };
+		696E6B53247ACD35001D2286 /* SubCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategory.swift; sourceTree = "<group>"; };
 		696FA115225C7B7C001A85F2 /* PaymentLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentLayout.swift; sourceTree = "<group>"; };
 		69701B762244BCFD00A49565 /* DealerAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerAppointmentViewController.swift; sourceTree = "<group>"; };
 		69701B782244C5EA00A49565 /* DealerAppointmentLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerAppointmentLayout.swift; sourceTree = "<group>"; };
@@ -854,6 +902,11 @@
 		6977B64322DEED6500E411A8 /* StatewiseCompareChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatewiseCompareChild.swift; sourceTree = "<group>"; };
 		6977E5DC21303D1700A2424E /* NewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUser.swift; sourceTree = "<group>"; };
 		6977E5DE21303D5300A2424E /* Otp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Otp.swift; sourceTree = "<group>"; };
+		6978E10A244DCFDD00A2A20D /* AgentLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentLimit.swift; sourceTree = "<group>"; };
+		6978E10D244DD03D00A2A20D /* AgentLimitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentLimitController.swift; sourceTree = "<group>"; };
+		6978E10F244DD29700A2A20D /* AgentLimitLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentLimitLayout.swift; sourceTree = "<group>"; };
+		6978E111244DDF8900A2A20D /* PartyAgentLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyAgentLimit.swift; sourceTree = "<group>"; };
+		6978E113244DE0A600A2A20D /* PartyAgentLimitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyAgentLimitController.swift; sourceTree = "<group>"; };
 		6979B43821469ACF00BD99A1 /* YearlySalesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlySalesCell.swift; sourceTree = "<group>"; };
 		6979B43921469ACF00BD99A1 /* YearlySalesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YearlySalesCell.xib; sourceTree = "<group>"; };
 		6979B43D2146A5FC00BD99A1 /* DashPendingOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashPendingOrderCell.swift; sourceTree = "<group>"; };
@@ -896,6 +949,13 @@
 		6986619B22CC95C300B75BA6 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		6986619D22CCCAE000B75BA6 /* PartywiseComparisonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartywiseComparisonController.swift; sourceTree = "<group>"; };
 		6986619F22CCCFA000B75BA6 /* PartywiseComp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartywiseComp.swift; sourceTree = "<group>"; };
+		69878CD4247D9CF3003A0C3A /* RateComparisonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateComparisonController.swift; sourceTree = "<group>"; };
+		69878CD6247D9E37003A0C3A /* RateComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateComparison.swift; sourceTree = "<group>"; };
+		69878CD8247DA093003A0C3A /* SubCatItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCatItemList.swift; sourceTree = "<group>"; };
+		6988EB3324747A9800079935 /* ProductPlanning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPlanning.swift; sourceTree = "<group>"; };
+		6988EB3524747EC500079935 /* ProductPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPlanViewController.swift; sourceTree = "<group>"; };
+		6988EB3724747F0900079935 /* ThirdPartyStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyStatus.swift; sourceTree = "<group>"; };
+		6988EB3924747F4A00079935 /* ThirdPartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyViewController.swift; sourceTree = "<group>"; };
 		698C572A20A47E9100E36900 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		698C794522BA6AEE006FD7A7 /* CreditDebitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditDebitViewController.swift; sourceTree = "<group>"; };
 		698CE7E8231103890071DF8E /* OutsPaymentSummaryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutsPaymentSummaryList.swift; sourceTree = "<group>"; };
@@ -921,6 +981,12 @@
 		699E2C5F22B3713000DFA5F4 /* SearchDealerDashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDealerDashController.swift; sourceTree = "<group>"; };
 		699E2C6122B3CC2B00DFA5F4 /* DashDivSale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashDivSale.swift; sourceTree = "<group>"; };
 		699E2C6322B3D99F00DFA5F4 /* DashBranchSale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBranchSale.swift; sourceTree = "<group>"; };
+		69A158B22472DCC7004F5AE7 /* VendorPurchase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VendorPurchase.storyboard; sourceTree = "<group>"; };
+		69A158B72472E643004F5AE7 /* VendorPurchaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorPurchaseController.swift; sourceTree = "<group>"; };
+		69A158BC247300C5004F5AE7 /* VendorPurchaseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorPurchaseLayout.swift; sourceTree = "<group>"; };
+		69A158C0247331F0004F5AE7 /* VendorPurchaseOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorPurchaseOrder.swift; sourceTree = "<group>"; };
+		69A158C224733912004F5AE7 /* PurSalesLedgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurSalesLedgerViewController.swift; sourceTree = "<group>"; };
+		69A158C424733930004F5AE7 /* PurSalesLedger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurSalesLedger.swift; sourceTree = "<group>"; };
 		69A1FAA123ED8434006A07CD /* SupplierInvoicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierInvoicesController.swift; sourceTree = "<group>"; };
 		69A1FAA423ED847D006A07CD /* SupplierInvoice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupplierInvoice.xib; sourceTree = "<group>"; };
 		69A1FAA623ED84A1006A07CD /* SupplierInvoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierInvoice.swift; sourceTree = "<group>"; };
@@ -952,6 +1018,7 @@
 		69ACF3572121C996007FFA3B /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		69ACF3592121C9BE007FFA3B /* DocumentRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentRowCell.swift; sourceTree = "<group>"; };
 		69AF637E22EF0386009396C2 /* DistWiseCompare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistWiseCompare.swift; sourceTree = "<group>"; };
+		69B084B82462CD0A001E1EB7 /* HRBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HRBoard.storyboard; sourceTree = "<group>"; };
 		69B1312523E03125005D877B /* Insurance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insurance.swift; sourceTree = "<group>"; };
 		69B1312723E04344005D877B /* PartywiseInsureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartywiseInsureController.swift; sourceTree = "<group>"; };
 		69B1312923E043C5005D877B /* InsureParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsureParty.swift; sourceTree = "<group>"; };
@@ -972,6 +1039,7 @@
 		69D21761216896D100862320 /* CreditDebitNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditDebitNote.swift; sourceTree = "<group>"; };
 		69D21765216896FA00862320 /* VideoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewCell.swift; sourceTree = "<group>"; };
 		69D217672168970400862320 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		69D3BB5A24759A960050AC0A /* ProdPlanLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdPlanLayout.swift; sourceTree = "<group>"; };
 		69D7A3392265E31300A99A5E /* DashboardStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardStock.swift; sourceTree = "<group>"; };
 		69D8F4422405431C00530E94 /* EmpLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpLocation.swift; sourceTree = "<group>"; };
 		69D8F4442405480500530E94 /* EmpLocChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpLocChild.swift; sourceTree = "<group>"; };
@@ -1291,6 +1359,49 @@
 			name = SupplierTab;
 			sourceTree = "<group>";
 		};
+		69498E79244F0B00005358A1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				698D569E2435D79C00E6DB4E /* DhanbarseController.swift */,
+				6917035E24374BFD00E1C9C9 /* DhanbarseChildController.swift */,
+				6921773F243894AA00D71558 /* DhanDisChildController.swift */,
+				692083BA243A12200072B096 /* SearchDhanProfileController.swift */,
+				69231A43243B31C000084378 /* ImageViewController.swift */,
+				692083BE243A1CA60072B096 /* DhanProfileViewController.swift */,
+				69498E7C244F0F55005358A1 /* DRPRRPController.swift */,
+				69498E82244F29D6005358A1 /* DRPChildController.swift */,
+				693FF35B24508D3A00026104 /* MPRViewController.swift */,
+				692B278324571E5300320A06 /* PendingViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		69498E7A244F0B09005358A1 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				698D56A22435F0F800E6DB4E /* DhanLayout.swift */,
+				69664F962451ADD5003D5173 /* CounterBoyApprovalCell.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
+		69498E7B244F0B15005358A1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				698D56A02435ED3000E6DB4E /* Dhanbarse.swift */,
+				6917036024374DCE00E1C9C9 /* DhanbarseChild.swift */,
+				692083BC243A13CA0072B096 /* SearchDhanProfile.swift */,
+				6917036224376B3800E1C9C9 /* DistrictwiseDhan.swift */,
+				692083B62439C5BE0072B096 /* DhanDisChild.swift */,
+				692083B42439C1100072B096 /* DhanMonthwise.swift */,
+				692083B82439C66F0072B096 /* DhanCitywise.swift */,
+				69498E7E244F1220005358A1 /* DRPData.swift */,
+				69498E80244F2960005358A1 /* RRPData.swift */,
+				693FF35D2450DC2D00026104 /* MRPData.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		694CD2AC20A6F23C00CE313A /* Documents */ = {
 			isa = PBXGroup;
 			children = (
@@ -1327,6 +1438,8 @@
 		695728582068F4FC006C0415 /* ManagementApp */ = {
 			isa = PBXGroup;
 			children = (
+				69A158B42472E54C004F5AE7 /* PurchaseReport */,
+				69B084B72462CC9A001E1EB7 /* Story */,
 				698D569D2435D75500E6DB4E /* Dhanbarse */,
 				69826EA8243484A60007FE4F /* Leaves */,
 				6969CABF23F2899700BBE5A5 /* Employee */,
@@ -1377,6 +1490,7 @@
 		695728722069024F006C0415 /* Report */ = {
 			isa = PBXGroup;
 			children = (
+				6978E10C244DD01300A2A20D /* AgentLimit */,
 				6926DAB5241B8B5400BFD8A2 /* ExpenseBill */,
 				69A1FAA823ED90BC006A07CD /* SupplierPayment */,
 				69A1FAA323ED8460006A07CD /* SupplierInvoice */,
@@ -1609,6 +1723,7 @@
 				69301ABA2429F178000EB9B4 /* Search.storyboard */,
 				69826EA624347F160007FE4F /* Leaves.storyboard */,
 				69231A41243B2D1000084378 /* ViewImage.storyboard */,
+				69A158B22472DCC7004F5AE7 /* VendorPurchase.storyboard */,
 			);
 			name = CommonStoryBoard;
 			sourceTree = "<group>";
@@ -1636,6 +1751,16 @@
 				691FF8E923A4F8E900C79C1A /* InvoiceData.swift */,
 			);
 			path = Accounts;
+			sourceTree = "<group>";
+		};
+		6978E10C244DD01300A2A20D /* AgentLimit */ = {
+			isa = PBXGroup;
+			children = (
+				6978E10D244DD03D00A2A20D /* AgentLimitController.swift */,
+				6978E10F244DD29700A2A20D /* AgentLimitLayout.swift */,
+				6978E113244DE0A600A2A20D /* PartyAgentLimitController.swift */,
+			);
+			name = AgentLimit;
 			sourceTree = "<group>";
 		};
 		6979B43C2146A5AA00BD99A1 /* Cell */ = {
@@ -1692,20 +1817,9 @@
 		698D569D2435D75500E6DB4E /* Dhanbarse */ = {
 			isa = PBXGroup;
 			children = (
-				698D569E2435D79C00E6DB4E /* DhanbarseController.swift */,
-				698D56A02435ED3000E6DB4E /* Dhanbarse.swift */,
-				698D56A22435F0F800E6DB4E /* DhanLayout.swift */,
-				6917035E24374BFD00E1C9C9 /* DhanbarseChildController.swift */,
-				6917036024374DCE00E1C9C9 /* DhanbarseChild.swift */,
-				6917036224376B3800E1C9C9 /* DistrictwiseDhan.swift */,
-				6921773F243894AA00D71558 /* DhanDisChildController.swift */,
-				692083B42439C1100072B096 /* DhanMonthwise.swift */,
-				692083B62439C5BE0072B096 /* DhanDisChild.swift */,
-				692083B82439C66F0072B096 /* DhanCitywise.swift */,
-				692083BA243A12200072B096 /* SearchDhanProfileController.swift */,
-				692083BC243A13CA0072B096 /* SearchDhanProfile.swift */,
-				692083BE243A1CA60072B096 /* DhanProfileViewController.swift */,
-				69231A43243B31C000084378 /* ImageViewController.swift */,
+				69498E7B244F0B15005358A1 /* Models */,
+				69498E7A244F0B09005358A1 /* Layouts */,
+				69498E79244F0B00005358A1 /* Controllers */,
 			);
 			path = Dhanbarse;
 			sourceTree = "<group>";
@@ -1719,6 +1833,56 @@
 				6911543022A00CFE005C09E0 /* StockLayout.swift */,
 			);
 			path = Stock;
+			sourceTree = "<group>";
+		};
+		69A158B42472E54C004F5AE7 /* PurchaseReport */ = {
+			isa = PBXGroup;
+			children = (
+				69A158BB247300AF004F5AE7 /* Layout */,
+				69A158B62472E569004F5AE7 /* Model */,
+				69A158B52472E55C004F5AE7 /* Controllers */,
+			);
+			path = PurchaseReport;
+			sourceTree = "<group>";
+		};
+		69A158B52472E55C004F5AE7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				69A158B72472E643004F5AE7 /* VendorPurchaseController.swift */,
+				69A158C224733912004F5AE7 /* PurSalesLedgerViewController.swift */,
+				6988EB3524747EC500079935 /* ProductPlanViewController.swift */,
+				6988EB3924747F4A00079935 /* ThirdPartyViewController.swift */,
+				6929E76324773A1900814A39 /* MonthwiseViewController.swift */,
+				69519441247C5264005C74CC /* AgingReportController.swift */,
+				69878CD4247D9CF3003A0C3A /* RateComparisonController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		69A158B62472E569004F5AE7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				69A158C0247331F0004F5AE7 /* VendorPurchaseOrder.swift */,
+				69A158C424733930004F5AE7 /* PurSalesLedger.swift */,
+				6988EB3324747A9800079935 /* ProductPlanning.swift */,
+				6988EB3724747F0900079935 /* ThirdPartyStatus.swift */,
+				696E6B53247ACD35001D2286 /* SubCategory.swift */,
+				6951943F247C51A6005C74CC /* ThirdPartyAging.swift */,
+				69519445247C5F94005C74CC /* MonthSummary.swift */,
+				69878CD6247D9E37003A0C3A /* RateComparison.swift */,
+				69878CD8247DA093003A0C3A /* SubCatItemList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		69A158BB247300AF004F5AE7 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				69A158BC247300C5004F5AE7 /* VendorPurchaseLayout.swift */,
+				69D3BB5A24759A960050AC0A /* ProdPlanLayout.swift */,
+				69519443247C5A8E005C74CC /* ThirdPartyLayout.swift */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 		69A1FAA323ED8460006A07CD /* SupplierInvoice */ = {
@@ -1745,6 +1909,14 @@
 				69A6F831234606B6003DBC4F /* Category.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		69B084B72462CC9A001E1EB7 /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				69B084B82462CD0A001E1EB7 /* HRBoard.storyboard */,
+			);
+			path = Story;
 			sourceTree = "<group>";
 		};
 		69BC7B852280176000C422A6 /* Layout */ = {
@@ -1927,6 +2099,8 @@
 				6943F2EA23DC08EF006D484A /* SearchSupplier.swift */,
 				6943F2EE23DC20D5006D484A /* SearchVendor.swift */,
 				6943F2F223DC3AFF006D484A /* NewDashboardViewController.swift */,
+				6978E10A244DCFDD00A2A20D /* AgentLimit.swift */,
+				6978E111244DDF8900A2A20D /* PartyAgentLimit.swift */,
 			);
 			name = Report;
 			sourceTree = "<group>";
@@ -2159,6 +2333,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -2220,6 +2395,7 @@
 				ABBC46EF212933AA0038A7E3 /* roboto.regular.ttf in Resources */,
 				692087DA23EC308F00209142 /* VendorInvoice.xib in Resources */,
 				69EFE7F8211979C80034DCE0 /* RegularSchemeView.xib in Resources */,
+				69B084B92462CD0A001E1EB7 /* HRBoard.storyboard in Resources */,
 				695AED5F208B5063003FDDE3 /* DivisionPicker.storyboard in Resources */,
 				6905AC9021BE654600510631 /* AddCatalogueItemPopup.storyboard in Resources */,
 				69231A42243B2D1000084378 /* ViewImage.storyboard in Resources */,
@@ -2233,6 +2409,7 @@
 				69A1FAA523ED847D006A07CD /* SupplierInvoice.xib in Resources */,
 				696BF47222F06B7E002614E2 /* Sorting.storyboard in Resources */,
 				690F76D8236053FE0054FDAC /* mpinAlert.storyboard in Resources */,
+				69A158B32472DCC7004F5AE7 /* VendorPurchase.storyboard in Resources */,
 				ABBC46ED212933AA0038A7E3 /* roboto.medium.ttf in Resources */,
 				ABBC46F0212933AA0038A7E3 /* roboto.thin.ttf in Resources */,
 				6912E3CE212BE2070068BDB6 /* OrderType.storyboard in Resources */,
@@ -2342,12 +2519,14 @@
 				69FD593C2111C3D100EE0BEA /* CatalogueListController.swift in Sources */,
 				696C8A5522A92A3700AE04F2 /* SearchDealerViewController.swift in Sources */,
 				69226495235876A400698FF9 /* PartySearchController.swift in Sources */,
+				69519446247C5F94005C74CC /* MonthSummary.swift in Sources */,
 				6972061F21C292F7006EB95C /* WebViewController.swift in Sources */,
 				6954357620734B430046B8C6 /* ActiveSchemeController.swift in Sources */,
 				698CE7ED231107CB0071DF8E /* OutsInvoiceWiseDetailsData.swift in Sources */,
 				69A1FAA223ED8434006A07CD /* SupplierInvoicesController.swift in Sources */,
 				69699CDD219ED4E200C9E8BB /* SearchOrderRowCell.swift in Sources */,
 				69541E0E2137D8E200BBC4EB /* Division.swift in Sources */,
+				69A158C324733912004F5AE7 /* PurSalesLedgerViewController.swift in Sources */,
 				6951E0442274367800B68EC2 /* BranchwiseOrderController.swift in Sources */,
 				694BF2ED21AE78340053E50C /* PromotionalRateController.swift in Sources */,
 				698CE7F323110A510071DF8E /* RaiseDisputeData.swift in Sources */,
@@ -2390,6 +2569,8 @@
 				6955E9F022410D4900DCAC65 /* ShadowCardVw.swift in Sources */,
 				6957287A2069228C006C0415 /* MenuController.swift in Sources */,
 				69913784219D9DBA00677952 /* OrderData.swift in Sources */,
+				69A158B82472E643004F5AE7 /* VendorPurchaseController.swift in Sources */,
+				69498E7F244F1220005358A1 /* DRPData.swift in Sources */,
 				6972F2CE22981A3C004862AA /* DashPendingOrderView.swift in Sources */,
 				69637F9022AA7A6A005F0E2B /* SearchDealers.swift in Sources */,
 				6919485C23BF5C36007EB414 /* DhanbarseQwikpayDocsData.swift in Sources */,
@@ -2401,6 +2582,7 @@
 				69EFE81C2119AEB10034DCE0 /* TabSalesViewController.swift in Sources */,
 				6923C904242B39A600DD30A0 /* AttendanceChildController.swift in Sources */,
 				6923623C2407AC7E008B0588 /* EmploeeSearchController.swift in Sources */,
+				69498E81244F2960005358A1 /* RRPData.swift in Sources */,
 				69541DF62137D49A00BBC4EB /* DashboardSales.swift in Sources */,
 				697E05B2224CA890005B79AA /* OutstandingAbove.swift in Sources */,
 				69735757206D1F2D000D738D /* ReportRowCell.swift in Sources */,
@@ -2412,6 +2594,7 @@
 				695AED61208B511C003FDDE3 /* DivisionPicker.swift in Sources */,
 				6936CEB02397A97D00772AF0 /* Ledgerwise.swift in Sources */,
 				69519EA02292E35200BDAC48 /* OldDashboardController.swift in Sources */,
+				69519444247C5A8E005C74CC /* ThirdPartyLayout.swift in Sources */,
 				6943F2F523DC4791006D484A /* VendorTabController.swift in Sources */,
 				6911ADA323FAB49B0094DE39 /* EmpDeptChild.swift in Sources */,
 				697E9F4521B2B25500F066B8 /* OrderSummaryCell.swift in Sources */,
@@ -2429,7 +2612,9 @@
 				695F91C22125560700C80A7C /* PaddingLabel.swift in Sources */,
 				694E5486230EC66D009618E5 /* TODData.swift in Sources */,
 				69F9CF00215A206300BDEB45 /* ComboSummaryCell.swift in Sources */,
+				69519440247C51A6005C74CC /* ThirdPartyAging.swift in Sources */,
 				ABBC46F621294DF60038A7E3 /* Color+ Extension.swift in Sources */,
+				693FF35C24508D3A00026104 /* MPRViewController.swift in Sources */,
 				69D7A33A2265E31300A99A5E /* DashboardStock.swift in Sources */,
 				691A191423FE971E0024C820 /* QwikpayVideoController.swift in Sources */,
 				69689EFE231A8AF50053E50B /* ExpenseHeadChildController.swift in Sources */,
@@ -2443,6 +2628,8 @@
 				6965DA642189B4790071D6B2 /* SpinConfirmData.swift in Sources */,
 				6986618222CC8CD700B75BA6 /* AddMatchesData.swift in Sources */,
 				696FA116225C7B7C001A85F2 /* PaymentLayout.swift in Sources */,
+				69A158C1247331F0004F5AE7 /* VendorPurchaseOrder.swift in Sources */,
+				69A158C524733930004F5AE7 /* PurSalesLedger.swift in Sources */,
 				69861E86230ACB4300C7C2BB /* ComplexCell.swift in Sources */,
 				69317384240CD8D100F770E5 /* DivisionwiseTabelCell.swift in Sources */,
 				6943F2F123DC2256006D484A /* SearchVendorController.swift in Sources */,
@@ -2468,6 +2655,7 @@
 				6917036324376B3800E1C9C9 /* DistrictwiseDhan.swift in Sources */,
 				696BF47022F04725002614E2 /* DistWiseChild.swift in Sources */,
 				694BD73E2080BD25000291C0 /* CustomYearPickerController.swift in Sources */,
+				6978E112244DDF8900A2A20D /* PartyAgentLimit.swift in Sources */,
 				6972FECE2115842B006EF0A2 /* SalesView.swift in Sources */,
 				6920E1D724349AFD00FB02A1 /* PunchInData.swift in Sources */,
 				6986619122CC90A400B75BA6 /* FinalView.swift in Sources */,
@@ -2484,6 +2672,7 @@
 				69B8C14E2114750C004D7491 /* RoundView.swift in Sources */,
 				69A3EE462359D938007339D5 /* LimitDetailsCell.swift in Sources */,
 				69D21762216896D100862320 /* CreditDebitNote.swift in Sources */,
+				69664F972451ADD5003D5173 /* CounterBoyApprovalCell.swift in Sources */,
 				6974341421A028F90064597B /* OrderViewCartController.swift in Sources */,
 				69969AF6224A5FDF005C0B70 /* NDADetailViewController.swift in Sources */,
 				69B1312623E03125005D877B /* Insurance.swift in Sources */,
@@ -2498,20 +2687,25 @@
 				691EE18E2147A3C200835311 /* DashLastPaymentCell.swift in Sources */,
 				69D21766216896FA00862320 /* VideoViewCell.swift in Sources */,
 				69689F00231A9F9C0053E50B /* ExpenseHeadChild.swift in Sources */,
+				6929E76424773A1900814A39 /* MonthwiseViewController.swift in Sources */,
 				6972FEDC21158FF9006EF0A2 /* BrandLoyaltyView.swift in Sources */,
 				697582C0208F4E3F00327FB1 /* CaptchaView.swift in Sources */,
 				69969AF2224A5F05005C0B70 /* NDADetailLayout.swift in Sources */,
 				69389232223BD8B900D69935 /* CollectionViewCell.swift in Sources */,
 				691BB63823ED49B500E2C4C8 /* VendorPayment.swift in Sources */,
+				6988EB3424747A9900079935 /* ProductPlanning.swift in Sources */,
 				6923623E2407D5E2008B0588 /* EmployeeInfo.swift in Sources */,
 				691409D920FE0D3900182052 /* TermOfUseController.swift in Sources */,
 				6972F2D022981B12004862AA /* Dispatch.swift in Sources */,
 				69F86572211C8788008A6B42 /* GroupSchemeView.swift in Sources */,
 				69654651230FE63C008A896C /* OutstandingPaymentCalculationController.swift in Sources */,
 				6917036124374DCE00E1C9C9 /* DhanbarseChild.swift in Sources */,
+				6988EB3A24747F4A00079935 /* ThirdPartyViewController.swift in Sources */,
 				6957286C206901F5006C0415 /* LoginController.swift in Sources */,
 				6926DAB9241BB30A00BFD8A2 /* ExpenseBillLayout.swift in Sources */,
 				69541E142137D98D00BBC4EB /* PriceList.swift in Sources */,
+				69A158BD247300C5004F5AE7 /* VendorPurchaseLayout.swift in Sources */,
+				69878CD5247D9CF3003A0C3A /* RateComparisonController.swift in Sources */,
 				699340C422719BBF008362B1 /* StockDetails.swift in Sources */,
 				692083BF243A1CA60072B096 /* DhanProfileViewController.swift in Sources */,
 				69FC1057228C4E25003E02DF /* chartClicks.swift in Sources */,
@@ -2547,6 +2741,7 @@
 				6955B16821BBBB930081F9BC /* CatalogueListData.swift in Sources */,
 				69DC25C021A2DC9A00C2190D /* CartRowCell.swift in Sources */,
 				69699CDB219ECCDE00C9E8BB /* OrderDetailsViewController.swift in Sources */,
+				69878CD9247DA093003A0C3A /* SubCatItemList.swift in Sources */,
 				692D720620A2BF8D00D2CB16 /* FloatRatingView.swift in Sources */,
 				6943F2ED23DC095E006D484A /* SearchSupplierController.swift in Sources */,
 				691409DB20FE0D6E00182052 /* AboutUsController.swift in Sources */,
@@ -2588,15 +2783,20 @@
 				69A32EFA22A298A300CD3CF9 /* StarRewards.swift in Sources */,
 				69EFE8222119AEFD0034DCE0 /* TabSchemeViewController.swift in Sources */,
 				691FD7B623F42037006A1C51 /* EmpChildLayout.swift in Sources */,
+				6988EB3624747EC500079935 /* ProductPlanViewController.swift in Sources */,
 				691F2D092310188C001D2C03 /* OutsPaymentSummaryListController.swift in Sources */,
 				69541E1C2137DA2D00BBC4EB /* Outstanding.swift in Sources */,
+				69878CD7247D9E37003A0C3A /* RateComparison.swift in Sources */,
+				69498E7D244F0F55005358A1 /* DRPRRPController.swift in Sources */,
 				6922649723589EAB00698FF9 /* LimitDetailsController.swift in Sources */,
 				6954B1922074EF720052FF3E /* DispatchedMaterialCell.swift in Sources */,
+				6978E10B244DCFDD00A2A20D /* AgentLimit.swift in Sources */,
 				69637F802078AC61009EBB43 /* PendingOrderCell.swift in Sources */,
 				6962BD6820820AB600ADE62E /* DatePickerController.swift in Sources */,
 				6965465B2310020E008A896C /* OutstandingSummaryViewController.swift in Sources */,
 				691B92092379479E000EA2A8 /* DivBreakdownTotal.swift in Sources */,
 				69207567230BC84E008982D3 /* ComplexLayout.swift in Sources */,
+				693FF35E2450DC2D00026104 /* MRPData.swift in Sources */,
 				6972FECC21158354006EF0A2 /* BaseCustomView.swift in Sources */,
 				69A32EF222A28B1B00CD3CF9 /* DispatchedMaterialController.swift in Sources */,
 				6919485E23BF60C6007EB414 /* QwikpayDocsController.swift in Sources */,
@@ -2648,6 +2848,7 @@
 				6979B43F2146A5FC00BD99A1 /* DashPendingOrderCell.swift in Sources */,
 				69D8F4452405480500530E94 /* EmpLocChild.swift in Sources */,
 				6986616E22CC803700B75BA6 /* WorldCupMainController.swift in Sources */,
+				6978E110244DD29700A2A20D /* AgentLimitLayout.swift in Sources */,
 				6992642622846F7E00C80529 /* AccountsViewController.swift in Sources */,
 				69DB793820A06A63005023D4 /* ApiClass.swift in Sources */,
 				69735751206CF36A000D738D /* NotificationController.swift in Sources */,
@@ -2662,6 +2863,7 @@
 				6969CAC823F2C59B00BBE5A5 /* EmployeeChild.swift in Sources */,
 				6911543122A00CFE005C09E0 /* StockLayout.swift in Sources */,
 				6905AC9221BE688200510631 /* CatalogueAddViewCell.swift in Sources */,
+				6978E10E244DD03D00A2A20D /* AgentLimitController.swift in Sources */,
 				695F1550209D831F00C262CF /* TechSpecificationController.swift in Sources */,
 				69B2DF5420A999E1003CF0D6 /* MyProfileController.swift in Sources */,
 				698C572E20A47E9100E36900 /* BaseViewController.swift in Sources */,
@@ -2674,6 +2876,7 @@
 				691076F4239A534700930691 /* SupplierViewController.swift in Sources */,
 				69608D2221BBC57B00E6F7D0 /* CatalogueListItemCell.swift in Sources */,
 				692DF404235B00B300F972AD /* IncreasedLimitDetails.swift in Sources */,
+				6988EB3824747F0900079935 /* ThirdPartyStatus.swift in Sources */,
 				6943F30123DC62BC006D484A /* SupplierDashboardController.swift in Sources */,
 				696C543921C3C43E00E82F38 /* ShowRoomController.swift in Sources */,
 				69E8A4642371A65C009E36D7 /* ExpensePartyLayout.swift in Sources */,
@@ -2692,6 +2895,8 @@
 				690F76DF236078B10054FDAC /* ForgotMpinViewController.swift in Sources */,
 				69541E302137F9FB00BBC4EB /* Document.swift in Sources */,
 				69701EEE2126E402009EAA8F /* DivisionWiseCell.swift in Sources */,
+				696E6B54247ACD35001D2286 /* SubCategory.swift in Sources */,
+				69498E83244F29D6005358A1 /* DRPChildController.swift in Sources */,
 				69541DFE2137D65400BBC4EB /* DashboardPendingOrderView.swift in Sources */,
 				69541E042137D76F00BBC4EB /* DashboardAgingReport.swift in Sources */,
 				69A32EF622A291EE00CD3CF9 /* AdjustedAmntViewController.swift in Sources */,
@@ -2699,6 +2904,7 @@
 				695F1554209D836200C262CF /* PolicyRowCell.swift in Sources */,
 				6957286F20690227006C0415 /* NewUserController.swift in Sources */,
 				697E05AC224CA078005B79AA /* OutstandingAboveController.swift in Sources */,
+				6978E114244DE0A600A2A20D /* PartyAgentLimitController.swift in Sources */,
 				699340C02271948F008362B1 /* StockDetailController.swift in Sources */,
 				6929C41C242B717700AF870B /* AttendanceChild.swift in Sources */,
 				69654653230FE680008A896C /* OutstandingReport.swift in Sources */,
@@ -2708,6 +2914,7 @@
 				699E2C6022B3713000DFA5F4 /* SearchDealerDashController.swift in Sources */,
 				69B1312C23E05F06005D877B /* VendorPurchaseObject.swift in Sources */,
 				69541E002137D6A300BBC4EB /* DashboardPaymentView.swift in Sources */,
+				69D3BB5B24759A960050AC0A /* ProdPlanLayout.swift in Sources */,
 				6964EEFB225F45A0005A1BBA /* SalesPurchaseViewController.swift in Sources */,
 				69A1FAA723ED84A1006A07CD /* SupplierInvoice.swift in Sources */,
 				69B1313223E068F1005D877B /* SupplierObject.swift in Sources */,
@@ -2727,6 +2934,7 @@
 				691AACB8237ACF11004B5C90 /* CategoryWiseCompareController.swift in Sources */,
 				690F76DC23605CAC0054FDAC /* MpinData.swift in Sources */,
 				6969CAC323F2A2EB00BBE5A5 /* EmpChildViewController.swift in Sources */,
+				69519442247C5264005C74CC /* AgingReportController.swift in Sources */,
 				6925258C23040C7300CDFBE3 /* ExpenseLayout.swift in Sources */,
 				69A41F6F21775E9C00EE2E20 /* SpinTotalData.swift in Sources */,
 				69B732AF213958020015A2EA /* DownloadPendingOrderPdf.swift in Sources */,
@@ -2744,6 +2952,7 @@
 				6972F2CD22981A3C004862AA /* LastDispatchesView.swift in Sources */,
 				694B2FBE225643A200E7E7B6 /* BranchPickerController.swift in Sources */,
 				6920E1DB24349B3500FB02A1 /* ErrorsData.swift in Sources */,
+				692B278424571E5400320A06 /* PendingViewController.swift in Sources */,
 				69541E022137D72300BBC4EB /* DashboardLastPaymentView.swift in Sources */,
 				6949C0022260D7CE005EC4B3 /* StockViewController.swift in Sources */,
 				6905F10223E00C7C00193461 /* InsureLayout.swift in Sources */,
@@ -2898,6 +3107,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.29;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5F6P8555ST;
 				INFOPLIST_FILE = ManagementApp/Info.plist;
@@ -2925,6 +3135,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.29;
 				DEVELOPMENT_TEAM = 5F6P8555ST;
 				INFOPLIST_FILE = ManagementApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13;

@@ -155,11 +155,11 @@ class LoginController: UIViewController , UITextFieldDelegate{
         print("get category \(json)")
         manager.makeAPICall(url: getCategoryApi, params: json, method: .POST, success: { (response) in
             let data = response as? Data
-            print("get category result\(data)")
+            //print("get category result\(data)")
             do {
                 self.category = try JSONDecoder().decode([Category].self, from: data!)
                 self.categoryObj  = self.category[0].data
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                _ = UIApplication.shared.delegate as! AppDelegate
                 UserDefaults.standard.set(self.categoryObj[0].usertype, forKey: "userCategory")
                 UserDefaults.standard.set(self.categoryObj[0].userid, forKey: "userCIN")
                 //appDelegate.userCategory = self.categoryObj[0].usertype

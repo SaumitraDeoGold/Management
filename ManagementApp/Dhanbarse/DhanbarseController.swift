@@ -50,10 +50,16 @@ class DhanbarseController: BaseViewController, UICollectionViewDataSource, UICol
     var status = "All"
     var index = 0
     var sumOfTotals = 0
+    var isagent = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addSlideMenuButton()
+        if UserDefaults.standard.value(forKey: "userCategory") as! String == "Agent"{
+            isagent = true
+        }else{
+            isagent = false
+        }
         let statusClick = UITapGestureRecognizer(target: self, action: #selector(self.clickedStatus))
         lblStatus.addGestureRecognizer(statusClick)
         formatter.dateFormat = "MM/dd/yyyy HH:mm"
@@ -302,22 +308,23 @@ class DhanbarseController: BaseViewController, UICollectionViewDataSource, UICol
                 } else {
                     cell.backgroundColor = UIColor.lightGray
                 }
+                let tempTotal = Int(filteredMonths[indexPath.section-1].counterBoy! + filteredMonths[indexPath.section-1].electrician! + filteredMonths[indexPath.section-1].retailer!)
                 switch indexPath.row{
                 case 0:
                     cell.contentLabel.text = filteredMonths[indexPath.section-1].month
                 case 1:
                     let currentYear = Int(filteredMonths[indexPath.section-1].retailer!)
-                    let prevYear = Int(totalRetailer)
+                    let prevYear = isagent ? Int(tempTotal) : Int(totalRetailer)
                     let temp = (currentYear*100)/prevYear
                     cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
                 case 2:
                     let currentYear = Int(filteredMonths[indexPath.section-1].electrician!)
-                    let prevYear = Int(totalElectrician)
+                    let prevYear = isagent ? Int(tempTotal) :  Int(totalElectrician)
                     let temp = (currentYear*100)/prevYear
                     cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
                 case 3:
                     let currentYear = Int(filteredMonths[indexPath.section-1].counterBoy!)
-                    let prevYear = Int(totalCounterboy)
+                    let prevYear = isagent ? Int(tempTotal) :  Int(totalCounterboy)
                     let temp = (currentYear*100)/prevYear
                     cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
                 case 4:
@@ -384,22 +391,24 @@ class DhanbarseController: BaseViewController, UICollectionViewDataSource, UICol
                 } else {
                     cell.backgroundColor = UIColor.lightGray
                 }
+                let tempTotal = Int(filteredItems[indexPath.section-1].counterBoy! + filteredItems[indexPath.section-1].electrician! + filteredItems[indexPath.section-1].retailer!)
                 switch indexPath.row{
+                    
                 case 0:
                     cell.contentLabel.text = filteredItems[indexPath.section-1].stateName
                 case 1:
                     let currentYear = Int(filteredItems[indexPath.section-1].retailer!)
-                    let prevYear = Int(totalRetailer)
+                    let prevYear = isagent ? Int(tempTotal) : Int(totalRetailer)
                     let temp = (currentYear*100)/prevYear
                     cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
                 case 2:
                     let currentYear = Int(filteredItems[indexPath.section-1].electrician!)
-                    let prevYear = Int(totalElectrician)
+                    let prevYear = isagent ? Int(tempTotal) :  Int(totalElectrician)
                     let temp = (currentYear*100)/prevYear
                     cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
                 case 3:
                     let currentYear = Int(filteredItems[indexPath.section-1].counterBoy!)
-                    let prevYear = Int(totalCounterboy)
+                    let prevYear =  isagent ? Int(tempTotal) : Int(totalCounterboy)
                     let temp = (currentYear*100)/prevYear
                     cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
                 case 4:

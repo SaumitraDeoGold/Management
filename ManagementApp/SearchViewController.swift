@@ -45,6 +45,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     //For City...
     var filteredCity = [DhanCitywiseObj]()
     var tempCity = [DhanCitywiseObj]()
+    
+    //For ALL...
+    var alltype = [[String : String]]()
+    var tempAll = [[String : String]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,10 +58,14 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         tempDist = distItems
         tempState = stateItems
         tempCity = filteredCity
+        tempAll = alltype
         if from == "branch"{
             textField.placeholder = "Search Branch"
             ViewControllerUtils.sharedInstance.showLoader()
             apiGetBranch()
+        }else if from == "all"{
+            textField.placeholder = "Search..."
+            self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
         }else if from == "dist"{
             textField.placeholder = "Search District"
             self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
@@ -123,6 +131,20 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             }else{
                 for supps in tempSupplier{
                     filteredSupplier.append(supps)
+                }
+            }
+        }else if from == "all"{
+            self.alltype.removeAll()
+            if textfield.text?.count != 0{
+                for supps in tempAll{
+                    let range = supps["name"]!.lowercased().range(of: textfield.text!, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil{
+                        alltype.append(supps)
+                    }
+                }
+            }else{
+                for supps in tempAll{
+                    alltype.append(supps)
                 }
             }
         }else if from == "dist"{
@@ -199,6 +221,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             return stateItems.count + 1
         }else if from == "city"{
             return filteredCity.count + 1
+        }else if from == "all"{
+            return alltype.count + 1
         }else{
             return filteredLedger.count
         }
@@ -220,6 +244,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             }else{
                 cell.textLabel?.text = distItems[indexPath.row-1].district
             } 
+        }else if from == "all"{
+            if(indexPath.row == 0){
+                cell.textLabel?.text = "ALL"
+            }else{
+                cell.textLabel?.text = alltype[indexPath.row-1]["name"]
+            }
         }else if from == "state"{
             if(indexPath.row == 0){
                 cell.textLabel?.text = "ALL"
@@ -254,6 +284,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 delegate?.showSearchValue!(value: "ALL")
             }else{
                 delegate?.showSearchValue!(value: distItems[indexPath.row-1].district!)
+            }
+            
+        }else if from == "all"{
+            if indexPath.row == 0{
+                delegate?.showSearchValue!(value: "ALL")
+            }else{
+                delegate?.showSearchValue!(value: alltype[indexPath.row-1]["name"]!)
             }
             
         }else if from == "state"{

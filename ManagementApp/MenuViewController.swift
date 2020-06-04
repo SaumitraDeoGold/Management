@@ -61,7 +61,7 @@ class MenuViewController: UIViewController {
         tblMenuOptions.tableFooterView = UIView()
         // Do any additional setup after loading the view.
         if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
-            menuSection = 11
+            menuSection = 10
         }
         self.imvProfileImage.layer.borderWidth = 2
         self.imvProfileImage.layer.masksToBounds = false
@@ -114,8 +114,14 @@ class MenuViewController: UIViewController {
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"DASHBOARD", "icon":"icon_dashboard","data":[""]])
        // self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"ORDER", "icon":"dashboard_order_icon","data":["PLACE ORDER","ORDER SUMMARY"]])
 //        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"BRAND LOYALTY", "icon":"brand_loyalty_club_icon","data":["STAR REWARD PROGRAM","DISCOVER THE WORLD","DOCUMENTS"]])
-        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"REPORTS", "icon":"icon_reports","data":["DIVISION WISE SALES","DEALER APPOINTMENT","OUTSTANDING ABOVE","SALES AND PURCHASES","DEALER SEARCH","DIVISIONWISE COMPARE","CATEGORYWISE COMPARE","BRANCHWISE OUTSTANDING","INSURANCE REPORT","EXPENSE BILL"]])
-        
+        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"SALES REPORTS", "icon":"icon_reports","data":["DIVISION WISE SALES","DEALER APPOINTMENT","OUTSTANDING ABOVE","SALES AND PURCHASES","DEALER SEARCH","DIVISIONWISE COMPARE","CATEGORYWISE COMPARE","BRANCHWISE OUTSTANDING","INSURANCE REPORT","EXPENSE BILL","AGENT LIMIT"]])
+        if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
+                    
+                    self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"PURCHASE REPORTS", "icon":"icon_reports","data":["SEARCH SUPPLIER","SEARCH VENDOR","PURCHASE INVOICE","SALE/PURCHASE PARTY LEDGER","PRODUCTION PLANNING","THIRD PARTY ORDER","MONTHLY SUMMARY","THIRD PARTY AGING"]])
+        //        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SEARCH SUPPLIER", "icon":"dash_search","data":[""]])
+        //        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SEARCH VENDOR", "icon":"dash_search","data":[""]])
+                    
+                }
         self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"DOCUMENTS", "icon":"icon_documents","data":["PRICE LIST","CATALOGUE","ACTIVE SCHEME","POLICY","TECH SPECIFICATION","DHANBARSE","QWIKPAY"]])
 //        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"ENQUIRY", "icon":"icon_enquiry","data":["ENQUIRY","CALL SERVICE (EXECUTIVE)"]])
 //        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SALES RETURN REQUEST", "icon":"icon_sales_return","data":[""]])
@@ -125,14 +131,9 @@ class MenuViewController: UIViewController {
        // self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"CONTACT US", "icon":"icon_contact_us","data":[""]])
         
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"INCREASE LIMITS", "icon":"dashboard_sales_icon","data":[""]])
-        if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
-            
-        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SEARCH SUPPLIER", "icon":"dash_search","data":[""]])
-        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SEARCH VENDOR", "icon":"dash_search","data":[""]])
-            
-        }
-        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"DHANBARSE", "icon":"icon_about_us","data":["DHANBARSE DATA","SEARCH PROFILE"]])
-        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"EMPLOYEE", "icon":"icon_about_us","data":["EMPLOYEE DETAILS","EMPLOYEE DATA","EMPLOYEE SEARCH"]])
+        
+        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"DHANBARSE", "icon":"icon_about_us","data":["DHANBARSE DATA","SEARCH PROFILE","POINT BALANCE"]])
+        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"HR", "icon":"icon_about_us","data":["EMPLOYEE DETAILS","EMPLOYEE DATA","EMPLOYEE SEARCH","MPR","PENDING/CLOSED MPR"]])
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"ABOUT US", "icon":"icon_about_us","data":[""]])
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"TERMS OF USE", "icon":"dashboard_order_icon","data":[""]])
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"LOGOUT", "icon":"icon_logout","data":[""]])
@@ -330,14 +331,14 @@ extension MenuViewController : UITableViewDelegate,UITableViewDataSource{
         
         print("---------------INDEX SECTION ----------",indexPath.row)
         
-        if ((sectionIndex == 2 && itemIndex == 1) || (sectionIndex == 5 && itemIndex == 1)){
-            
-            var alert = UIAlertView(title: "Coming Soon", message: "Coming Soon", delegate: nil, cancelButtonTitle: "OK")
-            alert.show()
-            
-        }else{
+//        if ((sectionIndex == 2 && itemIndex == 1) || (sectionIndex == 5 && itemIndex == 1)){
+//
+//            var alert = UIAlertView(title: "Coming Soon", message: "Coming Soon", delegate: nil, cancelButtonTitle: "OK")
+//            alert.show()
+//
+//        }else{
             self.onCloseMenuClick(btn)
-        }
+        //}
     }
     
 }

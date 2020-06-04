@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDelegate , UITableViewDataSource {
+class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     //Outlet...
     @IBOutlet weak var tableView: UITableView!
@@ -45,10 +45,10 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
     var callFrom = 0
     var strCin = ""
     var strTotalAmnt = "-"
-    var dateTo = "03/30/2020"
-    var dateFrom = "04/01/2019"
-    var yearStart = "2019"
-    var yearEnd = "2020"
+    var dateTo = "03/30/2021"
+    var dateFrom = "04/01/2020"
+    var yearStart = "2020"
+    var yearEnd = "2021"
     let qrtrlyArrayStart = Utility.quarterlyStartDate()
     let qrtrlyArrayEnd = Utility.quarterlyEndDate()
     let monthEnds = Utility.getMonthEndDate()
@@ -62,63 +62,64 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
         super.viewDidLoad()
         if UserDefaults.standard.value(forKey: "userCategory") as! String == "Agent"{
             isagent = true
-            branchwiseCollectionView.isHidden = true
+            noOfColumns = 2
+            //tableView.isHidden = true
         }else{
-            tableView.isHidden = true
+            noOfColumns = 8
+            //tableView.isHidden = true
         }
         self.noDataView.hideView(view: self.noDataView)
         ViewControllerUtils.sharedInstance.showLoader()
-        noOfColumns = 8
         apiBranchWiseSales()
     }
     
     //Tableview Functions...
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 340
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return branchData.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DivisionwiseTabelCell", for: indexPath) as! DivisionwiseTabelCell
-        
-        let currentYear = Double(self.branchData[indexPath.row].wiringdevices!)!
-        let prevYear = Double(self.branchData[indexPath.row].branchcontribution!)
-        let temp = (currentYear*100)/prevYear!
-        cell.lblWDName.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear!, temp: temp)
-        
-        let wd = Double(self.branchData[indexPath.row].lights!)!
-        let wdSum = Double(self.branchData[indexPath.row].branchcontribution!)
-        let wdTemp = (wd*100)/wdSum!
-        cell.lblLname.attributedText = calculatePercentage(currentYear: wd, prevYear: wdSum!, temp: wdTemp)
-        
-        let wc = Double(self.branchData[indexPath.row].wireandcable!)!
-        let wcSum = Double(self.branchData[indexPath.row].branchcontribution!)
-        let wcTemp = (wc*100)/wcSum!
-        cell.lblWCName.attributedText = calculatePercentage(currentYear: wc, prevYear: wcSum!, temp: wcTemp)
-        
-        let pf = Double(self.branchData[indexPath.row].pipesandfittings!)!
-        let pfSum = Double(self.branchData[indexPath.row].branchcontribution!)
-        let pfTemp = (pf*100)/pfSum!
-        cell.lblPFName.attributedText = calculatePercentage(currentYear: pf, prevYear: pfSum!, temp: pfTemp)
-        
-        let md = Double(self.branchData[indexPath.row].mcbanddbs!)!
-        let mdSum = Double(self.branchData[indexPath.row].branchcontribution!)
-        let mdTemp = (md*100)/mdSum!
-        cell.lblMDName.attributedText = calculatePercentage(currentYear: md, prevYear: mdSum!, temp: mdTemp)
-        if let brC = self.branchData[indexPath.row].branchcontribution {
-            cell.lblBRCName.text = Utility.formatRupee(amount: Double(brC)!)
-        }
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "byAgent", sender: self)
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 340
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return branchData.count
+//    }
+//
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "DivisionwiseTabelCell", for: indexPath) as! DivisionwiseTabelCell
+//
+//        let currentYear = Double(self.branchData[indexPath.row].wiringdevices!)!
+//        let prevYear = Double(self.branchData[indexPath.row].branchcontribution!)
+//        let temp = (currentYear*100)/prevYear!
+//        cell.lblWDName.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear!, temp: temp)
+//
+//        let wd = Double(self.branchData[indexPath.row].lights!)!
+//        let wdSum = Double(self.branchData[indexPath.row].branchcontribution!)
+//        let wdTemp = (wd*100)/wdSum!
+//        cell.lblLname.attributedText = calculatePercentage(currentYear: wd, prevYear: wdSum!, temp: wdTemp)
+//
+//        let wc = Double(self.branchData[indexPath.row].wireandcable!)!
+//        let wcSum = Double(self.branchData[indexPath.row].branchcontribution!)
+//        let wcTemp = (wc*100)/wcSum!
+//        cell.lblWCName.attributedText = calculatePercentage(currentYear: wc, prevYear: wcSum!, temp: wcTemp)
+//
+//        let pf = Double(self.branchData[indexPath.row].pipesandfittings!)!
+//        let pfSum = Double(self.branchData[indexPath.row].branchcontribution!)
+//        let pfTemp = (pf*100)/pfSum!
+//        cell.lblPFName.attributedText = calculatePercentage(currentYear: pf, prevYear: pfSum!, temp: pfTemp)
+//
+//        let md = Double(self.branchData[indexPath.row].mcbanddbs!)!
+//        let mdSum = Double(self.branchData[indexPath.row].branchcontribution!)
+//        let mdTemp = (md*100)/mdSum!
+//        cell.lblMDName.attributedText = calculatePercentage(currentYear: md, prevYear: mdSum!, temp: mdTemp)
+//        if let brC = self.branchData[indexPath.row].branchcontribution {
+//            cell.lblBRCName.text = Utility.formatRupee(amount: Double(brC)!)
+//        }
+//        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "byAgent", sender: self)
+//    }
     
     //Calculate percentage func...
     func calculatePercentage(currentYear: Double, prevYear: Double, temp: Double) -> NSAttributedString{
@@ -192,7 +193,7 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
         print("DIVWiseSale Params \(json)")
         manager.makeAPICall(url: branchWiseSalesApiUrl, params: json, method: .POST, success: { (response) in
             let data = response as? Data
-            print("DIVWiseSale Result \(data)")
+            //print("DIVWiseSale Result \(data)")
             do {
                 self.branchWiseSalesData = try JSONDecoder().decode([BranchWiseSales].self, from: data!)
                 self.branchData  = self.branchWiseSalesData[0].data!
@@ -213,10 +214,12 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
                 return
             }
             if self.isagent{
-                self.tableView.reloadData()
+                self.noOfColumns = 2
+            }else{
+                self.noOfColumns = 8
             }
             
-            self.noOfColumns = 8
+            
             self.customDivLayout.itemAttributes = [];
             self.customDivLayout.numberOfColumns = self.noOfColumns
             self.branchwiseCollectionView.collectionViewLayout = self.customDivLayout
@@ -255,7 +258,7 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
         manager.makeAPICall(url: branchWisePaymentApiUrl, params: json, method: .POST, success: { (response) in
             let data = response as? Data
             do {
-                print("DIVWisePayment Response \(data)")
+                //print("DIVWisePayment Response \(data)")
                 self.branchWisePaymentData = try JSONDecoder().decode([BranchWisePayment].self, from: data!)
                 self.branchPayData  = self.branchWisePaymentData[0].data!
                 self.filteredPayment = self.branchWisePaymentData[0].data!
@@ -268,21 +271,25 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
                 ViewControllerUtils.sharedInstance.removeLoader()
                 return
             }
-            self.noOfColumns = 3
+            if self.isagent{
+                self.noOfColumns = 2
+            }else{
+                self.noOfColumns = 3
+            }
             self.customDivLayout.itemAttributes = [];
             self.customDivLayout.numberOfColumns = self.noOfColumns
             self.branchwiseCollectionView.collectionViewLayout = self.customDivLayout
             self.branchwiseCollectionView.delegate = self
             self.branchwiseCollectionView.dataSource = self
-           
+            
             if(self.branchwiseCollectionView != nil)
             {
                 self.branchwiseCollectionView.reloadData()
                 self.customDivLayout.invalidateLayout()
             }
             self.branchwiseCollectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),
-                                              at: .top,
-                                              animated: true)
+                                                        at: .top,
+                                                        animated: true)
         }) { (Error) in
             print(Error?.localizedDescription as Any)
             self.noDataView.showView(view: self.noDataView, from: "NDA")
@@ -346,8 +353,8 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
     
     @IBAction func clickedSales(_ sender: Any) {
         if isagent{
-            tableView.isHidden = false
-            branchwiseCollectionView.isHidden = true
+            //tableView.isHidden = true
+            branchwiseCollectionView.isHidden = false
         }
         showSales = true
         btnSales.backgroundColor = UIColor.darkGray
@@ -361,7 +368,7 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
     
     @IBAction func clickedPayment(_ sender: Any) {
         if isagent{
-            tableView.isHidden = true
+            //tableView.isHidden = true
             branchwiseCollectionView.isHidden = false
         }
         showSales = false
@@ -396,9 +403,9 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
             dateFrom = months[3]+"01/"+yearStart
             dateTo = months[2]+monthEnds[3]+yearEnd
             if showSales{
-            apiBranchWiseSales()
+                apiBranchWiseSales()
             }else{
-            apiBranchWisePayment()
+                apiBranchWisePayment()
             }
         case 1:
             lblFinYear.text = "Monthly Report - " + value
@@ -430,16 +437,21 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
         default:
             print("Error")
         }
-
-
+        
+        
     }
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if(showSales){
-           return filteredItems.count + 2
+            if isagent{
+                return 6
+            }else{
+                return filteredItems.count + 2
+            }
+            
         }else{
-           return filteredPayment.count + 2
+            return filteredPayment.count + 2
         }
     }
     
@@ -454,110 +466,174 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.white.cgColor
         if showSales{
-            if indexPath.section == 0 {
-                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
-                if #available(iOS 11.0, *) {
-                    cell.backgroundColor = UIColor.init(named: "Primary")
-                } else {
-                    cell.backgroundColor = UIColor.gray
-                }
-                switch indexPath.row{
-                case 0:
-                    cell.contentLabel.text = "Branch Name"
-                case 1:
-                    cell.contentLabel.text = "W D"
-                case 2:
-                    cell.contentLabel.text = "Lights"
-                case 3:
-                    cell.contentLabel.text = "W&C"
-                case 4:
-                    cell.contentLabel.text = "P&F"
-                case 5:
-                    cell.contentLabel.text = "Mcb&Dbs"
-                case 6:
-                    cell.contentLabel.text = "Branch Contri"
-                case 7:
-                    cell.contentLabel.text = "Contri %"
-                default:
-                    break
-                }
-                
-            } else if indexPath.section == filteredItems.count + 1 {
-                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
-                if #available(iOS 11.0, *) {
-                    cell.backgroundColor = UIColor.init(named: "Primary")
-                } else {
-                    cell.backgroundColor = UIColor.gray
-                }
-                switch indexPath.row{
-                case 0:
-                    cell.contentLabel.text = "SUM"
-                case 1:
-                    cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["wiringdevices"]! ))
-                case 2:
-                    cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["lights"]! ))
-                case 3:
-                    cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["wireandcable"]! ))
-                case 4:
-                    cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["pipesandfittings"]! ))
-                case 5:
-                    cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["mcbanddbs"]! ))
-                case 6:
-                    cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["branchcontribution"]! ))
-                case 7:
-                    cell.contentLabel.text = "\(Int(totalSales["branchcontributionpercentage"]!))%"
-                default:
-                    break
-                }
-            } else {
-                cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+            if isagent && filteredItems.count > 0{
                 if #available(iOS 11.0, *) {
                     cell.backgroundColor = UIColor.init(named: "primaryLight")
                 } else {
-                    cell.backgroundColor = UIColor.lightGray
+                    cell.backgroundColor = UIColor.gray
                 }
-                switch indexPath.row{
-                case 0:
-                    cell.contentLabel.text = filteredItems[indexPath.section - 1].branchnm
-                case 1:
-                    if let Sales = filteredItems[indexPath.section - 1].wiringdevices
-                    {
-                        cell.contentLabel.text = Utility.formatRupee(amount: Double(Sales )!)
+                if indexPath.row == 0{
+                    cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                    switch indexPath.section{
+                    case 0:
+                        cell.contentLabel.text = "W D"
+                    case 1:
+                        cell.contentLabel.text = "Lights"
+                    case 2:
+                        cell.contentLabel.text = "W&C"
+                    case 3:
+                        cell.contentLabel.text = "P&F"
+                    case 4:
+                        cell.contentLabel.text = "Mcb&Dbs"
+                    case 5:
+                        cell.contentLabel.text = "Branch Contri"
+                    default:
+                        break
                     }
-                case 2:
-                    if let totalSales = filteredItems[indexPath.section - 1].lights
-                    {
-                        cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales )!)
+                }else{
+                    cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                    switch indexPath.section{
+                   case 0:
+                        if let Sales = filteredItems[0].wiringdevices
+                        {
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(Sales )!)
+                        }
+                    case 1:
+                        if let totalSales = filteredItems[0].lights
+                        {
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales )!)
+                        }
+                    case 2:
+                        if let wireandcable = filteredItems[0].wireandcable
+                        {
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(wireandcable )!)
+                        }
+                    case 3:
+                        if let pipes = filteredItems[0].pipesandfittings
+                        {
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(pipes )!)
+                        }
+                    case 4:
+                        if let mcbanddbs = filteredItems[0].mcbanddbs
+                        {
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(mcbanddbs )!)
+                        }
+                    case 5:
+                        if let branchcontribution = filteredItems[0].branchcontribution
+                        {
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(branchcontribution )!)
+                        }
+                    default:
+                        break
                     }
-                case 3:
-                    if let wireandcable = filteredItems[indexPath.section - 1].wireandcable
-                    {
-                        cell.contentLabel.text = Utility.formatRupee(amount: Double(wireandcable )!)
-                    }
-                case 4:
-                    if let pipes = filteredItems[indexPath.section - 1].pipesandfittings
-                    {
-                        cell.contentLabel.text = Utility.formatRupee(amount: Double(pipes )!)
-                    }
-                case 5:
-                    if let mcbanddbs = filteredItems[indexPath.section - 1].mcbanddbs
-                    {
-                        cell.contentLabel.text = Utility.formatRupee(amount: Double(mcbanddbs )!)
-                    }
-                case 6:
-                    if let branchcontribution = filteredItems[indexPath.section - 1].branchcontribution
-                    {
-                        cell.contentLabel.text = Utility.formatRupee(amount: Double(branchcontribution )!)
-                    }
-                case 7:
-                    cell.contentLabel.text = filteredItems[indexPath.section - 1].branchcontributionpercentage! + "%"
-                    
-                default:
-                    break
                 }
                 
-            }
-            return cell
+                return cell
+            }else if filteredItems.count > 0{
+                if indexPath.section == 0 {
+                    cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                    if #available(iOS 11.0, *) {
+                        cell.backgroundColor = UIColor.init(named: "Primary")
+                    } else {
+                        cell.backgroundColor = UIColor.gray
+                    }
+                    switch indexPath.row{
+                    case 0:
+                        cell.contentLabel.text = "Branch Name"
+                    case 1:
+                        cell.contentLabel.text = "W D"
+                    case 2:
+                        cell.contentLabel.text = "Lights"
+                    case 3:
+                        cell.contentLabel.text = "W&C"
+                    case 4:
+                        cell.contentLabel.text = "P&F"
+                    case 5:
+                        cell.contentLabel.text = "Mcb&Dbs"
+                    case 6:
+                        cell.contentLabel.text = "Branch Contri"
+                    case 7:
+                        cell.contentLabel.text = "Contri %"
+                    default:
+                        break
+                    }
+                    
+                } else if indexPath.section == filteredItems.count + 1 {
+                    cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                    if #available(iOS 11.0, *) {
+                        cell.backgroundColor = UIColor.init(named: "Primary")
+                    } else {
+                        cell.backgroundColor = UIColor.gray
+                    }
+                    switch indexPath.row{
+                    case 0:
+                        cell.contentLabel.text = "SUM"
+                    case 1:
+                        cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["wiringdevices"]! ))
+                    case 2:
+                        cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["lights"]! ))
+                    case 3:
+                        cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["wireandcable"]! ))
+                    case 4:
+                        cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["pipesandfittings"]! ))
+                    case 5:
+                        cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["mcbanddbs"]! ))
+                    case 6:
+                        cell.contentLabel.text = Utility.formatRupee(amount: (totalSales["branchcontribution"]! ))
+                    case 7:
+                        cell.contentLabel.text = "\(Int(totalSales["branchcontributionpercentage"]!))%"
+                    default:
+                        break
+                    }
+                } else {
+                    cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+                    if #available(iOS 11.0, *) {
+                        cell.backgroundColor = UIColor.init(named: "primaryLight")
+                    } else {
+                        cell.backgroundColor = UIColor.lightGray
+                    }
+                    switch indexPath.row{
+                    case 0:
+                        cell.contentLabel.text = filteredItems[indexPath.section - 1].branchnm
+                    case 1:
+                        if let Sales = filteredItems[indexPath.section - 1].wiringdevices
+                        {
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(Sales )!)
+                        }
+                    case 2:
+                        if let totalSales = filteredItems[indexPath.section - 1].lights
+                        {
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales )!)
+                        }
+                    case 3:
+                        if let wireandcable = filteredItems[indexPath.section - 1].wireandcable
+                        {
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(wireandcable )!)
+                        }
+                    case 4:
+                        if let pipes = filteredItems[indexPath.section - 1].pipesandfittings
+                        {
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(pipes )!)
+                        }
+                    case 5:
+                        if let mcbanddbs = filteredItems[indexPath.section - 1].mcbanddbs
+                        {
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(mcbanddbs )!)
+                        }
+                    case 6:
+                        if let branchcontribution = filteredItems[indexPath.section - 1].branchcontribution
+                        {
+                            cell.contentLabel.text = Utility.formatRupee(amount: Double(branchcontribution )!)
+                        }
+                    case 7:
+                        cell.contentLabel.text = filteredItems[indexPath.section - 1].branchcontributionpercentage! + "%"
+                        
+                    default:
+                        break
+                    }
+                    
+                }
+                return cell}
         }else{
             if indexPath.section == 0 {
                 cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
@@ -611,7 +687,7 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
                         cell.contentLabel.text = Utility.formatRupee(amount: Double(Sales )!)
                     }
                 case 2:
-                        cell.contentLabel.text = filteredPayment[indexPath.section - 1].contribution! + "%"
+                    cell.contentLabel.text = filteredPayment[indexPath.section - 1].contribution! + "%"
                 default:
                     break
                 }
@@ -619,7 +695,7 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
             }
             return cell
         }
-        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -718,7 +794,7 @@ class DivisionWiseSalesViewController: BaseViewController, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-  
+    
     
 }
 

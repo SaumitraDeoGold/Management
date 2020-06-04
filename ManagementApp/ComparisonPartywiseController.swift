@@ -168,12 +168,12 @@ class ComparisonPartywiseController: UIViewController, UICollectionViewDataSourc
                 case 0:
                     cell.contentLabel.text = "Party Name"
                 case 1:
-                    cell.contentLabel.text = "CY Sale 19-20"
+                    cell.contentLabel.text = "CY Sale 20-21"
                     cell.contentLabel.textColor = UIColor.black
                 case 2:
-                    cell.contentLabel.text = "LY Sale 18-19"
+                    cell.contentLabel.text = "LY Sale 19-20"
                 case 3:
-                    cell.contentLabel.text = "2017-2018"
+                    cell.contentLabel.text = "2018-2019"
                     cell.contentLabel.textColor = UIColor.black
                 default:
                     break
@@ -291,12 +291,12 @@ class ComparisonPartywiseController: UIViewController, UICollectionViewDataSourc
                 case 0:
                     cell.contentLabel.text = "District Name"
                 case 1:
-                    cell.contentLabel.text = "CY Sale 19-20"
+                    cell.contentLabel.text = "CY Sale 20-21"
                     cell.contentLabel.textColor = UIColor.black
                 case 2:
-                    cell.contentLabel.text = "LY Sale 18-19"
+                    cell.contentLabel.text = "LY Sale 19-20"
                 case 3:
-                    cell.contentLabel.text = "2017-2018"
+                    cell.contentLabel.text = "2018-2019"
                     cell.contentLabel.textColor = UIColor.black
                 default:
                     break
@@ -408,12 +408,12 @@ class ComparisonPartywiseController: UIViewController, UICollectionViewDataSourc
                 case 0:
                     cell.contentLabel.text = "Party Name"
                 case 1:
-                    cell.contentLabel.text = "CY Sale 19-20"
+                    cell.contentLabel.text = "CY Sale 20-21"
                     cell.contentLabel.textColor = UIColor.black
                 case 2:
-                    cell.contentLabel.text = "LY Sale 18-19"
+                    cell.contentLabel.text = "LY Sale 19-20"
                 case 3:
-                    cell.contentLabel.text = "2017-2018"
+                    cell.contentLabel.text = "2018-2019"
                     cell.contentLabel.textColor = UIColor.black
                 default:
                     break

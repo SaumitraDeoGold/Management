@@ -59,7 +59,13 @@ class SearchVendorController: BaseViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         appDelegate.sendCin = supplierArray[indexPath.item].slno!
+        appDelegate.partyName = supplierArray[indexPath.item].vendornm!
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destViewController : UIViewController = storyboard.instantiateViewController(withIdentifier: "NewDashBoard")
+        let topViewController : UIViewController = self.navigationController!.topViewController!
+        self.navigationController!.pushViewController(destViewController, animated: true)
     }
+ 
     
     //API Function...
     func apiGetAllVendors(){

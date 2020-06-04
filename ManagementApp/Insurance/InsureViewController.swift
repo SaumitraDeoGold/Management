@@ -59,7 +59,6 @@ class InsureViewController: BaseViewController, UICollectionViewDataSource, UICo
     }
     
     //CollectionView Layout...
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return filteredItems.count + 2
     }

@@ -10,7 +10,7 @@ import UIKit
 
 class BranchWiseCollectionLayout: UICollectionViewLayout {
     
-    var numberOfColumns = 8
+    var numberOfColumns = Int()
     var shouldPinFirstColumn = true
     var shouldPinFirstRow = true
     fileprivate var cache = [UICollectionViewLayoutAttributes]()
@@ -31,6 +31,8 @@ class BranchWiseCollectionLayout: UICollectionViewLayout {
         }
         
         itemAttributes = []
+        numberOfColumns = collectionView.numberOfItems(inSection: 0)
+        
         if itemAttributes.count != collectionView.numberOfSections {
             generateItemAttributes(collectionView: collectionView)
             return
@@ -179,6 +181,16 @@ extension BranchWiseCollectionLayout {
                 
             default:
                 width = 130
+            }
+        }else if numberOfColumns == 2{
+            switch columnIndex {
+            case 0:
+                width = Int((screenWidth/2)-1)
+            case 1:
+                width = Int((screenWidth/2)-1)
+                
+            default:
+                width = Int((screenWidth/2)-1) 
             }
         }else{
             switch columnIndex {

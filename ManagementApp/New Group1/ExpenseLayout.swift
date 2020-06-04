@@ -208,6 +208,15 @@ extension ExpenseLayout {
             default:
                 width = Int((screenWidth/3)-1)
             }
+        }else if numberOfColumns == 6{
+            switch columnIndex {
+            case 0:
+                width = 130
+            case 1:
+                width = Int((screenWidth/2)-1)
+            default:
+                width = 100
+            }
         }else{
             switch columnIndex {
             case 0:

@@ -35,8 +35,8 @@ class CustomYearPickerController: UIViewController ,UIPickerViewDataSource, UIPi
     @IBAction func ok_clicked(_ sender: UIButton) {
         if(strSelectedValue == ""){
             if showPicker == 3{
-                strSelectedValue = pickerDataSource[2]
-                rowPosition = 2
+                strSelectedValue = pickerDataSource[3]
+                rowPosition = 3
             }else{
                 strSelectedValue = pickerDataSource[0]
             }
@@ -67,9 +67,9 @@ class CustomYearPickerController: UIViewController ,UIPickerViewDataSource, UIPi
         
         if showPicker == 3 {
             print("--------Y----------",showPicker)
-             pickerDataSource = ["2017-2018","2018-2019","2019-2020"];
+             pickerDataSource = ["2017-2018","2018-2019","2019-2020","2020-2021"];
             lblPickerHeader.text = "YEARLY"
-            picker.selectRow(2, inComponent: 0, animated: true)
+            picker.selectRow(3, inComponent: 0, animated: true)
         }
     }
     

@@ -27,8 +27,8 @@ class CategoryWiseCompareController: BaseViewController, UICollectionViewDataSou
     var dateFrom = "04/01/2019"
     var prevDateTo = ""
     var prevDateFrom = "04/01/2018"
-    var yearStart = "2019"
-    var yearEnd = "2020"
+    var yearStart = "2020"
+    var yearEnd = "2021"
     let qrtrlyArrayStart = Utility.quarterlyStartDate()
     let qrtrlyArrayEnd = Utility.quarterlyEndDate()
     let monthEnds = Utility.getMonthEndDate()

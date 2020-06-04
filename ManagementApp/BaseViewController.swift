@@ -10,11 +10,11 @@ import UIKit
 
 class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate {
     
-    var supplierSelector = 100
-    var supplierSubSelector = 100
-    var vendorSelector = 100
+    var pReport = 100
+    var IncLimit = 4
+    var video = 3
     var vendorSubSelector = 100
-    var logoutSelector = 8
+    var logoutSelector = 9
     var logoutSubSelector = -1
     var empSelector = 6
     var empSubSelector = 0
@@ -24,24 +24,26 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
     var termofuse = 8
     var dhanSelector = 5
     var dhanSubSelector = 0
-    //var empTwoSub = 1
+    var docs = 2
+    var vendorStory = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
-            supplierSelector = 5
-            supplierSubSelector = -1
-            vendorSelector = 6
+            docs = 3
+            pReport = 2
+            IncLimit = 5
+            video = 4
             vendorSubSelector = -1
-            dhanSelector = 7
+            dhanSelector = 6
             dhanSubSelector = 0
-            empSelector = 8
+            empSelector = 7
             empSubSelector = 0
-            logoutSelector = 11
+            logoutSelector = 10
             logoutSubSelector = -1
-            aboutus = 9
-            termofuse = 10
+            aboutus = 8
+            termofuse = 9
         }
     }
     
@@ -135,80 +137,143 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             
         case (1,9):
             print("ExpenseBillViewController\n", terminator: "")
-
+            
             self.openViewControllerBasedOnIdentifier("ExpenseBillViewController")
-
+            
             break
             
-        case (2,0):
+        case (1,10):
+            print("AgentLimit\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("AgentLimit")
+            
+            break
+            
+        case (pReport,0):
+            print("SearchSupplier\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("SearchSupplier")
+            
+            break
+            
+        case (pReport,1):
+            print("SearchVendor\n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("SearchVendor")
+            
+            break
+            
+        case (pReport,2):
+            print("VendorPurchaseOrder\n", terminator: "")
+            vendorStory = true
+            self.openViewControllerBasedOnIdentifier("VendorPurchaseOrder")
+            break
+            
+        case (pReport,3):
+            print("PurSalesLedgerViewController\n", terminator: "")
+            vendorStory = true
+            self.openViewControllerBasedOnIdentifier("PurSalesLedgerViewController")
+            break
+            
+        case (pReport,4):
+            print("ProductPlanViewController\n", terminator: "")
+            vendorStory = true
+            self.openViewControllerBasedOnIdentifier("ProductPlanViewController")
+            break
+            
+        case (pReport,5):
+            print("ThirdPartyViewController\n", terminator: "")
+            vendorStory = true
+            self.openViewControllerBasedOnIdentifier("ThirdPartyViewController")
+            break
+            
+        case (pReport,6):
+            print("MonthwiseViewController\n", terminator: "")
+            vendorStory = true
+            self.openViewControllerBasedOnIdentifier("MonthwiseViewController")
+            break
+            
+        case (pReport,7):
+            print("AgingReportController\n", terminator: "")
+            vendorStory = true
+            self.openViewControllerBasedOnIdentifier("AgingReportController")
+            break
+            
+        case (pReport,8):
+            print("RateComparisonController\n", terminator: "")
+            vendorStory = true
+            self.openViewControllerBasedOnIdentifier("RateComparisonController")
+            break
+            
+        case (docs,0):
             print("Price list\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("PriceList")
             
             break
             
-        case (2,1):
+        case (docs,1):
             print("Catalogue\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("CatalogueList")
             
             break
             
-        case (2,2):
+        case (docs,2):
             print("Active scheme\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("ActiveScheme")
             
             break
             
-        case (2,3):
+        case (docs,3):
             print("Policy\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("Policy")
             
             break
             
-        case (2,4):
+        case (docs,4):
             print("TechnicalSpecs\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("TechnicalSpecs")
             
             break
             
-        case (2,5):
+        case (docs,5):
             print("Dhanbarse docs\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("DhanbarseDocs")
             
             break
             
-        case (2,6):
+        case (docs,6):
             print("Qwikpay docs\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("QwikpayDocs")
             
             break
             
-        case (3,0):
+        case (video,0):
             print("Video\n", terminator: "")
             self.openViewControllerBasedOnIdentifier("VideoController")
             
             break
             
             
-        case (3,1):
+        case (video,1):
             print("dhanbarse video\n", terminator: "")
             self.openViewControllerBasedOnIdentifier("DhanbarseVideo")
             
             break
             
-        case (3,2):
+        case (video,2):
             print("Qwikpay video\n", terminator: "")
             self.openViewControllerBasedOnIdentifier("QwikpayVideo")
             
             break
             
-        case (4,-1):
+        case (IncLimit,-1):
             print("Increase Limits\n", terminator: "")
             self.openViewControllerBasedOnIdentifier("IncreasedLimitController") 
             break
@@ -216,14 +281,14 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
 //            print("ExcelViewController\n", terminator: "")
 //            self.openViewControllerBasedOnIdentifier("ExcelViewController")
 //            break
-        case (supplierSelector,supplierSubSelector):
-            print("SearchSupplier\n", terminator: "")
-            self.openViewControllerBasedOnIdentifier("SearchSupplier")
-            break
-        case (vendorSelector,vendorSubSelector):
-            print("SearchVendor\n", terminator: "")
-            self.openViewControllerBasedOnIdentifier("SearchVendor")
-            break
+//        case (supplierSelector,supplierSubSelector):
+//            print("SearchSupplier\n", terminator: "")
+//            self.openViewControllerBasedOnIdentifier("SearchSupplier")
+//            break
+//        case (vendorSelector,vendorSubSelector):
+//            print("SearchVendor\n", terminator: "")
+//            self.openViewControllerBasedOnIdentifier("SearchVendor")
+//            break
             
         case (dhanSelector,dhanSubSelector):
             print("Dhanbarse Details\n", terminator: "")
@@ -237,6 +302,15 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             self.openViewControllerBasedOnIdentifier("DhanbarseProfile")
             
             break
+            
+        case (dhanSelector,2):
+            print("Dhanbarse DRPRRP \n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("DRPRRPController")
+            
+            break
+            
+        
             
         case (empSelector,empSubSelector):
             print("Employee Details\n", terminator: "")
@@ -256,6 +330,20 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             print("Employee Data\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("SearchEmployee")
+            
+            break
+            
+        case (empSelector,3):
+            print("Dhanbarse MPR \n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("MPRViewController")
+            
+            break
+            
+        case (empSelector,4):
+            print("Dhanbarse MPR \n", terminator: "")
+            
+            self.openViewControllerBasedOnIdentifier("PendingViewController")
             
             break
             
@@ -291,15 +379,31 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
     }
     
     func openViewControllerBasedOnIdentifier(_ strIdentifier:String){
-        let destViewController : UIViewController = self.storyboard!.instantiateViewController(withIdentifier: strIdentifier)
-        
-        let topViewController : UIViewController = self.navigationController!.topViewController!
-        
-        if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
-            //print("Same VC")
-        } else {
-            self.navigationController!.pushViewController(destViewController, animated: true)
+        if vendorStory {
+            let storyboard = UIStoryboard(name: "VendorPurchase", bundle: nil)
+            let destViewController : UIViewController = storyboard.instantiateViewController(withIdentifier: strIdentifier)
+            
+            let topViewController : UIViewController = self.navigationController!.topViewController!
+            
+            if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
+                //print("Same VC")
+            } else {
+                self.navigationController!.pushViewController(destViewController, animated: true)
+            }
+            vendorStory = false
+        }else{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let destViewController : UIViewController = storyboard.instantiateViewController(withIdentifier: strIdentifier)
+            
+            let topViewController : UIViewController = self.navigationController!.topViewController!
+            
+            if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
+                //print("Same VC")
+            } else {
+                self.navigationController!.pushViewController(destViewController, animated: true)
+            }
         }
+        
     }
     
     func addSlideMenuButton(){
@@ -398,8 +502,8 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
         
         sender.isEnabled = false
         sender.tag = 10
-        
-        let menuVC : MenuViewController = self.storyboard!.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let menuVC : MenuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menuVC.btnMenu = sender
         menuVC.delegate = self
         self.view.addSubview(menuVC.view)

@@ -14,6 +14,7 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var btnCancel: RoundButton!
     
     //Declarations...
     var delegate: PopupDateDelegate?
@@ -35,6 +36,16 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
     //var categorywiseComp = [Categorywise]()
     var categorywiseCompObj = [CategorywiseObj]()
     var tempCategory = [CategorywiseObj]()
+    var supplierArray = [SearchVendorObj]()
+    var tempSupplierArr = [SearchVendorObj]()
+    
+    var subCatObj = [SubCategoryObj]()
+    var tempSubCatObj = [SubCategoryObj]()
+    var multipleSelector = false
+    var divSelected = [String]()
+    
+    var subCatItems = [SubCatItemListObj]()
+    var tempSubCatItemsObj = [SubCatItemListObj]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +66,25 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
             self.tableView.reloadData()
             ViewControllerUtils.sharedInstance.removeLoader()
             //apiCompare()
+        }else if fromPage == "Vendors"{
+            self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
+            self.tableView.reloadData()
+            ViewControllerUtils.sharedInstance.removeLoader()
+            //apiCompare()
+        }else if fromPage == "SubCat"{
+            self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
+            self.tableView.reloadData()
+            ViewControllerUtils.sharedInstance.removeLoader()
+            //apiCompare()
+        }else if fromPage == "Items"{
+            self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
+            self.tableView.reloadData()
+            ViewControllerUtils.sharedInstance.removeLoader()
+            //apiCompare()
         }else{
+            if multipleSelector{
+                btnCancel.setTitle("Submit", for: .normal)
+            }
             apiDivisionNames()
         }
     }
@@ -105,6 +134,48 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
                     categorywiseCompObj.append(dealers)
                 }
             }
+        }else if fromPage == "Vendors"{
+            self.supplierArray.removeAll()
+            if textfield.text?.count != 0{
+                for dealers in tempSupplierArr{
+                    let range = dealers.vendornm!.lowercased().range(of: textfield.text!, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil{
+                        supplierArray.append(dealers)
+                    }
+                }
+            }else{
+                for dealers in tempSupplierArr{
+                    supplierArray.append(dealers)
+                }
+            }
+        }else if fromPage == "SubCat"{
+            self.subCatObj.removeAll()
+            if textfield.text?.count != 0{
+                for dealers in tempSubCatObj{
+                    let range = dealers.subcatnm!.lowercased().range(of: textfield.text!, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil{
+                        subCatObj.append(dealers)
+                    }
+                }
+            }else{
+                for dealers in tempSubCatObj{
+                    subCatObj.append(dealers)
+                }
+            }
+        }else if fromPage == "Items"{
+            self.subCatItems.removeAll()
+            if textfield.text?.count != 0{
+                for dealers in tempSubCatItemsObj{
+                    let range = dealers.item!.lowercased().range(of: textfield.text!, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil{
+                        subCatItems.append(dealers)
+                    }
+                }
+            }else{
+                for dealers in tempSubCatItemsObj{
+                    subCatItems.append(dealers)
+                }
+            }
         }else{
             self.divisionNameObj.removeAll()
             if textfield.text?.count != 0{
@@ -124,7 +195,11 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     //Button...
-    @IBAction func cancelPopup(_ sender: Any) { 
+    @IBAction func cancelPopup(_ sender: Any) {
+        if multipleSelector{
+            let tempString = divSelected.joined(separator: ",")
+            delegate?.showParty!(value: tempString,cin : tempString)
+        }
         dismiss(animated: true)
     }
     
@@ -134,6 +209,12 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
             return limitDetailsObj.count
         }else if fromPage == "Catchild"{
             return categorywiseCompObj.count
+        }else if fromPage == "Vendors"{
+            return supplierArray.count
+        }else if fromPage == "SubCat"{
+            return subCatObj.count
+        }else if fromPage == "Items"{
+            return subCatItems.count
         }else{
             return divisionNameObj.count
         }
@@ -145,8 +226,14 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
             cell.textLabel?.text = limitDetailsObj[indexPath.row].displaynm
         }else if fromPage == "Catchild"{
             cell.textLabel?.text = categorywiseCompObj[indexPath.row].categorynm
+        }else if fromPage == "Vendors"{
+            cell.textLabel?.text = supplierArray[indexPath.row].vendornm
+        }else if fromPage == "SubCat"{
+            cell.textLabel?.text = subCatObj[indexPath.row].subcatnm
+        }else if fromPage == "Items"{
+            cell.textLabel?.text = subCatItems[indexPath.row].item
         }else{
-            cell.textLabel?.text = divisionNameObj[indexPath.row].divisionnm
+            cell.textLabel?.text = divSelected.contains(String(divisionNameObj[indexPath.row].slno!)) ? " ✅ \(divisionNameObj[indexPath.row].divisionnm ?? "N/A")" : divisionNameObj[indexPath.row].divisionnm
         }
 //        cell.textLabel?.text = fromPage == "Limits" ? limitDetailsObj[indexPath.row].displaynm : divisionNameObj[indexPath.row].divisionnm
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -158,8 +245,25 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
             delegate?.showParty!(value: limitDetailsObj[indexPath.row].displaynm!,cin : limitDetailsObj[indexPath.row].cin!)
         }else if fromPage == "Catchild"{
             delegate?.showParty!(value: categorywiseCompObj[indexPath.row].categorynm!,cin : String(categorywiseCompObj[indexPath.row].slno!))
+        }else if fromPage == "Vendors"{
+            delegate?.showParty!(value: supplierArray[indexPath.row].vendornm!,cin : String(supplierArray[indexPath.row].slno!))
+        }else if fromPage == "SubCat"{
+            delegate?.showParty!(value: subCatObj[indexPath.row].subcatnm!,cin : String(subCatObj[indexPath.row].subcatid!))
+        }else if fromPage == "Items"{
+            delegate?.showParty!(value: subCatItems[indexPath.row].item!,cin : String(subCatItems[indexPath.row].slno!))
         } else{
-            delegate?.showParty!(value: divisionNameObj[indexPath.row].divisionnm!,cin : String(divisionNameObj[indexPath.row].slno!))
+            if multipleSelector{
+                if divSelected.count > 0 && divSelected.contains(String(divisionNameObj[indexPath.row].slno!)){
+                    divSelected.remove(at: divSelected.index(of: String(divisionNameObj[indexPath.row].slno!))!)
+                }else{
+                  divSelected.append(String(divisionNameObj[indexPath.row].slno!))
+                }
+                tableView.reloadData()
+                return
+            }else{
+              delegate?.showParty!(value: divisionNameObj[indexPath.row].divisionnm!,cin : String(divisionNameObj[indexPath.row].slno!))
+            }
+            
         }
         dismiss(animated: true)
     }

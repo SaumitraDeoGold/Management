@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     var sendCin = String()
     var userCategory = String()
     var userCIN = String()
+    var partyName = String()
     
     var mpin = ""
     var CheckMpinApi = ""
@@ -36,9 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         // Override point for customization after application launch.
         //Keyboard Manager
         IQKeyboardManager.sharedManager().enable = true
-        var navigationBarAppearance = UINavigationBar.appearance()
+        let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor.darkGray
-        
+        if #available(iOS 13.0, *) {
+           window?.overrideUserInterfaceStyle = .light
+        }
         if #available(iOS 11.0, *) {
             
             navigationBarAppearance.titleTextAttributes =  [NSAttributedStringKey.foregroundColor: UIColor.init(named: "FontDarkText") , NSAttributedStringKey.font: UIFont(name: "Roboto-Regular", size: 16)!]
@@ -53,20 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             navigationBarAppearance.barTintColor = UIColor.gray
         }
         
-        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
-        
-        if statusBar.responds(to:#selector(setter: UIView.backgroundColor)) {
-            if #available(iOS 11.0, *) {
-                statusBar.backgroundColor = UIColor.init(named: "Primary")
-            } else {
-                statusBar.backgroundColor = UIColor.gray
-                
-            }
-            
-        }
+         
         
         
-        UIApplication.shared.statusBarStyle = .lightContent
+         
    
         let loginData =  UserDefaults.standard.value(forKey: "loginData") as? Dictionary ?? [:]
         
@@ -202,17 +195,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             navigationBarAppearance.barTintColor = UIColor.gray
         }
         
-        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
-        
-        if statusBar.responds(to:#selector(setter: UIView.backgroundColor)) {
-            if #available(iOS 11.0, *) {
-                statusBar.backgroundColor = UIColor.init(named: "Primary")
-            } else {
-                statusBar.backgroundColor = UIColor.gray
-                
-            }
-            UIApplication.shared.statusBarStyle = .lightContent
-        }
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+         }else{
+             let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+                    
+                    if statusBar.responds(to:#selector(setter: UIView.backgroundColor)) {
+                        if #available(iOS 11.0, *) {
+                            statusBar.backgroundColor = UIColor.init(named: "Primary")
+                        } else {
+                            statusBar.backgroundColor = UIColor.gray
+                        }
+                    }
+                    
+                    
+                    UIApplication.shared.statusBarStyle = .lightContent
+         }
         
         // - - - - - -  popup for mpin check  - -  - - --  - - - -
         let loginData =  UserDefaults.standard.value(forKey: "loginData") as? Dictionary ?? [:]

@@ -16,9 +16,12 @@ class viewPDFController: UIViewController, WKNavigationDelegate {
 
     //Declarations...
     var webvwUrl = ""
-    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
+        if webvwUrl == ""{
+            webvwUrl = appDelegate.sendCin
+        }
         let url = URL(string: webvwUrl)!
         webView.load(URLRequest(url: url))
         ViewControllerUtils.sharedInstance.showLoader()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SalesPurchaseViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDelegate , UITableViewDataSource {
+class SalesPurchaseViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     //Outlets...
     @IBOutlet weak var CollectionView: UICollectionView!
@@ -24,14 +24,16 @@ class SalesPurchaseViewController: BaseViewController, UICollectionViewDataSourc
     var totalSales = ["withTax":0.0,"withoutTax":0.0,"payment":0.0,"creditNote":0.0,"debitNote":0.0,"outAmount":0.0,"stockAmount":0.0,"purchaseAmount":0.0]
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var isagent = false
+    var noOfColumns = Int()
     
     override func viewDidLoad() {
         addSlideMenuButton()
         if UserDefaults.standard.value(forKey: "userCategory") as! String == "Agent"{
             isagent = true
-            CollectionView.isHidden = true
+            //CollectionView.isHidden = true
+            //tableView.isHidden = true
         }else{
-            tableView.isHidden = true
+            //tableView.isHidden = true
         }
         super.viewDidLoad()
         apiSalesnPurchase = "https://api.goldmedalindia.in/api/GetBranchwiseAllTransaction"
@@ -69,62 +71,67 @@ class SalesPurchaseViewController: BaseViewController, UICollectionViewDataSourc
     }
     
     //Tableview Functions...
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 370
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredItems.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SalePurchaseCell", for: indexPath) as! SalePurchaseCell
-        //_ = self.ndaDetailArray[indexPath.row].name!.characters.split{$0 == "-"}.map(String.init)
-        cell.lblBranchName.text = self.filteredItems[indexPath.row].branchnm
-        if let amount = self.filteredItems[indexPath.row].salewithtaxamt {
-            cell.lblWDName.text = Utility.formatRupee(amount: Double(amount)!)
-        }
-        if let lights = self.filteredItems[indexPath.row].salewithouttaxamt {
-            cell.lblLname.text = Utility.formatRupee(amount: Double(lights)!)
-        }
-        if let wc = self.filteredItems[indexPath.row].payment {
-            cell.lblWCName.text = Utility.formatRupee(amount: Double(wc)!)
-        }
-        if let pf = self.filteredItems[indexPath.row].creditnote {
-            cell.lblPFName.text = Utility.formatRupee(amount: Double(pf)!)
-        }
-        if let md = self.filteredItems[indexPath.row].debitnote {
-            cell.lblMDName.text = Utility.formatRupee(amount: Double(md)!)
-        }
-        if let brC = self.filteredItems[indexPath.row].outstandingamt {
-            cell.lblBRCName.text = Utility.formatRupee(amount: Double(brC)!)
-        }
-        if let contri = self.filteredItems[indexPath.row].stockamt {
-            cell.lblContriName.text = Utility.formatRupee(amount: Double(contri)!)
-        }
-        if let contri = self.filteredItems[indexPath.row].purchaseamt {
-            cell.lblPAName.text = Utility.formatRupee(amount: Double(contri)!)
-        }
-        //        if let amount = self.branchData[indexPath.row].wiringdevices {
-        //            cell.lblWD.text = Utility.formatRupee(amount: Double(amount)!)
-        //        }
-        
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        return cell
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 370
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return filteredItems.count
+//    }
+//
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "SalePurchaseCell", for: indexPath) as! SalePurchaseCell
+//        //_ = self.ndaDetailArray[indexPath.row].name!.characters.split{$0 == "-"}.map(String.init)
+//        cell.lblBranchName.text = self.filteredItems[indexPath.row].branchnm
+//        if let amount = self.filteredItems[indexPath.row].salewithtaxamt {
+//            cell.lblWDName.text = Utility.formatRupee(amount: Double(amount)!)
+//        }
+//        if let lights = self.filteredItems[indexPath.row].salewithouttaxamt {
+//            cell.lblLname.text = Utility.formatRupee(amount: Double(lights)!)
+//        }
+//        if let wc = self.filteredItems[indexPath.row].payment {
+//            cell.lblWCName.text = Utility.formatRupee(amount: Double(wc)!)
+//        }
+//        if let pf = self.filteredItems[indexPath.row].creditnote {
+//            cell.lblPFName.text = Utility.formatRupee(amount: Double(pf)!)
+//        }
+//        if let md = self.filteredItems[indexPath.row].debitnote {
+//            cell.lblMDName.text = Utility.formatRupee(amount: Double(md)!)
+//        }
+//        if let brC = self.filteredItems[indexPath.row].outstandingamt {
+//            cell.lblBRCName.text = Utility.formatRupee(amount: Double(brC)!)
+//        }
+//        if let contri = self.filteredItems[indexPath.row].stockamt {
+//            cell.lblContriName.text = Utility.formatRupee(amount: Double(contri)!)
+//        }
+//        if let contri = self.filteredItems[indexPath.row].purchaseamt {
+//            cell.lblPAName.text = Utility.formatRupee(amount: Double(contri)!)
+//        }
+//        //        if let amount = self.branchData[indexPath.row].wiringdevices {
+//        //            cell.lblWD.text = Utility.formatRupee(amount: Double(amount)!)
+//        //        }
+//
+//        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+//        return cell
+//    }
     
     //CollectionView Functions...
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView == self.CollectionView {
-            return self.filteredItems.count+2
+            if isagent{
+                return 8
+            }else{
+                return self.filteredItems.count+2
+            }
+            
         }else{
             return 1
         } 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return noOfColumns
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -133,130 +140,210 @@ class SalesPurchaseViewController: BaseViewController, UICollectionViewDataSourc
         cell.layer.borderWidth = 1
         cell.layer.borderColor = UIColor.white.cgColor
         //Header of CollectionView...
-        if indexPath.section == 0 {
-            cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
-            if #available(iOS 11.0, *) {
-                cell.backgroundColor = UIColor.init(named: "Primary")
-            } else {
-                cell.backgroundColor = UIColor.gray
-            }
-            switch indexPath.row{
-            case 0:
-                cell.contentLabel.text = "Branch Name"
-            case 1:
-                cell.contentLabel.text = "Sales with Tax"
-            case 2:
-                cell.contentLabel.text = "Sales w/o Tax"
-            case 3:
-                cell.contentLabel.text = "Payment"
-            case 4:
-                cell.contentLabel.text = "Credit Note"
-            case 5:
-                cell.contentLabel.text = "Debit Note"
-            case 6:
-                cell.contentLabel.text = "Outsts Amount"
-            case 7:
-                cell.contentLabel.text = "Stock Amount"
-            case 8:
-                cell.contentLabel.text = "Purchase Amt"
-            default:
-                break
-            }
-            
-        }
-            //Footer[Total] of CollectionView...
-        else if indexPath.section == self.filteredItems.count+1 {
-            cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
-            if #available(iOS 11.0, *) {
-                cell.backgroundColor = UIColor.init(named: "Primary")
-            } else {
-                cell.backgroundColor = UIColor.gray
-            }
-            cell.contentLabel.lineBreakMode = .byWordWrapping
-            cell.contentLabel.numberOfLines = 0
-            
-            switch indexPath.row{
-            case 0:
-                cell.contentLabel.text = "SUM"
-            case 1:
-                cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["withTax"]! ))
-            case 2:
-                cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["withoutTax"]! ))
-            case 3:
-                cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["payment"]! ))
-            case 4:
-                cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["creditNote"]! ))
-            case 5:
-                cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["debitNote"]! ))
-            case 6:
-                cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["outAmount"]! ))
-            case 7:
-                cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["stockAmount"]! ))
-            case 8:
-                cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["purchaseAmount"]! ))
-            default:
-                break
-            }
-            
-        }
-            //Values of CollectionView...
-        else {
-            cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+        if isagent && filteredItems.count > 0{
             if #available(iOS 11.0, *) {
                 cell.backgroundColor = UIColor.init(named: "primaryLight")
             } else {
-                cell.backgroundColor = UIColor.lightGray
+                cell.backgroundColor = UIColor.gray
+            }
+            if indexPath.row == 0{
+                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                switch indexPath.section{
+                case 0:
+                    cell.contentLabel.text = "Sales with Tax"
+                case 1:
+                    cell.contentLabel.text = "Sales w/o Tax"
+                case 2:
+                    cell.contentLabel.text = "Payment"
+                case 3:
+                    cell.contentLabel.text = "Credit Note"
+                case 4:
+                    cell.contentLabel.text = "Debit Note"
+                case 5:
+                    cell.contentLabel.text = "Outsts Amount"
+                case 6:
+                    cell.contentLabel.text = "Stock Amount"
+                case 7:
+                    cell.contentLabel.text = "Purchase Amt"
+                default:
+                    break
+                }
+            }else{
+                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                switch indexPath.section{
+               case 0:
+                   if let salewithtaxamt = filteredItems[0].salewithtaxamt
+                   {
+                       cell.contentLabel.text = Utility.formatRupee(amount: Double(salewithtaxamt )!)
+                   }
+               case 1:
+                   if let salewithouttaxamt = filteredItems[0].salewithouttaxamt
+                   {
+                       cell.contentLabel.text = Utility.formatRupee(amount: Double(salewithouttaxamt )!)
+                   }
+               case 2:
+                   if let payment = filteredItems[0].payment
+                   {
+                       cell.contentLabel.text = Utility.formatRupee(amount: Double(payment )!)
+                   }
+               case 3:
+                   if let creditnote = filteredItems[0].creditnote
+                   {
+                       cell.contentLabel.text = Utility.formatRupee(amount: Double(creditnote )!)
+                   }
+               case 4:
+                   if let debitnote = filteredItems[0].debitnote
+                   {
+                       cell.contentLabel.text = Utility.formatRupee(amount: Double(debitnote )!)
+                   }
+               case 5:
+                   if let outstandingamt = filteredItems[0].outstandingamt
+                   {
+                       cell.contentLabel.text = Utility.formatRupee(amount: Double(outstandingamt )!)
+                   }
+               case 6:
+                   if let stockamt = filteredItems[0].stockamt
+                   {
+                       cell.contentLabel.text = Utility.formatRupee(amount: Double(stockamt )!)
+                   }
+               case 7:
+                   if let purchaseamt = filteredItems[0].purchaseamt
+                   {
+                       cell.contentLabel.text = Utility.formatRupee(amount: Double(purchaseamt )!)
+                   }
+                default:
+                    break
+                }
             }
             
-            switch indexPath.row{
-            case 0:
-                cell.contentLabel.text = filteredItems[indexPath.section-1].branchnm
-            case 1:
-                if let salewithtaxamt = filteredItems[indexPath.section-1].salewithtaxamt
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(salewithtaxamt )!)
+            return cell
+        }else if filteredItems.count > 0{
+            if indexPath.section == 0 {
+                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "Primary")
+                } else {
+                    cell.backgroundColor = UIColor.gray
                 }
-            case 2:
-                if let salewithouttaxamt = filteredItems[indexPath.section-1].salewithouttaxamt
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(salewithouttaxamt )!)
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = "Branch Name"
+                case 1:
+                    cell.contentLabel.text = "Sales with Tax"
+                case 2:
+                    cell.contentLabel.text = "Sales w/o Tax"
+                case 3:
+                    cell.contentLabel.text = "Payment"
+                case 4:
+                    cell.contentLabel.text = "Credit Note"
+                case 5:
+                    cell.contentLabel.text = "Debit Note"
+                case 6:
+                    cell.contentLabel.text = "Outsts Amount"
+                case 7:
+                    cell.contentLabel.text = "Stock Amount"
+                case 8:
+                    cell.contentLabel.text = "Purchase Amt"
+                default:
+                    break
                 }
-            case 3:
-                if let payment = filteredItems[indexPath.section-1].payment
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(payment )!)
+                
+            }
+                //Footer[Total] of CollectionView...
+            else if indexPath.section == self.filteredItems.count+1 {
+                cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "Primary")
+                } else {
+                    cell.backgroundColor = UIColor.gray
                 }
-            case 4:
-                if let creditnote = filteredItems[indexPath.section-1].creditnote
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(creditnote )!)
+                cell.contentLabel.lineBreakMode = .byWordWrapping
+                cell.contentLabel.numberOfLines = 0
+                
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = "SUM"
+                case 1:
+                    cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["withTax"]! ))
+                case 2:
+                    cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["withoutTax"]! ))
+                case 3:
+                    cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["payment"]! ))
+                case 4:
+                    cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["creditNote"]! ))
+                case 5:
+                    cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["debitNote"]! ))
+                case 6:
+                    cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["outAmount"]! ))
+                case 7:
+                    cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["stockAmount"]! ))
+                case 8:
+                    cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSales["purchaseAmount"]! ))
+                default:
+                    break
                 }
-            case 5:
-                if let debitnote = filteredItems[indexPath.section-1].debitnote
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(debitnote )!)
+                
+            }
+                //Values of CollectionView...
+            else {
+                cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+                if #available(iOS 11.0, *) {
+                    cell.backgroundColor = UIColor.init(named: "primaryLight")
+                } else {
+                    cell.backgroundColor = UIColor.lightGray
                 }
-            case 6:
-                if let outstandingamt = filteredItems[indexPath.section-1].outstandingamt
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(outstandingamt )!)
+                
+                switch indexPath.row{
+                case 0:
+                    cell.contentLabel.text = filteredItems[indexPath.section-1].branchnm
+                case 1:
+                    if let salewithtaxamt = filteredItems[indexPath.section-1].salewithtaxamt
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(salewithtaxamt )!)
+                    }
+                case 2:
+                    if let salewithouttaxamt = filteredItems[indexPath.section-1].salewithouttaxamt
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(salewithouttaxamt )!)
+                    }
+                case 3:
+                    if let payment = filteredItems[indexPath.section-1].payment
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(payment )!)
+                    }
+                case 4:
+                    if let creditnote = filteredItems[indexPath.section-1].creditnote
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(creditnote )!)
+                    }
+                case 5:
+                    if let debitnote = filteredItems[indexPath.section-1].debitnote
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(debitnote )!)
+                    }
+                case 6:
+                    if let outstandingamt = filteredItems[indexPath.section-1].outstandingamt
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(outstandingamt )!)
+                    }
+                case 7:
+                    if let stockamt = filteredItems[indexPath.section-1].stockamt
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(stockamt )!)
+                    }
+                case 8:
+                    if let purchaseamt = filteredItems[indexPath.section-1].purchaseamt
+                    {
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(purchaseamt )!)
+                    }
+                default:
+                    break
                 }
-            case 7:
-                if let stockamt = filteredItems[indexPath.section-1].stockamt
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(stockamt )!)
-                }
-            case 8:
-                if let purchaseamt = filteredItems[indexPath.section-1].purchaseamt
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(purchaseamt )!)
-                }
-            default:
-                break
+                
             }
             
+            return cell
         }
-        
         return cell
         
     }
@@ -314,8 +401,11 @@ class SalesPurchaseViewController: BaseViewController, UICollectionViewDataSourc
                 self.totalSales["stockAmount"] = self.filteredItems.reduce(0, { $0 + Double($1.stockamt!)! })
                 self.totalSales["purchaseAmount"] = self.filteredItems.reduce(0, { $0 + Double($1.purchaseamt!)! })
                 if self.isagent{
-                    self.tableView.reloadData()
+                    self.noOfColumns = 2
+                    self.CollectionView.reloadData()
+                    self.CollectionView.collectionViewLayout.invalidateLayout()
                 }else{
+                    self.noOfColumns = 9
                     self.CollectionView.reloadData()
                     self.CollectionView.collectionViewLayout.invalidateLayout()
                 } 
