@@ -337,6 +337,7 @@
 		69735753206CFD2A000D738D /* ReportHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69735752206CFD2A000D738D /* ReportHomeController.swift */; };
 		69735757206D1F2D000D738D /* ReportRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69735756206D1F2D000D738D /* ReportRowCell.swift */; };
 		69735759206D2B39000D738D /* DivisionWiseSale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69735758206D2B39000D738D /* DivisionWiseSale.swift */; };
+		697430742499CABF003A8628 /* PurchasePartyLedgerLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697430732499CABF003A8628 /* PurchasePartyLedgerLayout.swift */; };
 		6974341421A028F90064597B /* OrderViewCartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6974341321A028F90064597B /* OrderViewCartController.swift */; };
 		6974976A207C8DD200A5E0E4 /* PriceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69749768207C8DD200A5E0E4 /* PriceListCell.swift */; };
 		697582C0208F4E3F00327FB1 /* CaptchaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697582BF208F4E3F00327FB1 /* CaptchaView.swift */; };
@@ -893,6 +894,7 @@
 		69735752206CFD2A000D738D /* ReportHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportHomeController.swift; sourceTree = "<group>"; };
 		69735756206D1F2D000D738D /* ReportRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportRowCell.swift; sourceTree = "<group>"; };
 		69735758206D2B39000D738D /* DivisionWiseSale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivisionWiseSale.swift; sourceTree = "<group>"; };
+		697430732499CABF003A8628 /* PurchasePartyLedgerLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePartyLedgerLayout.swift; sourceTree = "<group>"; };
 		6974341321A028F90064597B /* OrderViewCartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCartController.swift; sourceTree = "<group>"; };
 		69749768207C8DD200A5E0E4 /* PriceListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceListCell.swift; sourceTree = "<group>"; };
 		697582BF208F4E3F00327FB1 /* CaptchaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptchaView.swift; sourceTree = "<group>"; };
@@ -1881,6 +1883,7 @@
 				69A158BC247300C5004F5AE7 /* VendorPurchaseLayout.swift */,
 				69D3BB5A24759A960050AC0A /* ProdPlanLayout.swift */,
 				69519443247C5A8E005C74CC /* ThirdPartyLayout.swift */,
+				697430732499CABF003A8628 /* PurchasePartyLedgerLayout.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -2961,6 +2964,7 @@
 				6986618322CC8CD700B75BA6 /* LeagueMatchDetailData.swift in Sources */,
 				692350452429D6AA001E753A /* AttendanceLayout.swift in Sources */,
 				691BB63D23ED708D00E2C4C8 /* VendorOrder.swift in Sources */,
+				697430742499CABF003A8628 /* PurchasePartyLedgerLayout.swift in Sources */,
 				691FEECD239BBDBF0008FF1D /* LedgerwiseBranch.swift in Sources */,
 				6986618522CC8CD700B75BA6 /* MatchSummaryDetailData.swift in Sources */,
 				692083BD243A13CA0072B096 /* SearchDhanProfile.swift in Sources */,
@@ -3107,7 +3111,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.29;
+				CURRENT_PROJECT_VERSION = 1.0.31;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5F6P8555ST;
 				INFOPLIST_FILE = ManagementApp/Info.plist;
@@ -3135,7 +3139,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.29;
+				CURRENT_PROJECT_VERSION = 1.0.31;
 				DEVELOPMENT_TEAM = 5F6P8555ST;
 				INFOPLIST_FILE = ManagementApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13;

@@ -8,11 +8,12 @@
 
 import UIKit
 
-class VendorPurchaseController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class VendorPurchaseController: BaseViewController, UITableViewDelegate , UITableViewDataSource {
     
     
     //Outlets...
     @IBOutlet weak var CollectionView: UICollectionView!
+    @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var lblPartyName: UIButton!
     @IBOutlet weak var btnFromDate: UIButton!
     @IBOutlet weak var btnToDate: UIButton!
@@ -145,75 +146,102 @@ class VendorPurchaseController: BaseViewController, UICollectionViewDataSource, 
         return temp
     }
     
-    //CollectionView Functions...
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return filteredItems.count + 1
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+    //TableView Functions...
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredItems.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = CollectionView.dequeueReusableCell(withReuseIdentifier: cellContentIdentifier,
-                                                      for: indexPath) as! CollectionViewCell
-        cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor.white.cgColor
-        //Header of CollectionView...
-        
-        if indexPath.section == 0 {
-            cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
-            if #available(iOS 11.0, *) {
-                cell.backgroundColor = UIColor.init(named: "Primary")
-            } else {
-                cell.backgroundColor = UIColor.gray
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DispatchedMaterialCell", for: indexPath) as! DispatchedMaterialCell
+        if(filteredItems.count>0){
+            
+            if let amount = filteredItems[indexPath.row].total as? String {
+                cell.lblAmnt.text = Utility.formatRupee(amount: Double(amount)!)
             }
-            switch indexPath.row{
-            case 1:
-                cell.contentLabel.text = "Total"
-            case 3:
-                cell.contentLabel.text = "Inv No"
-            case 2:
-                cell.contentLabel.text = "Inv Date"
-            case 4:
-                cell.contentLabel.text = "Rec Date"
-            case 0:
-                cell.contentLabel.text = "Party Name"
-            case 5:
-                cell.contentLabel.text = "Division"
-            case 6:
-                cell.contentLabel.text = "Branch"
-            default:
-                break
-            }
-        } else {
-            cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
-            if #available(iOS 11.0, *) {
-                cell.backgroundColor = UIColor.init(named: "primaryLight")
-            } else {
-                cell.backgroundColor = UIColor.lightGray
-            }
-            switch indexPath.row{
-            case 1:
-                cell.contentLabel.text = filteredItems[indexPath.section-1].total
-            case 3:
-                cell.contentLabel.text = filteredItems[indexPath.section-1].invoiceNo
-            case 2:
-                cell.contentLabel.text = getOnlyDate(value: filteredItems[indexPath.section-1].invoiceDate!)
-            case 4:
-                cell.contentLabel.text = getOnlyDate(value: filteredItems[indexPath.section-1].receivedDate!)
-            case 0:
-                cell.contentLabel.text = filteredItems[indexPath.section-1].party
-            case 6:
-                cell.contentLabel.text = filteredItems[indexPath.section-1].branch
-            case 5:
-                cell.contentLabel.text = filteredItems[indexPath.section-1].division
-            default:
-                break
-            }
+            cell.lblInvoiceNumber.text = "\(filteredItems[indexPath.row].invoiceNo!) / \(filteredItems[indexPath.row].division!)"
+            cell.lblInvoiceDate.text = getOnlyDate(value: filteredItems[indexPath.row].invoiceDate!)
+            cell.lblItemName.text =  filteredItems[indexPath.row].party!
+            cell.lblDivision.text = getOnlyDate(value: filteredItems[indexPath.row].receivedDate!)
+            cell.lblLrNo.text = ""
+            cell.lblTransporter.text = filteredItems[indexPath.row].branch!
         }
         return cell
     }
+    
+    //CollectionView Functions...
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return filteredItems.count + 1
+//    }
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 7
+//    }
+    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//
+//        let cell = CollectionView.dequeueReusableCell(withReuseIdentifier: cellContentIdentifier,
+//                                                      for: indexPath) as! CollectionViewCell
+//        cell.layer.borderWidth = 1
+//        cell.layer.borderColor = UIColor.white.cgColor
+//        //Header of CollectionView...
+//
+//        if indexPath.section == 0 {
+//            cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+//            if #available(iOS 11.0, *) {
+//                cell.backgroundColor = UIColor.init(named: "Primary")
+//            } else {
+//                cell.backgroundColor = UIColor.gray
+//            }
+//            switch indexPath.row{
+//            case 1:
+//                cell.contentLabel.text = "Total"
+//            case 3:
+//                cell.contentLabel.text = "Inv No"
+//            case 2:
+//                cell.contentLabel.text = "Inv Date"
+//            case 4:
+//                cell.contentLabel.text = "Rec Date"
+//            case 0:
+//                cell.contentLabel.text = "Party Name"
+//            case 5:
+//                cell.contentLabel.text = "Division"
+//            case 6:
+//                cell.contentLabel.text = "Branch"
+//            default:
+//                break
+//            }
+//        } else {
+//            cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+//            if #available(iOS 11.0, *) {
+//                cell.backgroundColor = UIColor.init(named: "primaryLight")
+//            } else {
+//                cell.backgroundColor = UIColor.lightGray
+//            }
+//            switch indexPath.row{
+//            case 1:
+//                cell.contentLabel.text = filteredItems[indexPath.section-1].total
+//            case 3:
+//                cell.contentLabel.text = filteredItems[indexPath.section-1].invoiceNo
+//            case 2:
+//                cell.contentLabel.text = getOnlyDate(value: filteredItems[indexPath.section-1].invoiceDate!)
+//            case 4:
+//                cell.contentLabel.text = getOnlyDate(value: filteredItems[indexPath.section-1].receivedDate!)
+//            case 0:
+//                cell.contentLabel.text = filteredItems[indexPath.section-1].party
+//            case 6:
+//                cell.contentLabel.text = filteredItems[indexPath.section-1].branch
+//            case 5:
+//                cell.contentLabel.text = filteredItems[indexPath.section-1].division
+//            default:
+//                break
+//            }
+//        }
+//        return cell
+//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.row == 5{
@@ -255,17 +283,17 @@ class VendorPurchaseController: BaseViewController, UICollectionViewDataSource, 
                 self.vendorPurchase = try JSONDecoder().decode([VendorPurchaseOrder].self, from: data!)
                 self.vendorPurchaseObj = self.vendorPurchase[0].data
                 self.filteredItems = self.vendorPurchase[0].data
-                self.CollectionView.reloadData()
-                self.CollectionView.collectionViewLayout.invalidateLayout()
-                self.CollectionView.isHidden = false
+                self.tableview.reloadData()
+                //self.CollectionView.collectionViewLayout.invalidateLayout()
+                //self.CollectionView.isHidden = false
                 ViewControllerUtils.sharedInstance.removeLoader()
             } catch let errorData {
-                self.CollectionView.isHidden = true
+                //self.CollectionView.isHidden = true
                 print(errorData.localizedDescription)
                 ViewControllerUtils.sharedInstance.removeLoader()
             }
         }) { (Error) in
-            self.CollectionView.isHidden = true
+            //self.CollectionView.isHidden = true
             print(Error?.localizedDescription as Any)
             ViewControllerUtils.sharedInstance.removeLoader()
         }

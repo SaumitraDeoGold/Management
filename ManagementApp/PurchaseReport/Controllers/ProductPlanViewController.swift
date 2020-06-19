@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ProductPlanViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ProductPlanViewController: BaseViewController, UITableViewDelegate , UITableViewDataSource {
 
     //Outlets...
     @IBOutlet weak var CollectionView: UICollectionView!
+    @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var lblPartyName: UIButton!
     
     //Declarations...
@@ -57,112 +58,39 @@ class ProductPlanViewController: BaseViewController, UICollectionViewDataSource,
         apiProductPlanningData()
     }
     
- //CollectionView Functions...
- func numberOfSections(in collectionView: UICollectionView) -> Int {
-   return filteredItems.count + 2
- }
- func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-     return 6
+ //TableView Functions...
+ func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     return filteredItems.count
  }
  
- func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+ func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     return UITableViewAutomaticDimension
+ }
+ 
+ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
-     let cell = CollectionView.dequeueReusableCell(withReuseIdentifier: cellContentIdentifier,
-                                                   for: indexPath) as! CollectionViewCell
-     cell.layer.borderWidth = 1
-     cell.layer.borderColor = UIColor.white.cgColor
-         if indexPath.section == 0{
-             cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
-             if #available(iOS 11.0, *) {
-                 cell.backgroundColor = UIColor.init(named: "Primary")
-             } else {
-                 cell.backgroundColor = UIColor.gray
-             }
-             //cell.backgroundColor = UIColor.red
-             switch indexPath.row{
-             case 0:
-                 cell.contentLabel.text = "Item Code"
-             case 1:
-                 cell.contentLabel.text = "Item name"
-             case 2:
-                 cell.contentLabel.text = "Vasai Stock"
-             case 3:
-                 cell.contentLabel.text = "Branch Stock"
-             case 4:
-                cell.contentLabel.text = "Purchase Pending"
-             case 5:
-                cell.contentLabel.text = "Avg Sales"
-             default:
-                 break
-             }
-             //cell.backgroundColor = UIColor.lightGray
-         }else if indexPath.section == filteredItems.count + 1{
-             cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
-             if #available(iOS 11.0, *) {
-                 cell.backgroundColor = UIColor.init(named: "Primary")
-             } else {
-                 cell.backgroundColor = UIColor.gray
-             }
-             switch indexPath.row{
-             case 0:
-                cell.contentLabel.text = "SUM"
-             case 1:
-                cell.contentLabel.text = "Item Name"
-             case 2:
-                cell.contentLabel.text = Utility.formatRupee(amount: totalPP["VS"]!)
-                 cell.contentLabel.textColor = UIColor.black
-             case 3:
-                 cell.contentLabel.text = Utility.formatRupee(amount: totalPP["BS"]!)
-                 cell.contentLabel.textColor = UIColor.black
-             case 4:
-                cell.contentLabel.text = Utility.formatRupee(amount: totalPP["PP"]!)
-                cell.contentLabel.textColor = UIColor.black
-             case 5:
-                cell.contentLabel.text = Utility.formatRupee(amount: totalPP["AvgS"]!)
-                cell.contentLabel.textColor = UIColor.black
-             default:
-                 break
-             }
-         } else {
-             cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
-             if #available(iOS 11.0, *) {
-                 cell.backgroundColor = UIColor.init(named: "primaryLight")
-             } else {
-                 cell.backgroundColor = UIColor.lightGray
-             }
-             switch indexPath.row{
-             case 0:
-                cell.contentLabel.text = filteredItems[indexPath.section - 1].itemCode
-             case 1:
-                cell.contentLabel.text = filteredItems[indexPath.section - 1].itemName
-             case 2:
-                 if let vasaiStock = filteredItems[indexPath.section - 1].vasaiStock
-                 {
-                     cell.contentLabel.text = Utility.formatRupee(amount: Double(vasaiStock )!)
-                 }
-             case 3:
-                 if let branchStock = filteredItems[indexPath.section - 1].branchStock
-                 {
-                     cell.contentLabel.text = Utility.formatRupee(amount: Double(branchStock )!)
-                 }
-             case 4:
-                if let purchasePending = filteredItems[indexPath.section - 1].purchasePending
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(purchasePending )!)
-                }
-             case 5:
-                if let averageSale = filteredItems[indexPath.section - 1].averageSale
-                {
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(averageSale )!)
-                }
-             default:
-                 break
-             }
-             //cell.backgroundColor = UIColor.groupTableViewBackground
+     let cell = tableView.dequeueReusableCell(withIdentifier: "DispatchedMaterialCell", for: indexPath) as! DispatchedMaterialCell
+     if(filteredItems.count>0){
+         
+         if let amount = filteredItems[indexPath.row].averageSale as? String {
+             cell.lblAmnt.text = filteredItems[indexPath.row].averageSale
          }
+//         if let amount = filteredItems[indexPath.row].purchasePending as? String {
+//             cell.lblLrNo.text = filteredItems[indexPath.row].purchasePending
+//         }
+         if let amount = filteredItems[indexPath.row].branchStock as? String {
+             cell.lblDivision.text = filteredItems[indexPath.row].branchStock
+         }
+         if let amount = filteredItems[indexPath.row].vasaiStock as? String {
+             cell.lblTransporter.text = filteredItems[indexPath.row].vasaiStock
+         }
+         cell.lblInvoiceNumber.text = "\(filteredItems[indexPath.row].itemName!) / \(filteredItems[indexPath.row].itemCode!)"
+        cell.lblInvoiceDate.text = filteredItems[indexPath.row].purchasePending!
+         //cell.lblItemName.text = filteredItems[indexPath.row].party!
+     }
      return cell
  }
- 
+     
  //API CALLS..............
  func apiProductPlanningData(){
      
@@ -182,8 +110,8 @@ class ProductPlanViewController: BaseViewController, UICollectionViewDataSource,
             self.totalPP["BS"] = self.filteredItems.reduce(0, { $0 + Double($1.branchStock!)! })
             self.totalPP["PP"] = self.filteredItems.reduce(0, { $0 + Double($1.purchasePending!)! })
             self.totalPP["AvgS"] = self.filteredItems.reduce(0, { $0 + Double($1.averageSale ?? "0.0")! })
-            self.CollectionView.reloadData()
-            self.CollectionView.collectionViewLayout.invalidateLayout()
+            self.tableview.reloadData()
+            //self.CollectionView.collectionViewLayout.invalidateLayout()
              //self.CollectionView.setContentOffset(CGPoint.zero, animated: true)
              ViewControllerUtils.sharedInstance.removeLoader()
          } catch let errorData {

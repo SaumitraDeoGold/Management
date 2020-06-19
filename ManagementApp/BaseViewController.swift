@@ -312,15 +312,15 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             
         
             
-        case (empSelector,empSubSelector):
+        case (empSelector,empTwoSub):
             print("Employee Details\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("EmployeeDetailsController")
             
             break
             
-        case (empSelector,empTwoSub):
-            print("Employee Data\n", terminator: "")
+        case (empSelector,empSubSelector):
+            print("Employee Dashboard\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("EmployeeBase")
             
