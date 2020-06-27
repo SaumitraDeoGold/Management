@@ -173,6 +173,19 @@ class VendorPurchaseController: BaseViewController, UITableViewDelegate , UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.sendCin = filteredItems[indexPath.item].partyId!
+        appDelegate.partyName = filteredItems[indexPath.item].party!
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destViewController : UIViewController = storyboard.instantiateViewController(withIdentifier: "NewDashBoard") 
+        let _ : UIViewController = self.navigationController!.topViewController!
+        self.navigationController!.pushViewController(destViewController, animated: true)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let destViewController = storyboard.instantiateViewController(withIdentifier: "NewDashBoard") as! NewDashboardViewController
+//        parent?.navigationController!.pushViewController(destViewController, animated: true)
+    }
+    
     //CollectionView Functions...
 //    func numberOfSections(in collectionView: UICollectionView) -> Int {
 //        return filteredItems.count + 1

@@ -58,7 +58,6 @@ class SearchDhanProfileController: BaseViewController, UITableViewDataSource, UI
         }else{
             
         }
-        
     }
     
     //API Function...

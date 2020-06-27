@@ -17,10 +17,18 @@ class DhanProfileViewController: UIViewController, UICollectionViewDataSource, U
     //Declarations...
     var dataToRecieve = [SearchDhanProfileObj]()
     var cellContentIdentifier = "\(StockCell.self)"
+    var dhanPro = [SearchDhanProfile]()
+    var dhanProObj = [SearchDhanProfileObj]()
+    var mobile = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadImg()
+        if dataToRecieve.count == 0{
+           apiGetProfile()
+        }else{
+          loadImg()
+        }
+        
     }
     
     //LoadImage...
@@ -54,13 +62,9 @@ class DhanProfileViewController: UIViewController, UICollectionViewDataSource, U
         cell.layer.shadowRadius = 2
         cell.layer.shadowOpacity = 1
         cell.layer.shadowColor = UIColor.black.cgColor
+        if dataToRecieve.count > 0{
             if indexPath.section == 0 {
-                
-//                if #available(iOS 11.0, *) {
-//                    //cell.backgroundColor = UIColor.init(named: "primaryLight")
-//                } else {
-//                    //cell.backgroundColor = UIColor.lightGray
-//                }
+                 
                 switch indexPath.row{
                 case 0:
                     cell.contentLabel.text = "First Name"
@@ -178,6 +182,8 @@ class DhanProfileViewController: UIViewController, UICollectionViewDataSource, U
                 }
                 //cell.backgroundColor = UIColor.groupTableViewBackground
             }
+        
+    }
             return cell
             
     }
@@ -212,6 +218,37 @@ class DhanProfileViewController: UIViewController, UICollectionViewDataSource, U
         } else {
             // add error message here
         }
+    }
+    
+    //API Function...
+    func apiGetProfile(){
+        let json: [String: Any] = ["Cin":UserDefaults.standard.value(forKey: "userCIN") as! String,"Cat":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret","Mobile":mobile]
+        let manager =  DataManager.shared
+        print("vendorArray Params \(json)")
+        manager.makeAPICall(url: "https://test2.goldmedalindia.in/api/getcustomerdetailbymob", params: json, method: .POST, success: { (response) in
+            let data = response as? Data
+            
+            do {
+                self.dhanPro = try JSONDecoder().decode([SearchDhanProfile].self, from: data!)
+                self.dhanProObj  = self.dhanPro[0].data
+                self.dataToRecieve  = self.dhanPro[0].data
+                print("empSearchObj Result \(self.dhanPro[0].data)")
+                self.CollectionView.reloadData()
+                self.CollectionView.collectionViewLayout.invalidateLayout()
+                self.loadImg()
+                ViewControllerUtils.sharedInstance.removeLoader()
+                
+            } catch let errorData {
+                print("Caught Error ------>\(errorData.localizedDescription)")
+                ViewControllerUtils.sharedInstance.removeLoader()
+            }
+        }) { (Error) in
+            print("Error -------> \(Error?.localizedDescription as Any)")
+            ViewControllerUtils.sharedInstance.removeLoader()
+             
+         
+        }
+        
     }
     
 

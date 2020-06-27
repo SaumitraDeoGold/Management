@@ -9,7 +9,17 @@
 import Foundation
 import Crashlytics
 import AMPopTip
+struct highestdays: Codable {
+    let result: Bool?
+    let message, servertime: String?
+    let data: [highestdaysObj]
+}
 
+// MARK: - Datum
+struct highestdaysObj: Codable {
+    let highdays: String?
+    let ledgerdownload, agingdownload: String?
+}
 @IBDesignable class VendorPurchase: BaseCustomView {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -18,9 +28,14 @@ import AMPopTip
     @IBOutlet var lblLYS: UILabel!
     @IBOutlet weak var imvInfo: UIImageView!
     @IBOutlet var lblHeader: UILabel!
+    @IBOutlet weak var imvLedger: UIImageView!
+    @IBOutlet weak var imvHighDays: UIImageView!
+    @IBOutlet weak var stackView: UIView!
     
     var vendorPurchase = [VendorPurchaseObject]()
     var vendorPurchaseObject = [VendorPurchaseObj]()
+    var highestDays = [highestdays]()
+    var highestDaysObj = [highestdaysObj]()
     var dueSequence = Bool()
     
     var currYearSales: Double = 0
@@ -42,19 +57,44 @@ import AMPopTip
         apiVendor = "https://api.goldmedalindia.in/api/getVendorPurchaseAndLedger"
         ViewControllerUtils.sharedInstance.showLoader()
         apiVendorTotal()
-        // Drawing code
-        //let loginData =  UserDefaults.standard.value(forKey: "loginData") as? Dictionary ?? [:]
-        //strCin = loginData["userlogid"] as? String ?? ""
+        apiHighestDays()
+         
+        if stackView.subviews.count > 0 {
+            let separator = UIView()
+            separator.widthAnchor.constraint(equalToConstant: 1).isActive = true
+            separator.backgroundColor = .black
+            stackView.addSubview(separator)
+            separator.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.6).isActive = true
+        }
         
         let initialData =  UserDefaults.standard.value(forKey: "initialData") as? Dictionary ?? [:]
         lastYearSalesApi = (initialData["baseApi"] as? String ?? "")+""+(initialData["lastYearSales"] as? String ?? "")
         
         let tapInfo = UITapGestureRecognizer(target: self, action: #selector(SalesView.tapFunction))
         imvInfo.addGestureRecognizer(tapInfo)
-        //print("CIN : \(strCin)")
-        //apiSales()
+         
+        let tapLedger = UITapGestureRecognizer(target: self, action: #selector(self.clickedLedger))
+        imvLedger.addGestureRecognizer(tapLedger)
+        let tapHD = UITapGestureRecognizer(target: self, action: #selector(self.clickedHD))
+        imvHighDays.addGestureRecognizer(tapHD)
     }
     
+    @objc func clickedHD(sender:UITapGestureRecognizer) {
+               let storyboard = UIStoryboard(name: "Main", bundle: nil)
+               let destViewController = storyboard.instantiateViewController(withIdentifier: "Webview") as! viewPDFController
+                destViewController.webvwUrl = highestDaysObj[0].agingdownload!
+               parentViewController?.navigationController!.pushViewController(destViewController, animated: true)
+           }
+    
+    @objc func clickedLedger(sender:UITapGestureRecognizer) {
+           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           let destViewController = storyboard.instantiateViewController(withIdentifier: "Webview") as! viewPDFController
+           destViewController.webvwUrl = highestDaysObj[0].ledgerdownload!
+           parentViewController?.navigationController!.pushViewController(destViewController, animated: true)
+           //self.navigationController!.pushViewController(destViewController, animated: true)
+//           let topViewController : UIViewController = parent?.navigationController!.topViewController!
+//           parent?.navigationController!.pushViewController(destViewController, animated: true)
+       }
     
     @objc func tapFunction(sender:UITapGestureRecognizer) {
         popTip.bubbleColor = UIColor.black
@@ -86,7 +126,7 @@ import AMPopTip
     func apiVendorTotal(){
         let json: [String: Any] = ["ClientSecret":"ClientSecret","CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String, "Vendorid":appDelegate.sendCin,"fromdate":fromdate,"todate":todate]
         let manager =  DataManager.shared
-        print("Params Sent : \(json)")
+        //print("Params Sent : \(json)")
         manager.makeAPICall(url: apiVendor, params: json, method: .POST, success: { (response) in
             let data = response as? Data
             
@@ -95,6 +135,28 @@ import AMPopTip
                 self.vendorPurchaseObject  = self.vendorPurchase[0].data
                 self.lblLYS.text = Utility.formatRupee(amount: Double(self.vendorPurchaseObject[0].ledgerbalanceamt!)!)
                 self.lblSales.text = Utility.formatRupee(amount: Double(self.vendorPurchaseObject[0].purchaseamt!)!)
+                ViewControllerUtils.sharedInstance.removeLoader()
+            } catch let errorData {
+                print(errorData.localizedDescription)
+                ViewControllerUtils.sharedInstance.removeLoader()
+            }
+        }) { (Error) in
+            print(Error?.localizedDescription as Any)
+            ViewControllerUtils.sharedInstance.removeLoader()
+        }
+    }
+    
+    func apiHighestDays(){
+        let json: [String: Any] = ["ClientSecret":"ClientSecret","CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String, "Id":appDelegate.sendCin,"fromdate":"04/01/2019","todate":"03/31/2020"]
+        let manager =  DataManager.shared
+        print("Params Sent ------------------>>> : \(json)")
+        manager.makeAPICall(url: "https://test2.goldmedalindia.in/api/getvendorhighestdaysandledgeragingdownload", params: json, method: .POST, success: { (response) in
+            let data = response as? Data
+            
+            do {
+                self.highestDays = try JSONDecoder().decode([highestdays].self, from: data!)
+                self.highestDaysObj  = self.highestDays[0].data
+                self.lblOverallGrowth.text = (self.highestDaysObj[0].highdays!)
                 ViewControllerUtils.sharedInstance.removeLoader()
             } catch let errorData {
                 print(errorData.localizedDescription)

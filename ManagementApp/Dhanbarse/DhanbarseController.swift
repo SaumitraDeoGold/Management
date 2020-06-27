@@ -568,8 +568,8 @@ class DhanbarseController: BaseViewController, UICollectionViewDataSource, UICol
     func apiGetDhanMonthData(){
         var inFormatDate = toDateString.split{$0 == "/"}.map(String.init)
         var inFormatDateTwo = fromDateString.split{$0 == "/"}.map(String.init)
-        let temp = "\(inFormatDate[2])-\(inFormatDate[1])-\(inFormatDate[0])"
-        let temp2 = "\(inFormatDateTwo[2])-\(inFormatDateTwo[1])-\(inFormatDateTwo[0])"
+        let temp = "\(inFormatDate[2])-\(inFormatDate[0])-\(inFormatDate[1])"
+        let temp2 = "\(inFormatDateTwo[2])-\(inFormatDateTwo[0])-\(inFormatDateTwo[1])"
         let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Cat":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret","Fromdate":temp2,"Todate":temp,"ApproveStatus":status]
         let manager =  DataManager.shared
         print("Params Sent : \(json)")

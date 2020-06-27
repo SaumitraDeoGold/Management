@@ -9,6 +9,7 @@ import Foundation
 
 @objc protocol PopupDateDelegate {
     @objc optional func updateDate(value: String, date: Date)
+    @objc optional func updateDateFromPicker(value: String, date: Date,from: String)
     @objc optional func updateValue(value: String,from: String)
     @objc optional func updatePositionValue(value: String,position: Int,from: String)
     @objc optional func updateEnquiry(value: String,slNo: String)

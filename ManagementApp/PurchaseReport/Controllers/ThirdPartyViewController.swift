@@ -149,6 +149,15 @@ class ThirdPartyViewController: BaseViewController, UITableViewDelegate , UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.sendCin = filteredItems[indexPath.item].partyId!
+        appDelegate.partyName = filteredItems[indexPath.item].party!
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destViewController = storyboard.instantiateViewController(withIdentifier: "NewDashBoard") as! NewDashboardViewController 
+        parent?.navigationController!.pushViewController(destViewController, animated: true)
+    }
+    
     func pdfTapped(sender: UITapGestureRecognizer) {
         print("pdf name : \(sender.view?.tag)")
         

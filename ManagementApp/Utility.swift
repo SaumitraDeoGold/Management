@@ -208,6 +208,26 @@ public class Utility: UIViewController {
         return finYear
     }
     
+    
+    
+    class func currQuarter() -> String{
+          var quarter = ""
+          let date = Date()
+          let calendar = Calendar.current
+          
+          let month = calendar.component(.month, from: date)
+          if (month >= 4 && month <= 6) {
+              quarter = "Q1 (APR - JUN)"
+          } else if(month >= 7 && month <= 9){
+              quarter = "Q2 (JUL - SEP)"
+          }else if(month >= 10 && month <= 12){
+              quarter = "Q3 (OCT - DEC)"
+        }else{
+        quarter = "Q4 (JAN - MAR)"
+        }
+          return quarter
+      }
+    
     //Pending Order PDF
     class func apiDownloadPendingOrder(strCin: String,strCurrDate: String,intOrderType: Int) -> String? {
         

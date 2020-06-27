@@ -58,6 +58,8 @@ class DhanDisChildController: UIViewController, UICollectionViewDataSource, UICo
     var totalCounterboy = 0
     var sumOfTotals = 0
     var statename = ""
+    var index = 0
+    var catSelected = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -479,6 +481,20 @@ class DhanDisChildController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+         
+        if !showDist && indexPath.section > 0 && indexPath.section != (filteredCity.count+1) && indexPath.row != 0 && indexPath.row != 4{
+            if indexPath.row == 1{
+                catSelected = "8"
+            }else if indexPath.row == 2{
+                catSelected = "11"
+            }else{
+                catSelected = "9"
+            }
+            index = (indexPath.section-1)
+            performSegue(withIdentifier: "segueCity", sender: self)
+        }
+        
+        
         if(indexPath.row == 0 && !showDist && indexPath.section == 0){
             filteredCity = dhanObj
             let sb = UIStoryboard(name: "Search", bundle: nil)
@@ -490,6 +506,7 @@ class DhanDisChildController: UIViewController, UICollectionViewDataSource, UICo
             self.present(popup, animated: true)
         }
     }
+    
     
     func showSearchValue(value: String) {
         if value == "ALL" {
@@ -503,6 +520,25 @@ class DhanDisChildController: UIViewController, UICollectionViewDataSource, UICo
         self.CollectionView.collectionViewLayout.invalidateLayout()
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueCity") {
+            if let destination = segue.destination as? CityChildController{
+                destination.districtId = dataToRecieve[0].districtId!
+                destination.fromdate = fromDateString
+                destination.todate = toDateString
+                destination.dataToRecieve = [filteredCity[index]]
+                destination.cat = catSelected
+                destination.approveStatus = status
+            }else{
+                
+            }
+        }
+        
+    }
+
+
+    
     
     //PieChart Functions...
     func setChart(dataPoints: [String], values: [String]){

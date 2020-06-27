@@ -26,7 +26,9 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
     var dhanSubSelector = 0
     var docs = 2
     var vendorStory = false
-    
+    var salesStory = false
+    var salesAgent = 10
+    var ETT = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,8 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             logoutSubSelector = -1
             aboutus = 8
             termofuse = 9
+            salesAgent = 10000
+            ETT = 11
         }
     }
     
@@ -142,10 +146,17 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             
             break
             
-        case (1,10):
+        case (1,salesAgent):
             print("AgentLimit\n", terminator: "")
             
             self.openViewControllerBasedOnIdentifier("AgentLimit")
+            
+            break
+            
+        case (1,ETT):
+            print("Executive Target Tracking\n", terminator: "")
+            salesStory = true
+            self.openViewControllerBasedOnIdentifier("ExecutiveTgtTrkController")
             
             break
             
@@ -175,31 +186,31 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             self.openViewControllerBasedOnIdentifier("PurSalesLedgerViewController")
             break
             
-        case (pReport,4):
-            print("ProductPlanViewController\n", terminator: "")
-            vendorStory = true
-            self.openViewControllerBasedOnIdentifier("ProductPlanViewController")
-            break
+//        case (pReport,4):
+//            print("ProductPlanViewController\n", terminator: "")
+//            vendorStory = true
+//            self.openViewControllerBasedOnIdentifier("ProductPlanViewController")
+//            break
             
-        case (pReport,5):
+        case (pReport,4):
             print("ThirdPartyViewController\n", terminator: "")
             vendorStory = true
             self.openViewControllerBasedOnIdentifier("ThirdPartyViewController")
             break
             
-        case (pReport,6):
-            print("MonthwiseViewController\n", terminator: "")
-            vendorStory = true
-            self.openViewControllerBasedOnIdentifier("MonthwiseViewController")
-            break
+//        case (pReport,6):
+//            print("MonthwiseViewController\n", terminator: "")
+//            vendorStory = true
+//            self.openViewControllerBasedOnIdentifier("MonthwiseViewController")
+//            break
             
-        case (pReport,7):
+        case (pReport,5):
             print("AgingReportController\n", terminator: "")
             vendorStory = true
             self.openViewControllerBasedOnIdentifier("AgingReportController")
             break
             
-        case (pReport,8):
+        case (pReport,6):
             print("RateComparisonController\n", terminator: "")
             vendorStory = true
             self.openViewControllerBasedOnIdentifier("RateComparisonController")
@@ -391,6 +402,18 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
                 self.navigationController!.pushViewController(destViewController, animated: true)
             }
             vendorStory = false
+        }else if salesStory{
+            let storyboard = UIStoryboard(name: "Sales", bundle: nil)
+            let destViewController : UIViewController = storyboard.instantiateViewController(withIdentifier: strIdentifier)
+            
+            let topViewController : UIViewController = self.navigationController!.topViewController!
+            
+            if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
+                //print("Same VC")
+            } else {
+                self.navigationController!.pushViewController(destViewController, animated: true)
+            }
+            salesStory = false
         }else{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let destViewController : UIViewController = storyboard.instantiateViewController(withIdentifier: strIdentifier)

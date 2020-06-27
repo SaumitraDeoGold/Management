@@ -90,6 +90,16 @@ class ProductPlanViewController: BaseViewController, UITableViewDelegate , UITab
      }
      return cell
  }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.sendCin = filteredItems[indexPath.item].partyId!
+//        appDelegate.partyName = filteredItems[indexPath.item].party!
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let destViewController = storyboard.instantiateViewController(withIdentifier: "NewDashBoard") as! NewDashboardViewController
+//        destViewController.mobile = filteredItems[indexPath.section-1].mobileNo!
+//        parent?.navigationController!.pushViewController(destViewController, animated: true)
+//    }
      
  //API CALLS..............
  func apiProductPlanningData(){

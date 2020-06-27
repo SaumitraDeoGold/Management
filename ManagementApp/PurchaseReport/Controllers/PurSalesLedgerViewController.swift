@@ -60,11 +60,11 @@ class PurSalesLedgerViewController: BaseViewController, UICollectionViewDataSour
                 case 0:
                     cell.contentLabel.text = "Party Name"
                 case 1:
-                    cell.contentLabel.text = "Purchase Ledger"
-                case 2:
-                    cell.contentLabel.text = "Sales Ledger"
-                case 3:
                     cell.contentLabel.text = "Difference"
+                case 2:
+                    cell.contentLabel.text = "Purchase"
+                case 3:
+                    cell.contentLabel.text = "Sales"
                 default:
                     break
                 }
@@ -79,13 +79,13 @@ class PurSalesLedgerViewController: BaseViewController, UICollectionViewDataSour
                 switch indexPath.row{
                 case 0:
                     cell.contentLabel.text = "SUM"
-                case 1:
+                case 2:
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(totalPur))
                     cell.contentLabel.textColor = UIColor.black
-                case 2:
+                case 3:
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(totalSal))
                     cell.contentLabel.textColor = UIColor.black
-                case 3:
+                case 1:
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(totalDif))
                     cell.contentLabel.textColor = UIColor.black
                 default:
@@ -101,17 +101,17 @@ class PurSalesLedgerViewController: BaseViewController, UICollectionViewDataSour
                 switch indexPath.row{
                 case 0:
                     cell.contentLabel.text = filteredItems[indexPath.section - 1].purchasePartyName
-                case 1:
+                case 2:
                     if let purchaseLedger = filteredItems[indexPath.section - 1].purchaseLedgerAmt
                     {
                         cell.contentLabel.text = Utility.formatRupee(amount: Double(purchaseLedger )!)
                     }
-                case 2:
+                case 3:
                     if let salesLedger = filteredItems[indexPath.section - 1].saleLedgerAmt
                     {
                         cell.contentLabel.text = Utility.formatRupee(amount: Double(salesLedger )!)
                     }
-                case 3:
+                case 1:
                     if let diffrence = filteredItems[indexPath.section - 1].diffrence
                     {
                         cell.contentLabel.text = Utility.formatRupee(amount: Double(diffrence )!)

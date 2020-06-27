@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iBT-6W-azx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Quarter Year Picker Controller-->
+        <scene sceneID="Rcu-x0-GiQ">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="iBT-6W-azx" customClass="QuarterYearPickerController" customModule="GStar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dDv-1o-zb9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naz-4V-SUw">
+                                <rect key="frame" x="20" y="244.5" width="374" height="409"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPF-B4-OEA">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET QUARTER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XY1-ls-oqQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <color key="backgroundColor" red="1" green="0.12539470089999999" blue="0.044818780590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="XY1-ls-oqQ" firstAttribute="leading" secondItem="gPF-B4-OEA" secondAttribute="leading" id="0rF-ou-q2b"/>
+                                            <constraint firstAttribute="bottom" secondItem="XY1-ls-oqQ" secondAttribute="bottom" id="117-zW-CEw"/>
+                                            <constraint firstItem="XY1-ls-oqQ" firstAttribute="top" secondItem="gPF-B4-OEA" secondAttribute="top" id="9tz-YX-uO4"/>
+                                            <constraint firstAttribute="height" constant="50" id="KcX-q3-Y8o"/>
+                                            <constraint firstAttribute="trailing" secondItem="XY1-ls-oqQ" secondAttribute="trailing" id="pDC-Ie-bkG"/>
+                                        </constraints>
+                                    </view>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSP-gF-BLS" customClass="QuarterYearPickerView" customModule="GStar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="374" height="309"/>
+                                    </pickerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9iq-Z1-uK2">
+                                        <rect key="frame" x="0.0" y="359" width="374" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fyw-Nc-a44">
+                                                <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
+                                                <state key="normal" title="CANCEL"/>
+                                                <connections>
+                                                    <action selector="cancel_clicked:" destination="iBT-6W-azx" eventType="touchUpInside" id="yNu-sP-RdY"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ut0-Li-TMY">
+                                                <rect key="frame" x="187" y="0.0" width="187" height="50"/>
+                                                <state key="normal" title="OK"/>
+                                                <connections>
+                                                    <action selector="ok_clicked:" destination="iBT-6W-azx" eventType="touchUpInside" id="Srq-7y-57C"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="ut0-Li-TMY" firstAttribute="leading" secondItem="fyw-Nc-a44" secondAttribute="trailing" id="FF3-m1-XBM"/>
+                                            <constraint firstAttribute="height" constant="50" id="Ga4-tZ-pvm"/>
+                                            <constraint firstItem="ut0-Li-TMY" firstAttribute="width" secondItem="fyw-Nc-a44" secondAttribute="width" id="YK9-ku-4ro"/>
+                                            <constraint firstAttribute="trailing" secondItem="ut0-Li-TMY" secondAttribute="trailing" id="h9b-W6-apv"/>
+                                            <constraint firstItem="fyw-Nc-a44" firstAttribute="top" secondItem="9iq-Z1-uK2" secondAttribute="top" id="kkm-LO-vb4"/>
+                                            <constraint firstItem="ut0-Li-TMY" firstAttribute="top" secondItem="9iq-Z1-uK2" secondAttribute="top" id="prw-bz-RlN"/>
+                                            <constraint firstAttribute="bottom" secondItem="ut0-Li-TMY" secondAttribute="bottom" id="qcw-ea-4PF"/>
+                                            <constraint firstAttribute="bottom" secondItem="fyw-Nc-a44" secondAttribute="bottom" id="vJo-f8-a93"/>
+                                            <constraint firstItem="fyw-Nc-a44" firstAttribute="leading" secondItem="9iq-Z1-uK2" secondAttribute="leading" id="y6X-6b-gUS"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="9iq-Z1-uK2" secondAttribute="trailing" id="IzB-p2-Vii"/>
+                                    <constraint firstItem="gPF-B4-OEA" firstAttribute="top" secondItem="naz-4V-SUw" secondAttribute="top" id="JMi-oo-MoF"/>
+                                    <constraint firstAttribute="trailing" secondItem="zSP-gF-BLS" secondAttribute="trailing" id="Xy6-tf-dgD"/>
+                                    <constraint firstAttribute="bottom" secondItem="zSP-gF-BLS" secondAttribute="bottom" constant="50" id="afC-Ja-Fdr"/>
+                                    <constraint firstItem="zSP-gF-BLS" firstAttribute="top" secondItem="gPF-B4-OEA" secondAttribute="bottom" id="hYZ-Hf-bVu"/>
+                                    <constraint firstItem="9iq-Z1-uK2" firstAttribute="leading" secondItem="naz-4V-SUw" secondAttribute="leading" id="nci-z3-anr"/>
+                                    <constraint firstAttribute="trailing" secondItem="gPF-B4-OEA" secondAttribute="trailing" id="r4L-7f-KtK"/>
+                                    <constraint firstItem="zSP-gF-BLS" firstAttribute="leading" secondItem="naz-4V-SUw" secondAttribute="leading" id="uIF-VM-ajO"/>
+                                    <constraint firstItem="gPF-B4-OEA" firstAttribute="leading" secondItem="naz-4V-SUw" secondAttribute="leading" id="ulb-Ua-JLX"/>
+                                    <constraint firstAttribute="bottom" secondItem="9iq-Z1-uK2" secondAttribute="bottom" id="zTl-sp-Wem"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.4549711045" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="naz-4V-SUw" firstAttribute="height" secondItem="p6c-ue-TbU" secondAttribute="height" multiplier="0.5" id="0PK-5Y-n3b"/>
+                            <constraint firstItem="naz-4V-SUw" firstAttribute="leading" secondItem="p6c-ue-TbU" secondAttribute="leading" constant="20" id="QSH-em-Ehw"/>
+                            <constraint firstItem="naz-4V-SUw" firstAttribute="centerY" secondItem="dDv-1o-zb9" secondAttribute="centerY" constant="1" id="kga-r8-yZp"/>
+                            <constraint firstItem="p6c-ue-TbU" firstAttribute="trailing" secondItem="naz-4V-SUw" secondAttribute="trailing" constant="20" id="wSt-cY-hYy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="p6c-ue-TbU"/>
+                    </view>
+                    <connections>
+                        <outlet property="btnCancel" destination="fyw-Nc-a44" id="xFe-zb-fGt"/>
+                        <outlet property="btnOK" destination="ut0-Li-TMY" id="PBj-uj-PO0"/>
+                        <outlet property="datePicker" destination="zSP-gF-BLS" id="9io-2X-IOT"/>
+                        <outlet property="lblDateHeader" destination="XY1-ls-oqQ" id="6Cc-gC-Dr8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Foh-wn-Exh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1019" y="142"/>
+        </scene>
+    </scenes>
+</document>

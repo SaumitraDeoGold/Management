@@ -49,6 +49,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     //For ALL...
     var alltype = [[String : String]]()
     var tempAll = [[String : String]]()
+    
+    //For ALL NEW...
+    var commonSearchObj = [CommonSearchObj]()
+    var tempCommonObj = [CommonSearchObj]()
+    var placeholder = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +68,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             textField.placeholder = "Search Branch"
             ViewControllerUtils.sharedInstance.showLoader()
             apiGetBranch()
+        }else if from == "common"{
+            textField.placeholder = placeholder
+            self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
         }else if from == "all"{
             textField.placeholder = "Search..."
             self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
@@ -116,6 +124,21 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             }else{
                 for dealers in tempBranchArr{
                     filteredItems.append(dealers)
+                }
+            }
+        }else if from == "common"{
+            self.commonSearchObj.removeAll()
+            if textfield.text?.count != 0{
+                for supps in tempCommonObj{
+                    
+                    let range = supps.name!.lowercased().range(of: textfield.text!, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil{
+                        commonSearchObj.append(supps)
+                    }
+                }
+            }else{
+                for supps in tempCommonObj{
+                    commonSearchObj.append(supps)
                 }
             }
         }else if from == "supplier"{
@@ -223,6 +246,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             return filteredCity.count + 1
         }else if from == "all"{
             return alltype.count + 1
+        }else if from == "common"{
+            return commonSearchObj.count
         }else{
             return filteredLedger.count
         }
@@ -238,6 +263,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }else if from == "supplier"{
             cell.textLabel?.text = filteredSupplier[indexPath.row].name
+        }else if from == "common"{
+            cell.textLabel?.text = commonSearchObj[indexPath.row].name
         }else if from == "dist"{
             if(indexPath.row == 0){
                 cell.textLabel?.text = "ALL"
@@ -279,6 +306,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }else if from == "supplier"{
             delegate?.showSearchValue!(value: filteredSupplier[indexPath.row].name!)
+        }else if from == "common"{
+            delegate?.showParty?(value: commonSearchObj[indexPath.row].name!, cin: commonSearchObj[indexPath.row].slno!)
         }else if from == "dist"{
             if indexPath.row == 0{
                 delegate?.showSearchValue!(value: "ALL")

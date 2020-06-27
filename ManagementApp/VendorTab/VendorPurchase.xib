@@ -19,10 +19,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VendorPurchase" customModule="ManagementApp" customModuleProvider="target">
             <connections>
+                <outlet property="imvHighDays" destination="0V5-X5-Vwu" id="Y2H-Q2-sMq"/>
                 <outlet property="imvInfo" destination="5GR-Gw-xdF" id="s3d-kh-64J"/>
+                <outlet property="imvLedger" destination="Bvu-Xs-sCd" id="IUn-sU-LiO"/>
                 <outlet property="lblHeader" destination="MoM-4l-Y99" id="Xzz-ld-ljR"/>
                 <outlet property="lblLYS" destination="DSv-qt-mL1" id="6s1-00-Eq8"/>
+                <outlet property="lblOverallGrowth" destination="GFY-vz-Gfl" id="On6-WW-bUa"/>
                 <outlet property="lblSales" destination="M7b-0x-tfD" id="a41-41-27c"/>
+                <outlet property="stackView" destination="8Ne-yz-PWD" id="hRA-1C-jfW"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -47,7 +51,7 @@
                             <rect key="frame" x="0.0" y="40" width="387" height="40"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7bj-f9-fR5">
-                                    <rect key="frame" x="130" y="8.5" width="129.5" height="25"/>
+                                    <rect key="frame" x="135" y="8.5" width="119.5" height="25"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oau-8e-BXp">
                                             <rect key="frame" x="0.0" y="0.0" width="69" height="25"/>
@@ -56,7 +60,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7b-0x-tfD" customClass="PaddingLabel" customModule="ManagementApp" customModuleProvider="target">
-                                            <rect key="frame" x="79" y="0.0" width="15.5" height="25"/>
+                                            <rect key="frame" x="79" y="0.0" width="5.5" height="25"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <color key="textColor" name="FontLightText"/>
                                             <nil key="highlightedColor"/>
@@ -76,7 +80,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info_icon" translatesAutoresizingMaskIntoConstraints="NO" id="5GR-Gw-xdF">
-                                            <rect key="frame" x="104.5" y="0.0" width="25" height="25"/>
+                                            <rect key="frame" x="94.5" y="0.0" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="bX7-pt-mMZ"/>
                                                 <constraint firstAttribute="height" constant="25" id="gCU-pk-oAs"/>
@@ -123,7 +127,7 @@
                                                             <color key="textColor" name="FontLightText"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_dashboard_pdf" translatesAutoresizingMaskIntoConstraints="NO" id="Bvu-Xs-sCd">
+                                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_dashboard_pdf" translatesAutoresizingMaskIntoConstraints="NO" id="Bvu-Xs-sCd">
                                                             <rect key="frame" x="87" y="49.5" width="20" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="kF4-Bs-oh9"/>
@@ -147,7 +151,7 @@
                                                             <color key="textColor" name="FontLightText"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_dashboard_pdf" translatesAutoresizingMaskIntoConstraints="NO" id="0V5-X5-Vwu">
+                                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_dashboard_pdf" translatesAutoresizingMaskIntoConstraints="NO" id="0V5-X5-Vwu">
                                                             <rect key="frame" x="87" y="49.5" width="20" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="hXv-pH-d4o"/>
