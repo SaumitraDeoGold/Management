@@ -10,8 +10,6 @@ import UIKit
 
 class MonthYearPickerController: UIViewController {
     
-    
-    
     @IBOutlet weak var datePicker: MonthYearPickerView!
     @IBOutlet weak var btnOK: UIButton!
     @IBOutlet weak var btnCancel: UIButton!

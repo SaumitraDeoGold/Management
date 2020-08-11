@@ -50,14 +50,19 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
         supplierInvoiceApi = "https://api.goldmedalindia.in/api/getSupplierPurchaseAndLedgerBalanceInvoiceNo"
         supplierPayApi = "https://api.goldmedalindia.in/api/getSupplierPurchaseAndLedgerBalancePayment"
         if from == "vendorOrder"{
+            self.title = "All Order"
             apiLastDispatchedMaterial()
         }else if from == "vendorInvoice"{
+            self.title = "All Invoices"
             apiVendorInvoice()
         }else if from == "vendorPay"{
+            self.title = "All Payments"
             apiVendorPay()
         }else if from == "supplierInvoice"{
+            self.title = "All Invoices"
             apiSupplierInv()
         }else if from == "supplierPay"{
+            self.title = "All Payments"
             apiSupplierPay()
         }
         
@@ -99,7 +104,7 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
             }else if indexPath.row == 1 {
                 cell.contentLabel.text = "Amount"
             }else if indexPath.row == 2 {
-                cell.contentLabel.text = "Invoice No"
+                cell.contentLabel.text = from == "vendorOrder" ? "Order No" : "Voucher No"
             }
         }
         
@@ -135,7 +140,7 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
  
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == 0 && from != "vendorPay" && from != "supplierPay"{
+        if indexPath.section != 0 && indexPath.row == 0 && from != "vendorPay" && from != "supplierPay"{
             sendValue(indexPath: indexPath)
         }
     }

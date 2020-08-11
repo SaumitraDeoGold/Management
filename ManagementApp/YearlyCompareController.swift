@@ -17,6 +17,7 @@ class YearlyCompareController: BaseViewController, UICollectionViewDataSource, U
     @IBOutlet weak var lblQuarterly: RoundButton!
     @IBOutlet weak var noDataView: NoDataView!
     @IBOutlet weak var lblFinYear: UILabel!
+    @IBOutlet weak var sort: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     //Declarations...
@@ -58,6 +59,9 @@ class YearlyCompareController: BaseViewController, UICollectionViewDataSource, U
         dateFormatter.dateFormat = "MM/dd/yyyy"
         monthFormatter.dateFormat = "MM"
         yearFormatter.dateFormat = "yyyy"
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(clicked_sort(tapGestureRecognizer:)))
+//        //sort.isUserInteractionEnabled = true
+//        sort.addGestureRecognizer(tapGestureRecognizer)
         compareApiUrl = "https://api.goldmedalindia.in/api/GetTotalSaleBranchWiseLast"
         ViewControllerUtils.sharedInstance.showLoader()
         apiCompare()

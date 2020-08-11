@@ -12,36 +12,47 @@ import FirebaseAnalytics
 class NewUserController: UIViewController {
     
     @IBOutlet weak var edtCin: UITextField!
-    @IBOutlet weak var captchaView: CaptchaView!
+    @IBOutlet weak var edtPhone: UITextField!
+    @IBOutlet weak var edtEmail: UITextField!
+    @IBOutlet weak var edtPass: UITextField!
+    @IBOutlet weak var edtCpass: UITextField!
+    //@IBOutlet weak var captchaView: CaptchaView!
     
     var strHeader = String()
     
     var validateCIN = [ValidateCINElement]()
     var validateCINObj = [ValidateCinData]()
     var newUserApi = ""
+    var validated = false
     
     @IBAction func onClickSubmit(_ sender: Any) {
         
-        if((edtCin.text?.trimmingCharacters(in: NSCharacterSet.whitespaces).count)!  < 5)
-        {
-            var alert = UIAlertView(title: nil, message: "Invalid CIN", delegate: nil, cancelButtonTitle: "OK")
+        if edtCin.text == "" || edtPhone.text == "" || edtEmail.text == "" || edtPass.text == "" || edtCpass.text == ""{
+            var alert = UIAlertView(title: "Alert", message: "Please fill all the details", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
-        } else {
-            if(captchaView.checkCaptcha()){
-                if (Utility.isConnectedToNetwork()) {
-                    self.apiNewUser()
-                }
-                else{
-                    var alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
-                    alert.show()
-                }
-            }else{
-                var alert = UIAlertView(title: nil, message: "Invalid Captcha", delegate: nil, cancelButtonTitle: "OK")
-                alert.show()
-            }
+        }else if edtCpass.text != edtPass.text{
+            var alert = UIAlertView(title: "Alert", message: "Password and Confirm Password don't match please fill again", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
             
+        }else{
+            validated = true
         }
         
+        if validated {
+            if (Utility.isConnectedToNetwork()) {
+                var alert = UIAlertView(title: "Success", message: "Congratulations you have registered succesfully, a verification link would be sent on your mail, please click on it for succesfull login", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+                edtCin.text = ""
+                edtPhone.text = ""
+                edtEmail.text = ""
+                edtPass.text = ""
+                edtCpass.text = ""
+            }else{
+                var alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            }
+        }
+          
     }
     
     @IBAction func clicked_back(_ sender: Any) {

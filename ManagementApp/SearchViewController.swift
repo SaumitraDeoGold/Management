@@ -54,6 +54,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     var commonSearchObj = [CommonSearchObj]()
     var tempCommonObj = [CommonSearchObj]()
     var placeholder = ""
+    
+    //For Main Order Itemwise...
+    var filterOrdersObj = [MainOrderItemwiseObj]()
+    var tempOrdersObj = [MainOrderItemwiseObj]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +86,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
         }else if from == "city"{
             textField.placeholder = "Search City"
+            self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
+        }else if from == "orderitem"{
+            textField.placeholder = "Search Item"
             self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
         }else{
             textField.placeholder = from == "supplier" ? "Search Supplier" : "Search Ledger"
@@ -124,6 +131,20 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             }else{
                 for dealers in tempBranchArr{
                     filteredItems.append(dealers)
+                }
+            }
+        }else if from == "orderitem"{
+            self.filterOrdersObj.removeAll()
+            if textfield.text?.count != 0{
+                for dealers in tempOrdersObj{
+                    let range = dealers.itemName!.lowercased().range(of: textfield.text!, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil{
+                        filterOrdersObj.append(dealers)
+                    }
+                }
+            }else{
+                for dealers in tempOrdersObj{
+                    filterOrdersObj.append(dealers)
                 }
             }
         }else if from == "common"{
@@ -248,6 +269,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             return alltype.count + 1
         }else if from == "common"{
             return commonSearchObj.count
+        }else if from == "orderitem"{
+            return filterOrdersObj.count + 1
         }else{
             return filteredLedger.count
         }
@@ -260,6 +283,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 cell.textLabel?.text = "ALL"
             }else{
                 cell.textLabel?.text = filteredItems[indexPath.row-1].branchnm
+            }
+        }else if from == "orderitem"{
+            if(indexPath.row == 0){
+                cell.textLabel?.text = "ALL"
+            }else{
+                cell.textLabel?.text = filterOrdersObj[indexPath.row-1].itemName
             }
         }else if from == "supplier"{
             cell.textLabel?.text = filteredSupplier[indexPath.row].name
@@ -303,6 +332,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
               delegate?.showSearchValue!(value: "ALL")
             }else{
               delegate?.showSearchValue!(value: filteredItems[indexPath.row-1].branchnm!)
+            }
+        }else if from == "orderitem"{
+            if indexPath.row == 0{
+              delegate?.showSearchValue!(value: "ALL")
+            }else{
+              delegate?.showSearchValue!(value: filterOrdersObj[indexPath.row-1].itemName!)
             }
         }else if from == "supplier"{
             delegate?.showSearchValue!(value: filteredSupplier[indexPath.row].name!)

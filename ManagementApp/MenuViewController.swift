@@ -115,14 +115,14 @@ class MenuViewController: UIViewController {
        // self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"ORDER", "icon":"dashboard_order_icon","data":["PLACE ORDER","ORDER SUMMARY"]])
 //        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"BRAND LOYALTY", "icon":"brand_loyalty_club_icon","data":["STAR REWARD PROGRAM","DISCOVER THE WORLD","DOCUMENTS"]])
         if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
-          self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"SALES REPORTS", "icon":"icon_reports","data":["DIVISION WISE SALES","DEALER APPOINTMENT","OUTSTANDING ABOVE","SALES AND PURCHASES","DEALER SEARCH","DIVISIONWISE COMPARE","CATEGORYWISE COMPARE","BRANCHWISE OUTSTANDING","INSURANCE REPORT","EXPENSE BILL","AGENT LIMIT"]])
+          self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"SALES REPORTS", "icon":"icon_reports","data":["DIVISION WISE SALES","DEALER APPOINTMENT","OUTSTANDING ABOVE","SALES AND PURCHASES","DEALER SEARCH","DIVISIONWISE COMPARE","CATEGORYWISE COMPARE","BRANCHWISE OUTSTANDING","INSURANCE REPORT","EXPENSE BILL","AGENT LIMIT","EXECUTIVE TARGET TRACKING"]])
         }else{
             self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"SALES REPORTS", "icon":"icon_reports","data":["DIVISION WISE SALES","DEALER APPOINTMENT","OUTSTANDING ABOVE","SALES AND PURCHASES","DEALER SEARCH","DIVISIONWISE COMPARE","CATEGORYWISE COMPARE","BRANCHWISE OUTSTANDING","INSURANCE REPORT","EXPENSE BILL","EXECUTIVE TARGET TRACKING"]])
         }
         
         if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
                     
-                    self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"PURCHASE REPORTS", "icon":"icon_reports","data":["SEARCH EXPENSE SUPPLIER","RAW MATERIAL PURCHASE VENDOR/SUPPLIER","PURCHASE INVOICE","SALE/PURCHASE PARTY LEDGER","THIRD PARTY ORDER","THIRD PARTY AGING"]])
+                    self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"PURCHASE REPORTS", "icon":"icon_reports","data":["SEARCH EXPENSE SUPPLIER","RAW MATERIAL PURCHASE VENDOR/SUPPLIER","PURCHASE INVOICE","SALE/PURCHASE PARTY LEDGER","THIRD PARTY ORDER","VENDOR/SUPPLIER AGING"]])
         //        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SEARCH SUPPLIER", "icon":"dash_search","data":[""]])
         //        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SEARCH VENDOR", "icon":"dash_search","data":[""]])
                     

@@ -17,7 +17,8 @@ class NewDashboardViewController: BaseViewController {
     //Declarations...
     var tabs = [
         ViewPagerTab(title: "PURCHASE", image: UIImage(named: "dashboard_outstanding_icon")),
-        ViewPagerTab(title: "ACCOUNT", image: UIImage(named: "dashboard_order_icon")),
+        ViewPagerTab(title: "ORDER", image: UIImage(named: "dashboard_order_icon")),
+        ViewPagerTab(title: "ACCOUNT", image: UIImage(named: "dashboard_scheme_icon")),
         ]
     var viewPager:ViewPagerController!
     var options:ViewPagerOptions!
@@ -120,6 +121,10 @@ extension NewDashboardViewController: ViewPagerControllerDataSource {
             vc = self.storyboard?.instantiateViewController(withIdentifier: "VendorTab") as! VendorTabController
         }
         else if position == 1
+        {
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "VendorOrderBaseController") as! VendorOrderBaseController
+        }
+        else if position == 2
         {
             vc = self.storyboard?.instantiateViewController(withIdentifier: "VendorInvoiceController") as! VendorInvoiceController
         }

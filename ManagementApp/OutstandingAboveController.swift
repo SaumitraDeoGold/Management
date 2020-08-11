@@ -32,7 +32,7 @@ class OutstandingAboveController: BaseViewController, UICollectionViewDataSource
         addSlideMenuButton()
         //addSortButton()
         super.viewDidLoad()
-        apiGetOutstandingUrl = "https://api.goldmedalindia.in/api/GetOutstandingbyDays"
+        apiGetOutstandingUrl = "https://test2.goldmedalindia.in/api/GetOutstandingbyDays"
         ViewControllerUtils.sharedInstance.showLoader()
         apiGetOutstandingByDays()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
@@ -80,6 +80,19 @@ class OutstandingAboveController: BaseViewController, UICollectionViewDataSource
         self.present(popup, animated: true)
     }
  
+    func dialNumber(number : String) {
+        
+        if let url = URL(string: "tel://\(number)"),
+            UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler:nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        } else {
+            // add error message here
+        }
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView == self.collectionView{
@@ -90,7 +103,7 @@ class OutstandingAboveController: BaseViewController, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -113,10 +126,14 @@ class OutstandingAboveController: BaseViewController, UICollectionViewDataSource
             case 1:
                 cell.contentLabel.text = "Home Branch"
             case 2:
-                cell.contentLabel.text = "Total Outsts"
+                cell.contentLabel.text = "SE Name"
             case 3:
-                cell.contentLabel.text =   "Days"
+                cell.contentLabel.text = "Mobile"
             case 4:
+                cell.contentLabel.text =  "Total Outsts"
+            case 5:
+                cell.contentLabel.text =  "Days"
+            case 6:
                 cell.contentLabel.text =  "Total Outstanding above \(daysSelected)"
             default:
                 break
@@ -142,14 +159,20 @@ class OutstandingAboveController: BaseViewController, UICollectionViewDataSource
                 cell.contentLabel.text =  self.filteredItems[indexPath.section-1].locnm
             case 2:
                 cell.contentLabel.textColor = UIColor.black
+                cell.contentLabel.text = self.filteredItems[indexPath.section-1].salesExecutive
+            case 3:
+                cell.contentLabel.textColor = UIColor.black
+                cell.contentLabel.text = self.filteredItems[indexPath.section-1].mobile
+            case 4:
+                cell.contentLabel.textColor = UIColor.black
                 if let totalOuts = self.filteredItems[indexPath.section-1].totalbalance
                 {
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(totalOuts )!)
                 }
-            case 3:
+            case 5:
                 cell.contentLabel.textColor = UIColor.black
                 cell.contentLabel.text = self.filteredItems[indexPath.section-1].historydays
-            case 4:
+            case 6:
                 cell.contentLabel.textColor = UIColor.black
                 if let totalOutAbv = self.filteredItems[indexPath.section-1].totaloutstanding
                 {
@@ -178,12 +201,16 @@ class OutstandingAboveController: BaseViewController, UICollectionViewDataSource
                 case 0:
                     cell.contentLabel.text = "SUM"
                 case 1:
-                    cell.contentLabel.text =   "All Branches"
+                    cell.contentLabel.text = "All Branches"
                 case 2:
-                    cell.contentLabel.text = "OS - " + Utility.formatRupee(amount: Double(totalOs ))
+                    cell.contentLabel.text = "Name"
                 case 3:
-                    cell.contentLabel.text =   "Highest Days"
+                    cell.contentLabel.text = "Mobile"
                 case 4:
+                    cell.contentLabel.text = "OS - " + Utility.formatRupee(amount: Double(totalOs ))
+                case 5:
+                    cell.contentLabel.text = "Highest Days"
+                case 6:
                     cell.contentLabel.text = "OS above \(daysSelected) - " + Utility.formatRupee(amount: Double(totalOSAbove ))
                 default:
                     break
@@ -202,6 +229,8 @@ class OutstandingAboveController: BaseViewController, UICollectionViewDataSource
         popup.delegate = self
         popup.showPicker = 1
         self.present(popup, animated: true)
+        }else if indexPath.row == 3{
+            dialNumber(number: filteredItems[indexPath.section-1].mobile!)
         }else if indexPath.section == 0{
             
         }else{
@@ -211,7 +240,7 @@ class OutstandingAboveController: BaseViewController, UICollectionViewDataSource
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if let index = collectionView.indexPathsForSelectedItems?.first{
-            if((index.row) == 1){
+            if((index.row) == 1) || (index.row) == 3{
                 return false
             }else{
                 if index.section == 0{

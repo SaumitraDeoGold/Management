@@ -28,7 +28,7 @@ class SplashViewController: AVPlayerViewController {
             apiSplash()
       
         // Do any additional setup after loading the view.
-         let path = Bundle.main.path(forResource: "logo_splash1", ofType: "mp4")
+        let path = Bundle.main.path(forResource: "logo_splash1", ofType: "mp4")
         let videoURL = URL(fileURLWithPath: path!)
         player = AVPlayer(url: videoURL)
         showsPlaybackControls = false

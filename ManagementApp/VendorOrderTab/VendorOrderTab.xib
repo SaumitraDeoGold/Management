@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="roboto.medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VendorOrderTab" customModule="G_Family" customModuleProvider="target">
+            <connections>
+                <outlet property="btnItemWisePdf" destination="JD2-SH-J14" id="pgt-Tf-0VI"/>
+                <outlet property="btnSummaryWisePdf" destination="czj-bt-kve" id="gCO-bo-mtS"/>
+                <outlet property="collectionView" destination="jYz-vk-Xdi" id="GqR-qb-Hy1"/>
+                <outlet property="noDataView" destination="HKi-6y-rBM" id="A5H-cn-TqT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="DLi-wQ-Z6t">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjK-SR-xjU">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7ku-T1-Lfz">
+                            <rect key="frame" x="0.0" y="10" width="414" height="808"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase Pending Order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxm-dL-Ylv">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                    <color key="backgroundColor" name="DashboardHeader"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="C7q-ic-Mnn"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jYz-vk-Xdi" customClass="VendorOrderTabCollectionView" customModule="G_Family" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="40" width="414" height="723"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <collectionViewLayout key="collectionViewLayout" id="ojx-3m-Icq" customClass="VendorOrderTabLay" customModule="G_Family" customModuleProvider="target"/>
+                                    <cells>
+                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="" id="DU4-KH-hCz">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </view>
+                                        </collectionViewCell>
+                                    </cells>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="5LA-fE-xA7"/>
+                                        <outlet property="delegate" destination="-1" id="5z5-H3-pVB"/>
+                                    </connections>
+                                </collectionView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6j-6p-Bk5">
+                                    <rect key="frame" x="0.0" y="763" width="414" height="45"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JD2-SH-J14" customClass="RoundButton" customModule="G_Family" customModuleProvider="target">
+                                            <rect key="frame" x="5" y="5" width="199.5" height="35"/>
+                                            <color key="backgroundColor" name="ColorRed"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="Zh1-fD-Ddl"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                            <inset key="imageEdgeInsets" minX="10" minY="5" maxX="0.0" maxY="5"/>
+                                            <state key="normal" title="Item Wise Pending" image="icon_pdf_white"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="17.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" name="LoginButton"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                    <size key="value" width="0.0" height="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <real key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="clicked_itemwise:" destination="-1" eventType="touchUpInside" id="Zq2-cI-vwc"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="czj-bt-kve" customClass="RoundButton" customModule="G_Family" customModuleProvider="target">
+                                            <rect key="frame" x="209.5" y="5" width="199.5" height="35"/>
+                                            <color key="backgroundColor" name="ColorRed"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="hRo-b9-w8s"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                            <inset key="imageEdgeInsets" minX="10" minY="5" maxX="0.0" maxY="5"/>
+                                            <state key="normal" title="Summary Pending" image="icon_pdf_white"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="17.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" name="LoginButton"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                    <size key="value" width="0.0" height="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <real key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="clicked_summary_pending:" destination="-1" eventType="touchUpInside" id="7uy-8L-8NT"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="czj-bt-kve" firstAttribute="leading" secondItem="JD2-SH-J14" secondAttribute="trailing" constant="5" id="Ctr-4j-7ro"/>
+                                        <constraint firstItem="czj-bt-kve" firstAttribute="leading" secondItem="JD2-SH-J14" secondAttribute="trailing" constant="5" id="FrX-B9-1tP"/>
+                                        <constraint firstAttribute="height" constant="45" id="Fw9-8u-nBv"/>
+                                        <constraint firstAttribute="trailing" secondItem="czj-bt-kve" secondAttribute="trailing" constant="5" id="b2t-U7-1W6"/>
+                                        <constraint firstAttribute="bottom" secondItem="JD2-SH-J14" secondAttribute="bottom" constant="5" id="dIj-1W-b2Y"/>
+                                        <constraint firstItem="JD2-SH-J14" firstAttribute="leading" secondItem="l6j-6p-Bk5" secondAttribute="leading" constant="5" id="ge0-zl-XXW"/>
+                                        <constraint firstAttribute="bottom" secondItem="czj-bt-kve" secondAttribute="bottom" constant="5" id="gze-Ej-oM5"/>
+                                        <constraint firstItem="JD2-SH-J14" firstAttribute="width" secondItem="czj-bt-kve" secondAttribute="width" id="kmc-Ws-i2u"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="gxm-dL-Ylv" firstAttribute="top" secondItem="7ku-T1-Lfz" secondAttribute="top" id="Ahs-Ri-mvZ"/>
+                                <constraint firstItem="l6j-6p-Bk5" firstAttribute="leading" secondItem="7ku-T1-Lfz" secondAttribute="leading" id="Bmp-o7-gRK"/>
+                                <constraint firstAttribute="trailing" secondItem="l6j-6p-Bk5" secondAttribute="trailing" id="FZl-nS-QTm"/>
+                                <constraint firstAttribute="trailing" secondItem="gxm-dL-Ylv" secondAttribute="trailing" id="bcg-58-gaS"/>
+                                <constraint firstItem="gxm-dL-Ylv" firstAttribute="leading" secondItem="7ku-T1-Lfz" secondAttribute="leading" id="jUR-dG-NjD"/>
+                            </constraints>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HKi-6y-rBM" customClass="NoDataView" customModule="G_Family" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="50" width="414" height="768"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="7ku-T1-Lfz" secondAttribute="trailing" id="1Wz-yg-Tqi"/>
+                        <constraint firstItem="HKi-6y-rBM" firstAttribute="top" secondItem="7ku-T1-Lfz" secondAttribute="top" constant="40" id="KBC-w3-ycO"/>
+                        <constraint firstAttribute="bottom" secondItem="7ku-T1-Lfz" secondAttribute="bottom" id="Kks-2z-vQ6"/>
+                        <constraint firstItem="7ku-T1-Lfz" firstAttribute="leading" secondItem="qjK-SR-xjU" secondAttribute="leading" id="WEO-7m-aVU"/>
+                        <constraint firstItem="7ku-T1-Lfz" firstAttribute="top" secondItem="qjK-SR-xjU" secondAttribute="top" constant="10" id="cXl-uG-1NC"/>
+                        <constraint firstItem="HKi-6y-rBM" firstAttribute="leading" secondItem="qjK-SR-xjU" secondAttribute="leading" id="lsX-yW-iiF"/>
+                        <constraint firstAttribute="trailing" secondItem="HKi-6y-rBM" secondAttribute="trailing" id="meX-ZC-KJd"/>
+                        <constraint firstItem="7ku-T1-Lfz" firstAttribute="bottom" secondItem="HKi-6y-rBM" secondAttribute="bottom" id="muA-yc-NXK"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="5bL-Hw-VXL" firstAttribute="trailing" secondItem="qjK-SR-xjU" secondAttribute="trailing" id="FPG-f6-Pvz"/>
+                <constraint firstItem="5bL-Hw-VXL" firstAttribute="bottom" secondItem="qjK-SR-xjU" secondAttribute="bottom" id="QPB-qr-9sm"/>
+                <constraint firstItem="qjK-SR-xjU" firstAttribute="top" secondItem="5bL-Hw-VXL" secondAttribute="top" id="kOX-Jp-vHg"/>
+                <constraint firstItem="qjK-SR-xjU" firstAttribute="leading" secondItem="5bL-Hw-VXL" secondAttribute="leading" id="zeM-k5-wJ8"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="5bL-Hw-VXL"/>
+            <point key="canvasLocation" x="-854" y="-377"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_pdf_white" width="27.5" height="27.5"/>
+        <namedColor name="ColorRed">
+            <color red="0.90700000524520874" green="0.21799999475479126" blue="0.21899999678134918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="DashboardHeader">
+            <color red="0.3580000102519989" green="0.3580000102519989" blue="0.3580000102519989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LoginButton">
+            <color red="0.39899998903274536" green="0.40000000596046448" blue="0.39899998903274536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

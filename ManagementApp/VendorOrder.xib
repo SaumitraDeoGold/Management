@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VendorOrder" customModule="ManagementApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VendorOrder" customModule="G_Family" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="bVm-b4-Cgl" id="btv-PV-rxA"/>
                 <outlet property="noDataView" destination="CQf-R9-0mG" id="oO7-Ry-rhR"/>
@@ -41,10 +41,10 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bVm-b4-Cgl" customClass="VendorOrderCollectionView" customModule="ManagementApp" customModuleProvider="target">
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bVm-b4-Cgl" customClass="VendorOrderCollectionView" customModule="G_Family" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="40" width="375" height="582"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <collectionViewLayout key="collectionViewLayout" id="m0s-GK-za1" customClass="VendInvCollLayout" customModule="ManagementApp" customModuleProvider="target"/>
+                                    <collectionViewLayout key="collectionViewLayout" id="m0s-GK-za1" customClass="VendInvCollLayout" customModule="G_Family" customModuleProvider="target"/>
                                     <cells>
                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="" id="LKL-BL-Vt1">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -80,7 +80,7 @@
                                 <constraint firstItem="FCS-Yt-4Ta" firstAttribute="leading" secondItem="WJj-8a-18d" secondAttribute="leading" id="rSn-Ct-zHq"/>
                             </constraints>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQf-R9-0mG" customClass="NoDataView" customModule="ManagementApp" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQf-R9-0mG" customClass="NoDataView" customModule="G_Family" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="50" width="375" height="582"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>

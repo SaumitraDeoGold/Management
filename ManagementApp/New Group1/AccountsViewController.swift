@@ -137,11 +137,11 @@ class AccountsViewController: BaseViewController, UICollectionViewDataSource, UI
             case 1:
                 if let salependingamt = filteredItems[indexPath.section - 1].outstandingamt
                 {
-                    let percentage = ((Double(self.outstandingAccObj[indexPath.section - 1].outstandingamt!)! / total)*100)
+                    let percentage = ((Double(self.filteredItems[indexPath.section - 1].outstandingamt!)! / total)*100)
                     cell.contentLabel.text = Utility.formatRupee(amount: Double(salependingamt )!) + " (\(String(format: "%.2f", percentage))%)"
                 }
             case 2:
-                let percentage = ((Double(self.outstandingAccObj[indexPath.section - 1].outstandingamt!)! / total)*100)
+                let percentage = ((Double(self.filteredItems[indexPath.section - 1].outstandingamt!)! / total)*100)
                 cell.contentLabel.text = "\(String(format: "%.2f", percentage))%"
                 
             default:

@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import youtube_ios_player_helper
+import YoutubePlayer_in_WKWebView
 import FirebaseAnalytics
 
 class DhanbarseVideoController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
     
-    @IBOutlet weak var playerView: YTPlayerView!
+    @IBOutlet weak var playerView: WKYTPlayerView!
     @IBOutlet weak var tblDhanbarse: UITableView!
     @IBOutlet weak var noDataView: NoDataView!
     

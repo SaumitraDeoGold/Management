@@ -169,6 +169,12 @@ class VendorPurchaseController: BaseViewController, UITableViewDelegate , UITabl
             cell.lblDivision.text = getOnlyDate(value: filteredItems[indexPath.row].receivedDate!)
             cell.lblLrNo.text = ""
             cell.lblTransporter.text = filteredItems[indexPath.row].branch!
+            
+            let imvPdf = UITapGestureRecognizer(target: self, action: #selector(self.pdfTapped))
+            cell.imvDownloadPdf.isUserInteractionEnabled = true
+            cell.imvDownloadPdf.tag = indexPath.row
+            cell.imvDownloadPdf.addGestureRecognizer(imvPdf)
+            
         }
         return cell
     }
@@ -185,6 +191,27 @@ class VendorPurchaseController: BaseViewController, UITableViewDelegate , UITabl
 //        let destViewController = storyboard.instantiateViewController(withIdentifier: "NewDashBoard") as! NewDashboardViewController
 //        parent?.navigationController!.pushViewController(destViewController, animated: true)
     }
+    
+    func pdfTapped(sender: UITapGestureRecognizer) {
+            print("pdf name : \(sender.view?.tag)")
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let destViewController = storyboard.instantiateViewController(withIdentifier: "Webview") as! viewPDFController
+            destViewController.webvwUrl = filteredItems[sender.view!.tag].fileurl!
+            let topViewController : UIViewController = self.navigationController!.topViewController!
+            self.navigationController!.pushViewController(destViewController, animated: true)
+            
+    //        guard let url = URL(string: DispatchedMaterialArray[sender.view!.tag].url ?? "") else {
+    //            var alert = UIAlertView(title: "Error", message: "Invalid Pdf", delegate: nil, cancelButtonTitle: "OK")
+    //            alert.show()
+    //
+    //            return
+    //        }
+    //        if UIApplication.shared.canOpenURL(url) {
+    //            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    //        }
+            
+        }
     
     //CollectionView Functions...
 //    func numberOfSections(in collectionView: UICollectionView) -> Int {

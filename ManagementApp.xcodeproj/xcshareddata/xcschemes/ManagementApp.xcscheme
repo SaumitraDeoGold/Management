@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "695728552068F4FC006C0415"
-               BuildableName = "ManagementApp.app"
+               BuildableName = "G-Family.app"
                BlueprintName = "ManagementApp"
                ReferencedContainer = "container:ManagementApp.xcodeproj">
             </BuildableReference>
@@ -27,19 +27,17 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "695728552068F4FC006C0415"
-            BuildableName = "ManagementApp.app"
+            BuildableName = "G-Family.app"
             BlueprintName = "ManagementApp"
             ReferencedContainer = "container:ManagementApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -56,13 +54,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "695728552068F4FC006C0415"
-            BuildableName = "ManagementApp.app"
+            BuildableName = "G-Family.app"
             BlueprintName = "ManagementApp"
             ReferencedContainer = "container:ManagementApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -75,7 +71,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "695728552068F4FC006C0415"
-            BuildableName = "ManagementApp.app"
+            BuildableName = "G-Family.app"
             BlueprintName = "ManagementApp"
             ReferencedContainer = "container:ManagementApp.xcodeproj">
          </BuildableReference>

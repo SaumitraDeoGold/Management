@@ -228,6 +228,32 @@ public class Utility: UIViewController {
           return quarter
       }
     
+    class func setupHierarchy(strCin : String,viewAs : Bool) -> String{
+        
+        var hierarchy = "1"
+        
+        if (strCin.isEmpty) {
+        if (viewAs){
+                  hierarchy = "1"
+        }
+        else{
+        hierarchy = "0"
+        }
+          } else {
+        hierarchy = "0"
+          }
+        
+        return hierarchy
+    }
+    
+    class func showAlertMsg(_title: String?,_message: String,_cancelButtonTitle: String){
+        
+        
+        let alert = UIAlertView(title: _title, message: _message, delegate: nil, cancelButtonTitle: _cancelButtonTitle)
+        alert.show()
+        
+    }
+    
     //Pending Order PDF
     class func apiDownloadPendingOrder(strCin: String,strCurrDate: String,intOrderType: Int) -> String? {
         

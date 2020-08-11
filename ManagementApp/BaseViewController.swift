@@ -27,7 +27,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
     var docs = 2
     var vendorStory = false
     var salesStory = false
-    var salesAgent = 10
+    var salesAgent = 10000
     var ETT = 10
     
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             logoutSubSelector = -1
             aboutus = 8
             termofuse = 9
-            salesAgent = 10000
+            salesAgent = 10
             ETT = 11
         }
     }

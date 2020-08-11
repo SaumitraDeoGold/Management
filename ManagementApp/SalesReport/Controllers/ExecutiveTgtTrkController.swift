@@ -26,7 +26,7 @@ class ExecutiveTgtTrkController: BaseViewController {
     var getExecutiveApi = ""
     var strFromDate = ""
     var strToDate = ""
-    var  finYear = ""
+    var finYear = ""
     var quarterFinYear = ""
     var currDate = Date()
     var currQuarter = ""
@@ -34,7 +34,7 @@ class ExecutiveTgtTrkController: BaseViewController {
         ViewPagerTab(title: "QUARTER", image: nil),
         ViewPagerTab(title: "YEAR", image: nil),
     ]
-    var initTabPosition = 0
+    var initTabPosition = 1
     var salesExecutive = [SalexExecutive]()
     var salesExecutiveObj = [SalexExecutiveObj]()
     var salesExecutiveData = [SalesExData]() 
@@ -50,7 +50,8 @@ class ExecutiveTgtTrkController: BaseViewController {
         quarterFinYear = Utility.currFinancialYear()
         currQuarter = Utility.currQuarter()
         currDate = Date()
-        formatQuarter()
+        formatYear()
+        //formatQuarter()
         let tapDateDropDown = UITapGestureRecognizer(target: self, action: #selector(self.tapDateDropDown))
         vwDateDropDown.addGestureRecognizer(tapDateDropDown)
         let tapExecutiveName = UITapGestureRecognizer(target: self, action: #selector(self.clickedExNames))
@@ -269,7 +270,11 @@ class ExecutiveTgtTrkController: BaseViewController {
         let range = (strNumber).range(of: String(tempVar))
         let attribute = NSMutableAttributedString.init(string: strNumber as String)
         if temp > 0{
-            attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(named: "ColorGreen") as Any , range: range)
+            if currentYear > prevYear {
+               attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(named: "ColorGreen") as Any , range: range)
+            }else{
+             attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red as Any , range: range)
+            } 
         }else{
             attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red as Any , range: range)
         }
@@ -335,7 +340,7 @@ extension ExecutiveTgtTrkController: ViewPagerControllerDataSource {
     }
     
     func startViewPagerAtIndex() -> Int {
-        return 0
+        return 1
     }
 }
 

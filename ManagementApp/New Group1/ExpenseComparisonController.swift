@@ -131,6 +131,9 @@ class ExpenseComparisonController: UIViewController, PopupDateDelegate, UICollec
         case 2:
             dateTo = "03/31/2020"
             dateFrom = "04/01/2019"
+        case 3:
+            dateTo = "03/31/2021"
+            dateFrom = "04/01/2020"
         default:
             print("Error")
         }

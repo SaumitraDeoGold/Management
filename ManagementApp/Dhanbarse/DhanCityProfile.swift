@@ -15,7 +15,7 @@ struct DhanCityProfile: Codable {
 
 // MARK: - Datum
 struct DhanCityProfileObj: Codable {
-    let name, email, mobileNo, category: String?
+    let slNo, name, email, mobileNo, category: String?
     let address, city, state, district: String?
     let shopName, joinDate: String?
 }

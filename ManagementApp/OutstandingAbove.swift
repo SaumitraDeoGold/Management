@@ -21,6 +21,6 @@ struct OutstandingAboveObj: Decodable {
     let city: String?
     let statenm: String?
     let commercial: String?
-    let cin, totaloutstanding, countinvoice, historydays, partystatus: String?
+    let cin, totaloutstanding, countinvoice, historydays, partystatus, salesExecutive, mobile: String?
     let totalbalance, lastinvoicedate, lastpaymentdate, lastpaymentamt: String?
 }

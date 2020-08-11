@@ -18,4 +18,5 @@ struct CommonSearchObj : Codable {
     let name: String?
     let slno: String?
     let id: String?
+    
 }

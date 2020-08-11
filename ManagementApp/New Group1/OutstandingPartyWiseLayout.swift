@@ -178,10 +178,10 @@ extension OutstandingPartyWiseLayout {
         case 2:
             width = 150
         case 5:
-            width = 80
+            width = 150
             
         default:
-            width = 130
+            width = 150
         }
         
         //let size: CGSize = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)])

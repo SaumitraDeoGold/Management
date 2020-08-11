@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +17,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashPendingOrderView" customModule="ManagementApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashPendingOrderView" customModule="G_Family" customModuleProvider="target">
             <connections>
                 <outlet property="btnItemWisePdf" destination="nwz-Py-q8v" id="BUV-uj-K5F"/>
                 <outlet property="btnItemWisePending" destination="or9-3O-It5" id="hJM-OR-DAd"/>
@@ -37,7 +35,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending Order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DM6-pV-hGG">
-                    <rect key="frame" x="0.0" y="20" width="375" height="40"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                     <color key="backgroundColor" name="DashboardHeader"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="yuM-IJ-T4P"/>
@@ -47,7 +45,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ChM-px-lnR" userLabel="vwPendingOrderContent">
-                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <rect key="frame" x="0.0" y="40" width="375" height="627"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wf4-YB-oba" customClass="PieChartView" customModule="Charts">
                             <rect key="frame" x="10" y="10" width="355" height="200"/>
@@ -56,8 +54,8 @@
                                 <constraint firstAttribute="height" constant="200" id="AS7-tI-dIY"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyH-AW-7Pc" customClass="PaddingLabel" customModule="ManagementApp" customModuleProvider="target">
-                            <rect key="frame" x="20" y="230" width="27" height="14.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyH-AW-7Pc" customClass="PaddingLabel" customModule="G_Family" customModuleProvider="target">
+                            <rect key="frame" x="20" y="230" width="25.5" height="14"/>
                             <color key="backgroundColor" name="ColorGreen"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -77,8 +75,8 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q17-Hw-VrD" customClass="PaddingLabel" customModule="ManagementApp" customModuleProvider="target">
-                            <rect key="frame" x="351.5" y="230" width="3.5" height="14.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q17-Hw-VrD" customClass="PaddingLabel" customModule="G_Family" customModuleProvider="target">
+                            <rect key="frame" x="350" y="230" width="5" height="14"/>
                             <color key="backgroundColor" name="ColorGreen"/>
                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -99,7 +97,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFP-eA-MT0" userLabel="vwCatPieChartHeader">
-                            <rect key="frame" x="0.0" y="264.5" width="375" height="30"/>
+                            <rect key="frame" x="0.0" y="264" width="375" height="30"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="cEG-ok-T68">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
@@ -148,10 +146,10 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2yk-NQ-du9">
-                            <rect key="frame" x="0.0" y="294.5" width="375" height="312.5"/>
+                            <rect key="frame" x="0.0" y="294" width="375" height="333"/>
                             <subviews>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yGl-dl-vYS" customClass="IntrinsicTableView" customModule="ManagementApp" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="222.5"/>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yGl-dl-vYS" customClass="IntrinsicTableView" customModule="G_Family" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="243"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="K7J-9u-1v3"/>
@@ -159,9 +157,9 @@
                                     </connections>
                                 </tableView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dnx-CO-D0n">
-                                    <rect key="frame" x="0.0" y="222.5" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="243" width="375" height="90"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwz-Py-q8v" customClass="RoundButton" customModule="ManagementApp" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwz-Py-q8v" customClass="RoundButton" customModule="G_Family" customModuleProvider="target">
                                             <rect key="frame" x="5" y="5" width="180" height="35"/>
                                             <color key="backgroundColor" name="ColorRed"/>
                                             <constraints>
@@ -191,7 +189,7 @@
                                                 <action selector="clicked_item_wise_pdf:" destination="-1" eventType="touchUpInside" id="hNW-Bu-W1W"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ab0-Uk-T9B" customClass="RoundButton" customModule="ManagementApp" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ab0-Uk-T9B" customClass="RoundButton" customModule="G_Family" customModuleProvider="target">
                                             <rect key="frame" x="190" y="5" width="180" height="35"/>
                                             <color key="backgroundColor" name="ColorRed"/>
                                             <constraints>
@@ -221,7 +219,7 @@
                                                 <action selector="clicked_summary_wise_pdf:" destination="-1" eventType="touchUpInside" id="g3W-nc-A4r"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xv-uS-2UL" customClass="RoundButton" customModule="ManagementApp" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xv-uS-2UL" customClass="RoundButton" customModule="G_Family" customModuleProvider="target">
                                             <rect key="frame" x="190" y="45" width="180" height="35"/>
                                             <color key="backgroundColor" name="ColorRed"/>
                                             <constraints>
@@ -250,7 +248,7 @@
                                                 <action selector="clicked_summary_wise_pending:" destination="-1" eventType="touchUpInside" id="Dw7-En-YXI"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="or9-3O-It5" customClass="RoundButton" customModule="ManagementApp" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="or9-3O-It5" customClass="RoundButton" customModule="G_Family" customModuleProvider="target">
                                             <rect key="frame" x="5" y="45" width="180" height="35"/>
                                             <color key="backgroundColor" name="ColorRed"/>
                                             <constraints>
@@ -328,8 +326,8 @@
                         <constraint firstAttribute="trailing" secondItem="zFP-eA-MT0" secondAttribute="trailing" id="zas-b2-86E"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tvu-Zg-Ehy" customClass="NoDataView" customModule="ManagementApp" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="60" width="375" height="517"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tvu-Zg-Ehy" customClass="NoDataView" customModule="G_Family" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="40" width="375" height="537"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
@@ -356,7 +354,7 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_pdf_white" width="27" height="27"/>
+        <image name="icon_pdf_white" width="27.5" height="27.5"/>
         <namedColor name="ColorGreen">
             <color red="0.057000000029802322" green="0.63300001621246338" blue="0.29399999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

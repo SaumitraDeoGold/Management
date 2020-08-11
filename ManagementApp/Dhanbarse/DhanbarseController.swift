@@ -460,7 +460,7 @@ class DhanbarseController: BaseViewController, UICollectionViewDataSource, UICol
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "segueDhanbarse") {
             if let destination = segue.destination as? DhanbarseChildController{
-                destination.showState = showState
+                destination.showState = false
                 destination.fromDateString = fromDateString
                 destination.toDateString = toDateString
                 destination.dataToRecieve = [filteredItems[index]]

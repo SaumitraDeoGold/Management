@@ -18,7 +18,7 @@ struct highestdays: Codable {
 // MARK: - Datum
 struct highestdaysObj: Codable {
     let highdays: String?
-    let ledgerdownload, agingdownload: String?
+    let ledgerdownload, agingdownload, purchaseLedgerAmt, saleLedgerAmt, diffrence: String?
 }
 @IBDesignable class VendorPurchase: BaseCustomView {
     
@@ -58,14 +58,7 @@ struct highestdaysObj: Codable {
         ViewControllerUtils.sharedInstance.showLoader()
         apiVendorTotal()
         apiHighestDays()
-         
-        if stackView.subviews.count > 0 {
-            let separator = UIView()
-            separator.widthAnchor.constraint(equalToConstant: 1).isActive = true
-            separator.backgroundColor = .black
-            stackView.addSubview(separator)
-            separator.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 0.6).isActive = true
-        }
+        
         
         let initialData =  UserDefaults.standard.value(forKey: "initialData") as? Dictionary ?? [:]
         lastYearSalesApi = (initialData["baseApi"] as? String ?? "")+""+(initialData["lastYearSales"] as? String ?? "")

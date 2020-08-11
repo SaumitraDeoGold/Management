@@ -55,12 +55,12 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "AD0BEDAF-CB31-40B5-834B-0724DF15A866 - 72f2004ee3ff5cb3"
+                  uuid = "AD0BEDAF-CB31-40B5-834B-0724DF15A866 - c6f63e232cd8d7b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ManagementApp.MpinAlertController.apiNewUser() -&gt; ()"
-                  moduleName = "ManagementApp"
+                  symbolName = "G_Family.MpinAlertController.apiNewUser() -&gt; ()"
+                  moduleName = "G-Family"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/goldmedal/Documents/ios/G%20Parivaar%20ios%202/DealorsApp%202/ManagementApp/MpinAlertController.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -70,12 +70,12 @@
                   offsetFromSymbolStart = "6005">
                </Location>
                <Location
-                  uuid = "AD0BEDAF-CB31-40B5-834B-0724DF15A866 - 894a7846c5fcdbed"
+                  uuid = "AD0BEDAF-CB31-40B5-834B-0724DF15A866 - b19fb76e1c46603d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;) -&gt; () in ManagementApp.MpinAlertController.apiNewUser() -&gt; ()"
-                  moduleName = "ManagementApp"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;) -&gt; () in G_Family.MpinAlertController.apiNewUser() -&gt; ()"
+                  moduleName = "G-Family"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/goldmedal/Documents/ios/G%20Parivaar%20ios%202/DealorsApp%202/ManagementApp/MpinAlertController.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -118,40 +118,6 @@
             startingLineNumber = "211"
             endingLineNumber = "211"
             landmarkName = "apiNewUser()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "94AC7298-082D-48E0-BF8E-89FC497A440F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManagementApp/CategoryWiseCompareController.swift"
-            timestampString = "606733647.045452"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "updatePositionValue(value:position:from:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B0C3CBCF-2A86-44FE-88A5-A8D9FE768EB8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ManagementApp/CategoryWiseCompareController.swift"
-            timestampString = "606733647.0458651"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "updatePositionValue(value:position:from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -269,6 +235,150 @@
             startingLineNumber = "345"
             endingLineNumber = "345"
             landmarkName = "apiVendorPay()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "503402BA-F773-464A-9FE7-468167A5CFEC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManagementApp/Dhanbarse/DhanbarseChildController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "655"
+            endingLineNumber = "655"
+            landmarkName = "apiGetDhanDisData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7ED47907-40A8-414B-9EA9-968EA769E439"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManagementApp/Dhanbarse/DhanbarseChildController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "663"
+            endingLineNumber = "663"
+            landmarkName = "apiGetDhanDisData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82B31690-678C-46BF-80D1-AB3A68DA8C9D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManagementApp/VendorOrderTab/VendorItemWiseController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "718E6BFD-6AD3-4ED4-B100-57546387A8CA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManagementApp/VendorOrderTab/VendorItemWiseController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65AF941B-A216-4F01-9B37-DC98805098F7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManagementApp/VendorOrderTab/VendorItemWiseController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "apiLastDispatchedMaterial()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA09C75E-93FC-4358-8D19-BF2500E779B5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManagementApp/VendorOrderTab/VendorItemWiseController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "apiSalePending()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BA09C75E-93FC-4358-8D19-BF2500E779B5 - fd40114707329871"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "G_Family.VendorItemWiseController.apiSalePending() -&gt; ()"
+                  moduleName = "G-Family"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/goldmedal/Documents/ios/G%20Parivaar%20ios%202/DealorsApp%202/ManagementApp/VendorOrderTab/VendorItemWiseController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
+                  offsetFromSymbolStart = "2986">
+               </Location>
+               <Location
+                  uuid = "BA09C75E-93FC-4358-8D19-BF2500E779B5 - 34f8bfa92e4f4e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;) -&gt; () in G_Family.VendorItemWiseController.apiSalePending() -&gt; ()"
+                  moduleName = "G-Family"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/goldmedal/Documents/ios/G%20Parivaar%20ios%202/DealorsApp%202/ManagementApp/VendorOrderTab/VendorItemWiseController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "190"
+                  endingLineNumber = "190"
+                  offsetFromSymbolStart = "146">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3920FFE3-5E26-4460-A20D-8A49EFC92D9A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ManagementApp/VendorOrderTab/VendorItemWiseController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

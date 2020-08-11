@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="roboto.medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VendorPurchaseItemwise" customModule="G_Family" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="BY2-uM-PYC" id="8bX-Mg-2Br"/>
+                <outlet property="noDataView" destination="qOf-T3-PHf" id="ibb-jp-hGp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="IxD-ml-g4a">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XJt-hH-wMR">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fsa-7a-Yta">
+                            <rect key="frame" x="0.0" y="10" width="414" height="808"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highest Sale ItemWise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FsX-YP-7fI">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                    <color key="backgroundColor" name="DashboardHeader"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="3RM-od-ca2"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BY2-uM-PYC" customClass="VendorPurItemCollectionView" customModule="G_Family" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="40" width="414" height="768"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <collectionViewLayout key="collectionViewLayout" id="1Gc-z9-xMA" customClass="VendorBtmOrderLay" customModule="G_Family" customModuleProvider="target"/>
+                                    <cells>
+                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="" id="PW6-8k-fN6">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </view>
+                                        </collectionViewCell>
+                                    </cells>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="RaA-oD-DQd"/>
+                                        <outlet property="delegate" destination="-1" id="7oe-xu-g6A"/>
+                                    </connections>
+                                </collectionView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="FsX-YP-7fI" firstAttribute="leading" secondItem="fsa-7a-Yta" secondAttribute="leading" id="fUm-tU-7MA"/>
+                                <constraint firstItem="FsX-YP-7fI" firstAttribute="top" secondItem="fsa-7a-Yta" secondAttribute="top" id="mmj-Fs-CUb"/>
+                                <constraint firstAttribute="trailing" secondItem="FsX-YP-7fI" secondAttribute="trailing" id="xn8-Kb-neE"/>
+                            </constraints>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qOf-T3-PHf" customClass="NoDataView" customModule="G_Family" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="50" width="414" height="733"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="qOf-T3-PHf" firstAttribute="leading" secondItem="XJt-hH-wMR" secondAttribute="leading" id="GGV-Lq-669"/>
+                        <constraint firstAttribute="trailing" secondItem="fsa-7a-Yta" secondAttribute="trailing" id="T6h-jb-6CV"/>
+                        <constraint firstItem="fsa-7a-Yta" firstAttribute="top" secondItem="XJt-hH-wMR" secondAttribute="top" constant="10" id="TP2-yu-vtl"/>
+                        <constraint firstAttribute="trailing" secondItem="qOf-T3-PHf" secondAttribute="trailing" id="V7g-Ad-qSJ"/>
+                        <constraint firstItem="qOf-T3-PHf" firstAttribute="top" secondItem="fsa-7a-Yta" secondAttribute="top" constant="40" id="VGo-Jm-dNq"/>
+                        <constraint firstAttribute="bottom" secondItem="fsa-7a-Yta" secondAttribute="bottom" id="YIa-3Z-zco"/>
+                        <constraint firstItem="fsa-7a-Yta" firstAttribute="leading" secondItem="XJt-hH-wMR" secondAttribute="leading" id="eIx-4D-ZtK"/>
+                        <constraint firstItem="fsa-7a-Yta" firstAttribute="bottom" secondItem="qOf-T3-PHf" secondAttribute="bottom" constant="35" id="hv4-vj-pBr"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="XJt-hH-wMR" firstAttribute="leading" secondItem="ZSJ-rC-PzR" secondAttribute="leading" id="5we-wQ-zdS"/>
+                <constraint firstItem="ZSJ-rC-PzR" firstAttribute="bottom" secondItem="XJt-hH-wMR" secondAttribute="bottom" id="RfF-Dx-zQd"/>
+                <constraint firstItem="XJt-hH-wMR" firstAttribute="top" secondItem="ZSJ-rC-PzR" secondAttribute="top" id="UDz-M2-rbM"/>
+                <constraint firstItem="ZSJ-rC-PzR" firstAttribute="trailing" secondItem="XJt-hH-wMR" secondAttribute="trailing" id="hjK-HS-q3T"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZSJ-rC-PzR"/>
+            <point key="canvasLocation" x="-436" y="-373"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="DashboardHeader">
+            <color red="0.3580000102519989" green="0.3580000102519989" blue="0.3580000102519989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

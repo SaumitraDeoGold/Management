@@ -95,7 +95,7 @@ PODS:
   - SQLite.swift/standard (0.11.6)
   - SVPinView (1.0.7)
   - TTFortuneWheel (0.1.6)
-  - youtube-ios-player-helper (0.1.6)
+  - YoutubePlayer-in-WKWebView (0.3.4)
 
 DEPENDENCIES:
   - AMPopTip
@@ -112,10 +112,10 @@ DEPENDENCIES:
   - SQLite.swift (~> 0.11.5)
   - SVPinView (~> 1.0)
   - TTFortuneWheel
-  - youtube-ios-player-helper (~> 0.1)
+  - YoutubePlayer-in-WKWebView (~> 0.3.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AMPopTip
     - Charts
     - Crashlytics
@@ -141,7 +141,8 @@ SPEC REPOS:
     - SQLite.swift
     - SVPinView
     - TTFortuneWheel
-    - youtube-ios-player-helper
+  trunk:
+    - YoutubePlayer-in-WKWebView
 
 SPEC CHECKSUMS:
   AMPopTip: fc50f5cea7743d1a03076dbd6a1a270f2e6b6d55
@@ -169,8 +170,8 @@ SPEC CHECKSUMS:
   SQLite.swift: 46d890be8601964454bd3392527f863d1b802d45
   SVPinView: 6c1da57e4a1273298802f460c60511ba10f7c831
   TTFortuneWheel: d0a8a5fd7f9e1960bac81af76f3b62848de3c32e
-  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
+  YoutubePlayer-in-WKWebView: af2f5929fc78882d94bfdfeea999b661b78d9717
 
-PODFILE CHECKSUM: b82817e44be5ce286cb8659d9b1f201bcdddfc15
+PODFILE CHECKSUM: 439a9b00bd6e8b742202431c6206e39aef0ba6e7
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.9.3

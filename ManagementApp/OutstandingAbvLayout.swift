@@ -11,7 +11,7 @@ import UIKit
 
 class OutstandingAbvLayout: UICollectionViewLayout {
     
-    let numberOfColumns = 5
+    let numberOfColumns = 7
     var shouldPinFirstColumn = true
     var shouldPinFirstRow = true
     
@@ -178,10 +178,13 @@ extension OutstandingAbvLayout {
             width = 90
         case 4:
             // text = "Shree Khayati"
-            width = 120
+            width = 110
         case 5:
             // text = "Shree Khayati"
-            width = 150
+            width = 90
+        case 6:
+            // text = "Shree Khayati"
+            width = 110
         default:
             // text = "VPL000000000"
             width = 130

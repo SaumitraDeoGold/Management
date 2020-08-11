@@ -40,7 +40,7 @@ class DhanDisChildController: UIViewController, UICollectionViewDataSource, UICo
     var totalApproved = 0
     var totalRejected = 0
     var totalPending = 0
-    var showDist = true
+    var showDist = false
     var cellContentIdentifier = "\(CollectionViewCell.self)"
     let colorArray = [UIColor.red, UIColor.green, UIColor.yellow, UIColor.orange, UIColor.brown, UIColor.yellow, UIColor.purple, UIColor.yellow, UIColor.magenta,UIColor.darkGray,UIColor.red, UIColor.green, UIColor.blue, UIColor.orange, UIColor.brown, UIColor.cyan, UIColor.purple, UIColor.yellow, UIColor.magenta,UIColor.darkGray]
     var fromDateString = ""
@@ -72,7 +72,7 @@ class DhanDisChildController: UIViewController, UICollectionViewDataSource, UICo
         fromDate.setTitle("From Date : \(getIndianDate(value: fromDateString))", for: .normal)
         toDate.setTitle("To Date : \(getIndianDate(value: toDateString))", for: .normal)
         ViewControllerUtils.sharedInstance.showLoader()
-        apiGetDistData()
+        apiGetCityData()
     }
     
     @IBAction func sort(_ sender: Any) {

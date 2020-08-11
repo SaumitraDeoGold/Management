@@ -26,12 +26,48 @@ class CityChildController: UIViewController, UICollectionViewDataSource, UIColle
     var districtId = 0
     var cat = ""
     var approveStatus = ""
-
+    var districtName = ""
+    var catSelected = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ViewControllerUtils.sharedInstance.showLoader()
-        apiGetCitywise()
+        if cat == "8"{
+            catSelected = "Electrician"
+        }else if cat == "11"{
+            catSelected = "Retailer"
+        }else{
+            catSelected = "CounterBoy"
+        }
+        if districtName == ""{
+            self.title = "\(dataToRecieve[0].city!) -> \(approveStatus) -> \(catSelected)"
+            apiGetCitywise()
+        }else{
+            self.title = "\(districtName) -> \(approveStatus) -> \(catSelected)"
+            apiGetDistwise()
+        }
+        
  
+    }
+    
+    func getIdiotsDateFormat(value: String) -> String{
+        let inFormatDate = value.split{$0 == "/"}.map(String.init)
+        let temp = "\(inFormatDate[2])-\(inFormatDate[1])-\(inFormatDate[0])"
+        return temp
+    }
+    
+    func dialNumber(number : String) {
+        
+        if let url = URL(string: "tel://\(number)"),
+            UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler:nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        } else {
+            // add error message here
+        }
     }
     
     //CollectionView Functions......
@@ -121,17 +157,30 @@ class CityChildController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let destViewController = storyboard.instantiateViewController(withIdentifier: "DhanProfileViewController") as! DhanProfileViewController
-//        destViewController.mobile = filteredItems[indexPath.section-1].mobileNo!
-//        parent?.navigationController!.pushViewController(destViewController, animated: true)
+        if indexPath.row == 9{
+            dialNumber(number: filteredItems[indexPath.section-1].mobileNo!)
+        }else if indexPath.row == 8{
+            sendMail(email: filteredItems[indexPath.section-1].email!)
+        }else if indexPath.section != 0 && indexPath.section != filteredItems.count + 1{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let destViewController = storyboard.instantiateViewController(withIdentifier: "DhanProfileViewController") as! DhanProfileViewController
+            destViewController.mobile = filteredItems[indexPath.section-1].mobileNo!
+            let _ : UIViewController = self.navigationController!.topViewController!
+            self.navigationController!.pushViewController(destViewController, animated: true)
+        }
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let destViewController = storyboard.instantiateViewController(withIdentifier: "DhanProfileViewController") as! DhanProfileViewController
-        destViewController.mobile = filteredItems[indexPath.section-1].mobileNo!
-        let _ : UIViewController = self.navigationController!.topViewController!
-        self.navigationController!.pushViewController(destViewController, animated: true)
     }
+    
+    func sendMail(email : String){
+        if let url = URL(string: "mailto:\(email)") {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+     
     
     //Auto-Complete Function...
     @objc func searchRecords(_ textfield: UITextField){
@@ -153,11 +202,40 @@ class CityChildController: UIViewController, UICollectionViewDataSource, UIColle
     
     func apiGetCitywise(){
         
-        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret","Cat":cat,"CityName":dataToRecieve[0].city!,"Fromdate":fromdate,"Todate":todate,"ApproveStatus":"Pending","Districtid":districtId]
+        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret","Cat":cat,"CityName":dataToRecieve[0].city!,"Fromdate":fromdate,"Todate":todate,"ApproveStatus":approveStatus,"Districtid":districtId]
         print("apiGetCitywise DETAILS : \(json)")
         let manager =  DataManager.shared
         
         manager.makeAPICall(url: "https://test2.goldmedalindia.in/api/getuseraprstatuscitywisedetails", params: json, method: .POST, success: { (response) in
+            let data = response as? Data
+            
+            do {
+                self.cityChild = try JSONDecoder().decode([DhanCityProfile].self, from: data!)
+                self.cityChildObj = self.cityChild[0].data
+                self.filteredItems = self.cityChild[0].data
+                self.tempArray = self.cityChild[0].data
+                self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
+                self.CollectionView.reloadData()
+                self.CollectionView.collectionViewLayout.invalidateLayout()
+                ViewControllerUtils.sharedInstance.removeLoader()
+            } catch let errorData {
+                print(errorData.localizedDescription)
+                ViewControllerUtils.sharedInstance.removeLoader()
+            }
+        }) { (Error) in
+            print(Error?.localizedDescription as Any)
+            ViewControllerUtils.sharedInstance.removeLoader()
+        }
+        
+    }
+    
+    func apiGetDistwise(){
+        
+        let json: [String: Any] = ["CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String,"ClientSecret":"ClientSecret","Cat":cat,"Districtname":districtName,"Fromdate":"2019-03-01","ToDate":"2020-04-01","ApproveStatus":approveStatus]
+        print("apiGetDistwise DETAILS : \(json)")
+        let manager =  DataManager.shared
+        
+        manager.makeAPICall(url: "https://test2.goldmedalindia.in/api/getUserapprovalstatusanddistrictwisedetails", params: json, method: .POST, success: { (response) in
             let data = response as? Data
             
             do {

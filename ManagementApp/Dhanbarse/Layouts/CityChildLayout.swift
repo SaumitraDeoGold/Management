@@ -171,16 +171,16 @@ extension CityChildLayout {
         var width = 0
         switch columnIndex {
         case 0:
-            width = Int((screenWidth/3)-1)
-        case 1:
-            width = Int((screenWidth/3)-1)
-        case 2:
-            width = Int((screenWidth/3)-1)
-        case 3:
-            width = Int((screenWidth/3)-1)
+            width = 150
+        case 6:
+            width = 120
+        case 7:
+            width = 150
+        case 8:
+            width = 100
             
         default:
-            width = Int((screenWidth/3)-1)
+            width = 85
         }
         
         //let size: CGSize = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)])

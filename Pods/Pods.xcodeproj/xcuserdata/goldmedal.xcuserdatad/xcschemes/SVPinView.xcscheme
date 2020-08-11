@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A54145EC91FEC3643F70337EEBB51FB6"
+               BlueprintIdentifier = "8C48B6722F02A3772707DAF5E1572C89"
                BuildableName = "SVPinView.framework"
                BlueprintName = "SVPinView"
                ReferencedContainer = "container:Pods.xcodeproj">

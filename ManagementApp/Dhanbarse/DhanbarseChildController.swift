@@ -39,7 +39,7 @@ class DhanbarseChildController: UIViewController, UICollectionViewDataSource, UI
     var totalApproved = 0
     var totalRejected = 0
     var totalPending = 0
-    var showState = true
+    var showState = false
     var cellContentIdentifier = "\(CollectionViewCell.self)"
     let colorArray = [UIColor.red, UIColor.green, UIColor.yellow, UIColor.orange, UIColor.brown, UIColor.yellow, UIColor.purple, UIColor.yellow, UIColor.magenta,UIColor.darkGray,UIColor.red, UIColor.green, UIColor.blue, UIColor.orange, UIColor.brown, UIColor.cyan, UIColor.purple, UIColor.yellow, UIColor.magenta,UIColor.darkGray]
     var fromDateString = ""
@@ -57,6 +57,7 @@ class DhanbarseChildController: UIViewController, UICollectionViewDataSource, UI
     var totalCounterboy = 0
     var index = 0
     var sumOfTotals = 0
+    var catSelected = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,12 +70,12 @@ class DhanbarseChildController: UIViewController, UICollectionViewDataSource, UI
         fromDate.setTitle("From Date : \(getIndianDate(value: fromDateString))", for: .normal)
         toDate.setTitle("To Date : \(getIndianDate(value: toDateString))", for: .normal)
         ViewControllerUtils.sharedInstance.showLoader()
-        apiGetDhanData()
+        apiGetDhanDisData()
     }
     
     //SORT....
     
-    @IBAction func sort(_ sender: Any) {
+    @objc func sort(_ sender: Any) {
         let sb = UIStoryboard(name: "Sorting", bundle: nil)
         let popup = sb.instantiateInitialViewController()! as! SortViewController
         popup.modalPresentationStyle = .overFullScreen
@@ -170,6 +171,7 @@ class DhanbarseChildController: UIViewController, UICollectionViewDataSource, UI
         let temp = "\(inFormatDate[1])/\(inFormatDate[0])/\(inFormatDate[2])"
         return temp
     }
+    
     
     //Tab Click Func...
     @IBAction func clickedState(_ sender: Any) {
@@ -492,9 +494,19 @@ class DhanbarseChildController: UIViewController, UICollectionViewDataSource, UI
             popup.from = "dist"
             self.present(popup, animated: true)
         }
-        if !showState && indexPath.section > 0 && indexPath.section != (filteredDis.count+1){
+        if !showState && indexPath.section > 0 && indexPath.section != (filteredDis.count+1) && indexPath.row == 0{
             index = (indexPath.section-1)
             performSegue(withIdentifier: "segueDistrict", sender: self)
+        }else if indexPath.row != 0 && !showState && indexPath.section > 0 && indexPath.section != (filteredDis.count+1){
+            if indexPath.row == 1{
+                catSelected = "8"
+            }else if indexPath.row == 2{
+                catSelected = "11"
+            }else{
+                catSelected = "9"
+            }
+            index = (indexPath.section-1)
+            performSegue(withIdentifier: "segueDistEmployee", sender: self)
         }
     }
     
@@ -514,12 +526,22 @@ class DhanbarseChildController: UIViewController, UICollectionViewDataSource, UI
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "segueDistrict") {
             if let destination = segue.destination as? DhanDisChildController{
-                destination.showDist = !showState
+                destination.showDist = false
                 destination.fromDateString = fromDateString
                 destination.toDateString = toDateString
                 destination.dataToRecieve = [filteredDis[index]]
                 destination.statename = dataToRecieve[0].stateName!
                 
+            }else{
+                
+            }
+        } else if (segue.identifier == "segueDistEmployee") {
+            if let destination = segue.destination as? CityChildController{
+                destination.districtName = filteredDis[index].district!
+                destination.fromdate = fromDateString
+                destination.todate = toDateString
+                destination.cat = catSelected
+                destination.approveStatus = status
             }else{
                 
             }

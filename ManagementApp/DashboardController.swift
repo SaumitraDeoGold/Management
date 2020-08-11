@@ -138,7 +138,8 @@ extension DashboardController: ViewPagerControllerDataSource {
         }
         else if position == 1
         {
-            vc = self.storyboard?.instantiateViewController(withIdentifier: "DashboardOrder") as! DashboardOrderViewController
+            let storyboard = UIStoryboard(name: "MainDashboard", bundle: nil)
+            vc = storyboard.instantiateViewController(withIdentifier: "MainOrderController") as! MainOrderController
         }
         else if position == 2
         {
