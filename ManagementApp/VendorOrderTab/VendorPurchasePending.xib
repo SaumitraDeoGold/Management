@@ -16,7 +16,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VendorPurchasePending" customModule="G_Family" customModuleProvider="target">
             <connections>
-                <outlet property="btnItemWisePdf" destination="IIL-XH-flh" id="bKZ-6p-UxE"/>
                 <outlet property="btnSummaryWisePdf" destination="fLe-nB-dDi" id="e25-k3-4uc"/>
                 <outlet property="collectionView" destination="PVH-Ye-hx0" id="fef-jc-fGR"/>
                 <outlet property="noDataView" destination="Ytd-EN-ka4" id="lV9-9H-2O0"/>
@@ -65,45 +64,15 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmO-p9-tM5">
                                     <rect key="frame" x="0.0" y="763" width="414" height="45"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIL-XH-flh" customClass="RoundButton" customModule="G_Family" customModuleProvider="target">
-                                            <rect key="frame" x="5" y="5" width="199.5" height="35"/>
-                                            <color key="backgroundColor" name="ColorRed"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="Zst-9j-OVL"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
-                                            <inset key="imageEdgeInsets" minX="10" minY="5" maxX="0.0" maxY="5"/>
-                                            <state key="normal" title="Item Wise Pending" image="icon_pdf_white"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="17.5"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                    <color key="value" name="LoginButton"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                    <size key="value" width="0.0" height="3"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                    <real key="value" value="3"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                    <real key="value" value="2"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="clicked_itemwise:" destination="-1" eventType="touchUpInside" id="o4L-64-PbH"/>
-                                            </connections>
-                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLe-nB-dDi" customClass="RoundButton" customModule="G_Family" customModuleProvider="target">
-                                            <rect key="frame" x="209.5" y="5" width="199.5" height="35"/>
+                                            <rect key="frame" x="5" y="5" width="404" height="35"/>
                                             <color key="backgroundColor" name="ColorRed"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="35" id="9le-oC-6an"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
                                             <inset key="imageEdgeInsets" minX="10" minY="5" maxX="0.0" maxY="5"/>
-                                            <state key="normal" title="Summary Pending" image="icon_pdf_white"/>
+                                            <state key="normal" title="Summary Pending"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                     <real key="value" value="17.5"/>
@@ -129,13 +98,9 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="fLe-nB-dDi" secondAttribute="trailing" constant="5" id="4oh-pR-rsd"/>
-                                        <constraint firstAttribute="bottom" secondItem="IIL-XH-flh" secondAttribute="bottom" constant="5" id="QhF-bY-2Om"/>
-                                        <constraint firstItem="IIL-XH-flh" firstAttribute="leading" secondItem="dmO-p9-tM5" secondAttribute="leading" constant="5" id="SIq-GM-tME"/>
                                         <constraint firstAttribute="bottom" secondItem="fLe-nB-dDi" secondAttribute="bottom" constant="5" id="Y3J-BH-myS"/>
-                                        <constraint firstItem="fLe-nB-dDi" firstAttribute="leading" secondItem="IIL-XH-flh" secondAttribute="trailing" constant="5" id="Z7n-tW-on2"/>
-                                        <constraint firstItem="fLe-nB-dDi" firstAttribute="leading" secondItem="IIL-XH-flh" secondAttribute="trailing" constant="5" id="bW5-Z8-UYu"/>
-                                        <constraint firstItem="IIL-XH-flh" firstAttribute="width" secondItem="fLe-nB-dDi" secondAttribute="width" id="g9t-24-GeL"/>
                                         <constraint firstAttribute="height" constant="45" id="lJr-uF-fHb"/>
+                                        <constraint firstItem="fLe-nB-dDi" firstAttribute="leading" secondItem="dmO-p9-tM5" secondAttribute="leading" constant="5" id="n6v-A4-oAm"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -175,7 +140,6 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_pdf_white" width="27.5" height="27.5"/>
         <namedColor name="ColorRed">
             <color red="0.90700000524520874" green="0.21799999475479126" blue="0.21899999678134918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

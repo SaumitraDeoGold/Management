@@ -163,10 +163,10 @@ extension VendorOrderTabLay {
         switch columnIndex {
         case 0:
             // text = "10/01/2018   pdf  "
-            width = 160
+            width = 170
         case 1:
             // text = "10000000"
-            width = Int((screenWidth/3)-1)
+            width = 100
         case 2:
             //  text = "I/VA/18-19/00000"
             width = Int((screenWidth/3)-1)

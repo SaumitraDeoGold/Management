@@ -13,13 +13,13 @@ struct VendorOrderBottomData: Codable {
 
 // MARK: - Datum
 struct VendorOrderBottomObj: Codable {
-    let branchIn: String?
+    let branchIn, itemslno: String?
     let invoiceNo, invoiceDate, poNo, receivedDate: String?
     let itemCode: String?
     let hsnCode: String?
     let itemDescription: String?
     let subcategory: String?
-    let quantity, offerPrice, basicAmt, exciseAmt: String?
+    let quantity, offerPrice, basicAmt, exciseAmt, totalQty: String?
     let taxAmt, finalAmt: String?
 }
 
@@ -74,7 +74,7 @@ import UIKit
         
     }
     
-    @IBAction func clicked_itemwise(_ sender: UIButton) {
+   @IBAction func clicked_itemwise(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "VendorPurchase", bundle: nil)
         let destViewController = storyboard.instantiateViewController(withIdentifier: "VendorItemWisePending") as! VendorItemWiseController
         destViewController.fromPurchase = true
@@ -154,7 +154,7 @@ extension VendorOrderBottom: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

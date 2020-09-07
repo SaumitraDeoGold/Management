@@ -190,9 +190,9 @@ extension VendorPurchasePending: UICollectionViewDataSource {
                 cell.contentLabel.text = "Division"
             }else if indexPath.row == 4 {
                 cell.contentLabel.text = "Category"
-            } else if indexPath.row == 2 {
+            } else if indexPath.row == 3 {
                 cell.contentLabel.text = "SubCategory"
-            }else if indexPath.row == 3 {
+            }else if indexPath.row == 2 {
                 cell.contentLabel.text = "Pending Days"
             }
         }
@@ -220,9 +220,9 @@ extension VendorPurchasePending: UICollectionViewDataSource {
                     cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].division ?? "-"
                 } else if indexPath.row == 4 {
                     cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].category ?? "-"
-                } else if indexPath.row == 2 {
-                    cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].subcategory ?? "-"
                 } else if indexPath.row == 3 {
+                    cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].subcategory ?? "-"
+                } else if indexPath.row == 2 {
                     cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].pendingDays ?? "-"
                 }
             }

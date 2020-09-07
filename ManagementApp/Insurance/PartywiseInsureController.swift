@@ -83,7 +83,7 @@ class PartywiseInsureController: UIViewController, UICollectionViewDataSource, U
             }
             switch indexPath.row{
             case 0:
-                cell.contentLabel.text = "Branch Name"
+                cell.contentLabel.text = "Party Name"
             case 1:
                 cell.contentLabel.text = "Secure Amt"
             case 2:
@@ -181,7 +181,7 @@ class PartywiseInsureController: UIViewController, UICollectionViewDataSource, U
     
     //API CALL...
     func apiInsuranceParty(){
-        let json: [String: Any] = ["ClientSecret":"ClientSecret","CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Branch":dataToReceive[0].branchid,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String]
+        let json: [String: Any] = ["ClientSecret":"ClientSecret","CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Branch":dataToReceive[0].branchid!,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String]
         let manager =  DataManager.shared
         print("Params Sent : \(json)")
         manager.makeAPICall(url: apiInsureParty, params: json, method: .POST, success: { (response) in

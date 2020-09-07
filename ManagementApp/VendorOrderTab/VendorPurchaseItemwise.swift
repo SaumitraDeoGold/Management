@@ -35,7 +35,7 @@ import UIKit
         strCin = loginData["userlogid"] as? String ?? ""
         
         //let initialData =  UserDefaults.standard.value(forKey: "initialData") as? Dictionary ?? [:]
-        vendorListApi = "https://test2.goldmedalindia.in/api/getvendorhighestsalesItemwise"
+        vendorListApi = "https://test2.goldmedalindia.in/api/getvendorhighestpurchaseitemwise"
         //(initialData["baseApi"] as? String ?? "")+""+(initialData["dispatchedMaterial"] as? String ?? "")
         
         let currDate = Date()
@@ -59,7 +59,7 @@ import UIKit
     @IBAction func clicked_itemwise(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "VendorPurchase", bundle: nil)
         let destViewController = storyboard.instantiateViewController(withIdentifier: "VendorItemWisePending") as! VendorItemWiseController
-        destViewController.fromPurchase = true
+        destViewController.fromPurchase = false
         //destViewController.strToDate = getIdiotsDateFormat(value: strToDate)
         parentViewController?.navigationController!.pushViewController(destViewController, animated: true)
     }
@@ -136,7 +136,7 @@ extension VendorPurchaseItemwise: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -195,20 +195,21 @@ extension VendorPurchaseItemwise: UICollectionViewDataSource {
                 } else if indexPath.row == 1 {
                     cell.contentLabel.text = self.vendorListData[indexPath.section-1].subcategory ?? "-"
                 } else if indexPath.row == 2 {
-                    cell.contentLabel.text = vendorListData[indexPath.row].quantity
+                    cell.contentLabel.text = vendorListData[indexPath.section-1].totalQty
                 } else if indexPath.row == 5 {
                     cell.contentLabel.text = self.vendorListData[indexPath.section-1].offerPrice ?? "-"
                 } else if indexPath.row == 3 {
-                    if let basicAmt = vendorListData[indexPath.row].basicAmt as? String {
+                    if let basicAmt = vendorListData[indexPath.section-1].basicAmt  {
                         cell.contentLabel.text = Utility.formatRupee(amount: Double(basicAmt)!)
                     }
                     //cell.contentLabel.text = self.vendorListData[indexPath.section-1].basicAmt ?? "-"
-                } else if indexPath.row == 4 {
-                    if let finalAmt = vendorListData[indexPath.row].finalAmt as? String {
-                        cell.contentLabel.text = Utility.formatRupee(amount: Double(finalAmt)!)
-                    }
-                    //cell.contentLabel.text = self.vendorListData[indexPath.section-1].finalAmt ?? "-"
                 }
+//                 else if indexPath.row == 4 {
+//                    if let finalAmt = vendorListData[indexPath.section-1].finalAmt as? String {
+//                        cell.contentLabel.text = Utility.formatRupee(amount: Double(finalAmt)!)
+//                    }
+//                    //cell.contentLabel.text = self.vendorListData[indexPath.section-1].finalAmt ?? "-"
+//                }
             }
         }
         

@@ -15,7 +15,7 @@ struct EmpJoinLeave: Codable {
 
 // MARK: - Datum
 struct EmpJoinLeaveObj: Codable {
-    let employeeName, employeeCode, mobileNumber, departmentName: String?
+    let employeeName, employeeCode, mobileNumber, departmentName, location: String?
     let designationName, branchname, joinDate, workYear: String?
     let slno: Int?
 }

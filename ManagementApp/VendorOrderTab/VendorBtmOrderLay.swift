@@ -9,7 +9,7 @@
 import Foundation
 class VendorBtmOrderLay: UICollectionViewLayout {
     
-    let numberOfColumns = 5
+    let numberOfColumns = 4
     var shouldPinFirstColumn = true
     var shouldPinFirstRow = true
     
@@ -163,7 +163,7 @@ extension VendorBtmOrderLay {
         switch columnIndex {
         case 0:
             // text = "10/01/2018   pdf  "
-            width = 160
+            width = 170
         case 1:
             // text = "10000000"
             width = 100

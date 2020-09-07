@@ -59,6 +59,7 @@ class SearchSupplierController: BaseViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         appDelegate.sendCin = supplierArray[indexPath.item].slno!
+        appDelegate.partyName = supplierArray[indexPath.item].suppliernm!
         //        weak var pvc = self.presentingViewController
         //        self.dismiss(animated: false, completion: {
         //            let OldDashboard =  self.storyboard?.instantiateViewController(withIdentifier: "OldDashboard") as! OldDashboardController

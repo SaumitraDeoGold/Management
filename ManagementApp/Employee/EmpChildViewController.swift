@@ -82,9 +82,9 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
             vwHeaderBar.isHidden = true
             vwBarChart.isHidden = true
         }
-        noOfColumns = 7
+        noOfColumns = 8
         if joinleave {
-            noOfColumns = 8
+            noOfColumns = 9
             if type == 1 {
               self.title = "Joining Data"
             }else if type == 2{
@@ -95,7 +95,7 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
                 getMonthlyCount()
             }
         }else if location {
-            noOfColumns = 9
+            noOfColumns = 10
             self.title = self.dataForLocn[0].locationName
             getLocationwise()
         }else if deptwise {
@@ -112,11 +112,11 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiEmployeeDetails = "https://api.goldmedalindia.in/api/getEmployeeListDetails"
-        apiDeptDetails = "https://api.goldmedalindia.in/api/getdepartmentwiseempdetail"
-        apiDesigDetails = "https://api.goldmedalindia.in/api/getdesignationwiseempdetail"
-        apiJoinLeave = "https://api.goldmedalindia.in/api/getjoindatewiseempdata"
-        apiEmpLocn = "https://api.goldmedalindia.in/api/getlocationEmployeeListDetails"
+        apiEmployeeDetails = "https://test2.goldmedalindia.in/api/getEmployeeListDetails"
+        apiDeptDetails = "https://test2.goldmedalindia.in/api/getdepartmentwiseempdetail"
+        apiDesigDetails = "https://test2.goldmedalindia.in/api/getdesignationwiseempdetail"
+        apiJoinLeave = "https://test2.goldmedalindia.in/api/getjoindatewiseempdata"
+        apiEmpLocn = "https://test2.goldmedalindia.in/api/getlocationEmployeeListDetails"
         apiEmpMonthly = "https://api.goldmedalindia.in/api/getmonthwiseempjoincount"
         //self.noDataView.hideView(view: self.noDataView)
         ViewControllerUtils.sharedInstance.showLoader()
@@ -364,12 +364,14 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
             case 4:
                 cell.contentLabel.attributedText = location ? setText(value: "Department") :  joinleave ? setText(value: "Department") : setText(value: "Joining Date")
             case 5:
-                cell.contentLabel.attributedText = location ? setText(value: "Designation") :  joinleave ? setText(value: "Joining Date") : setText(value: "Work Exp")
+                cell.contentLabel.attributedText = setText(value: "Location")
             case 6:
-                cell.contentLabel.attributedText = location ? setText(value: "Joining Date") :  joinleave ? setText(value: "Work Exp") : setText(value: "Mobile No")
+                cell.contentLabel.attributedText = location ? setText(value: "Designation") :  joinleave ? setText(value: "Joining Date") : setText(value: "Working Period")
             case 7:
-                cell.contentLabel.attributedText = location ? setText(value: "Work Exp") : setText(value: "Mobile No")
+                cell.contentLabel.attributedText = location ? setText(value: "Joining Date") :  joinleave ? setText(value: "Working Period") : setText(value: "Mobile No")
             case 8:
+                cell.contentLabel.attributedText = location ? setText(value: "Working Period") : setText(value: "Mobile No")
+            case 9:
                 cell.contentLabel.attributedText = setText(value: "Mobile No")
              
             default:
@@ -397,20 +399,22 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
             case 4:
                 cell.contentLabel.attributedText = location ? setText(value: filteredLocn[indexPath.section-1].department ?? "-") : deptwise ? setText(value: filteredDept[indexPath.section-1].joinDate ?? "-") : desigwise ? setText(value: filteredDesig[indexPath.section-1].joinDate ?? "-") :  joinleave ? setText(value: filteredJoin[indexPath.section-1].departmentName ?? "-") : setText(value: filteredItems[indexPath.section-1].joinDate ?? "-")
             case 5:
-                cell.contentLabel.attributedText = location ? setText(value: filteredLocn[indexPath.section-1].employeeCode ?? "-") : deptwise ? setText(value: filteredDept[indexPath.section-1].workYear ?? "-") : desigwise ? setText(value: filteredDesig[indexPath.section-1].workYear ?? "-") :  joinleave ? setText(value: filteredJoin[indexPath.section-1].joinDate ?? "-") : setText(value: filteredItems[indexPath.section-1].workYear ?? "-")
+                cell.contentLabel.attributedText = location ? setText(value: filteredLocn[indexPath.section-1].location ?? "-") : deptwise ? setText(value: filteredDept[indexPath.section-1].location ?? "-") : desigwise ? setText(value: filteredDesig[indexPath.section-1].location ?? "-") :  joinleave ? setText(value: filteredJoin[indexPath.section-1].location ?? "-") : setText(value: filteredItems[indexPath.section-1].location ?? "-")
             case 6:
+                cell.contentLabel.attributedText = location ? setText(value: filteredLocn[indexPath.section-1].employeeCode ?? "-") : deptwise ? setText(value: filteredDept[indexPath.section-1].workYear ?? "-") : desigwise ? setText(value: filteredDesig[indexPath.section-1].workYear ?? "-") :  joinleave ? setText(value: filteredJoin[indexPath.section-1].joinDate ?? "-") : setText(value: filteredItems[indexPath.section-1].workYear ?? "-")
+            case 7:
                 let attributedString = NSAttributedString(string: NSLocalizedString(location ?filteredLocn[indexPath.section-1].mobileNumber! : deptwise ?filteredDept[indexPath.section-1].mobileNumber! : (desigwise ? filteredDesig[indexPath.section-1].mobileNumber :  joinleave ? filteredJoin[indexPath.section-1].mobileNumber : filteredItems[indexPath.section-1].mobileNumber!)!, comment: ""), attributes:[
                     NSAttributedString.Key.foregroundColor : UIColor(named: "ColorBlue")!,
                     NSAttributedString.Key.underlineStyle:1.0
                     ])
                 cell.contentLabel.attributedText = location ? setText(value: filteredLocn[indexPath.section-1].joinDate ?? "-") : joinleave ? setText(value: filteredJoin[indexPath.section-1].workYear ?? "-") : attributedString
-            case 7:
+            case 8:
                 let attributedString = NSAttributedString(string: NSLocalizedString((location ?filteredLocn[indexPath.section-1].mobileNumber! : filteredJoin[indexPath.section-1].mobileNumber!), comment: ""), attributes:[
                     NSAttributedString.Key.foregroundColor : UIColor(named: "ColorBlue")!,
                     NSAttributedString.Key.underlineStyle:1.0
                     ])
                 cell.contentLabel.attributedText = location ? setText(value: filteredLocn[indexPath.section-1].workYear ?? "-") : attributedString
-            case 8:
+            case 9:
                 let attributedString = NSAttributedString(string: NSLocalizedString((filteredLocn[indexPath.section-1].mobileNumber!), comment: ""), attributes:[
                     NSAttributedString.Key.foregroundColor : UIColor(named: "ColorBlue")!,
                     NSAttributedString.Key.underlineStyle:1.0
@@ -463,7 +467,7 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
             }
             
         }else{
-            if indexPath.row == 6{
+            if indexPath.row == 7{
                 if deptwise{
                     dialNumber(number: filteredDept[indexPath.section-1].mobileNumber!)
                 }else if desigwise{
@@ -472,11 +476,11 @@ class EmpChildViewController: UIViewController, UICollectionViewDataSource, UICo
                     dialNumber(number: filteredItems[indexPath.section-1].mobileNumber!)
                 }
                 
-            }else if indexPath.row == 6{
-                dialNumber(number: filteredItems[indexPath.section-1].mobileNumber!)
             }else if indexPath.row == 7{
-                dialNumber(number: filteredJoin[indexPath.section-1].mobileNumber!)
+                dialNumber(number: filteredItems[indexPath.section-1].mobileNumber!)
             }else if indexPath.row == 8{
+                dialNumber(number: filteredJoin[indexPath.section-1].mobileNumber!)
+            }else if indexPath.row == 9{
                 dialNumber(number: filteredLocn[indexPath.section-1].mobileNumber!)
             }
         }

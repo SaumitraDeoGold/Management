@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountsDetailsController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class AccountsDetailsController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, PopupDateDelegate {
     
     //OUTLETS...
     @IBOutlet weak var CollectionView: UICollectionView!
@@ -146,6 +146,14 @@ class AccountsDetailsController: UIViewController, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == self.filteredItems.count + 1{
             
+        }else if indexPath.row == 0 && indexPath.section != 0{
+            print("HERE IT IS")
+            let sb = UIStoryboard(name: "NewPopup", bundle: nil)
+            let popup = sb.instantiateInitialViewController()! as! NewPopupViewController
+            popup.modalPresentationStyle = .overFullScreen
+            popup.delegate = self
+            popup.partyId = filteredItems[indexPath.section-1].cin!
+            self.present(popup, animated: true)
         }else{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.sendCin = filteredItems[indexPath.section-1].cin!
@@ -154,7 +162,8 @@ class AccountsDetailsController: UIViewController, UICollectionViewDataSource, U
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if let index = CollectionView.indexPathsForSelectedItems?.first{
-            if index.section == self.filteredItems.count + 1{
+            
+            if index.section == self.filteredItems.count + 1 || index.row == 0{
                 return false
             }else{
                 return true 

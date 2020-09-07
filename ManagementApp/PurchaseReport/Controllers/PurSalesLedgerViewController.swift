@@ -136,7 +136,7 @@ class PurSalesLedgerViewController: BaseViewController, UICollectionViewDataSour
         }else if indexPath.section != 0 && indexPath.section != filteredItems.count + 1{
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.sendCin = filteredItems[indexPath.section-1].purchasePartyId!
-            appDelegate.partyName = filteredItems[indexPath.item].purchasePartyName!
+            appDelegate.partyName = filteredItems[indexPath.section-1].purchasePartyName!
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let destViewController : UIViewController = storyboard.instantiateViewController(withIdentifier: "NewDashBoard")
             let topViewController : UIViewController = self.navigationController!.topViewController!

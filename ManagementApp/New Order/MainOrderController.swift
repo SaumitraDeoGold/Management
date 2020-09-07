@@ -111,9 +111,9 @@ class MainOrderController: UIViewController, UICollectionViewDataSource, UIColle
             case 3:
                 cell.contentLabel.text = "Lights"
             case 4:
-                cell.contentLabel.text = "Mcb & Dbs"
-            case 5:
                 cell.contentLabel.text = "Pipes & Fittings"
+            case 5:
+                cell.contentLabel.text = "Mcb & Dbs"
             case 6:
                 cell.contentLabel.text = "Total"
             default:

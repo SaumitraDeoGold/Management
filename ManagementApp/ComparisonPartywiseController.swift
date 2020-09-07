@@ -530,9 +530,25 @@ class ComparisonPartywiseController: UIViewController, UICollectionViewDataSourc
                 if indexPath.section == filterStateObj.count + 1 {
                     return
                 }
+                 if indexPath.row == 0{
+                    let sb = UIStoryboard(name: "NewPopup", bundle: nil)
+                    let popup = sb.instantiateInitialViewController()! as! NewPopupViewController
+                    popup.modalPresentationStyle = .overFullScreen
+                    popup.delegate = self
+                    popup.partyId = filterStateObj[indexPath.section-1].cin!
+                    self.present(popup, animated: true)
+                }
             }else{
                 if indexPath.section == filterCompObj.count + 1 {
                     return
+                }
+                if indexPath.row == 0{
+                    let sb = UIStoryboard(name: "NewPopup", bundle: nil)
+                    let popup = sb.instantiateInitialViewController()! as! NewPopupViewController
+                    popup.modalPresentationStyle = .overFullScreen
+                    popup.delegate = self
+                    popup.partyId = filterCompObj[indexPath.section-1].cin!
+                    self.present(popup, animated: true)
                 }
             }
             if indexPath.section > 0 {
@@ -553,7 +569,11 @@ class ComparisonPartywiseController: UIViewController, UICollectionViewDataSourc
         }
         if let index = CollectionView.indexPathsForSelectedItems?.first{
             if((index.section) > 0){
-                return true
+                if index.row == 0 || index.section == 0 {
+                    return false
+                }else{
+                    return true
+                }
             }else{
                 return false
             }

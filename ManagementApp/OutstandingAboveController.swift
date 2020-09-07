@@ -55,9 +55,9 @@ class OutstandingAboveController: BaseViewController, UICollectionViewDataSource
     func sortBy(value: String, position: Int) {
         switch position {
         case 0:
-            self.filteredItems = self.outStandingObj.sorted{($0.partynm)!.localizedCaseInsensitiveCompare($1.partynm!) == .orderedAscending}
+            self.filteredItems = self.outStandingObj.sorted{($0.locnm)!.localizedCaseInsensitiveCompare($1.locnm!) == .orderedAscending}
         case 1:
-            self.filteredItems = self.outStandingObj.sorted{($0.partynm)!.localizedCaseInsensitiveCompare($1.partynm!) == .orderedDescending}
+            self.filteredItems = self.outStandingObj.sorted{($0.locnm)!.localizedCaseInsensitiveCompare($1.locnm!) == .orderedDescending}
         case 2:
             self.filteredItems = self.outStandingObj.sorted(by: {Double($0.totalbalance!)! < Double($1.totalbalance!)!})
         case 3:
@@ -223,6 +223,7 @@ class OutstandingAboveController: BaseViewController, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(indexPath.row == 1){
+            
         let sb = UIStoryboard(name: "BranchPicker", bundle: nil)
         let popup = sb.instantiateInitialViewController()! as! BranchPickerController
         popup.modalPresentationStyle = .overFullScreen
@@ -231,8 +232,14 @@ class OutstandingAboveController: BaseViewController, UICollectionViewDataSource
         self.present(popup, animated: true)
         }else if indexPath.row == 3{
             dialNumber(number: filteredItems[indexPath.section-1].mobile!)
-        }else if indexPath.section == 0{
-            
+        }else if indexPath.row == 0{
+            print("HERE IT IS")
+            let sb = UIStoryboard(name: "NewPopup", bundle: nil)
+            let popup = sb.instantiateInitialViewController()! as! NewPopupViewController
+            popup.modalPresentationStyle = .overFullScreen
+            popup.delegate = self
+            popup.partyId = filteredItems[indexPath.section-1].cin!
+            self.present(popup, animated: true)
         }else{
             appDelegate.sendCin = filteredItems[indexPath.section-1].cin!
         }
@@ -240,7 +247,7 @@ class OutstandingAboveController: BaseViewController, UICollectionViewDataSource
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if let index = collectionView.indexPathsForSelectedItems?.first{
-            if((index.row) == 1) || (index.row) == 3{
+            if((index.row) == 1) || (index.row) == 3 || (index.row) == 0{
                 return false
             }else{
                 if index.section == 0{

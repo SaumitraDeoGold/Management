@@ -30,11 +30,17 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
     var supplierPayStruct = [SupplierPaymentStruct]()
     var supplierPayStructObj = [SupplierPaymentObj]()
     var supplierPayData = [SupplierPaymentData]()
+    //Sale Invoice...
+    var saleInvData = [SaleInvData]()
+    var saleInvArr = [SaleInvArr]()
+    var saleInvObj = [SaleInvObj]()
+    //...
     var vendorListApi = ""
     var vendorInvApi = ""
     var vendorPayApi = ""
     var supplierInvoiceApi = ""
     var supplierPayApi = ""
+    var saleInvApi = ""
     var cinRecieved = ""
     let cellContentIdentifier = "\(CollectionViewCell.self)"
     var from = ""
@@ -49,6 +55,7 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
         vendorPayApi = "https://api.goldmedalindia.in/api/getVendorPurchaseAndLedgerBalancePayment"
         supplierInvoiceApi = "https://api.goldmedalindia.in/api/getSupplierPurchaseAndLedgerBalanceInvoiceNo"
         supplierPayApi = "https://api.goldmedalindia.in/api/getSupplierPurchaseAndLedgerBalancePayment"
+        saleInvApi = "https://test2.goldmedalindia.in/api/getsaleinvoicevendor"
         if from == "vendorOrder"{
             self.title = "All Order"
             apiLastDispatchedMaterial()
@@ -64,6 +71,9 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
         }else if from == "supplierPay"{
             self.title = "All Payments"
             apiSupplierPay()
+        }else if from == "saleInvoice"{
+            self.title = "All Sales Invoices"
+            apiSalesInv()
         }
         
     }
@@ -78,6 +88,8 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
             return supplierListData.count + 1
         }else if from == "supplierPay"{
             return supplierPayData.count + 1
+        }else if from == "saleInvoice"{
+            return saleInvObj.count + 1
         }else {
             return (self.vendorData.count + 1)
         }
@@ -104,7 +116,7 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
             }else if indexPath.row == 1 {
                 cell.contentLabel.text = "Amount"
             }else if indexPath.row == 2 {
-                cell.contentLabel.text = from == "vendorOrder" ? "Order No" : "Voucher No"
+                cell.contentLabel.text = from == "vendorOrder" ? "Order No" : from == "vendorInvoice" || from == "supplierInvoice" || from == "saleInvoice" ? "Invoice no" : "Voucher No"
             }
         }
         
@@ -157,6 +169,8 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
             return "\(self.supplierListData[indexPath.section-1].date ?? "") 🔖"
         case "supplierPay":
             return "\(self.supplierPayData[indexPath.section-1].date ?? "")"
+        case "saleInvoice":
+            return "\(getIndianDate(value: self.saleInvObj[indexPath.section-1].date!)) 🔖"
         default:
             return ""
         }
@@ -174,6 +188,8 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
             return Utility.formatRupee(amount: Double(self.supplierListData[indexPath.section-1].amount! ))
         case "supplierPay":
             return Utility.formatRupee(amount: Double(self.supplierPayData[indexPath.section-1].amount! ))
+        case "saleInvoice":
+            return Utility.formatRupee(amount: Double(self.saleInvObj[indexPath.section-1].amount! ))
         default:
             return ""
         }
@@ -191,9 +207,18 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
             return self.supplierListData[indexPath.section-1].invoiceNo ?? "-"
         case "supplierPay":
             return self.supplierPayData[indexPath.section-1].voucherNo ?? "-"
+        case "saleInvoice":
+            return self.saleInvObj[indexPath.section-1].invoiceNo ?? "-"
         default:
             return ""
         }
+    }
+    
+    func getIndianDate(value: String) -> String{
+        let inFormatDate1 = value.split{$0 == " "}.map(String.init)
+        let inFormatDate = inFormatDate1[0].split{$0 == "/"}.map(String.init)
+        let temp = "\(inFormatDate[1])/\(inFormatDate[0])/\(inFormatDate[2])"
+        return temp
     }
     
     func sendValue(indexPath: IndexPath){
@@ -204,6 +229,8 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
             toSend = vendorData[indexPath.section-1].fileurl!
         }else if from == "supplierInvoice"{
             toSend = supplierListData[indexPath.section-1].fileurl!
+        }else if from == "saleInvoice"{
+            toSend = saleInvObj[indexPath.section-1].fileurl!
         }
         if toSend == ""{
             let alert = UIAlertController(title: title, message: "No Data Found", preferredStyle: UIAlertController.Style.alert)
@@ -416,6 +443,38 @@ class AllInvoiceViewController: UIViewController, UICollectionViewDataSource, UI
                 {
                     self.noDataView.showView(view: self.noDataView, from: "NDA")
                 }
+            }
+        }) { (Error) in
+            self.noDataView.showView(view: self.noDataView, from: "ERR")
+            ViewControllerUtils.sharedInstance.removeLoader()
+            print(Error?.localizedDescription)
+        }
+    }
+    
+    func apiSalesInv(){
+        self.noDataView.showView(view: self.noDataView, from: "LOADER")
+        
+        let json: [String: Any] =  ["VendorId":cinRecieved,"CIN":UserDefaults.standard.value(forKey: "userCIN") as! String, "Cat":UserDefaults.standard.value(forKey: "userCategory") as! String,"index":"0","Count":"500","ClientSecret":"ohdashfl"]
+        print("sale Invoice Params \(json)")
+        DataManager.shared.makeAPICall(url: saleInvApi, params: json, method: .POST, success: { (response) in
+            let data = response as? Data
+            
+            DispatchQueue.main.async {
+                do {
+                    self.saleInvData = try JSONDecoder().decode([SaleInvData].self, from: data!)
+                    self.saleInvArr = self.saleInvData[0].data
+                    print("sale Invoice Data \(self.saleInvArr[0].saleAndLedgerBalanceInvoiceNoVendordata)")
+                    self.saleInvObj = self.saleInvArr[0].saleAndLedgerBalanceInvoiceNoVendordata
+                    self.collectionView.reloadData()
+                    self.collectionView.collectionViewLayout.invalidateLayout()
+                    ViewControllerUtils.sharedInstance.removeLoader()
+                    //self.DispatchedMaterialArray.append(contentsOf: self.DispatchedMaterialDataMain[0].dispatchdata)
+                    
+                } catch let errorData {
+                    ViewControllerUtils.sharedInstance.removeLoader()
+                    print(errorData.localizedDescription)
+                }
+                
             }
         }) { (Error) in
             self.noDataView.showView(view: self.noDataView, from: "ERR")

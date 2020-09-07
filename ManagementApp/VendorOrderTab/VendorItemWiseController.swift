@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class VendorItemWiseController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class VendorItemWiseController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, PopupDateDelegate {
     
     
     //Outlets...
@@ -24,7 +24,9 @@ class VendorItemWiseController: UIViewController, UICollectionViewDataSource, UI
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var vendorInvoiceStruct = [VendorOrderBottomData]()
     var vendorListData = [VendorOrderBottomObj]()
+    var filteredItems = [VendorOrderBottomObj]()
     var fromPurchase = true
+    var allSubCat = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +37,10 @@ class VendorItemWiseController: UIViewController, UICollectionViewDataSource, UI
         
         if (Utility.isConnectedToNetwork()) {
             if fromPurchase{
+                self.title = "All Highest Purchase Itemwise"
                 apiLastDispatchedMaterial()
             }else{
+                self.title = "All Highest Sale Itemwise"
                 apiSalePending()
             }
         }
@@ -48,11 +52,11 @@ class VendorItemWiseController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return  (self.vendorListData.count + 1)
+        return  (self.filteredItems.count + 1)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -104,22 +108,22 @@ class VendorItemWiseController: UIViewController, UICollectionViewDataSource, UI
         
         
         if indexPath.section != 0 {
-            if(self.vendorListData.count > 0)
+            if(self.filteredItems.count > 0)
             {
                   if indexPath.row == 0 {
-                    cell.contentLabel.text = self.vendorListData[indexPath.section-1].itemDescription ?? "-"
+                    cell.contentLabel.text = self.filteredItems[indexPath.section-1].itemDescription ?? "-"
                 } else if indexPath.row == 1 {
-                    cell.contentLabel.text = self.vendorListData[indexPath.section-1].subcategory ?? "-"
+                    cell.contentLabel.text = self.filteredItems[indexPath.section-1].subcategory ?? "-"
                 } else if indexPath.row == 2 {
-                    cell.contentLabel.text = vendorListData[indexPath.section-1].quantity
+                    cell.contentLabel.text = fromPurchase ? filteredItems[indexPath.section-1].quantity : filteredItems[indexPath.section-1].totalQty
                 } else if indexPath.row == 5 {
-                    cell.contentLabel.text = self.vendorListData[indexPath.section-1].offerPrice ?? "-"
+                    cell.contentLabel.text = self.filteredItems[indexPath.section-1].offerPrice ?? "-"
                 } else if indexPath.row == 3 {
-                    if let basicAmt = vendorListData[indexPath.section-1].basicAmt as? String {
+                    if let basicAmt = filteredItems[indexPath.section-1].basicAmt as? String {
                         cell.contentLabel.text = Utility.formatRupee(amount: Double(basicAmt)!)
                     }
                 } else if indexPath.row == 4 {
-                    if let finalAmt = vendorListData[indexPath.section-1].finalAmt as? String {
+                    if let finalAmt = filteredItems[indexPath.section-1].finalAmt as? String {
                         cell.contentLabel.text = Utility.formatRupee(amount: Double(finalAmt)!)
                     }
                 }
@@ -127,6 +131,51 @@ class VendorItemWiseController: UIViewController, UICollectionViewDataSource, UI
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+         if indexPath.section != 0 && indexPath.section != filteredItems.count + 1 && fromPurchase{
+            let storyboard = UIStoryboard(name: "VendorPurchase", bundle: nil)
+            let destViewController = storyboard.instantiateViewController(withIdentifier: "VendorItemWisePO") as! VendorItemPOController
+            destViewController.itemid = filteredItems[indexPath.section-1].itemslno!
+            destViewController.itemDesc = filteredItems[indexPath.section-1].itemDescription!
+            self.navigationController!.pushViewController(destViewController, animated: true)
+        }else if indexPath.row == 1 && indexPath.section == 0{
+            let sb = UIStoryboard(name: "PartyStoryboard", bundle: nil)
+            let popup = sb.instantiateInitialViewController()! as! PartySearchController
+            popup.modalPresentationStyle = .overFullScreen
+            popup.delegate = self
+            popup.fromPage = "Subcat Summary"
+            popup.subcatSummary = allSubCat
+            popup.tempSubcatSummary = allSubCat
+            self.present(popup, animated: true)
+        }
+    }
+    
+    func showParty(value: String,cin: String) {
+        if value == "ALL" {
+            filteredItems = self.vendorListData
+            self.collectionView.reloadData()
+            self.collectionView.collectionViewLayout.invalidateLayout()
+            return
+        }
+        filteredItems = self.vendorListData.filter { $0.subcategory == value }
+        self.collectionView.reloadData()
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    func filterDuplicates(arrayTwo: [VendorOrderBottomObj]) -> [String] {
+        var arrayOne = [String]()
+        for item in 0..<arrayTwo.count{
+            if item == 0 {
+                arrayOne.append(arrayTwo[item].subcategory!)
+            }else{
+                if !arrayOne.contains(arrayTwo[item].subcategory!){
+                    arrayOne.append(arrayTwo[item].subcategory!)
+                }
+            }
+        }
+        return arrayOne
     }
     
     func getIdiotsDateFormat(value: String) -> String{
@@ -147,6 +196,8 @@ class VendorItemWiseController: UIViewController, UICollectionViewDataSource, UI
                 do {
                     self.vendorInvoiceStruct = try JSONDecoder().decode([VendorOrderBottomData].self, from: data!)
                     self.vendorListData = self.vendorInvoiceStruct[0].data
+                    self.filteredItems = self.vendorInvoiceStruct[0].data
+                    self.allSubCat = self.filterDuplicates(arrayTwo: self.vendorListData)
                     print("Vendor Bottom Data \(self.vendorListData)")
                     
                     //self.DispatchedMaterialArray.append(contentsOf: self.DispatchedMaterialDataMain[0].dispatchdata)
@@ -190,6 +241,8 @@ class VendorItemWiseController: UIViewController, UICollectionViewDataSource, UI
             do {
                 self.vendorInvoiceStruct = try JSONDecoder().decode([VendorOrderBottomData].self, from: data!)
                 self.vendorListData = self.vendorInvoiceStruct[0].data
+                self.filteredItems = self.vendorInvoiceStruct[0].data
+                self.allSubCat = self.filterDuplicates(arrayTwo: self.vendorListData)
                 print("Vendor Bottom Data \(self.vendorListData)")
                 
                 //self.DispatchedMaterialArray.append(contentsOf: self.DispatchedMaterialDataMain[0].dispatchdata)

@@ -13,7 +13,7 @@ struct VendorSalePendingOrder: Codable {
 
 // MARK: - Datum
 struct VendorSalePendingOrderObj: Codable {
-    let orderNo, orderDate, itemCode, division: String?
+    let itemslno, orderNo, orderDate, itemCode, division: String?
     let category, itemName, colorName, subcategory: String?
     let pendingQty, pendingDays, branchName: String?
 }
@@ -197,9 +197,9 @@ extension VendorOrderTab: UICollectionViewDataSource {
                 cell.contentLabel.text = "Quantity"
             } else if indexPath.row == 0 {
                 cell.contentLabel.text = "Item Name/Color"
-            } else if indexPath.row == 2 {
+            } else if indexPath.row == 3 {
                 cell.contentLabel.text = "SubCategory"
-            }else if indexPath.row == 3 {
+            }else if indexPath.row == 2 {
                 cell.contentLabel.text = "Pending Days"
             }
         }
@@ -221,15 +221,16 @@ extension VendorOrderTab: UICollectionViewDataSource {
                     cell.contentLabel.text = "\((self.vendorSaleObj[indexPath.section-1].itemName!)) / \((self.vendorSaleObj[indexPath.section-1].colorName!))"
                 } else if indexPath.row == 5 {
                     cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].division ?? "-"
-                } else if indexPath.row == 2 {
-                    cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].category ?? "-"
                 } else if indexPath.row == 3 {
                     cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].subcategory ?? "-"
+                } else if indexPath.row == 2 {
+                    cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].pendingDays ?? "-"
                 } else if indexPath.row == 1 {
                     cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].pendingQty ?? "-"
-                } else if indexPath.row == 4 {
-                    cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].pendingDays ?? "-"
                 }
+//                 else if indexPath.row == 4 {
+//                    cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].pendingDays ?? "-"
+//                }
             }
         }
         

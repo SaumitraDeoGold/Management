@@ -9,7 +9,7 @@
 import Foundation
 class ItemwiseLayout: UICollectionViewLayout {
     
-    let numberOfColumns = 6
+    let numberOfColumns = 5
     var shouldPinFirstColumn = true
     var shouldPinFirstRow = true
     

@@ -44,6 +44,7 @@ class ExecutiveTgtTrkController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblExName.text = "Sanket Raghunath Parab  ▼"
         self.noDataView.hideView(view: self.noDataView)
         addSlideMenuButton()
         finYear = Utility.currFinancialYear()
@@ -209,6 +210,7 @@ class ExecutiveTgtTrkController: BaseViewController {
                     ViewControllerUtils.sharedInstance.removeLoader()
                     
                 } catch let errorData {
+                    self.noDataView.showView(view: self.noDataView, from: "NDA")
                     print("Caught Error ------>\(errorData.localizedDescription)")
                     ViewControllerUtils.sharedInstance.removeLoader()
                 }
@@ -216,7 +218,7 @@ class ExecutiveTgtTrkController: BaseViewController {
             
         }) { (Error) in
             print(Error?.localizedDescription ?? "ERROR")
-            self.noDataView.showView(view: self.noDataView, from: "ERR")
+            self.noDataView.showView(view: self.noDataView, from: "NDA")
             ViewControllerUtils.sharedInstance.removeLoader()
             //self.tableView.showNoData = true
             
@@ -237,13 +239,14 @@ class ExecutiveTgtTrkController: BaseViewController {
                     print("COMMON SEARCH ----> \(self.commonSearchObj)")
                 } catch let errorData {
                     print("Caught Error ------>\(errorData.localizedDescription)")
+                    self.noDataView.showView(view: self.noDataView, from: "NDA")
                     ViewControllerUtils.sharedInstance.removeLoader()
                 }
             }
             
         }) { (Error) in
             print(Error?.localizedDescription ?? "ERROR")
-            self.noDataView.showView(view: self.noDataView, from: "ERR")
+            self.noDataView.showView(view: self.noDataView, from: "NDA")
             ViewControllerUtils.sharedInstance.removeLoader()
             //self.tableView.showNoData = true
             

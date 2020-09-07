@@ -90,7 +90,7 @@ class ItemwiseOrderController: UIViewController, UICollectionViewDataSource, UIC
         return self.filterOrdersObj.count + 2
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -116,8 +116,8 @@ class ItemwiseOrderController: UIViewController, UICollectionViewDataSource, UIC
                 cell.contentLabel.text = "Amount"
             case 4:
                 cell.contentLabel.text = "Quantity"
-            case 5:
-                cell.contentLabel.text = "Dispatched From"
+//            case 5:
+//                cell.contentLabel.text = "Branch"
                 
             default:
                 break
@@ -141,8 +141,8 @@ class ItemwiseOrderController: UIViewController, UICollectionViewDataSource, UIC
                 cell.contentLabel.text = Utility.formatRupee(amount: Double(temp))
             case 4:
                 cell.contentLabel.text = String(tempQuantity)
-            case 5:
-                cell.contentLabel.text = "Dispatch"
+//            case 5:
+//                cell.contentLabel.text = "Branch"
             default:
                 break
             }
@@ -167,8 +167,8 @@ class ItemwiseOrderController: UIViewController, UICollectionViewDataSource, UIC
                 }
             case 4:
                 cell.contentLabel.text = filterOrdersObj[indexPath.section - 1].qty
-            case 5:
-                cell.contentLabel.text = filterOrdersObj[indexPath.section - 1].dispatchFrom
+//            case 5:
+//                cell.contentLabel.text = filterOrdersObj[indexPath.section - 1].branch
             default:
                 break
             }
@@ -187,6 +187,16 @@ class ItemwiseOrderController: UIViewController, UICollectionViewDataSource, UIC
             popup.filterOrdersObj = filterOrdersObj
             popup.from = "orderitem"
             self.present(popup, animated: true)
+        }
+        else if indexPath.section != 0 && indexPath.section != filterOrdersObj.count + 1{
+            let storyboard = UIStoryboard(name: "MainDashboard", bundle: nil)
+            let destViewController = storyboard.instantiateViewController(withIdentifier: "ItemwisePO") as! ItemwisePOOrderController
+            destViewController.itemId = filterOrdersObj[indexPath.section-1].itemId!
+            destViewController.itemName = "\(filterOrdersObj[indexPath.section - 1].itemName!) / \(filterOrdersObj[indexPath.section - 1].color!)"
+            destViewController.branchId = branchId
+            //destViewController.matId = filterOrdersObj[indexPath.section-1].materialissuefrom!
+            destViewController.poType = poType
+            self.navigationController!.pushViewController(destViewController, animated: true)
         }
     }
     

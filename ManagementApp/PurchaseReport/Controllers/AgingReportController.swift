@@ -165,7 +165,7 @@ class AgingReportController: BaseViewController, UICollectionViewDataSource, UIC
         }else if indexPath.section != 0 && indexPath.section != filteredItems.count + 1{
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.sendCin = filteredItems[indexPath.section-1].partyId!
-            appDelegate.partyName = filteredItems[indexPath.item].party!
+            appDelegate.partyName = filteredItems[indexPath.section-1].party!
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let destViewController : UIViewController = storyboard.instantiateViewController(withIdentifier: "NewDashBoard")
             let topViewController : UIViewController = self.navigationController!.topViewController!

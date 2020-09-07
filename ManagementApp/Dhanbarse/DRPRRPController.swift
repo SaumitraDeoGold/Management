@@ -215,7 +215,7 @@ class DRPRRPController: BaseViewController, UICollectionViewDataSource, UICollec
     
     //API CALL...
     func apiGetDRPData(){
-        let json: [String: Any] = ["ClientSecret":"ClientSecret","CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":"Management"]
+        let json: [String: Any] = ["ClientSecret":"ClientSecret","CIN":UserDefaults.standard.value(forKey: "userCIN") as! String,"Category":UserDefaults.standard.value(forKey: "userCategory") as! String]
         let manager =  DataManager.shared
         print("Params Sent : \(json)")
         manager.makeAPICall(url: apiDRP, params: json, method: .POST, success: { (response) in

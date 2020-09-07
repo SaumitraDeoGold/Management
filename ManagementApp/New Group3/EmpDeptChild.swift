@@ -18,7 +18,7 @@ struct EmpDeptChildObj: Codable {
     let employeeName: String?
     let departmentname: String?
     let designationName, employeeCode: String?
-    let branchname, joinDate, workYear: String?
+    let branchname, joinDate, workYear, location: String?
     let mobileNumber: String?
     let slno: Int?
 }

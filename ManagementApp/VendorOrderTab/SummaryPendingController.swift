@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SummaryPendingController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SummaryPendingController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, PopupDateDelegate {
     
     
     //Outlets...
@@ -25,7 +25,9 @@ class SummaryPendingController: UIViewController, UICollectionViewDataSource, UI
     var vendorListData = [VendorPayData]()
     var vendorSale = [VendorSalePendingOrder]()
     var vendorSaleObj = [VendorSalePendingOrderObj]()
+    var filteredItems = [VendorSalePendingOrderObj]()
     var fromPurchase = true
+    var allSubCat = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +51,7 @@ class SummaryPendingController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return  (self.vendorSaleObj.count + 1)
+        return  (self.filteredItems.count + 1)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -83,29 +85,29 @@ class SummaryPendingController: UIViewController, UICollectionViewDataSource, UI
                 cell.contentLabel.text = "Quantity"
             } else if indexPath.row == 0 {
                 cell.contentLabel.text = "Item Name/Color"
-            } else if indexPath.row == 2 {
+            } else if indexPath.row == 3 {
                 cell.contentLabel.text = "SubCategory"
-            }else if indexPath.row == 3 {
+            }else if indexPath.row == 2 {
                 cell.contentLabel.text = "Pending Days"
             }
         }
         
          
         if indexPath.section != 0 {
-            if(self.vendorSaleObj.count > 0)
+            if(self.filteredItems.count > 0)
             {
                 if indexPath.row == 0 {
-                    cell.contentLabel.text = "\((self.vendorSaleObj[indexPath.section-1].itemName!)) / \((self.vendorSaleObj[indexPath.section-1].colorName!))"
+                    cell.contentLabel.text = "\((self.filteredItems[indexPath.section-1].itemName!)) / \((self.filteredItems[indexPath.section-1].colorName!))"
                 } else if indexPath.row == 5 {
-                    cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].division ?? "-"
-                } else if indexPath.row == 2 {
-                    cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].category ?? "-"
+                    cell.contentLabel.text = self.filteredItems[indexPath.section-1].division ?? "-"
                 } else if indexPath.row == 3 {
-                    cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].subcategory ?? "-"
+                    cell.contentLabel.text = self.filteredItems[indexPath.section-1].subcategory ?? "-"
+                } else if indexPath.row == 2 {
+                    cell.contentLabel.text = self.filteredItems[indexPath.section-1].pendingDays ?? "-"
                 } else if indexPath.row == 1 {
-                    cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].pendingQty ?? "-"
+                    cell.contentLabel.text = self.filteredItems[indexPath.section-1].pendingQty ?? "-"
                 } else if indexPath.row == 4 {
-                    cell.contentLabel.text = self.vendorSaleObj[indexPath.section-1].pendingDays ?? "-"
+                    cell.contentLabel.text = self.filteredItems[indexPath.section-1].pendingDays ?? "-"
                 }
             }
         }
@@ -113,11 +115,45 @@ class SummaryPendingController: UIViewController, UICollectionViewDataSource, UI
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+         if indexPath.section != 0 && indexPath.section != filteredItems.count + 1 && fromPurchase{
+            let storyboard = UIStoryboard(name: "VendorPurchase", bundle: nil)
+            let destViewController = storyboard.instantiateViewController(withIdentifier: "SummaryPendingPO") as! SummaryPendingPOController
+            destViewController.itemId = filteredItems[indexPath.section-1].itemslno!
+            destViewController.itemName = filteredItems[indexPath.section-1].itemName!
+            destViewController.strToDate = strToDate
+            self.navigationController!.pushViewController(destViewController, animated: true)
+         }else if indexPath.row == 3 && indexPath.section == 0{
+            let sb = UIStoryboard(name: "PartyStoryboard", bundle: nil)
+            let popup = sb.instantiateInitialViewController()! as! PartySearchController
+            popup.modalPresentationStyle = .overFullScreen
+            popup.delegate = self
+            popup.fromPage = "Subcat Summary"
+            popup.subcatSummary = allSubCat
+            popup.tempSubcatSummary = allSubCat
+            self.present(popup, animated: true)
+        }
+    }
+    
+    func showParty(value: String,cin: String) {
+        if value == "ALL" {
+            filteredItems = self.vendorSaleObj
+            self.collectionView.reloadData()
+            self.collectionView.collectionViewLayout.invalidateLayout()
+            return
+        }
+        filteredItems = self.vendorSaleObj.filter { $0.subcategory == value }
+        self.collectionView.reloadData()
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     func getIdiotsDateFormat(value: String) -> String{
         let inFormatDate = value.split{$0 == "/"}.map(String.init)
         let temp = "\(inFormatDate[0])-\(inFormatDate[1])-\(inFormatDate[2])"
         return temp
     }
+    
+    
     
     func apiLastDispatchedMaterial(){
             self.noDataView.showView(view: self.noDataView, from: "LOADER")
@@ -132,6 +168,18 @@ class SummaryPendingController: UIViewController, UICollectionViewDataSource, UI
                     do {
                         self.vendorSale = try JSONDecoder().decode([VendorSalePendingOrder].self, from: data!)
                         self.vendorSaleObj = self.vendorSale[0].data!
+                        self.filteredItems = self.vendorSale[0].data!
+                        self.allSubCat = self.filterDuplicates(arrayTwo: self.vendorSaleObj)
+                        
+//                        for item in 0..<self.vendorSaleObj.count{
+//                            if item == 0 {
+//                                self.allSubCat.append(self.vendorSaleObj[item].subcategory!)
+//                            }else{
+//                                if !self.allSubCat.contains(self.vendorSaleObj[item].subcategory!){
+//                                    self.allSubCat.append(self.vendorSaleObj[item].subcategory!)
+//                                }
+//                            }
+//                        }
                         print("Vendor Sale Data \(self.vendorSaleObj)")
     
                     } catch let errorData {
@@ -161,6 +209,20 @@ class SummaryPendingController: UIViewController, UICollectionViewDataSource, UI
             }
         }
     
+    func filterDuplicates(arrayTwo: [VendorSalePendingOrderObj]) -> [String] {
+        var arrayOne = [String]()
+        for item in 0..<arrayTwo.count{
+            if item == 0 {
+                arrayOne.append(arrayTwo[item].subcategory!)
+            }else{
+                if !arrayOne.contains(arrayTwo[item].subcategory!){
+                    arrayOne.append(arrayTwo[item].subcategory!)
+                }
+            }
+        }
+        return arrayOne
+    }
+    
     func apiSalePending(){
             self.noDataView.showView(view: self.noDataView, from: "LOADER")
             //self.collectionView.showNoData = true
@@ -174,8 +236,10 @@ class SummaryPendingController: UIViewController, UICollectionViewDataSource, UI
                     do {
                         self.vendorSale = try JSONDecoder().decode([VendorSalePendingOrder].self, from: data!)
                         self.vendorSaleObj = self.vendorSale[0].data!
+                        self.filteredItems = self.vendorSale[0].data!
+                        self.allSubCat = self.filterDuplicates(arrayTwo: self.vendorSaleObj)
                         print("Vendor Sale Data \(self.vendorSaleObj)")
-    
+                        print("All SubCat \(self.allSubCat)")
                     } catch let errorData {
                         print(errorData.localizedDescription)
                     }

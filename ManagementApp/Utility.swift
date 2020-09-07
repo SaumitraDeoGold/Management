@@ -208,7 +208,26 @@ public class Utility: UIViewController {
         return finYear
     }
     
-    
+    //Calculate percentage func...
+    class func calculatePercentage(currentYear: Double, prevYear: Double, temp: Double) -> NSAttributedString{
+        let sale = Utility.formatRupee(amount: Double(currentYear ))
+        let tempVar = String(format: "%.2f", temp)
+        var formattedPerc = ""
+        if (Double(tempVar)!.isInfinite) || (Double(tempVar)!.isNaN){
+            formattedPerc = ""
+        }else{
+            formattedPerc = " (\(String(format: "%.2f", temp)))%"
+        }
+        let strNumber: NSString = sale + formattedPerc as NSString // you must set your
+        let range = (strNumber).range(of: String(tempVar))
+        let attribute = NSMutableAttributedString.init(string: strNumber as String)
+        if temp > 0{
+            attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(named: "ColorGreen") as Any , range: range)
+        }else{
+            attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red as Any , range: range)
+        }
+        return attribute
+    }
     
     class func currQuarter() -> String{
           var quarter = ""

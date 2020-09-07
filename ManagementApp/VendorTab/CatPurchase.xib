@@ -20,6 +20,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CatPurchase" customModule="G_Family" customModuleProvider="target">
             <connections>
                 <outlet property="catPieChart" destination="2U2-p8-iIW" id="1hT-24-lgU"/>
+                <outlet property="heightConstraint" destination="R8s-wv-hKI" id="sRR-dG-IvR"/>
                 <outlet property="imvNoData" destination="S4j-Qx-3bo" id="CQq-sB-vDC"/>
                 <outlet property="lblCatName" destination="Ybk-sc-I2T" id="l2O-Fr-PbZ"/>
                 <outlet property="lblNoData" destination="Z9x-1D-VaD" id="RJ6-p0-htU"/>
@@ -60,7 +61,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEP-YN-P18" customClass="PaddingLabel" customModule="G_Family" customModuleProvider="target">
-                                            <rect key="frame" x="20" y="251.5" width="37" height="18.5"/>
+                                            <rect key="frame" x="20" y="252" width="35.5" height="18"/>
                                             <color key="backgroundColor" name="ColorGreen"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -81,11 +82,11 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2U2-p8-iIW" customClass="PieChartView" customModule="Charts">
-                                            <rect key="frame" x="0.0" y="25" width="375" height="216.5"/>
+                                            <rect key="frame" x="0.0" y="25" width="375" height="217"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DwF-km-H7J" customClass="PaddingLabel" customModule="G_Family" customModuleProvider="target">
-                                            <rect key="frame" x="341.5" y="251.5" width="13.5" height="18.5"/>
+                                            <rect key="frame" x="340" y="252" width="15" height="18"/>
                                             <color key="backgroundColor" name="ColorGreen"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -165,9 +166,12 @@
                                         <constraint firstItem="iPS-gH-n8Z" firstAttribute="leading" secondItem="sqq-hy-39l" secondAttribute="leading" id="iwX-lZ-xDs"/>
                                     </constraints>
                                 </view>
-                                <tableView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kfq-hs-FfL" customClass="IntrinsicTableView" customModule="G_Family" customModuleProvider="target">
+                                <tableView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kfq-hs-FfL" customClass="VendorCatTableView" customModule="G_Family" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="322" width="375" height="305"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="R8s-wv-hKI"/>
+                                    </constraints>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -204,7 +208,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9x-1D-VaD">
-                                    <rect key="frame" x="12" y="140" width="127" height="19"/>
+                                    <rect key="frame" x="12" y="140" width="127.5" height="19"/>
                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                     <color key="textColor" name="FontDarkText"/>
                                     <nil key="highlightedColor"/>

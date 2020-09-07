@@ -62,13 +62,13 @@ class ExpenseBillViewController: BaseViewController, UICollectionViewDataSource,
         popup.modalPresentationStyle = .overFullScreen
         popup.delegate = self
         popup.showPicker = 1
-        popup.pickerDataSource = ["Checked","Disputed","Reset"]
+        popup.pickerDataSource = ["View All","Checked","Disputed","Amount High to Low"]
         self.present(popup, animated: true)
     }
     
     func sortBy(value: String, position: Int) {
         switch position {
-        case 0:
+        case 1:
             filteredItems.removeAll()
             for index in 0...(expenseBillObj.count-1) {
                 if checkedArray.contains(String(expenseBillObj[index].slno!)) == true{
@@ -78,7 +78,7 @@ class ExpenseBillViewController: BaseViewController, UICollectionViewDataSource,
             sortCalled = true
             self.CollectionView.reloadData()
             self.CollectionView.collectionViewLayout.invalidateLayout()
-        case 1:
+        case 2:
             filteredItems.removeAll()
             for index in 0...(expenseBillObj.count-1) {
                 if disputeArray.contains(String(expenseBillObj[index].slno!)) == true{
@@ -88,13 +88,17 @@ class ExpenseBillViewController: BaseViewController, UICollectionViewDataSource,
             sortCalled = true
             self.CollectionView.reloadData()
             self.CollectionView.collectionViewLayout.invalidateLayout()
-        case 2:
+        case 0:
             branchName = ""
             supplierName = ""
             ledgerName = ""
             ViewControllerUtils.sharedInstance.showLoader()
             filteredItems.removeAll()
             apiGetExpBill()
+        case 3:
+            self.filteredItems = self.expenseBillObj.sorted(by: {Double($0.amount!)! > Double($1.amount!)!})
+            self.CollectionView.reloadData()
+            self.CollectionView.collectionViewLayout.invalidateLayout()
         default:
             break
         }

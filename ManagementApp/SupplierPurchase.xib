@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,10 +17,11 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SupplierPurchase" customModule="ManagementApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SupplierPurchase" customModule="G_Family" customModuleProvider="target">
             <connections>
                 <outlet property="imvInfo" destination="0mB-j8-kgI" id="fwF-2B-nUw"/>
                 <outlet property="lblLYS" destination="EFA-rw-9HD" id="jKv-pF-1Cy"/>
+                <outlet property="lblOverallGrowth" destination="3h5-bn-Td7" id="ZNT-qB-iEa"/>
                 <outlet property="lblSales" destination="2p0-GS-843" id="geP-4N-Ibv"/>
             </connections>
         </placeholder>
@@ -48,16 +47,16 @@
                             <rect key="frame" x="0.0" y="40" width="375" height="40"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Y0G-dc-LwW">
-                                    <rect key="frame" x="129" y="8.5" width="119.5" height="25"/>
+                                    <rect key="frame" x="128" y="8.5" width="121" height="25"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Purchase : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETl-aE-Pgk">
-                                            <rect key="frame" x="0.0" y="0.0" width="69" height="25"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="70.5" height="25"/>
                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                             <color key="textColor" name="FontDarkText"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2p0-GS-843" customClass="PaddingLabel" customModule="ManagementApp" customModuleProvider="target">
-                                            <rect key="frame" x="79" y="0.0" width="5.5" height="25"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2p0-GS-843" customClass="PaddingLabel" customModule="G_Family" customModuleProvider="target">
+                                            <rect key="frame" x="80.5" y="0.0" width="5.5" height="25"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <color key="textColor" name="FontLightText"/>
                                             <nil key="highlightedColor"/>
@@ -77,7 +76,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info_icon" translatesAutoresizingMaskIntoConstraints="NO" id="0mB-j8-kgI">
-                                            <rect key="frame" x="94.5" y="0.0" width="25" height="25"/>
+                                            <rect key="frame" x="96" y="0.0" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="Gnw-4i-xR1"/>
                                                 <constraint firstAttribute="height" constant="25" id="gtT-Wq-8BB"/>
@@ -107,16 +106,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4uf-4Z-3OP">
-                                            <rect key="frame" x="147.5" y="8.5" width="82.5" height="35"/>
+                                            <rect key="frame" x="146.5" y="9" width="84.5" height="34.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ledger Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e75-uh-Wjl">
-                                                    <rect key="frame" x="0.0" y="0.0" width="82.5" height="14.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="84.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                     <color key="textColor" name="FontDarkText"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFA-rw-9HD">
-                                                    <rect key="frame" x="39" y="18.5" width="4" height="16.5"/>
+                                                    <rect key="frame" x="39.5" y="18" width="5.5" height="16.5"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                     <color key="textColor" name="FontLightText"/>
                                                     <nil key="highlightedColor"/>

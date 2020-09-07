@@ -16,6 +16,7 @@ import Charts
     @IBOutlet weak var lblCatName: UILabel!
     @IBOutlet weak var lblTotalCatSales: UILabel!
     @IBOutlet weak var tblCatSales: IntrinsicTableView!
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet var catPieChart: PieChartView!
     @IBOutlet var lineLabels: [UILabel]!
     @IBOutlet var tabButtons: [UIButton]!
@@ -113,7 +114,7 @@ import Charts
     func apiSalesCategoryWise(){
         
         showView(view: self.noDataView, from: "LOADER")
-        self.tblCatSales.showNoDataPie = true
+        //self.tblCatSales.showNoDataPie = true
         
         let json: [String: Any] = ["Cin":"sa@sa.com","Cat":"Management","fromdate":fromdate,"todate":todate,"ClientSecret":"ClientSecret","VendorId":appDelegate.sendCin]
         print("Params \(json) and APINAME \(catSalesViewApi)")
@@ -139,7 +140,7 @@ import Charts
                     if result
                     {
                         print(self.catWiseValue)
-                        
+                        self.heightConstraint.constant = CGFloat((((self.vendorCatwiseObj.count+1) * 35) + 10))
                         for i in self.vendorCatwiseObj {
                             self.catWiseValue.append(String(i.amount!) )
                             self.colorArray.append(self.randomizer())
@@ -160,16 +161,17 @@ import Charts
                 
                 if(self.tblCatSales != nil)
                 {
+                    
                     self.tblCatSales.reloadData()
                 }
                 
                 if(self.catWiseValue.count > 0){
                     self.setChart(dataPoints: [""], values: self.catWiseValue)
                     self.hideView(view: self.noDataView)
-                    self.tblCatSales.showNoDataPie = false
+                    //self.tblCatSales.showNoDataPie = false
                 }else{
                     self.showView(view: self.noDataView, from: "NDA")
-                    self.tblCatSales.showNoDataPie = true
+                    //self.tblCatSales.showNoDataPie = true
                 }
                 
             }
@@ -177,7 +179,7 @@ import Charts
         }) { (Error) in
             print(Error?.localizedDescription ?? "ERROR")
             self.showView(view: self.noDataView, from: "ERR")
-            self.tblCatSales.showNoDataPie = true
+            //self.tblCatSales.showNoDataPie = true
         }
         
     }
@@ -285,4 +287,19 @@ extension CatPurchase : UITableViewDataSource {
         loader.isHidden = true
     }
     
+}
+
+class VendorCatTableView: UITableView {
+    var showNoData = false
+    override var contentSize:CGSize {
+        didSet {
+            self.invalidateIntrinsicContentSize()
+        }
+    }
+
+    override var intrinsicContentSize: CGSize {
+        self.layoutIfNeeded()
+        return CGSize(width: UIViewNoIntrinsicMetric, height: (showNoData) ? 300 : contentSize.height)
+    }
+
 }

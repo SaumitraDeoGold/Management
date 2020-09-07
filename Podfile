@@ -14,7 +14,7 @@ pod 'IQKeyboardManagerSwift'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'Firebase'
-pod "YoutubePlayer-in-WKWebView", "~> 0.3.0"
+pod 'youtube-ios-player-helper', '~> 0.1'
 pod 'TTFortuneWheel'
 pod 'Firebase/Core'
 pod 'Firebase/Messaging'

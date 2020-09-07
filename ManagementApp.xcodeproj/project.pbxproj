@@ -32,6 +32,9 @@
 		6912E3CE212BE2070068BDB6 /* OrderType.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6912E3CD212BE2070068BDB6 /* OrderType.storyboard */; };
 		6912E3D0212BE2640068BDB6 /* OrderTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6912E3CF212BE2640068BDB6 /* OrderTypeViewController.swift */; };
 		6913543A23C357AD00B7B6B1 /* InvoiceLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6913543923C357AD00B7B6B1 /* InvoiceLayout.swift */; };
+		691367CC24E7CD45002513B0 /* Dhanbarse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 691367CB24E7CD45002513B0 /* Dhanbarse.storyboard */; };
+		691367CE24E7D6C0002513B0 /* PaytmCashbackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691367CD24E7D6C0002513B0 /* PaytmCashbackController.swift */; };
+		691367D024E83801002513B0 /* ItemwisePOLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691367CF24E83801002513B0 /* ItemwisePOLayout.swift */; };
 		691409D920FE0D3900182052 /* TermOfUseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691409D820FE0D3900182052 /* TermOfUseController.swift */; };
 		691409DB20FE0D6E00182052 /* AboutUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691409DA20FE0D6E00182052 /* AboutUsController.swift */; };
 		6917035F24374BFD00E1C9C9 /* DhanbarseChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6917035E24374BFD00E1C9C9 /* DhanbarseChildController.swift */; };
@@ -52,6 +55,8 @@
 		691A191723FE977F0024C820 /* DhanbarseQwikpayVideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691A191623FE977F0024C820 /* DhanbarseQwikpayVideoData.swift */; };
 		691AACB6237ABD44004B5C90 /* DivisionName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691AACB5237ABD43004B5C90 /* DivisionName.swift */; };
 		691AACB8237ACF11004B5C90 /* CategoryWiseCompareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691AACB7237ACF11004B5C90 /* CategoryWiseCompareController.swift */; };
+		691AEBF224ED73C400173536 /* NewPopup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 691AEBF124ED73C300173536 /* NewPopup.storyboard */; };
+		691AEBF424ED799000173536 /* NewPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691AEBF324ED799000173536 /* NewPopupViewController.swift */; };
 		691B5BCC2410F2F100FC6685 /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B5BCB2410F2F100FC6685 /* AttendanceViewController.swift */; };
 		691B92092379479E000EA2A8 /* DivBreakdownTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B92082379479D000EA2A8 /* DivBreakdownTotal.swift */; };
 		691B920B23797C1F000EA2A8 /* LedgerwiseExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B920A23797C1F000EA2A8 /* LedgerwiseExpense.swift */; };
@@ -140,6 +145,7 @@
 		6930A6F3242A49ED0019A1E3 /* LocationAttendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6930A6F2242A49ED0019A1E3 /* LocationAttendance.swift */; };
 		69317384240CD8D100F770E5 /* DivisionwiseTabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69317383240CD8D000F770E5 /* DivisionwiseTabelCell.swift */; };
 		69317386240D16B100F770E5 /* SalePurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69317385240D16B100F770E5 /* SalePurchaseCell.swift */; };
+		6934057F24F51715006A751D /* WorldCupSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6934057E24F51715006A751D /* WorldCupSummaryView.swift */; };
 		6936CEB02397A97D00772AF0 /* Ledgerwise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6936CEAF2397A97D00772AF0 /* Ledgerwise.swift */; };
 		6938921D223BD44700D69935 /* BranchWisePayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69389218223BD44700D69935 /* BranchWisePayment.swift */; };
 		6938921E223BD44700D69935 /* BranchWiseSales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69389219223BD44700D69935 /* BranchWiseSales.swift */; };
@@ -150,6 +156,7 @@
 		6938923C223BD8B900D69935 /* DetailViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938922E223BD8B800D69935 /* DetailViewLayout.swift */; };
 		6938923D223BD8B900D69935 /* DivisionWiseDetailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938922F223BD8B800D69935 /* DivisionWiseDetailsCollectionViewController.swift */; };
 		6938923E223BD8BA00D69935 /* DivisionWiseSalesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69389230223BD8B900D69935 /* DivisionWiseSalesViewController.swift */; };
+		693CCABB24EE90D200226798 /* NewPopupLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693CCABA24EE90D200226798 /* NewPopupLayout.swift */; };
 		693FF35C24508D3A00026104 /* MPRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693FF35B24508D3A00026104 /* MPRViewController.swift */; };
 		693FF35E2450DC2D00026104 /* MRPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693FF35D2450DC2D00026104 /* MRPData.swift */; };
 		69406E522302844E00731139 /* YearlyCompareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69406E512302844E00731139 /* YearlyCompareController.swift */; };
@@ -262,6 +269,9 @@
 		69608D2421BBC5A000E6F7D0 /* CatalogueListHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69608D2321BBC5A000E6F7D0 /* CatalogueListHeaderCell.swift */; };
 		6960A41E224250A000FED79B /* DashboardTodaySale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6960A41D224250A000FED79B /* DashboardTodaySale.swift */; };
 		6960A420224258E800FED79B /* DashboardTodayPymnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6960A41F224258E800FED79B /* DashboardTodayPymnt.swift */; };
+		6961B3E824E3C6B300097E82 /* VendorItemPOController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6961B3E724E3C6B300097E82 /* VendorItemPOController.swift */; };
+		6961B3EA24E3CA2B00097E82 /* SummaryPendingPOController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6961B3E924E3CA2B00097E82 /* SummaryPendingPOController.swift */; };
+		6961B3EC24E3D1D800097E82 /* ItemwisePOOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6961B3EB24E3D1D800097E82 /* ItemwisePOOrderController.swift */; };
 		6961F76022B102CE009080AB /* DivNBranchwiseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6961F75F22B102CE009080AB /* DivNBranchwiseController.swift */; };
 		69628B6A22685A7500020699 /* BranchProgressLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69628B6922685A7500020699 /* BranchProgressLayout.swift */; };
 		69628B6C22689DD300020699 /* DashboardOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69628B6B22689DD300020699 /* DashboardOrderViewController.swift */; };
@@ -375,6 +385,7 @@
 		6979B43B21469ACF00BD99A1 /* YearlySalesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6979B43921469ACF00BD99A1 /* YearlySalesCell.xib */; };
 		6979B43F2146A5FC00BD99A1 /* DashPendingOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6979B43D2146A5FC00BD99A1 /* DashPendingOrderCell.swift */; };
 		6979B4402146A5FC00BD99A1 /* DashPendingOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6979B43E2146A5FC00BD99A1 /* DashPendingOrderCell.xib */; };
+		697C1DD924FA5C8500DC3F4E /* PartyPurLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697C1DD824FA5C8500DC3F4E /* PartyPurLayout.swift */; };
 		697E05AC224CA078005B79AA /* OutstandingAboveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E05AB224CA078005B79AA /* OutstandingAboveController.swift */; };
 		697E05AE224CA102005B79AA /* OutstandingAbvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E05AD224CA102005B79AA /* OutstandingAbvCell.swift */; };
 		697E05B0224CA439005B79AA /* OutstandingAbvLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E05AF224CA439005B79AA /* OutstandingAbvLayout.swift */; };
@@ -403,7 +414,6 @@
 		69865D9B22CC75F300B75BA6 /* ExpenseComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69865D9A22CC75F300B75BA6 /* ExpenseComparison.swift */; };
 		6986616E22CC803700B75BA6 /* WorldCupMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69865F8C22CC803500B75BA6 /* WorldCupMainController.swift */; };
 		6986617022CC803700B75BA6 /* WorldCupSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69865F8E22CC803500B75BA6 /* WorldCupSummaryView.xib */; };
-		6986617A22CC8B8E00B75BA6 /* WorldCupSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986617922CC8B8E00B75BA6 /* WorldCupSummaryView.swift */; };
 		6986618122CC8CD700B75BA6 /* GetAllTeamsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986617C22CC8CD300B75BA6 /* GetAllTeamsData.swift */; };
 		6986618222CC8CD700B75BA6 /* AddMatchesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986617D22CC8CD400B75BA6 /* AddMatchesData.swift */; };
 		6986618322CC8CD700B75BA6 /* LeagueMatchDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986617E22CC8CD500B75BA6 /* LeagueMatchDetailData.swift */; };
@@ -509,9 +519,12 @@
 		69A82035213E7F9000835F35 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A82032213E7F8F00835F35 /* CustomCollectionViewLayout.swift */; };
 		69A82038213E800300835F35 /* ContentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A82037213E800200835F35 /* ContentCollectionViewCell.xib */; };
 		69A8203B213E80BC00835F35 /* ContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A82039213E80BC00835F35 /* ContentCollectionViewCell.swift */; };
+		69AC526224F924900030F48E /* CatPurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AC526124F924900030F48E /* CatPurchaseController.swift */; };
+		69AC526424F94B930030F48E /* PartyPurchaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AC526324F94B930030F48E /* PartyPurchaseController.swift */; };
 		69ACF3542121C169007FFA3B /* logo_splash1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 69ACF3532121C168007FFA3B /* logo_splash1.mp4 */; };
 		69ACF3582121C996007FFA3B /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ACF3572121C996007FFA3B /* DocumentsViewController.swift */; };
 		69ACF35A2121C9BE007FFA3B /* DocumentRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ACF3592121C9BE007FFA3B /* DocumentRowCell.swift */; };
+		69AD428224F7F4D200E3EF03 /* VendorItemPOLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD428124F7F4D200E3EF03 /* VendorItemPOLayout.swift */; };
 		69AD534D24C8596700C5818D /* MainOrderCatwise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD534C24C8596700C5818D /* MainOrderCatwise.swift */; };
 		69AF637F22EF0387009396C2 /* DistWiseCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AF637E22EF0386009396C2 /* DistWiseCompare.swift */; };
 		69B084B92462CD0A001E1EB7 /* HRBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69B084B82462CD0A001E1EB7 /* HRBoard.storyboard */; };
@@ -550,10 +563,15 @@
 		69DB793A20A06A63005023D4 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB793720A06A63005023D4 /* UIViewExtension.swift */; };
 		69DC25C021A2DC9A00C2190D /* CartRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DC25BF21A2DC9A00C2190D /* CartRowCell.swift */; };
 		69DD827222674E5900CF5CEC /* BranchProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DD827122674E5900CF5CEC /* BranchProgress.swift */; };
+		69DEB92524F69E4000FEFDB5 /* SaleInvoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DEB92424F69E4000FEFDB5 /* SaleInvoice.swift */; };
+		69DEB92724F69E5100FEFDB5 /* SaleInvoice.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69DEB92624F69E5000FEFDB5 /* SaleInvoice.xib */; };
 		69DFF59A219D590F0095A358 /* OrderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DFF599219D590F0095A358 /* OrderViewCell.swift */; };
 		69DFF79C24D2BB2D00B5535B /* SummaryPendingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DFF79B24D2BB2D00B5535B /* SummaryPendingController.swift */; };
 		69DFF79E24D2CAE100B5535B /* VendorBtmOrderLay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DFF79D24D2CAE100B5535B /* VendorBtmOrderLay.swift */; };
 		69DFF7A024D2DB4000B5535B /* VendorItemWiseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DFF79F24D2DB4000B5535B /* VendorItemWiseController.swift */; };
+		69E16D8224F6D04B00A1B0B8 /* PurSaleTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69E16D8124F6D04A00A1B0B8 /* PurSaleTable.xib */; };
+		69E16D8424F6D58200A1B0B8 /* PurSaleTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E16D8324F6D58200A1B0B8 /* PurSaleTable.swift */; };
+		69E16D8624F6F7CE00A1B0B8 /* PurSaleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E16D8524F6F7CE00A1B0B8 /* PurSaleLayout.swift */; };
 		69E8A4642371A65C009E36D7 /* ExpensePartyLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E8A4632371A65C009E36D7 /* ExpensePartyLayout.swift */; };
 		69EF0F4C24C87573002263DA /* ItemwiseOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EF0F4B24C87573002263DA /* ItemwiseOrderController.swift */; };
 		69EF0F4E24C877DB002263DA /* MainOrderItemwise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EF0F4D24C877DB002263DA /* MainOrderItemwise.swift */; };
@@ -646,6 +664,9 @@
 		6912E3CD212BE2070068BDB6 /* OrderType.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderType.storyboard; sourceTree = "<group>"; };
 		6912E3CF212BE2640068BDB6 /* OrderTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTypeViewController.swift; sourceTree = "<group>"; };
 		6913543923C357AD00B7B6B1 /* InvoiceLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceLayout.swift; sourceTree = "<group>"; };
+		691367CB24E7CD45002513B0 /* Dhanbarse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dhanbarse.storyboard; sourceTree = "<group>"; };
+		691367CD24E7D6C0002513B0 /* PaytmCashbackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaytmCashbackController.swift; sourceTree = "<group>"; };
+		691367CF24E83801002513B0 /* ItemwisePOLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemwisePOLayout.swift; sourceTree = "<group>"; };
 		6913A4C42165FACF004CE759 /* DealorsApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DealorsApp.entitlements; sourceTree = "<group>"; };
 		691409D820FE0D3900182052 /* TermOfUseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermOfUseController.swift; sourceTree = "<group>"; };
 		691409DA20FE0D6E00182052 /* AboutUsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsController.swift; sourceTree = "<group>"; };
@@ -667,6 +688,8 @@
 		691A191623FE977F0024C820 /* DhanbarseQwikpayVideoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DhanbarseQwikpayVideoData.swift; sourceTree = "<group>"; };
 		691AACB5237ABD43004B5C90 /* DivisionName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionName.swift; sourceTree = "<group>"; };
 		691AACB7237ACF11004B5C90 /* CategoryWiseCompareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryWiseCompareController.swift; sourceTree = "<group>"; };
+		691AEBF124ED73C300173536 /* NewPopup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPopup.storyboard; sourceTree = "<group>"; };
+		691AEBF324ED799000173536 /* NewPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPopupViewController.swift; sourceTree = "<group>"; };
 		691B5BCB2410F2F100FC6685 /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
 		691B92082379479D000EA2A8 /* DivBreakdownTotal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivBreakdownTotal.swift; sourceTree = "<group>"; };
 		691B920A23797C1F000EA2A8 /* LedgerwiseExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerwiseExpense.swift; sourceTree = "<group>"; };
@@ -755,6 +778,7 @@
 		6930A6F2242A49ED0019A1E3 /* LocationAttendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAttendance.swift; sourceTree = "<group>"; };
 		69317383240CD8D000F770E5 /* DivisionwiseTabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionwiseTabelCell.swift; sourceTree = "<group>"; };
 		69317385240D16B100F770E5 /* SalePurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalePurchaseCell.swift; sourceTree = "<group>"; };
+		6934057E24F51715006A751D /* WorldCupSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldCupSummaryView.swift; sourceTree = "<group>"; };
 		6936CEAF2397A97D00772AF0 /* Ledgerwise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ledgerwise.swift; sourceTree = "<group>"; };
 		69389218223BD44700D69935 /* BranchWisePayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchWisePayment.swift; sourceTree = "<group>"; };
 		69389219223BD44700D69935 /* BranchWiseSales.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchWiseSales.swift; sourceTree = "<group>"; };
@@ -765,6 +789,7 @@
 		6938922E223BD8B800D69935 /* DetailViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewLayout.swift; sourceTree = "<group>"; };
 		6938922F223BD8B800D69935 /* DivisionWiseDetailsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivisionWiseDetailsCollectionViewController.swift; sourceTree = "<group>"; };
 		69389230223BD8B900D69935 /* DivisionWiseSalesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivisionWiseSalesViewController.swift; sourceTree = "<group>"; };
+		693CCABA24EE90D200226798 /* NewPopupLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPopupLayout.swift; sourceTree = "<group>"; };
 		693FF35B24508D3A00026104 /* MPRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRViewController.swift; sourceTree = "<group>"; };
 		693FF35D2450DC2D00026104 /* MRPData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRPData.swift; sourceTree = "<group>"; };
 		69406E512302844E00731139 /* YearlyCompareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyCompareController.swift; sourceTree = "<group>"; };
@@ -880,6 +905,9 @@
 		69608D2321BBC5A000E6F7D0 /* CatalogueListHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueListHeaderCell.swift; sourceTree = "<group>"; };
 		6960A41D224250A000FED79B /* DashboardTodaySale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTodaySale.swift; sourceTree = "<group>"; };
 		6960A41F224258E800FED79B /* DashboardTodayPymnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTodayPymnt.swift; sourceTree = "<group>"; };
+		6961B3E724E3C6B300097E82 /* VendorItemPOController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorItemPOController.swift; sourceTree = "<group>"; };
+		6961B3E924E3CA2B00097E82 /* SummaryPendingPOController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPendingPOController.swift; sourceTree = "<group>"; };
+		6961B3EB24E3D1D800097E82 /* ItemwisePOOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemwisePOOrderController.swift; sourceTree = "<group>"; };
 		6961F75F22B102CE009080AB /* DivNBranchwiseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivNBranchwiseController.swift; sourceTree = "<group>"; };
 		69628B6922685A7500020699 /* BranchProgressLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchProgressLayout.swift; sourceTree = "<group>"; };
 		69628B6B22689DD300020699 /* DashboardOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardOrderViewController.swift; sourceTree = "<group>"; };
@@ -996,6 +1024,7 @@
 		6979B43921469ACF00BD99A1 /* YearlySalesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YearlySalesCell.xib; sourceTree = "<group>"; };
 		6979B43D2146A5FC00BD99A1 /* DashPendingOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashPendingOrderCell.swift; sourceTree = "<group>"; };
 		6979B43E2146A5FC00BD99A1 /* DashPendingOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashPendingOrderCell.xib; sourceTree = "<group>"; };
+		697C1DD824FA5C8500DC3F4E /* PartyPurLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyPurLayout.swift; sourceTree = "<group>"; };
 		697E05AB224CA078005B79AA /* OutstandingAboveController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutstandingAboveController.swift; sourceTree = "<group>"; };
 		697E05AD224CA102005B79AA /* OutstandingAbvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutstandingAbvCell.swift; sourceTree = "<group>"; };
 		697E05AF224CA439005B79AA /* OutstandingAbvLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutstandingAbvLayout.swift; sourceTree = "<group>"; };
@@ -1024,7 +1053,6 @@
 		69865D9A22CC75F300B75BA6 /* ExpenseComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseComparison.swift; sourceTree = "<group>"; };
 		69865F8C22CC803500B75BA6 /* WorldCupMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldCupMainController.swift; sourceTree = "<group>"; };
 		69865F8E22CC803500B75BA6 /* WorldCupSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldCupSummaryView.xib; sourceTree = "<group>"; };
-		6986617922CC8B8E00B75BA6 /* WorldCupSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorldCupSummaryView.swift; path = "../../../../../Desktop/Git/g-parivaar-ios/DealorsApp 2/DealorsApp/WorldCupSummaryView.swift"; sourceTree = "<group>"; };
 		6986617C22CC8CD300B75BA6 /* GetAllTeamsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAllTeamsData.swift; sourceTree = "<group>"; };
 		6986617D22CC8CD400B75BA6 /* AddMatchesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMatchesData.swift; sourceTree = "<group>"; };
 		6986617E22CC8CD500B75BA6 /* LeagueMatchDetailData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeagueMatchDetailData.swift; sourceTree = "<group>"; };
@@ -1131,9 +1159,12 @@
 		69A82032213E7F8F00835F35 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		69A82037213E800200835F35 /* ContentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentCollectionViewCell.xib; sourceTree = "<group>"; };
 		69A82039213E80BC00835F35 /* ContentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		69AC526124F924900030F48E /* CatPurchaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPurchaseController.swift; sourceTree = "<group>"; };
+		69AC526324F94B930030F48E /* PartyPurchaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyPurchaseController.swift; sourceTree = "<group>"; };
 		69ACF3532121C168007FFA3B /* logo_splash1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = logo_splash1.mp4; sourceTree = "<group>"; };
 		69ACF3572121C996007FFA3B /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		69ACF3592121C9BE007FFA3B /* DocumentRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentRowCell.swift; sourceTree = "<group>"; };
+		69AD428124F7F4D200E3EF03 /* VendorItemPOLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorItemPOLayout.swift; sourceTree = "<group>"; };
 		69AD534C24C8596700C5818D /* MainOrderCatwise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOrderCatwise.swift; sourceTree = "<group>"; };
 		69AF637E22EF0386009396C2 /* DistWiseCompare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistWiseCompare.swift; sourceTree = "<group>"; };
 		69B084B82462CD0A001E1EB7 /* HRBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HRBoard.storyboard; sourceTree = "<group>"; };
@@ -1172,10 +1203,15 @@
 		69DB793720A06A63005023D4 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		69DC25BF21A2DC9A00C2190D /* CartRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRowCell.swift; sourceTree = "<group>"; };
 		69DD827122674E5900CF5CEC /* BranchProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchProgress.swift; sourceTree = "<group>"; };
+		69DEB92424F69E4000FEFDB5 /* SaleInvoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SaleInvoice.swift; path = ManagementApp/SaleInvoice.swift; sourceTree = SOURCE_ROOT; };
+		69DEB92624F69E5000FEFDB5 /* SaleInvoice.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaleInvoice.xib; sourceTree = "<group>"; };
 		69DFF599219D590F0095A358 /* OrderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCell.swift; sourceTree = "<group>"; };
 		69DFF79B24D2BB2D00B5535B /* SummaryPendingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPendingController.swift; sourceTree = "<group>"; };
 		69DFF79D24D2CAE100B5535B /* VendorBtmOrderLay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorBtmOrderLay.swift; sourceTree = "<group>"; };
 		69DFF79F24D2DB4000B5535B /* VendorItemWiseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorItemWiseController.swift; sourceTree = "<group>"; };
+		69E16D8124F6D04A00A1B0B8 /* PurSaleTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurSaleTable.xib; sourceTree = "<group>"; };
+		69E16D8324F6D58200A1B0B8 /* PurSaleTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurSaleTable.swift; sourceTree = "<group>"; };
+		69E16D8524F6F7CE00A1B0B8 /* PurSaleLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurSaleLayout.swift; sourceTree = "<group>"; };
 		69E8A4632371A65C009E36D7 /* ExpensePartyLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensePartyLayout.swift; sourceTree = "<group>"; };
 		69EF0F4B24C87573002263DA /* ItemwiseOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemwiseOrderController.swift; sourceTree = "<group>"; };
 		69EF0F4D24C877DB002263DA /* MainOrderItemwise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOrderItemwise.swift; sourceTree = "<group>"; };
@@ -1461,6 +1497,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		693CCAB924EE90A900226798 /* CommonLayout */ = {
+			isa = PBXGroup;
+			children = (
+				693CCABA24EE90D200226798 /* NewPopupLayout.swift */,
+			);
+			path = CommonLayout;
+			sourceTree = "<group>";
+		};
 		6943F2F623DC4C9E006D484A /* VendorTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -1475,6 +1519,9 @@
 				6921F08023F7E8F20056FD47 /* VendorCatwise.swift */,
 				69D4469624C3446600952D65 /* AmountDifference.xib */,
 				69D4469824C361E100952D65 /* AmountDifference.swift */,
+				69E16D8124F6D04A00A1B0B8 /* PurSaleTable.xib */,
+				69E16D8324F6D58200A1B0B8 /* PurSaleTable.swift */,
+				69E16D8524F6F7CE00A1B0B8 /* PurSaleLayout.swift */,
 			);
 			path = VendorTab;
 			sourceTree = "<group>";
@@ -1554,6 +1601,7 @@
 				692B278324571E5300320A06 /* PendingViewController.swift */,
 				6976BDCF24A04AA100ADBB31 /* CityChildController.swift */,
 				6981193C24B2F68E00A2EB20 /* DistChildViewController.swift */,
+				691367CD24E7D6C0002513B0 /* PaytmCashbackController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1675,6 +1723,7 @@
 		695728722069024F006C0415 /* Report */ = {
 			isa = PBXGroup;
 			children = (
+				69DEB92324F69DC000FEFDB5 /* SaleInvoice */,
 				69F73EF024ACEC9C007E84BE /* VendorOrderTab */,
 				6978E10C244DD01300A2A20D /* AgentLimit */,
 				6926DAB5241B8B5400BFD8A2 /* ExpenseBill */,
@@ -1848,6 +1897,7 @@
 		697582BC208F4D9400327FB1 /* CommonFiles */ = {
 			isa = PBXGroup;
 			children = (
+				693CCAB924EE90A900226798 /* CommonLayout */,
 				6992BD8F24AB40CE0022E0C5 /* DecorationViews */,
 				6964E03A24A447D60095B183 /* MonthYearPickerController.swift */,
 				6964E03924A447D50095B183 /* QuarterYearPickerController.swift */,
@@ -1888,6 +1938,7 @@
 				696BF47322F06D26002614E2 /* SortViewController.swift */,
 				69226494235876A400698FF9 /* PartySearchController.swift */,
 				69301ABC2429F747000EB9B4 /* SearchViewController.swift */,
+				691AEBF324ED799000173536 /* NewPopupViewController.swift */,
 			);
 			name = CommonFiles;
 			sourceTree = "<group>";
@@ -1901,6 +1952,7 @@
 				694E5487230EC719009618E5 /* TodDetailPopup.storyboard */,
 				697715ED207F2D6800A4C87F /* CustomYearPicker.storyboard */,
 				695AED5E208B5063003FDDE3 /* DivisionPicker.storyboard */,
+				696BF47122F06B7E002614E2 /* Sorting.storyboard */,
 				6962BD652082077500ADE62E /* DatePicker.storyboard */,
 				695CF0542094A2BB0068A581 /* AdjustedAmntPopup.storyboard */,
 				6912E3CD212BE2070068BDB6 /* OrderType.storyboard */,
@@ -1912,7 +1964,6 @@
 				691F2D04231017E9001D2C03 /* BankDetailPicker.storyboard */,
 				698CE7F0231109DC0071DF8E /* RaiseDisputePopup.storyboard */,
 				694B2FBB225642E700E7E7B6 /* BranchPicker.storyboard */,
-				696BF47122F06B7E002614E2 /* Sorting.storyboard */,
 				692264922358515A00698FF9 /* PartyStoryboard.storyboard */,
 				69301ABA2429F178000EB9B4 /* Search.storyboard */,
 				69826EA624347F160007FE4F /* Leaves.storyboard */,
@@ -1920,6 +1971,8 @@
 				69A158B22472DCC7004F5AE7 /* VendorPurchase.storyboard */,
 				6946C87F24A37064008BFB87 /* Sales.storyboard */,
 				698E070124C6E62E0048AD5E /* MainDashboard.storyboard */,
+				691367CB24E7CD45002513B0 /* Dhanbarse.storyboard */,
+				691AEBF124ED73C300173536 /* NewPopup.storyboard */,
 			);
 			name = CommonStoryBoard;
 			sourceTree = "<group>";
@@ -2001,8 +2054,8 @@
 				6986618922CC8DBF00B75BA6 /* LeagueMatchViewCell.swift */,
 				6986618822CC8DBE00B75BA6 /* LeagueMatchViewCell.xib */,
 				69865F8C22CC803500B75BA6 /* WorldCupMainController.swift */,
-				6986617922CC8B8E00B75BA6 /* WorldCupSummaryView.swift */,
 				69865F8E22CC803500B75BA6 /* WorldCupSummaryView.xib */,
+				6934057E24F51715006A751D /* WorldCupSummaryView.swift */,
 			);
 			name = worldcup;
 			sourceTree = "<group>";
@@ -2069,6 +2122,7 @@
 				69945AE824C707BD00F250EE /* MainOrderController.swift */,
 				69945AEE24C768A900F250EE /* CategoryWiseOrderController.swift */,
 				69EF0F4B24C87573002263DA /* ItemwiseOrderController.swift */,
+				6961B3EB24E3D1D800097E82 /* ItemwisePOOrderController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -2088,6 +2142,7 @@
 			children = (
 				69CC9FD424CC1F9600528F51 /* MainOrderLayout.swift */,
 				69B97B8D24CEE0C00027F789 /*  ItemwiseLayout.swift */,
+				691367CF24E83801002513B0 /* ItemwisePOLayout.swift */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -2112,6 +2167,8 @@
 				6929E76324773A1900814A39 /* MonthwiseViewController.swift */,
 				69519441247C5264005C74CC /* AgingReportController.swift */,
 				69878CD4247D9CF3003A0C3A /* RateComparisonController.swift */,
+				69AC526124F924900030F48E /* CatPurchaseController.swift */,
+				69AC526324F94B930030F48E /* PartyPurchaseController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2139,6 +2196,7 @@
 				69D3BB5A24759A960050AC0A /* ProdPlanLayout.swift */,
 				69519443247C5A8E005C74CC /* ThirdPartyLayout.swift */,
 				697430732499CABF003A8628 /* PurchasePartyLedgerLayout.swift */,
+				697C1DD824FA5C8500DC3F4E /* PartyPurLayout.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -2220,6 +2278,15 @@
 				695254BC21132ECB00C88554 /* Color.xcassets */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		69DEB92324F69DC000FEFDB5 /* SaleInvoice */ = {
+			isa = PBXGroup;
+			children = (
+				69DEB92424F69E4000FEFDB5 /* SaleInvoice.swift */,
+				69DEB92624F69E5000FEFDB5 /* SaleInvoice.xib */,
+			);
+			path = SaleInvoice;
 			sourceTree = "<group>";
 		};
 		69DFF594219D58550095A358 /* Order */ = {
@@ -2481,6 +2548,9 @@
 				69DFF79B24D2BB2D00B5535B /* SummaryPendingController.swift */,
 				69DFF79D24D2CAE100B5535B /* VendorBtmOrderLay.swift */,
 				69DFF79F24D2DB4000B5535B /* VendorItemWiseController.swift */,
+				6961B3E724E3C6B300097E82 /* VendorItemPOController.swift */,
+				6961B3E924E3CA2B00097E82 /* SummaryPendingPOController.swift */,
+				69AD428124F7F4D200E3EF03 /* VendorItemPOLayout.swift */,
 			);
 			path = VendorOrderTab;
 			sourceTree = "<group>";
@@ -2682,13 +2752,17 @@
 				6979B43B21469ACF00BD99A1 /* YearlySalesCell.xib in Resources */,
 				691EE18221478C4A00835311 /* DashPendingOrderView.xib in Resources */,
 				695CF0552094A2BB0068A581 /* AdjustedAmntPopup.storyboard in Resources */,
+				691367CC24E7CD45002513B0 /* Dhanbarse.storyboard in Resources */,
 				69301ABB2429F178000EB9B4 /* Search.storyboard in Resources */,
 				6964E03824A447A30095B183 /* QuarterYearPicker.storyboard in Resources */,
 				ABBC46EF212933AA0038A7E3 /* roboto.regular.ttf in Resources */,
 				6992BD9A24AB40CF0022E0C5 /* SpreadsheetTopLeftDecorationView.xib in Resources */,
 				6988BE2924C12F40005B65DD /* VendorPurchasePending.xib in Resources */,
 				692087DA23EC308F00209142 /* VendorInvoice.xib in Resources */,
+				69DEB92724F69E5100FEFDB5 /* SaleInvoice.xib in Resources */,
+				691AEBF224ED73C400173536 /* NewPopup.storyboard in Resources */,
 				69EFE7F8211979C80034DCE0 /* RegularSchemeView.xib in Resources */,
+				69E16D8224F6D04B00A1B0B8 /* PurSaleTable.xib in Resources */,
 				6964E03724A447A30095B183 /* MonthYearPicker.storyboard in Resources */,
 				69B084B92462CD0A001E1EB7 /* HRBoard.storyboard in Resources */,
 				695AED5F208B5063003FDDE3 /* DivisionPicker.storyboard in Resources */,
@@ -2755,8 +2829,8 @@
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SVPinView/SVPinView.framework",
 				"${BUILT_PRODUCTS_DIR}/TTFortuneWheel/TTFortuneWheel.framework",
-				"${BUILT_PRODUCTS_DIR}/YoutubePlayer-in-WKWebView/YoutubePlayer_in_WKWebView.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -2771,8 +2845,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPinView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTFortuneWheel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YoutubePlayer_in_WKWebView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2849,6 +2923,7 @@
 				69F8656A211C870D008A6B42 /* QuantitySchemeView.swift in Sources */,
 				6943F2EF23DC20D5006D484A /* SearchVendor.swift in Sources */,
 				6969CAC623F2B4C200BBE5A5 /* EmployeeData.swift in Sources */,
+				69E16D8424F6D58200A1B0B8 /* PurSaleTable.swift in Sources */,
 				69A7EE3E2118345B008A65A1 /* CatSalesCell.swift in Sources */,
 				69945AEF24C768A900F250EE /* CategoryWiseOrderController.swift in Sources */,
 				6946C88324A37464008BFB87 /* ExecutiveTgtTrkController.swift in Sources */,
@@ -2870,6 +2945,7 @@
 				698CE7EB231106380071DF8E /* InvoiceWiseCDCell.swift in Sources */,
 				695CF0572094AF4B0068A581 /* AdjustedAmntCell.swift in Sources */,
 				691E83ED2298256000772EF5 /* OutstandingPartyWiseLayout.swift in Sources */,
+				6961B3EC24E3D1D800097E82 /* ItemwisePOOrderController.swift in Sources */,
 				6905F10023E00A6200193461 /* InsureViewController.swift in Sources */,
 				694F2555229411FF00F1E5B9 /* AccountsDetailsController.swift in Sources */,
 				691F2CFF231016AC001D2C03 /* outsCancelTransactionData.swift in Sources */,
@@ -2946,6 +3022,7 @@
 				6965DA642189B4790071D6B2 /* SpinConfirmData.swift in Sources */,
 				6986618222CC8CD700B75BA6 /* AddMatchesData.swift in Sources */,
 				696FA116225C7B7C001A85F2 /* PaymentLayout.swift in Sources */,
+				6934057F24F51715006A751D /* WorldCupSummaryView.swift in Sources */,
 				69A158C1247331F0004F5AE7 /* VendorPurchaseOrder.swift in Sources */,
 				69A158C524733930004F5AE7 /* PurSalesLedger.swift in Sources */,
 				69861E86230ACB4300C7C2BB /* ComplexCell.swift in Sources */,
@@ -3021,6 +3098,7 @@
 				6988EB3424747A9900079935 /* ProductPlanning.swift in Sources */,
 				6923623E2407D5E2008B0588 /* EmployeeInfo.swift in Sources */,
 				691409D920FE0D3900182052 /* TermOfUseController.swift in Sources */,
+				693CCABB24EE90D200226798 /* NewPopupLayout.swift in Sources */,
 				6972F2D022981B12004862AA /* Dispatch.swift in Sources */,
 				69F86572211C8788008A6B42 /* GroupSchemeView.swift in Sources */,
 				69654651230FE63C008A896C /* OutstandingPaymentCalculationController.swift in Sources */,
@@ -3034,7 +3112,6 @@
 				699340C422719BBF008362B1 /* StockDetails.swift in Sources */,
 				692083BF243A1CA60072B096 /* DhanProfileViewController.swift in Sources */,
 				69FC1057228C4E25003E02DF /* chartClicks.swift in Sources */,
-				6986617A22CC8B8E00B75BA6 /* WorldCupSummaryView.swift in Sources */,
 				6968DC5021366FB600C400BF /* IntroScreenViewController.swift in Sources */,
 				691F2D0D23101A95001D2C03 /* BankDetailData.swift in Sources */,
 				6943F2F323DC3AFF006D484A /* NewDashboardViewController.swift in Sources */,
@@ -3073,6 +3150,7 @@
 				692D720620A2BF8D00D2CB16 /* FloatRatingView.swift in Sources */,
 				6943F2ED23DC095E006D484A /* SearchSupplierController.swift in Sources */,
 				691409DB20FE0D6E00182052 /* AboutUsController.swift in Sources */,
+				69AD428224F7F4D200E3EF03 /* VendorItemPOLayout.swift in Sources */,
 				69ACF3582121C996007FFA3B /* DocumentsViewController.swift in Sources */,
 				69D21760216896C500862320 /* CreditDebitCell.swift in Sources */,
 				694E548A230EC72E009618E5 /* TodDetailPopupController.swift in Sources */,
@@ -3121,6 +3199,7 @@
 				69541E1C2137DA2D00BBC4EB /* Outstanding.swift in Sources */,
 				69878CD7247D9E37003A0C3A /* RateComparison.swift in Sources */,
 				69498E7D244F0F55005358A1 /* DRPRRPController.swift in Sources */,
+				697C1DD924FA5C8500DC3F4E /* PartyPurLayout.swift in Sources */,
 				6922649723589EAB00698FF9 /* LimitDetailsController.swift in Sources */,
 				6954B1922074EF720052FF3E /* DispatchedMaterialCell.swift in Sources */,
 				6978E10B244DCFDD00A2A20D /* AgentLimit.swift in Sources */,
@@ -3146,7 +3225,9 @@
 				69FBEA2420B5357000BDE34F /* ViewPagerController.swift in Sources */,
 				6920D1042149178F0003A928 /* InitialData.swift in Sources */,
 				6973574F206CF357000D738D /* ContactUsController.swift in Sources */,
+				69E16D8624F6F7CE00A1B0B8 /* PurSaleLayout.swift in Sources */,
 				69A32EF422A28FFE00CD3CF9 /* SalesPaymentController.swift in Sources */,
+				69AC526424F94B930030F48E /* PartyPurchaseController.swift in Sources */,
 				69701B7B2244C6AC00A49565 /* DealerAppCell.swift in Sources */,
 				6973574D206CF344000D738D /* FeedbackController.swift in Sources */,
 				69DFF79E24D2CAE100B5535B /* VendorBtmOrderLay.swift in Sources */,
@@ -3155,6 +3236,7 @@
 				6988BE3124C13960005B65DD /* VendorPurchaseItemwise.swift in Sources */,
 				69945AE924C707BD00F250EE /* MainOrderController.swift in Sources */,
 				6965464F230FE61C008A896C /* OutstandingReportController.swift in Sources */,
+				6961B3EA24E3CA2B00097E82 /* SummaryPendingPOController.swift in Sources */,
 				6917225723FA60F2006F68EF /* EmpDeptwise.swift in Sources */,
 				69595FF02128105300DD32C3 /* CPImageSlider.swift in Sources */,
 				695F1556209D838000C262CF /* TechSpecsRowCell.swift in Sources */,
@@ -3201,6 +3283,7 @@
 				6943F2EB23DC08EF006D484A /* SearchSupplier.swift in Sources */,
 				6969CAC823F2C59B00BBE5A5 /* EmployeeChild.swift in Sources */,
 				6911543122A00CFE005C09E0 /* StockLayout.swift in Sources */,
+				691367D024E83801002513B0 /* ItemwisePOLayout.swift in Sources */,
 				6905AC9221BE688200510631 /* CatalogueAddViewCell.swift in Sources */,
 				6978E10E244DD03D00A2A20D /* AgentLimitController.swift in Sources */,
 				695F1550209D831F00C262CF /* TechSpecificationController.swift in Sources */,
@@ -3213,6 +3296,7 @@
 				6943F2FA23DC4F48006D484A /* VendorPurchase.swift in Sources */,
 				697E05B0224CA439005B79AA /* OutstandingAbvLayout.swift in Sources */,
 				691076F4239A534700930691 /* SupplierViewController.swift in Sources */,
+				69DEB92524F69E4000FEFDB5 /* SaleInvoice.swift in Sources */,
 				69608D2221BBC57B00E6F7D0 /* CatalogueListItemCell.swift in Sources */,
 				692DF404235B00B300F972AD /* IncreasedLimitDetails.swift in Sources */,
 				6988EB3824747F0900079935 /* ThirdPartyStatus.swift in Sources */,
@@ -3268,6 +3352,7 @@
 				69628B6A22685A7500020699 /* BranchProgressLayout.swift in Sources */,
 				692083B92439C66F0072B096 /* DhanCitywise.swift in Sources */,
 				69ACF35A2121C9BE007FFA3B /* DocumentRowCell.swift in Sources */,
+				691367CE24E7D6C0002513B0 /* PaytmCashbackController.swift in Sources */,
 				69CC9FD524CC1F9600528F51 /* MainOrderLayout.swift in Sources */,
 				6923DA4B241CDD3D00412E9C /* ExpenseBill.swift in Sources */,
 				69EFE7FC211980AF0034DCE0 /* AgingReportView.swift in Sources */,
@@ -3283,11 +3368,13 @@
 				69B732AF213958020015A2EA /* DownloadPendingOrderPdf.swift in Sources */,
 				695ABE02206A2873004F2479 /* CustomMenuController.swift in Sources */,
 				69541E0A2137D83F00BBC4EB /* DashboardGroupScheme.swift in Sources */,
+				69AC526224F924900030F48E /* CatPurchaseController.swift in Sources */,
 				69541E1A2137DA0300BBC4EB /* Catalogue.swift in Sources */,
 				698CE7EF231109C00071DF8E /* RaiseDisputePopupController.swift in Sources */,
 				695F1552209D833D00C262CF /* PolicyController.swift in Sources */,
 				696B81D724A5B11B006723D9 /* CommonSearch.swift in Sources */,
 				69194E7B23B4CACA00218F7F /* ExcelViewController.swift in Sources */,
+				6961B3E824E3C6B300097E82 /* VendorItemPOController.swift in Sources */,
 				694CD2A820A6F1A600CE313A /* CallServiceExecViewController.swift in Sources */,
 				69945AED24C72B4A00F250EE /* MainOrderPending.swift in Sources */,
 				69EFE7F4211974520034DCE0 /* DashboardSchemeCell.swift in Sources */,
@@ -3296,6 +3383,7 @@
 				69389231223BD8B900D69935 /* BranchWiseCollectionLayout.swift in Sources */,
 				6972F2CD22981A3C004862AA /* LastDispatchesView.swift in Sources */,
 				694B2FBE225643A200E7E7B6 /* BranchPickerController.swift in Sources */,
+				691AEBF424ED799000173536 /* NewPopupViewController.swift in Sources */,
 				6920E1DB24349B3500FB02A1 /* ErrorsData.swift in Sources */,
 				692B278424571E5400320A06 /* PendingViewController.swift in Sources */,
 				69541E022137D72300BBC4EB /* DashboardLastPaymentView.swift in Sources */,
@@ -3455,7 +3543,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.45;
+				CURRENT_PROJECT_VERSION = 1.0.54;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5F6P8555ST;
 				INFOPLIST_FILE = ManagementApp/Info.plist;
@@ -3484,7 +3572,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.45;
+				CURRENT_PROJECT_VERSION = 1.0.54;
 				DEVELOPMENT_TEAM = 5F6P8555ST;
 				INFOPLIST_FILE = ManagementApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13;

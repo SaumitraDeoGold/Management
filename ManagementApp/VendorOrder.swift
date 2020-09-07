@@ -185,7 +185,7 @@ extension VendorOrder: UICollectionViewDataSource {
             } else if indexPath.row == 1 {
                 cell.contentLabel.text = "Amount"
             }else if indexPath.row == 2 {
-                cell.contentLabel.text = "Invoice No"
+                cell.contentLabel.text = "Order No"
             }
         }
         

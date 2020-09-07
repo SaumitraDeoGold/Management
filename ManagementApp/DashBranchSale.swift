@@ -15,5 +15,5 @@ struct DashBranch: Codable {
 
 // MARK: - Datum
 struct DashBranchObj: Codable {
-    let branchnm, amount: String?
+    let branchnm, amount, payment: String?
 }

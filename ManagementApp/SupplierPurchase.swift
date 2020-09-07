@@ -39,6 +39,7 @@ import AMPopTip
         super.xibSetup()
         //let appDelegate = UIApplication.shared.delegate as! AppDelegate
         //yearDate()
+        self.lblOverallGrowth.text = appDelegate.partyName
         apiVendor = "https://api.goldmedalindia.in/api/getSupplierPurchaseAndLedger"
         ViewControllerUtils.sharedInstance.showLoader()
         apiVendorTotal()

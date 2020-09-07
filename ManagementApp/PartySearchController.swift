@@ -47,6 +47,15 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
     var subCatItems = [SubCatItemListObj]()
     var tempSubCatItemsObj = [SubCatItemListObj]()
     
+    var catPurchase = [CatPurchaseObj]()
+    var tempcatPurchaseObj = [CatPurchaseObj]()
+    
+    var partyPurchase = [PartyPurchaseObj]()
+    var tempPartyPurchaseObj = [PartyPurchaseObj]()
+    
+    var subcatSummary = [String]()
+    var tempSubcatSummary = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         blurBackground()
@@ -72,6 +81,16 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
             ViewControllerUtils.sharedInstance.removeLoader()
             //apiCompare()
         }else if fromPage == "SubCat"{
+            self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
+            self.tableView.reloadData()
+            ViewControllerUtils.sharedInstance.removeLoader()
+            //apiCompare()
+        }else if fromPage == "CatPurchase"{
+            self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
+            self.tableView.reloadData()
+            ViewControllerUtils.sharedInstance.removeLoader()
+            //apiCompare()
+        }else if fromPage == "PartyPurchase" || fromPage == "Subcat Summary"{
             self.textField.addTarget(self, action: #selector(self.searchRecords(_ :)), for: .editingChanged)
             self.tableView.reloadData()
             ViewControllerUtils.sharedInstance.removeLoader()
@@ -162,6 +181,48 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
                     subCatObj.append(dealers)
                 }
             }
+        }else if fromPage == "CatPurchase"{
+            self.catPurchase.removeAll()
+            if textfield.text?.count != 0{
+                for dealers in tempcatPurchaseObj{
+                    let range = dealers.catName!.lowercased().range(of: textfield.text!, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil{
+                        catPurchase.append(dealers)
+                    }
+                }
+            }else{
+                for dealers in tempcatPurchaseObj{
+                    catPurchase.append(dealers)
+                }
+            }
+        }else if fromPage == "PartyPurchase"{
+            self.partyPurchase.removeAll()
+            if textfield.text?.count != 0{
+                for dealers in tempPartyPurchaseObj{
+                    let range = dealers.displaynmwitharea!.lowercased().range(of: textfield.text!, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil{
+                        partyPurchase.append(dealers)
+                    }
+                }
+            }else{
+                for dealers in tempPartyPurchaseObj{
+                    partyPurchase.append(dealers)
+                }
+            }
+        }else if fromPage == "Subcat Summary"{
+            self.subcatSummary.removeAll()
+            if textfield.text?.count != 0{
+                for dealers in tempSubcatSummary{
+                    let range = dealers.lowercased().range(of: textfield.text!, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil{
+                        subcatSummary.append(dealers)
+                    }
+                }
+            }else{
+                for dealers in tempSubcatSummary{
+                    subcatSummary.append(dealers)
+                }
+            }
         }else if fromPage == "Items"{
             self.subCatItems.removeAll()
             if textfield.text?.count != 0{
@@ -215,6 +276,12 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
             return subCatObj.count
         }else if fromPage == "Items"{
             return subCatItems.count
+        }else if fromPage == "CatPurchase"{
+            return catPurchase.count + 1
+        }else if fromPage == "PartyPurchase"{
+            return partyPurchase.count + 1
+        }else if fromPage == "Subcat Summary"{
+            return subcatSummary.count + 1
         }else{
             return divisionNameObj.count
         }
@@ -230,6 +297,24 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
             cell.textLabel?.text = supplierArray[indexPath.row].vendornm
         }else if fromPage == "SubCat"{
             cell.textLabel?.text = subCatObj[indexPath.row].subcatnm
+        }else if fromPage == "CatPurchase"{
+            if indexPath.row == 0{
+                cell.textLabel?.text = "All"
+            }else{
+                cell.textLabel?.text = catPurchase[indexPath.row-1].catName
+            }
+        }else if fromPage == "PartyPurchase"{
+            if indexPath.row == 0{
+                cell.textLabel?.text = "All"
+            }else{
+                cell.textLabel?.text = partyPurchase[indexPath.row-1].displaynmwitharea
+            }
+        }else if fromPage == "Subcat Summary"{
+            if indexPath.row == 0{
+                cell.textLabel?.text = "ALL"
+            }else{
+                cell.textLabel?.text = subcatSummary[indexPath.row-1]
+            }
         }else if fromPage == "Items"{
             cell.textLabel?.text = subCatItems[indexPath.row].item
         }else{
@@ -249,6 +334,24 @@ class PartySearchController: UIViewController, UITableViewDataSource, UITableVie
             delegate?.showParty!(value: supplierArray[indexPath.row].vendornm!,cin : String(supplierArray[indexPath.row].slno!))
         }else if fromPage == "SubCat"{
             delegate?.showParty!(value: subCatObj[indexPath.row].subcatnm!,cin : String(subCatObj[indexPath.row].subcatid!))
+        }else if fromPage == "CatPurchase"{
+            if indexPath.row == 0{
+                delegate?.showParty!(value: "All",cin : "")
+            }else{
+                delegate?.showParty!(value: catPurchase[indexPath.row-1].catName!,cin : String(catPurchase[indexPath.row-1].catId!))
+            }
+        }else if fromPage == "PartyPurchase"{
+            if indexPath.row == 0{
+                delegate?.showParty!(value: "All",cin : "")
+            }else{
+                delegate?.showParty!(value: partyPurchase[indexPath.row-1].displaynmwitharea!,cin : String(partyPurchase[indexPath.row-1].partyId!))
+            } 
+        }else if fromPage == "Subcat Summary"{
+            if indexPath.row == 0{
+                delegate?.showParty!(value: "ALL",cin : "")
+            }else{
+                delegate?.showParty!(value: subcatSummary[indexPath.row-1],cin : "")
+            }
         }else if fromPage == "Items"{
             delegate?.showParty!(value: subCatItems[indexPath.row].item!,cin : String(subCatItems[indexPath.row].slno!))
         } else{

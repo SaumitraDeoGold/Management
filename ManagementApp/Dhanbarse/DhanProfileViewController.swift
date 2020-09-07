@@ -164,15 +164,15 @@ class DhanProfileViewController: UIViewController, UICollectionViewDataSource, U
                     case 15:
                         cell.contentLabel.text = "View Image"//dataToRecieve[0].shopEstCerti
                     case 16:
-                        cell.contentLabel.text = dataToRecieve[0].wrkcity
+                        cell.contentLabel.text = dataToRecieve[0].wrkcitynm
                     case 17:
-                        cell.contentLabel.text = dataToRecieve[0].wrkstate
+                        cell.contentLabel.text = dataToRecieve[0].wrkstatenm
                     case 18:
-                        cell.contentLabel.text = dataToRecieve[0].wrkdistrict
+                        cell.contentLabel.text = dataToRecieve[0].wrkdistrictnm
                     case 19:
-                        cell.contentLabel.text = dataToRecieve[0].wrkaddress
-                    case 20:
                         cell.contentLabel.text = dataToRecieve[0].wrkpincode
+                    case 20:
+                        cell.contentLabel.text = dataToRecieve[0].cin
                     default:
                         break
                     }

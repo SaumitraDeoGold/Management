@@ -172,9 +172,9 @@ extension DivNBrLayout {
         case 0:
             width = Int((screenWidth/3)-1)
         case 1:
-            width = Int((screenWidth/3)-1)
+            width = Int((screenWidth/3)+20)
         case 2:
-            width = Int((screenWidth/3)-1)
+            width = Int((screenWidth/3)-20)
         case 3:
             width = 210
             

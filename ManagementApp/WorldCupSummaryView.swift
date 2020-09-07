@@ -1,9 +1,9 @@
 //
 //  WorldCupSummaryView.swift
-//  DealorsApp
+//  ManagementApp
 //
-//  Created by Goldmedal on 4/30/19.
-//  Copyright © 2019 Goldmedal. All rights reserved.
+//  Created by Goldmedal on 25/08/20.
+//  Copyright © 2020 Goldmedal. All rights reserved.
 //
 
 import UIKit
@@ -204,7 +204,7 @@ import Charts
         
         print("DATA ENTRIES ------------------------  ",dataEntries)
         
-        let chartDataSet = PieChartDataSet(values: dataEntries, label: "")
+        let chartDataSet = PieChartDataSet(entries: dataEntries, label: "")
         chartDataSet.drawValuesEnabled = false
         chartDataSet.colors = colorArray
         
@@ -214,3 +214,4 @@ import Charts
     }
     
 }
+

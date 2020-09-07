@@ -18,5 +18,5 @@ struct MainOrderItemwiseObj: Codable {
     let subCatId: String?
     let subCat, dispatchFrom, color : String?
     let itemId, itemName, qty, amount: String?
-    let pendingsince: String?
+    let pendingsince, ponum: String?
 }

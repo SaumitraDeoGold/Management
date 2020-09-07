@@ -118,22 +118,22 @@ class AgentLimitController: BaseViewController, UICollectionViewDataSource, UICo
                    let currentYear = Double(filteredItems[0].secured)
                    let prevYear = Double(filteredItems[0].outstanding)
                    let temp = (currentYear*100)/prevYear
-                   cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
+                   cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp, from: "")
                case 2:
                    let currentYear = Double(filteredItems[0].unSecured)
                    let prevYear = Double(filteredItems[0].outstanding)
                    let temp = (currentYear*100)/prevYear
-                   cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
+                   cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp, from: "unsecured")
                case 3:
                    let currentYear = Double(filteredItems[0].outstanding)
                    let prevYear = Double(totalSales["outs"]!)
                    let temp = (currentYear*100)/prevYear
-                   cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
+                   cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp, from: "")
                case 4:
                    let currentYear = Double(filteredItems[0].agentLimit)
                    let prevYear = Double(totalSales["agentL"]!)
                    let temp = (currentYear*100)/prevYear
-                   cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
+                   cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp, from: "")
                 default:
                     break
                 }
@@ -207,22 +207,22 @@ class AgentLimitController: BaseViewController, UICollectionViewDataSource, UICo
                     let currentYear = Double(filteredItems[indexPath.section - 1].secured)
                     let prevYear = Double(filteredItems[indexPath.section - 1].outstanding)
                     let temp = (currentYear*100)/prevYear
-                    cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
+                    cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp, from: "")
                 case 2:
                     let currentYear = Double(filteredItems[indexPath.section - 1].unSecured)
                     let prevYear = Double(filteredItems[indexPath.section - 1].outstanding)
                     let temp = (currentYear*100)/prevYear
-                    cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
+                    cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp, from: "unsecured")
                 case 3:
                     let currentYear = Double(filteredItems[indexPath.section - 1].outstanding)
                     let prevYear = Double(totalSales["outs"]!)
                     let temp = (currentYear*100)/prevYear
-                    cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
+                    cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp, from: "")
                 case 4:
                     let currentYear = Double(filteredItems[indexPath.section - 1].agentLimit)
                     let prevYear = Double(totalSales["agentL"]!)
                     let temp = (currentYear*100)/prevYear
-                    cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp)
+                    cell.contentLabel.attributedText = calculatePercentage(currentYear: currentYear, prevYear: prevYear, temp: temp, from: "")
                 default:
                     break
                 }
@@ -292,7 +292,7 @@ class AgentLimitController: BaseViewController, UICollectionViewDataSource, UICo
     }
     
     //Calculate percentage func...
-    func calculatePercentage(currentYear: Double, prevYear: Double, temp: Double) -> NSAttributedString{
+    func calculatePercentage(currentYear: Double, prevYear: Double, temp: Double, from: String) -> NSAttributedString{
         let sale = Utility.formatRupee(amount: Double(currentYear ))
         let tempVar = String(format: "%.2f", temp)
         var formattedPerc = ""
@@ -305,6 +305,10 @@ class AgentLimitController: BaseViewController, UICollectionViewDataSource, UICo
         let range = (strNumber).range(of: String(tempVar))
         let attribute = NSMutableAttributedString.init(string: strNumber as String)
         if temp > 0{
+            if from == "unsecured"{
+                attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(named: "ColorRed") as Any , range: range)
+                return attribute
+            }
             attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(named: "ColorGreen") as Any , range: range)
         }else{
             attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.red as Any , range: range)

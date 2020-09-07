@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import YoutubePlayer_in_WKWebView
+import youtube_ios_player_helper
 import FirebaseAnalytics
 
 class QwikpayVideoController: BaseViewController,UITableViewDelegate,UITableViewDataSource {
     
-    @IBOutlet weak var playerView: WKYTPlayerView!
+    @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var tblQwikpay: UITableView!
     @IBOutlet weak var noDataView: NoDataView!
     

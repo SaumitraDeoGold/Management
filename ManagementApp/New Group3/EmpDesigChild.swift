@@ -16,7 +16,7 @@ struct EmpDesigChild: Codable {
 
 // MARK: - Datum
 struct EmpDesigChildObj: Codable {
-    let employeeName, departmentname, designationName, employeeCode: String?
+    let employeeName, departmentname, designationName, employeeCode, location: String?
     let branchname, mobileNumber, joinDate, workYear: String?
     let slno: Int?
 }

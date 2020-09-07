@@ -27,6 +27,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
     var docs = 2
     var vendorStory = false
     var salesStory = false
+    var dhanbarseStory = false
     var salesAgent = 10000
     var ETT = 10
     
@@ -156,31 +157,32 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
         case (1,ETT):
             print("Executive Target Tracking\n", terminator: "")
             salesStory = true
-            self.openViewControllerBasedOnIdentifier("ExecutiveTgtTrkController")
-            
+            self.openViewControllerBasedOnIdentifier("ExecutiveTgtTrkController") 
             break
             
         case (pReport,0):
             print("SearchSupplier\n", terminator: "")
-            
             self.openViewControllerBasedOnIdentifier("SearchSupplier")
-            
             break
             
         case (pReport,1):
             print("SearchVendor\n", terminator: "")
-            
             self.openViewControllerBasedOnIdentifier("SearchVendor")
-            
             break
             
         case (pReport,2):
+            print("Cat Purchase Controller\n", terminator: "")
+            vendorStory = true
+            self.openViewControllerBasedOnIdentifier("CatPurchaseController")
+            break
+            
+        case (pReport,3):
             print("VendorPurchaseOrder\n", terminator: "")
             vendorStory = true
             self.openViewControllerBasedOnIdentifier("VendorPurchaseOrder")
             break
             
-        case (pReport,3):
+        case (pReport,4):
             print("PurSalesLedgerViewController\n", terminator: "")
             vendorStory = true
             self.openViewControllerBasedOnIdentifier("PurSalesLedgerViewController")
@@ -192,7 +194,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
 //            self.openViewControllerBasedOnIdentifier("ProductPlanViewController")
 //            break
             
-        case (pReport,4):
+        case (pReport,5):
             print("ThirdPartyViewController\n", terminator: "")
             vendorStory = true
             self.openViewControllerBasedOnIdentifier("ThirdPartyViewController")
@@ -204,13 +206,13 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
 //            self.openViewControllerBasedOnIdentifier("MonthwiseViewController")
 //            break
             
-        case (pReport,5):
+        case (pReport,6):
             print("AgingReportController\n", terminator: "")
             vendorStory = true
             self.openViewControllerBasedOnIdentifier("AgingReportController")
             break
             
-        case (pReport,6):
+        case (pReport,7):
             print("RateComparisonController\n", terminator: "")
             vendorStory = true
             self.openViewControllerBasedOnIdentifier("RateComparisonController")
@@ -321,6 +323,13 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
             
             break
             
+        case (dhanSelector,3):
+            print("Paytm Cashback \n", terminator: "")
+            dhanbarseStory = true
+            self.openViewControllerBasedOnIdentifier("PaytmCashbackController")
+            
+            break
+            
         
             
         case (empSelector,empTwoSub):
@@ -414,6 +423,18 @@ class BaseViewController: UIViewController, SlideMenuDelegate, PopupDateDelegate
                 self.navigationController!.pushViewController(destViewController, animated: true)
             }
             salesStory = false
+        }else if dhanbarseStory{
+            let storyboard = UIStoryboard(name: "Dhanbarse", bundle: nil)
+            let destViewController : UIViewController = storyboard.instantiateViewController(withIdentifier: strIdentifier)
+            
+            let topViewController : UIViewController = self.navigationController!.topViewController!
+            
+            if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
+                //print("Same VC")
+            } else {
+                self.navigationController!.pushViewController(destViewController, animated: true)
+            }
+            dhanbarseStory = false
         }else{
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let destViewController : UIViewController = storyboard.instantiateViewController(withIdentifier: strIdentifier)

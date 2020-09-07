@@ -42,6 +42,8 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
     var divBreakdownTotal = [DivBreakdownTotal]()
     var divBreakdownTotalObj = [DivBreakdownTotalObj]()
     var totalAmount = 0.0
+    var totalDateAmount = 0.0
+    var totalPayment = 0.0
     var showDiv = true
     var refreshControl = UIRefreshControl()
     var fromDate: Date?
@@ -66,7 +68,7 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
         self.noDataView.showView(view: self.noDataView, from: "LOADER")
         addRefreshControl()
         divApiUrl = "https://api.goldmedalindia.in/api/GetTodaySaleDivisionwise"
-        branchApiUrl = "https://api.goldmedalindia.in/api/GetTodaySaleBranchwise"
+        branchApiUrl = "https://test2.goldmedalindia.in/api/GetTodaySaleBranchwise"
         divBreakdownTotalApi = "https://api.goldmedalindia.in/api/GetDateWiseSale"
         apiDivisionwiseSale()
         apiDivTotal()
@@ -426,15 +428,15 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
                     case 0:
                         cell.contentLabel.text = "Branch Name"
                     case 1:
-                        cell.contentLabel.text = "Amount"
+                        cell.contentLabel.text = "Sales (%)"
                     case 2:
-                        cell.contentLabel.text = "Contri %"
+                        cell.contentLabel.text = "Payment (%)"
                     default:
                         break
                     }
                     
                 }else if indexPath.section == self.dashBranchObj.count + 1 {
-                    cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 16)
+                    cell.contentLabel.font = UIFont(name: "Roboto-Medium", size: 14)
                     if #available(iOS 11.0, *) {
                         cell.backgroundColor = UIColor.init(named: "Primary")
                     } else {
@@ -446,7 +448,7 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
                     case 1:
                         cell.contentLabel.text = Utility.formatRupee(amount: Double(totalAmount ))
                     case 2:
-                        cell.contentLabel.text = "100%"
+                        cell.contentLabel.text = Utility.formatRupee(amount: Double(totalPayment ))
                     default:
                         break
                     }
@@ -462,13 +464,17 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
                     case 0:
                         cell.contentLabel.text =  self.dashBranchObj[indexPath.section-1].branchnm
                     case 1:
+                        let percentage = ((Double(self.dashBranchObj[indexPath.section - 1].amount!)! / totalAmount)*100)
                         if let amount = self.dashBranchObj[indexPath.section-1].amount
                         {
-                            cell.contentLabel.text = Utility.formatRupee(amount: Double(amount )!)
+                            cell.contentLabel.text = "\(Utility.formatRupee(amount: Double(amount )!))(\(String(format: "%.2f", percentage))%)"
                         }
                     case 2:
-                        let percentage = ((Double(self.dashBranchObj[indexPath.section - 1].amount!)! / totalAmount)*100)
-                        cell.contentLabel.text = "\(String(format: "%.2f", percentage))%"
+                        let percentage = ((Double(self.dashBranchObj[indexPath.section - 1].payment!)! / totalPayment)*100)
+                        if let payment = self.dashBranchObj[indexPath.section-1].payment
+                        {
+                            cell.contentLabel.text = "\(Utility.formatRupee(amount: Double(payment )!))(\(String(format: "%.2f", percentage))%)"
+                        }
                         
                     default:
                         break
@@ -516,13 +522,14 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
                 case 0:
                     cell.contentLabel.text = "SUM"
                 case 1:
-                    cell.contentLabel.text = Utility.formatRupee(amount: Double(totalAmount ))
+                    cell.contentLabel.text = Utility.formatRupee(amount: Double(totalDateAmount ))
                 case 2:
                     cell.contentLabel.text = "100%"
                     
                 default:
                     break
                 }
+                return cell
             }  else {
                 cell.contentLabel.font = UIFont(name: "Roboto-Regular", size: 14)
                 if #available(iOS 11.0, *) {
@@ -678,6 +685,7 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
                 //self.filteredItems = self.stockData[0].data
                 //Total of All Items...
                 self.totalAmount = self.dashBranchObj.reduce(0, { $0 + Double($1.amount!)! })
+                self.totalPayment = self.dashBranchObj.reduce(0, { $0 + Double($1.payment!)! })
                 self.collectionView.reloadData()
                 self.collectionView.collectionViewLayout.invalidateLayout()
                 self.noDataView.hideView(view: self.noDataView)
@@ -714,7 +722,7 @@ class DivNBranchwiseController: UIViewController, UICollectionViewDataSource, UI
                 //let numMin = self.divBreakdownTotalObj.reduce(Int.min, { max(Double($0.amount!)!, Double($1.amount!)!) })
                 //self.filteredItems = self.stockData[0].data
                 //Total of All Items...
-                self.totalAmount = self.divBreakdownTotalObj.reduce(0, { $0 + Double($1.amount!)! })
+                self.totalDateAmount = self.divBreakdownTotalObj.reduce(0, { $0 + Double($1.amount!)! })
                 self.customDivLayout.itemAttributes = []
                 self.customDivLayout.numberOfColumns = self.noOfColumns
                 self.collectionViewMonthly.reloadData()

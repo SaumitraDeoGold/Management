@@ -10,8 +10,8 @@
 #endif
 #endif
 
-#import "WKYTPlayerView.h"
+#import "YTPlayerView.h"
 
-FOUNDATION_EXPORT double YoutubePlayer_in_WKWebViewVersionNumber;
-FOUNDATION_EXPORT const unsigned char YoutubePlayer_in_WKWebViewVersionString[];
+FOUNDATION_EXPORT double youtube_ios_player_helperVersionNumber;
+FOUNDATION_EXPORT const unsigned char youtube_ios_player_helperVersionString[];
 

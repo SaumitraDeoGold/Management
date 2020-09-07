@@ -122,7 +122,7 @@ class MenuViewController: UIViewController {
         
         if(UserDefaults.standard.value(forKey: "userCategory") != nil && UserDefaults.standard.value(forKey: "userCategory") as! String == "Management"){
                     
-                    self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"PURCHASE REPORTS", "icon":"icon_reports","data":["SEARCH EXPENSE SUPPLIER","RAW MATERIAL PURCHASE VENDOR/SUPPLIER","PURCHASE INVOICE","SALE/PURCHASE PARTY LEDGER","THIRD PARTY ORDER","VENDOR/SUPPLIER AGING"]])
+                    self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"PURCHASE REPORTS", "icon":"icon_reports","data":["SEARCH EXPENSE SUPPLIER","RAW MATERIAL PURCHASE VENDOR/SUPPLIER","CATEGORYWISE PURCHASE","PURCHASE INVOICE","SALE/PURCHASE PARTY LEDGER","THIRD PARTY ORDER","VENDOR/SUPPLIER AGING"]])
         //        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SEARCH SUPPLIER", "icon":"dash_search","data":[""]])
         //        self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"SEARCH VENDOR", "icon":"dash_search","data":[""]])
                     
@@ -137,7 +137,7 @@ class MenuViewController: UIViewController {
         
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"INCREASE LIMITS", "icon":"dashboard_sales_icon","data":[""]])
         
-        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"DHANBARSE", "icon":"icon_about_us","data":["DHANBARSE DASHBOARD","SEARCH PROFILE","POINT BALANCE"]])
+        self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"DHANBARSE", "icon":"icon_about_us","data":["DHANBARSE DASHBOARD","SEARCH PROFILE","POINT BALANCE","PAYTM CASHBACK"]])
         self.expandData.append(["isCollapsible":"1","isOpen":"1","title":"HR", "icon":"icon_about_us","data":["EMPLOYEE DASHBOARD","EMPLOYEE DETAILS","EMPLOYEE SEARCH","MPR","PENDING/CLOSED MPR"]])
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"ABOUT US", "icon":"icon_about_us","data":[""]])
         self.expandData.append(["isCollapsible":"0","isOpen":"1","title":"TERMS OF USE", "icon":"dashboard_order_icon","data":[""]])
